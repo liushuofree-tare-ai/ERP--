@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Workbook } from '@fortune-sheet/react';
 import '@fortune-sheet/react/dist/index.css';
+import './theme.css';
 import { readWorkbook, parseSheet } from './xlsx/workbook.js';
 import { sheetToFortune } from './xlsx/toFortuneSheet.js';
 import { buildQuoteXlsx, buildMinimalXlsx } from './xlsx/writeback.js';
@@ -2199,8 +2200,8 @@ function App() {
     importSessionRef.current && importSessionRef.current.docId === activeDocId);
 
   const barBtn = {
-    border: '1px solid #888', color: '#444', background: '#fff', borderRadius: 6,
-    padding: '3px 10px', cursor: 'pointer',
+    border: '1px solid #c6cfd9', color: '#37404a', background: '#fff', borderRadius: 6,
+    padding: '5px 12px', cursor: 'pointer',
   };
 
   // 左侧模块导航按钮（包 10）：当前模块高亮，其余素面
@@ -2210,11 +2211,11 @@ function App() {
       className={'nav-item nav-' + cls + (view === v ? ' nav-active' : '')}
       onClick={() => goView(v)}
       style={{
-        textAlign: 'left', fontSize: 14, borderRadius: 8, padding: '8px 10px',
+        textAlign: 'left', fontSize: 14, borderRadius: 8, padding: '9px 12px',
         cursor: 'pointer', fontFamily: 'sans-serif',
         border: '1px solid ' + (view === v ? '#2f6fed' : 'transparent'),
-        background: view === v ? '#e8f0fe' : 'transparent',
-        color: view === v ? '#2f6fed' : '#333',
+        background: view === v ? '#e3edfd' : 'transparent',
+        color: view === v ? '#1f56c4' : '#3c4653',
         fontWeight: view === v ? 600 : 400,
       }}
     >{label}</button>
@@ -2223,17 +2224,17 @@ function App() {
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       <div className="sidebar" style={{
-        width: 178, flexShrink: 0, background: '#f4f7fb',
-        borderRight: '1px solid #dde3ea', padding: '12px 10px',
-        display: 'flex', flexDirection: 'column', gap: 4,
+        width: 198, flexShrink: 0, background: 'linear-gradient(180deg, #f2f5f9, #edf1f6)',
+        borderRight: '1px solid #dde3ea', padding: '14px 12px',
+        display: 'flex', flexDirection: 'column', gap: 5,
         fontFamily: 'sans-serif', boxSizing: 'border-box',
       }}>
-        <div style={{ padding: '2px 8px 12px' }}>
-          <div style={{ fontWeight: 700, fontSize: 15 }}>汽配 ERP 新版</div>
-          <div style={{ color: '#888', fontSize: 12, marginTop: 3 }}>版本 {APP_VERSION}</div>
+        <div style={{ padding: '2px 8px 14px' }}>
+          <div style={{ fontWeight: 700, fontSize: 17, letterSpacing: '0.01em' }}>汽配 ERP 新版</div>
+          <div style={{ color: '#7d8794', fontSize: 12, marginTop: 4 }}>版本 {APP_VERSION}</div>
         </div>
         {navBtn('sheet', 'sheet', '表格工作区')}
-        <div style={{ color: '#9aa4b0', fontSize: 11, padding: '0 10px 4px', marginTop: -2 }}>
+        <div style={{ color: '#98a2ae', fontSize: 11, padding: '0 10px 4px', marginTop: -2 }}>
           询价单 / 各厂报价单
         </div>
         {navBtn('compare', 'compare', '比价定厂')}
@@ -2250,12 +2251,12 @@ function App() {
         flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', height: '100vh',
       }}>
       <div style={{
-        padding: '8px 12px', fontFamily: 'sans-serif', fontSize: 14,
+        padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
         display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap'
       }}>
         <label style={{
           border: '1px solid #2f6fed', color: '#2f6fed', borderRadius: 6,
-          padding: '3px 10px', cursor: 'pointer'
+          padding: '5px 14px', cursor: 'pointer', fontWeight: 600
         }}>
           导入客户原表（.xlsx）
           <input type="file" accept=".xlsx" onChange={handleFile} style={{ display: 'none' }} />
@@ -2285,7 +2286,7 @@ function App() {
             />
             <button className="add-col-ok" onClick={confirmAddColumn} style={{
               border: '1px solid #2f6fed', color: '#2f6fed', background: '#fff', borderRadius: 6,
-              padding: '3px 10px', cursor: 'pointer'
+              padding: '5px 12px', cursor: 'pointer'
             }}>确定</button>
             <button onClick={() => { setAddingCol(false); setNewColName(''); }} style={barBtn}>取消</button>
           </span>
@@ -2295,21 +2296,22 @@ function App() {
         <span style={{ color: '#888' }}>最近一次编辑：{lastEdit}</span>
         <button onClick={handleClear} style={{
           border: '1px solid #c62828', color: '#c62828', background: '#fff', borderRadius: 6,
-          padding: '3px 10px', cursor: 'pointer', marginLeft: 'auto'
+          padding: '5px 12px', cursor: 'pointer', marginLeft: 'auto'
         }}>清空重开</button>
       </div>
       {view === 'sheet' && (<>
       <div className="doc-bar" style={{
-        padding: '6px 12px', fontFamily: 'sans-serif', fontSize: 13,
-        display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
+        padding: '8px 14px', fontFamily: 'sans-serif', fontSize: 14,
+        display: 'flex', alignItems: 'stretch', gap: 10, flexWrap: 'wrap',
         borderTop: '1px solid #e3e6ea', background: '#fbfcfe',
       }}>
-        <span style={{ color: '#555' }}>询价单：</span>
+        <div className="ws-cluster">
+        <span className="ws-cluster-label">单据</span>
         <select
           className="inquiry-select"
           value={activeInquiryId || ''}
           onChange={(e) => { if (e.target.value) switchDoc(e.target.value); }}
-          style={{ padding: '3px 4px', maxWidth: 300 }}
+          style={{ padding: '4px 6px', maxWidth: 300 }}
           title="切换询价单（历史单都在这里）"
         >
           {docList.filter((d) => d.kind === 'inquiry').map((d) => (
@@ -2327,10 +2329,9 @@ function App() {
           title="删除当前这张询价单（连同它名下的报价单）；已转出订单的删不掉"
           style={{
             border: '1px solid #c62828', color: '#c62828', background: '#fff',
-            borderRadius: 6, padding: '3px 10px', cursor: 'pointer',
+            borderRadius: 6, padding: '5px 12px', cursor: 'pointer',
           }}
         >删除此询价单</button>
-        <span style={{ width: 4 }} />
         {docList
           .filter((d) => (d.kind === 'inquiry'
             ? d.docId === activeInquiryId
@@ -2342,23 +2343,27 @@ function App() {
             data-doc-id={d.docId}
             onClick={() => switchDoc(d.docId)}
             style={{
-              border: '1px solid ' + (d.docId === activeDocId ? '#2f6fed' : '#bbb'),
-              background: d.docId === activeDocId ? '#e8f0fe' : '#fff',
-              color: d.docId === activeDocId ? '#2f6fed' : '#444',
-              borderRadius: 6, padding: '3px 12px', cursor: 'pointer',
+              border: '1px solid ' + (d.docId === activeDocId ? '#2f6fed' : '#c6cfd9'),
+              background: d.docId === activeDocId ? '#e3edfd' : '#fff',
+              color: d.docId === activeDocId ? '#1f56c4' : '#37404a',
+              borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
+              fontWeight: d.docId === activeDocId ? 600 : 400,
             }}
           >{d.kind === 'inquiry'
             ? '询价单' + (d.customerName ? ' · ' + d.customerName : '')
             : '报价单 · ' + d.factoryName}</button>
         ))}
-        <span style={{ width: 8 }} />
+        </div>
+        <div className="ws-cluster-sep" />
+        <div className="ws-cluster">
+        <span className="ws-cluster-label">发给工厂 · 回表</span>
         {!addingFactory ? (
           <>
             <select
               className="factory-select"
               value={selectedFactory}
               onChange={(e) => setSelectedFactory(e.target.value)}
-              style={{ padding: '2px 4px' }}
+              style={{ padding: '4px 6px' }}
             >
               <option value="">选择工厂</option>
               {factories.map((f) => (
@@ -2381,7 +2386,7 @@ function App() {
             />
             <button className="factory-add-ok" onClick={confirmAddFactory} style={{
               border: '1px solid #2f6fed', color: '#2f6fed', background: '#fff', borderRadius: 6,
-              padding: '3px 10px', cursor: 'pointer'
+              padding: '5px 12px', cursor: 'pointer'
             }}>确定</button>
             <button onClick={() => { setAddingFactory(false); setFactoryInput(''); }} style={barBtn}>取消</button>
           </span>
@@ -2391,12 +2396,12 @@ function App() {
           onClick={handleSendToFactory}
           style={{
             border: '1px solid #2e7d32', background: '#2e7d32', color: '#fff',
-            borderRadius: 6, padding: '3px 12px', cursor: 'pointer',
+            borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
           }}
         >发给工厂</button>
         <label className="upload-return" style={{
           border: '1px solid #6a1b9a', color: '#6a1b9a', background: '#fff',
-          borderRadius: 6, padding: '3px 10px', cursor: 'pointer',
+          borderRadius: 6, padding: '5px 12px', cursor: 'pointer',
         }}>
           上传回表（.xlsx）
           <input
@@ -2404,21 +2409,25 @@ function App() {
             onChange={handleUploadReturn} style={{ display: 'none' }}
           />
         </label>
+        </div>
         <span style={{ marginLeft: 'auto' }} />
+        <div className="ws-cluster">
+        <span className="ws-cluster-label">导出 · 分享</span>
         <button className="download-quote" onClick={handleDownload} style={{
           border: '1px solid #2f6fed', background: '#2f6fed', color: '#fff',
-          borderRadius: 6, padding: '3px 12px', cursor: 'pointer',
+          borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
         }}>{activeIsQuote ? '下载报价单' : '下载询价单'}</button>
         {canShareFiles ? (
           <button className="share-wechat" onClick={handleShare} style={{
             border: '1px solid #07c160', background: '#07c160', color: '#fff',
-            borderRadius: 6, padding: '3px 12px', cursor: 'pointer',
+            borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
           }}>发送到微信…</button>
         ) : (
-          <span className="share-hint" style={{ color: '#999' }}>
+          <span className="share-hint" style={{ color: '#98a2ae' }}>
             此浏览器不支持直接分享，请用下载后拖进微信
           </span>
         )}
+        </div>
       </div>
       {!showCompare && !showOrders && !showOverview && !showAi && (
         <PricingBar
@@ -2430,9 +2439,10 @@ function App() {
       )}
       {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && (
         <div className="final-quote-bar" style={{
-          padding: '6px 12px', fontFamily: 'sans-serif', fontSize: 13,
+          margin: '10px 14px 0', padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
           display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
-          borderTop: '1px solid #e3e6ea', background: '#f3faf3',
+          border: '1px solid #cfe3cf', borderRadius: 10, background: '#f3faf3',
+          boxShadow: '0 1px 3px rgba(16,24,40,0.06)',
         }}>
           <b>最终报价</b>
           <span style={{ color: '#888', fontSize: 12 }}>（按定厂工厂价算，与定价条按成本价列算的「销售价」不是一列）</span>
@@ -2471,7 +2481,7 @@ function App() {
               />
               <button className="inq-customer-new-ok" onClick={commitNewCustomer} style={{
                 border: '1px solid #2e7d32', color: '#2e7d32', background: '#fff', borderRadius: 6,
-                padding: '3px 10px', cursor: 'pointer',
+                padding: '5px 12px', cursor: 'pointer',
               }}>确定</button>
               <button onClick={() => { setCustNewMode(false); setCustNewName(''); }} style={barBtn}>取消</button>
             </span>
@@ -2507,7 +2517,7 @@ function App() {
               border: '1px solid ' + (showExport ? '#2e7d32' : '#888'),
               background: showExport ? '#2e7d32' : '#fff',
               color: showExport ? '#fff' : '#444',
-              borderRadius: 6, padding: '3px 12px', cursor: 'pointer',
+              borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
             }}
           >{showExport ? '收起对客导出' : '对客报价导出'}</button>
           <button
@@ -2517,15 +2527,16 @@ function App() {
               border: '1px solid ' + (showConvert ? '#b26a00' : '#888'),
               background: showConvert ? '#b26a00' : '#fff',
               color: showConvert ? '#fff' : '#444',
-              borderRadius: 6, padding: '3px 12px', cursor: 'pointer',
+              borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
             }}
           >{showConvert ? '收起转订单' : '转订单'}</button>
         </div>
       )}
       {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && fqBreakdowns.length > 0 && (
         <div className="fq-breakdowns" style={{
-          padding: '4px 12px 8px', fontFamily: 'sans-serif', fontSize: 12,
-          color: '#555', background: '#f3faf3', borderTop: '1px dashed #d8e6d8',
+          margin: '0 14px', padding: '6px 14px 10px', fontFamily: 'sans-serif', fontSize: 12.5,
+          color: '#555', background: '#f3faf3', border: '1px solid #cfe3cf', borderTop: '1px dashed #d8e6d8',
+          borderRadius: '0 0 10px 10px',
           maxHeight: 132, overflowY: 'auto', lineHeight: 1.7,
         }}>
           <span style={{ color: '#888' }}>最终价是这样算出来的（基数 = 每行定厂那家的报价列）：</span>
@@ -2711,7 +2722,11 @@ function App() {
           onGoExport={goCompareExport}
         />
       ) : (
-      <div style={{ flex: 1 }}>
+      <div className="sheet-wrap" style={{
+        flex: 1, margin: '10px 14px 14px', border: '1px solid #dde3ea',
+        borderRadius: 8, overflow: 'hidden',
+        boxShadow: '0 1px 3px rgba(16,24,40,0.06)',
+      }}>
         <Workbook
           key={wbKey}
           ref={wbRef}
