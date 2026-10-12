@@ -42,7 +42,7 @@ import {
   inquiryDeleteBlock, buildCustomerModel, buildFactoryModel,
   syncFactoryInfoOnRename, syncFactoryInfoOnDelete,
 } from './registry.js';
-import { compareGuidanceOf, orderGuidanceOf } from './guidance.js';
+import { compareGuidanceOf, compareNextStepOf, orderGuidanceOf } from './guidance.js';
 import { buildOverview } from './overview.js';
 import { buildAiDigest } from './aiDigest.js';
 import { reconcileEchoImages, reconcileDomImages } from './imageSync.js';
@@ -1626,12 +1626,16 @@ function App() {
     return out;
   }
 
-  /** 生成订单：行数据在生成那一刻快照进订单，之后改表不影响已下单 */
+  /**
+   * 生成订单：行数据在生成那一刻快照进订单，之后改表不影响已下单。
+   * 返回新单号（包 14）：面板据此出成功提示，用户点「查看这张订单」
+   * 才跳订单页（jumpToOrder），不再生成完立刻把人甩走。
+   */
   function handleCreateOrder(picked) {
-    if (!picked || picked.length === 0) return;
+    if (!picked || picked.length === 0) return null;
     flushDocRef();
     const inq = activeInquiryEntry();
-    if (!inq) return;
+    if (!inq) return null;
     orderSeqRef.current += 1;
     const orderNo = formatOrderNo(new Date(), orderSeqRef.current);
     const order = {
@@ -1658,9 +1662,8 @@ function App() {
     };
     setOrders([...ordersRef.current, order]);
     setSelectedOrderNo(orderNo);
-    setShowConvert(false);
-    goView('orders');
     doSave(); // 生成订单是明确动作，立即落盘
+    return orderNo;
   }
 
   /** 导出面板要的数据：行（带最终价）+ 列（原列/工作列/最终报价）与默认勾选 */
@@ -2035,6 +2038,36 @@ function App() {
     if (stage === 'ready') setShowConvert(true);
   }
 
+  /* ---------- 包 14 比价下一步条动作：与订单引导同一套落位 ---------- */
+
+  /** 回工作区并让当前询价单成为活动文档（比价下一步三键共用） */
+  function goCompareToInquirySheet() {
+    goView('sheet');
+    if (activeInquiryId && activeInquiryId !== activeDocIdRef.current) {
+      switchDoc(activeInquiryId);
+    }
+  }
+
+  /** 比价下一步「去生成最终报价」：落位后直接生成（同订单引导口径） */
+  function goCompareGenerateFinals() {
+    goCompareToInquirySheet();
+    // 这一步出现的前提是最终报价列还没生成，直接生成不会弹覆盖确认
+    setTimeout(() => handleGenerateFinalQuote(), 400);
+  }
+
+  /** 比价下一步「去转订单」：落位后打开转订单面板 */
+  function goCompareConvert() {
+    goCompareToInquirySheet();
+    setShowConvert(true);
+  }
+
+  /** 比价下一步「去对客导出」：落位后打开对客导出面板 */
+  function goCompareExport() {
+    goCompareToInquirySheet();
+    setExportTick((t) => t + 1);
+    setShowExport(true);
+  }
+
   const activeDocMeta = docList.find((d) => d.docId === activeDocId);
   const activeIsQuote = !!(activeDocMeta && activeDocMeta.kind === 'quote');
   // 当前询价单（渲染期口径，与 activeInquiryEntry 同规则，用 docList 算）
@@ -2097,6 +2130,32 @@ function App() {
       },
     };
     ordersGuidance = { stage: gStage, ...(G_TEXT[gStage] || G_TEXT['no-inquiry']) };
+  }
+  // 包 14 比价下一步：由比价模型（有价行/无价行/定厂）+ 最终报价列
+  // 是否已生成现算（guidance.js 的 compareNextStepOf）；"已生成"口径
+  // 与订单引导一致（finalQuoteColOf 非空）。
+  let compareNextStep = null;
+  if (showCompare && compareModel && compareGuidance) {
+    const cmpInq = activeInquiryEntry();
+    let quotedCount = 0, chosenQuotedCount = 0, unquotedCount = 0;
+    for (const r of compareModel.rows) {
+      const priced = Object.values(r.cells || {}).some((c) => c && c.priced);
+      if (priced) {
+        quotedCount += 1;
+        if (rowChoices[r.lineId]) chosenQuotedCount += 1;
+      } else {
+        unquotedCount += 1;
+      }
+    }
+    compareNextStep = compareNextStepOf({
+      guidanceState: compareGuidance.state,
+      totalRows: compareModel.rows.length,
+      chosenCount: compareModel.rows.filter((r) => rowChoices[r.lineId]).length,
+      quotedCount, chosenQuotedCount, unquotedCount,
+      finalColumnGenerated: cmpInq
+        ? finalQuoteColOf(cmpInq.sheet, headerRowOf(cmpInq)) !== null
+        : false,
+    });
   }
   // 最终报价条/导出面板的数据（只在看询价单时算；与 buildModel 一样先写回再读）
   const fqCtx = (!showCompare && !showOrders && !showOverview && !showAi &&
@@ -2485,6 +2544,7 @@ function App() {
           sheetQtys={convQtyInfo ? convQtyInfo.qtys : null}
           qtyColumnName={convQtyInfo ? convQtyInfo.header : null}
           onCreate={handleCreateOrder}
+          onViewOrder={(orderNo) => jumpToOrder(orderNo)}
           onClose={() => setShowConvert(false)}
         />
       )}
@@ -2645,6 +2705,10 @@ function App() {
           onGoSendFactory={goCompareSendFactory}
           onGoUploadReturn={goCompareUploadReturn}
           onGoMarkQuote={goCompareMarkQuote}
+          nextStep={compareNextStep}
+          onGoGenerateFinals={goCompareGenerateFinals}
+          onGoConvert={goCompareConvert}
+          onGoExport={goCompareExport}
         />
       ) : (
       <div style={{ flex: 1 }}>
