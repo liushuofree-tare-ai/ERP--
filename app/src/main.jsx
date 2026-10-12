@@ -40,7 +40,9 @@ import {
   migrateState, quotesForInquiry, inquiryOfDoc, inquiryStatusOf,
   renameCustomer, renameFactory, customerDeleteBlock, factoryDeleteBlock,
   inquiryDeleteBlock, buildCustomerModel, buildFactoryModel,
+  syncFactoryInfoOnRename, syncFactoryInfoOnDelete,
 } from './registry.js';
+import { compareGuidanceOf, orderGuidanceOf } from './guidance.js';
 import { buildOverview } from './overview.js';
 import { buildAiDigest } from './aiDigest.js';
 import { reconcileEchoImages, reconcileDomImages } from './imageSync.js';
@@ -123,7 +125,7 @@ function sampleDoc() {
     }),
     pricing: { ...DEFAULT_PRICING },
     source: null, sourceFileId: null, importInfo: '',
-    customerName: '', createdAt: null,
+    customerName: '', note: '', createdAt: null,
   };
 }
 
@@ -137,6 +139,10 @@ const INIT_ACTIVE = RESTORED && INIT_DOCS.some((d) => d.docId === RESTORED.activ
   ? RESTORED.activeDocId
   : INIT_DOCS[0].docId;
 const INIT_FACTORIES = RESTORED && Array.isArray(RESTORED.factories) ? RESTORED.factories : [];
+// 工厂附加信息（包 13）：{ [工厂名]: { contact, note } }；老存档没有
+// 就空对象，改名/删除由 registry.js 的 sync 函数保持同步
+const INIT_FACTORY_INFO = RESTORED && RESTORED.factoryInfo &&
+  typeof RESTORED.factoryInfo === 'object' ? RESTORED.factoryInfo : {};
 // 客户注册表（包 11）：[{ name, contact, note }]，迁移时已从单据播种
 const INIT_CUSTOMERS = RESTORED && Array.isArray(RESTORED.customers) ? RESTORED.customers : [];
 // 订单与订单流水（包 8）：订单是独立于文档组的事实清单，随存档持久化；
@@ -180,6 +186,8 @@ function workKeyOf(w) {
   try {
     return JSON.stringify({
       factories: w.factories || [],
+      // 包 13：工厂联系人/备注也是用户工作——改了就得落盘
+      factoryInfo: w.factoryInfo || {},
       // 包 11：客户注册表也是用户工作——改名/维护联系人都要落盘
       customers: w.customers || [],
       activeDocId: w.activeDocId || null,
@@ -193,6 +201,8 @@ function workKeyOf(w) {
         createdAt: d.createdAt || null,
         // 包 8：询价单上的客户名（下单与台账用）
         customerName: d.customerName || null,
+        // 包 13：询价单备注（订单备注走 orders 整包，工厂备注走 factoryInfo）
+        note: d.note || null,
         source: d.source || null, sourceFileId: d.sourceFileId || null,
         importInfo: d.importInfo || '',
         ledger: d.ledger || null, pricing: d.pricing || null,
@@ -364,8 +374,16 @@ function App() {
   // 文档组与工厂（包 5）
   const [activeDocId, setActiveDocIdState] = useState(INIT_ACTIVE);
   const [docList, setDocList] = useState(() =>
-    INIT_DOCS.map((d) => ({ docId: d.docId, kind: d.kind, factoryName: d.factoryName })));
+    INIT_DOCS.map((d) => ({
+      docId: d.docId, kind: d.kind, factoryName: d.factoryName,
+      inquiryId: d.inquiryId || null,
+      customerName: d.customerName || '',
+      createdAt: d.createdAt || null,
+      note: d.note || '',
+    })));
   const [factories, setFactoriesState] = useState(INIT_FACTORIES);
+  // 工厂附加信息（包 13）：事实源在 factoryInfoRef，state 只供渲染
+  const [factoryInfo, setFactoryInfoState] = useState(INIT_FACTORY_INFO);
   // 客户注册表（包 11）：事实源在 customersRef，state 只供渲染
   const [customers, setCustomersState] = useState(INIT_CUSTOMERS);
   const [selectedFactory, setSelectedFactory] = useState('');
@@ -386,6 +404,10 @@ function App() {
   // 转订单 / 订单履约（包 8）：客户名镜像、订单镜像与视图开关。
   // 事实源是 ordersRef（随存档持久化），state 只供渲染。
   const [customerName, setCustomerNameState] = useState(INIT_ACTIVE_DOC.customerName || '');
+  // 询价单备注镜像（包 13）：事实在询价单文档的 note 里，写入走
+  // setInquiryNote（docRef + 文档条目 + docList 一起更新，与客户名同路）
+  const [inquiryNote, setInquiryNoteState] = useState(
+    INIT_ACTIVE_DOC.kind === 'inquiry' ? (INIT_ACTIVE_DOC.note || '') : '');
   const [orders, setOrdersState] = useState(INIT_ORDERS);
   const [showConvert, setShowConvert] = useState(false);
   const [showOrders, setShowOrders] = useState(false);
@@ -411,6 +433,7 @@ function App() {
   // 保存前 flushDocRef() 把 docRef + liveRef 写回 docsRef 对应条目。
   const docsRef = useRef(INIT_DOCS);
   const factoriesRef = useRef(INIT_FACTORIES);
+  const factoryInfoRef = useRef(INIT_FACTORY_INFO);
   const customersRef = useRef(INIT_CUSTOMERS);
   const activeDocIdRef = useRef(INIT_ACTIVE);
   const docRef = useRef({
@@ -425,6 +448,8 @@ function App() {
     priceMark: INIT_ACTIVE_DOC.priceMark || null,
     // 包 8：客户名（只对询价单有意义，挂在询价单文档上持久化）
     customerName: INIT_ACTIVE_DOC.customerName || '',
+    // 包 13：询价单备注（只对询价单有意义，随文档持久化）
+    note: INIT_ACTIVE_DOC.note || '',
   });
   // 本次导入会话属于哪份文档（选表下拉只对它显示）
   const importSessionRef = useRef(RESTORED && INIT_ACTIVE_DOC.source
@@ -447,7 +472,8 @@ function App() {
     setWbKey((prev) => prev + 1);
   }
   const savedKeyRef = useRef(RESTORED ? workKeyOf({
-    factories: INIT_FACTORIES, customers: INIT_CUSTOMERS,
+    factories: INIT_FACTORIES, factoryInfo: INIT_FACTORY_INFO,
+    customers: INIT_CUSTOMERS,
     activeDocId: INIT_ACTIVE, docs: INIT_DOCS,
     orders: INIT_ORDERS, orderSeq: INIT_ORDER_SEQ,
   }) : null);
@@ -460,6 +486,10 @@ function App() {
     factoriesRef.current = next;
     setFactoriesState(next);
   }
+  function setFactoryInfo(next) {
+    factoryInfoRef.current = next;
+    setFactoryInfoState(next);
+  }
   function setCustomers(next) {
     customersRef.current = next;
     setCustomersState(next);
@@ -470,6 +500,7 @@ function App() {
       inquiryId: d.inquiryId || null,
       customerName: d.customerName || '',
       createdAt: d.createdAt || null,
+      note: d.note || '',
     })));
   }
 
@@ -641,6 +672,7 @@ function App() {
     entry.headerRow = docRef.current.headerRow;
     entry.priceMark = docRef.current.priceMark;
     entry.customerName = docRef.current.customerName || '';
+    entry.note = docRef.current.note || '';
     if (liveRef.current && liveRef.current[0]) entry.sheet = liveRef.current[0];
   }
 
@@ -658,6 +690,7 @@ function App() {
     return {
       savedAt: new Date().toISOString(),
       factories: factoriesRef.current,
+      factoryInfo: factoryInfoRef.current,
       customers: customersRef.current,
       activeDocId: activeDocIdRef.current,
       docs: docsRef.current,
@@ -680,6 +713,17 @@ function App() {
     setCustomerNameState(name);
     const entry = docsRef.current.find((d) => d.docId === docRef.current.docId);
     if (entry) entry.customerName = name;
+    syncDocList();
+    scheduleSave();
+  }
+
+  /** 询价单备注写入（包 13）：与客户名同路——docRef + 文档条目 +
+   *  docList 一起更新（询价单选择器要立刻带出备注后缀），排保存。 */
+  function setInquiryNote(text) {
+    docRef.current.note = text;
+    setInquiryNoteState(text);
+    const entry = docsRef.current.find((d) => d.docId === docRef.current.docId);
+    if (entry) entry.note = text;
     syncDocList();
     scheduleSave();
   }
@@ -833,6 +877,7 @@ function App() {
       // 以恢复完成的样子重立指纹基线：恢复本身不是编辑
       savedKeyRef.current = workKeyOf({
         factories: factoriesRef.current,
+        factoryInfo: factoryInfoRef.current,
         customers: customersRef.current,
         activeDocId: activeDocIdRef.current,
         docs: docsRef.current,
@@ -881,6 +926,7 @@ function App() {
       priceMark: null,
       rowChoices: {},
       customerName: '',
+      note: '',
       createdAt: new Date().toISOString(),
     };
     workEpochRef.current += 1;
@@ -898,8 +944,10 @@ function App() {
       ledger, pricing, sourceFileId: doc.sourceFileId,
       headerRow: doc.headerRow, priceMark: null,
       customerName: '',
+      note: '',
     };
     setCustomerNameState('');
+    setInquiryNoteState('');
     setCustNewMode(false);
     setPricingState(pricing);
     liveRef.current = [fortune];
@@ -980,8 +1028,10 @@ function App() {
       headerRow: typeof target.headerRow === 'number' ? target.headerRow : undefined,
       priceMark: target.priceMark || null,
       customerName: target.customerName || '',
+      note: target.note || '',
     };
     setCustomerNameState(docRef.current.customerName);
+    setInquiryNoteState(target.kind === 'inquiry' ? (target.note || '') : '');
     setCustNewMode(false);
     setPricingState(docRef.current.pricing);
     // 定厂镜像跟随"当前询价单"：切到的文档属于另一张询价单时，
@@ -1235,6 +1285,7 @@ function App() {
     return {
       docs: docsRef.current,
       factories: factoriesRef.current,
+      factoryInfo: factoryInfoRef.current,
       customers: customersRef.current,
       orders: ordersRef.current,
     };
@@ -1588,6 +1639,7 @@ function App() {
       createdAt: new Date().toISOString(),
       customerName: inq.customerName || '',
       inquiryDocId: inq.docId,
+      note: '',
       lines: picked.map(({ row, qty }) => ({
         lineId: row.lineId,
         oe: row.oe || '',
@@ -1812,6 +1864,18 @@ function App() {
     scheduleSave();
   }
 
+  /** 工厂联系人/备注（包 13）：写进 factoryInfo，随存档持久化 */
+  function handleUpdateFactoryInfo(name, patch) {
+    setFactoryInfo({
+      ...factoryInfoRef.current,
+      [name]: {
+        contact: '', note: '',
+        ...(factoryInfoRef.current[name] || {}), ...patch,
+      },
+    });
+    scheduleSave();
+  }
+
   function handleRenameCustomer(oldName, newName) {
     const res = renameCustomer(mgmtState(), oldName, newName);
     if (!res) {
@@ -1869,6 +1933,8 @@ function App() {
     docsRef.current = res.docs;
     setOrders(res.orders);
     setFactories(res.factories);
+    // 包 13：备注条目跟着工厂名搬家，不然改完名备注就丢了
+    setFactoryInfo(syncFactoryInfoOnRename(factoryInfoRef.current, oldName, (newName || '').trim()));
     if (selectedFactory === oldName) setSelectedFactory((newName || '').trim());
     setSelectedMgmtFactory((newName || '').trim());
     // 定厂镜像跟随当前询价单的新快照（rowChoices 里的工厂名换了）
@@ -1888,6 +1954,8 @@ function App() {
     if (block) { window.alert(block); return; }
     if (!window.confirm('确定删除工厂「' + name + '」吗？它名下没有报价单和订单引用，删掉只影响工厂名单本身。')) return;
     setFactories(factoriesRef.current.filter((f) => f !== name));
+    // 包 13：备注条目一起删掉，别留在存档里串给将来同名的新厂
+    setFactoryInfo(syncFactoryInfoOnDelete(factoryInfoRef.current, name));
     if (selectedFactory === name) setSelectedFactory('');
     setSelectedMgmtFactory(null);
     scheduleSave();
@@ -1928,6 +1996,45 @@ function App() {
     setShowCheck(v === 'check');
   }
 
+  /* ---------- 包 13 引导动作：从说明块一键直达缺的那一步 ---------- */
+
+  /** 比价页「发给工厂」：回工作区并让当前询价单成为活动文档 */
+  function goCompareSendFactory() {
+    goView('sheet');
+    if (activeInquiryId && activeInquiryId !== activeDocIdRef.current) {
+      switchDoc(activeInquiryId);
+    }
+  }
+
+  /** 比价页「上传工厂回表」：回工作区 + 唤起回表文件选择 */
+  function goCompareUploadReturn() {
+    goCompareSendFactory();
+    setTimeout(() => {
+      const el = document.querySelector('.upload-return-input');
+      if (el) el.click();
+    }, 400);
+  }
+
+  /** 比价/订单页「去给『X』标价」：跳到那张报价单（标价条就在表上方） */
+  function goCompareMarkQuote(docId) {
+    goView('sheet');
+    switchDoc(docId);
+  }
+
+  /** 订单页引导按钮：按缺的那一步直达 */
+  function goOrdersGuidance(stage) {
+    if (stage === 'unmarked' || stage === 'no-choices') { goView('compare'); return; }
+    goView('sheet');
+    if (activeInquiryId && activeInquiryId !== activeDocIdRef.current) {
+      switchDoc(activeInquiryId);
+    }
+    if (stage === 'no-finals') {
+      // 这一阶段最终报价列必然还没生成，直接生成不会弹覆盖确认
+      setTimeout(() => handleGenerateFinalQuote(), 400);
+    }
+    if (stage === 'ready') setShowConvert(true);
+  }
+
   const activeDocMeta = docList.find((d) => d.docId === activeDocId);
   const activeIsQuote = !!(activeDocMeta && activeDocMeta.kind === 'quote');
   // 当前询价单（渲染期口径，与 activeInquiryEntry 同规则，用 docList 算）
@@ -1946,6 +2053,50 @@ function App() {
         compareMarks[d.factoryName] = d.priceMark || null;
       }
     }
+  }
+  // 包 13 引导状态：比价页按当前询价单的报价单/标价列推导；
+  // 订单页（还没有订单时）按"离转订单还差哪一步"推导（guidance.js）
+  const compareGuidance = showCompare
+    ? compareGuidanceOf(quotesForInquiry(docsRef.current, activeInquiryId))
+    : null;
+  let ordersGuidance = null;
+  if (showOrders && orders.length === 0) {
+    const gInq = activeInquiryEntry();
+    const gStage = orderGuidanceOf({
+      hasInquiry: !!gInq,
+      quotes: gInq ? quotesForInquiry(docsRef.current, gInq.docId) : [],
+      choices: gInq ? (gInq.rowChoices || {}) : {},
+      finalColumnGenerated: gInq
+        ? finalQuoteColOf(gInq.sheet, headerRowOf(gInq)) !== null
+        : false,
+    });
+    const G_TEXT = {
+      'no-inquiry': {
+        text: '还没有订单——先导入一张客户询价单，再发给工厂询价，之后才能转订单。',
+        buttonText: '去表格工作区',
+      },
+      'no-quotes': {
+        text: '还没有订单——当前这张询价单还没发给任何工厂。先发给工厂（或上传工厂回表），标好价、定好厂、生成最终报价，就能转成订单。',
+        buttonText: '去发给工厂',
+      },
+      'unmarked': {
+        text: '还没有订单——报价单已经有了，但还没在报价单上标价列，比价定厂读不到价格，自然还转不了订单。',
+        buttonText: '去比价定厂',
+      },
+      'no-choices': {
+        text: '还没有订单——价格已经能比了，但还没定厂：先给要下单的行选好用哪家工厂。',
+        buttonText: '去比价定厂',
+      },
+      'no-finals': {
+        text: '还没有订单——厂已经定好了，还差一步：生成最终报价（对客价），生成完就能转订单。',
+        buttonText: '去生成最终报价',
+      },
+      'ready': {
+        text: '还没有订单——这张询价单已经定好厂、也有了最终报价，现在就能转成订单。',
+        buttonText: '去转订单',
+      },
+    };
+    ordersGuidance = { stage: gStage, ...(G_TEXT[gStage] || G_TEXT['no-inquiry']) };
   }
   // 最终报价条/导出面板的数据（只在看询价单时算；与 buildModel 一样先写回再读）
   const fqCtx = (!showCompare && !showOrders && !showOverview && !showAi &&
@@ -2103,10 +2254,11 @@ function App() {
           title="切换询价单（历史单都在这里）"
         >
           {docList.filter((d) => d.kind === 'inquiry').map((d) => (
-            <option key={d.docId} value={d.docId}>
+            <option key={d.docId} value={d.docId} title={d.note || undefined}>
               {(d.customerName || '（未填客户名）') + ' · ' +
                 (d.createdAt ? d.createdAt.slice(5, 10) : '历史') + ' · ' +
-                (orders.some((o) => o.inquiryDocId === d.docId) ? '已转订单' : '进行中')}
+                (orders.some((o) => o.inquiryDocId === d.docId) ? '已转订单' : '进行中') +
+                (d.note ? ' · 备注：' + (d.note.length > 12 ? d.note.slice(0, 12) + '…' : d.note) : '')}
             </option>
           ))}
         </select>
@@ -2265,6 +2417,15 @@ function App() {
               <button onClick={() => { setCustNewMode(false); setCustNewName(''); }} style={barBtn}>取消</button>
             </span>
           )}
+          <span style={{ color: '#555' }}>备注：</span>
+          <input
+            className="inq-note-input"
+            placeholder="这张单的备注（可空）"
+            value={inquiryNote}
+            onChange={(e) => setInquiryNote(e.target.value)}
+            style={{ padding: '3px 6px', border: '1px solid #bbb', borderRadius: 4, width: 180 }}
+            title="这张询价单的备注：随单保存，在上面的询价单选择器和客户管理里都能看到"
+          />
           <button
             className="fq-generate"
             onClick={handleGenerateFinalQuote}
@@ -2443,6 +2604,8 @@ function App() {
           }}
           onJumpInquiry={(docId) => jumpToDoc(docId)}
           onClose={() => goView('sheet')}
+          guidance={ordersGuidance}
+          onGuidance={ordersGuidance ? () => goOrdersGuidance(ordersGuidance.stage) : undefined}
         />
       ) : showCustomers ? (
         <CustomersView
@@ -2464,6 +2627,7 @@ function App() {
           onSelect={setSelectedMgmtFactory}
           onAdd={handleAddMgmtFactory}
           onRename={handleRenameFactory}
+          onUpdateInfo={handleUpdateFactoryInfo}
           onDelete={handleDeleteFactory}
           onJumpDoc={(docId) => jumpToDoc(docId)}
           onJumpOrder={(orderNo) => jumpToOrder(orderNo)}
@@ -2477,6 +2641,10 @@ function App() {
           onChoose={handleChooseCell}
           onBulkAll={handleBulkAll}
           onBulkLowest={handleBulkLowest}
+          guidance={compareGuidance}
+          onGoSendFactory={goCompareSendFactory}
+          onGoUploadReturn={goCompareUploadReturn}
+          onGoMarkQuote={goCompareMarkQuote}
         />
       ) : (
       <div style={{ flex: 1 }}>
@@ -2515,6 +2683,7 @@ function App() {
               if (savedKeyRef.current === null) {
                 savedKeyRef.current = workKeyOf({
                   factories: factoriesRef.current,
+                  factoryInfo: factoryInfoRef.current,
                   customers: customersRef.current,
                   activeDocId: activeDocIdRef.current,
                   docs: docsRef.current,
