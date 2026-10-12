@@ -345,6 +345,73 @@ function canonicalize(echo, prev) {
   });
 }
 
+/* 侧栏导航图标（包 16）：一组极简的线条 SVG，stroke 跟随文字色。
+   只做装饰，不承载任何信息——拿掉图标，导航文字与顺序完全不变。 */
+const icoProps = {
+  width: 17, height: 17, viewBox: '0 0 24 24', fill: 'none',
+  stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round',
+  'aria-hidden': true,
+};
+const NavIcon = {
+  sheet: (
+    <svg {...icoProps}>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="2" />
+      <path d="M3.5 9.2h17M3.5 14.8h17M9.2 3.5v17M14.8 3.5v17" />
+    </svg>
+  ),
+  compare: (
+    <svg {...icoProps}>
+      <path d="M12 3.5v17M5 20.5h14" />
+      <path d="M12 6.2L5.2 6.2M12 6.2l6.8 0" />
+      <path d="M5.2 6.2L2.8 11a3.4 3.4 0 0 0 4.8 0L5.2 6.2zM18.8 6.2L16.4 11a3.4 3.4 0 0 0 4.8 0L18.8 6.2z" />
+    </svg>
+  ),
+  orders: (
+    <svg {...icoProps}>
+      <path d="M8.5 6.2h12M8.5 12h12M8.5 17.8h12" />
+      <path d="M4 6.2h.01M4 12h.01M4 17.8h.01" strokeWidth="2.6" />
+    </svg>
+  ),
+  customers: (
+    <svg {...icoProps}>
+      <circle cx="9" cy="8" r="3.4" />
+      <path d="M3.2 19.5c.7-3 2.9-4.5 5.8-4.5s5.1 1.5 5.8 4.5" />
+      <path d="M15.5 5.1a3.4 3.4 0 0 1 0 5.9M17.8 15.4c1.6.7 2.6 2 3 4.1" />
+    </svg>
+  ),
+  factories: (
+    <svg {...icoProps}>
+      <path d="M3.5 20.5v-9.2l5.5 3.4v-3.4l5.5 3.4V7.2h6v13.3z" />
+      <path d="M3.5 20.5h17" />
+    </svg>
+  ),
+  overview: (
+    <svg {...icoProps}>
+      <path d="M4 4v15.5h16.5" />
+      <path d="M8.2 16.5v-4.5M12.6 16.5V8M17 16.5V5.8" strokeWidth="2.2" />
+    </svg>
+  ),
+  ai: (
+    <svg {...icoProps}>
+      <path d="M12 3.8l1.7 4.7 4.7 1.7-4.7 1.7L12 16.6l-1.7-4.7L5.6 10.2l4.7-1.7z" />
+      <path d="M18.6 15.6l.8 2.1 2.1.8-2.1.8-.8 2.1-.8-2.1-2.1-.8 2.1-.8z" />
+    </svg>
+  ),
+  data: (
+    <svg {...icoProps}>
+      <ellipse cx="12" cy="5.6" rx="7.5" ry="2.8" />
+      <path d="M4.5 5.6v12.8c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8V5.6" />
+      <path d="M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8" />
+    </svg>
+  ),
+  check: (
+    <svg {...icoProps}>
+      <path d="M12 3.6l6.8 2.7v5.4c0 4.4-2.9 7.3-6.8 8.7-3.9-1.4-6.8-4.3-6.8-8.7V6.3z" />
+      <path d="M9.2 11.8l2 2 3.6-3.8" />
+    </svg>
+  ),
+};
+
 function App() {
   const wbRef = useRef(null);
   const [sheetsData, setSheetsData] = useState(() => [INIT_ACTIVE_DOC.sheet]);
@@ -2200,63 +2267,89 @@ function App() {
     importSessionRef.current && importSessionRef.current.docId === activeDocId);
 
   const barBtn = {
-    border: '1px solid #c6cfd9', color: '#37404a', background: '#fff', borderRadius: 6,
-    padding: '5px 12px', cursor: 'pointer',
+    border: '1px solid #c9d2de', color: '#37404a', background: '#fff', borderRadius: 8,
+    padding: '6px 13px', cursor: 'pointer', boxShadow: '0 1px 2px rgba(23,34,62,0.04)',
   };
 
-  // 左侧模块导航按钮（包 10）：当前模块高亮，其余素面
-  const navBtn = (v, cls, label) => (
+  // 左侧模块导航按钮（包 10；包 16 改深色侧栏）：图标 + 文字，
+  // 当前模块是主色填充药丸；订单数另挂小徽章（徽章前后的全角括
+  // 号用 sr-only 藏起来，只为让按钮的纯文本仍是「订单（N）」，
+  // 与包 11 起的验收口径保持一致）。
+  const navBtn = (v, cls, label, icon, badge) => (
     <button
       key={v}
       className={'nav-item nav-' + cls + (view === v ? ' nav-active' : '')}
       onClick={() => goView(v)}
       style={{
-        textAlign: 'left', fontSize: 14, borderRadius: 8, padding: '9px 12px',
-        cursor: 'pointer', fontFamily: 'sans-serif',
-        border: '1px solid ' + (view === v ? '#2f6fed' : 'transparent'),
-        background: view === v ? '#e3edfd' : 'transparent',
-        color: view === v ? '#1f56c4' : '#3c4653',
+        textAlign: 'left', fontSize: 14, borderRadius: 9, padding: '9px 12px',
+        cursor: 'pointer', fontFamily: 'sans-serif', width: '100%',
+        border: '1px solid transparent',
+        background: view === v ? '#2f6bff' : 'transparent',
+        color: view === v ? '#ffffff' : '#a9b7cf',
         fontWeight: view === v ? 600 : 400,
+        boxShadow: view === v ? '0 4px 12px rgba(47,107,255,0.38)' : 'none',
       }}
-    >{label}</button>
+    >
+      <span className="nav-ico">{icon}</span>
+      <span>{label}</span>
+      {badge !== undefined && badge !== null && (
+        <>
+          <span className="sr-only">（</span>
+          <span className="nav-badge">{badge}</span>
+          <span className="sr-only">）</span>
+        </>
+      )}
+    </button>
   );
 
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       <div className="sidebar" style={{
-        width: 198, flexShrink: 0, background: 'linear-gradient(180deg, #f2f5f9, #edf1f6)',
-        borderRight: '1px solid #dde3ea', padding: '14px 12px',
-        display: 'flex', flexDirection: 'column', gap: 5,
+        width: 208, flexShrink: 0, padding: '16px 12px',
+        display: 'flex', flexDirection: 'column', gap: 4,
         fontFamily: 'sans-serif', boxSizing: 'border-box',
       }}>
-        <div style={{ padding: '2px 8px 14px' }}>
-          <div style={{ fontWeight: 700, fontSize: 17, letterSpacing: '0.01em' }}>汽配 ERP 新版</div>
-          <div style={{ color: '#7d8794', fontSize: 12, marginTop: 4 }}>版本 {APP_VERSION}</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '2px 8px 16px' }}>
+          <div style={{
+            width: 34, height: 34, borderRadius: 9, flexShrink: 0,
+            background: 'linear-gradient(135deg, #2f6bff, #7a5cff)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: '#fff', fontWeight: 800, fontSize: 16,
+            boxShadow: '0 4px 10px rgba(47,107,255,0.4)',
+          }}>汽</div>
+          <div>
+            <div style={{
+              fontWeight: 700, fontSize: 16, color: '#fff',
+              letterSpacing: '0.02em', lineHeight: 1.25,
+            }}>汽配 ERP</div>
+            <div style={{ color: '#71809c', fontSize: 11.5, marginTop: 1 }}>版本 {APP_VERSION}</div>
+          </div>
         </div>
-        {navBtn('sheet', 'sheet', '表格工作区')}
-        <div style={{ color: '#98a2ae', fontSize: 11, padding: '0 10px 4px', marginTop: -2 }}>
+        {navBtn('sheet', 'sheet', '表格工作区', NavIcon.sheet)}
+        <div style={{ color: '#5f7089', fontSize: 11, padding: '0 10px 4px', marginTop: -2 }}>
           询价单 / 各厂报价单
         </div>
-        {navBtn('compare', 'compare', '比价定厂')}
-        {navBtn('orders', 'orders', '订单（' + orders.length + '）')}
-        {navBtn('customers', 'customers', '客户管理')}
-        {navBtn('factories', 'factories', '工厂管理')}
-        {navBtn('overview', 'overview', '总览 · 台账')}
-        {navBtn('ai', 'ai', '✦ AI 分析')}
+        {navBtn('compare', 'compare', '比价定厂', NavIcon.compare)}
+        {navBtn('orders', 'orders', '订单', NavIcon.orders, orders.length)}
+        {navBtn('customers', 'customers', '客户管理', NavIcon.customers)}
+        {navBtn('factories', 'factories', '工厂管理', NavIcon.factories)}
+        {navBtn('overview', 'overview', '总览 · 台账', NavIcon.overview)}
+        {navBtn('ai', 'ai', '✦ AI 分析', NavIcon.ai)}
         <div style={{ height: 10 }} />
-        {navBtn('data', 'data', '数据备份')}
-        {navBtn('check', 'check', '环境自检')}
+        {navBtn('data', 'data', '数据备份', NavIcon.data)}
+        {navBtn('check', 'check', '环境自检', NavIcon.check)}
       </div>
-      <div style={{
+      <div className="app-main" style={{
         flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', height: '100vh',
       }}>
-      <div style={{
-        padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
+      <div className="topbar" style={{
+        padding: '10px 16px', fontFamily: 'sans-serif', fontSize: 14,
         display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap'
       }}>
         <label style={{
-          border: '1px solid #2f6fed', color: '#2f6fed', borderRadius: 6,
-          padding: '5px 14px', cursor: 'pointer', fontWeight: 600
+          border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff', borderRadius: 8,
+          padding: '6px 16px', cursor: 'pointer', fontWeight: 600,
+          boxShadow: '0 1px 3px rgba(47,107,255,0.35)'
         }}>
           导入客户原表（.xlsx）
           <input type="file" accept=".xlsx" onChange={handleFile} style={{ display: 'none' }} />
@@ -2285,25 +2378,26 @@ function App() {
               style={{ padding: '3px 6px', border: '1px solid #bbb', borderRadius: 4 }}
             />
             <button className="add-col-ok" onClick={confirmAddColumn} style={{
-              border: '1px solid #2f6fed', color: '#2f6fed', background: '#fff', borderRadius: 6,
+              border: '1px solid #2f6bff', color: '#2f6bff', background: '#fff', borderRadius: 8,
               padding: '5px 12px', cursor: 'pointer'
             }}>确定</button>
             <button onClick={() => { setAddingCol(false); setNewColName(''); }} style={barBtn}>取消</button>
           </span>
         ))}
         <span style={{ color: '#444' }}>{importInfo}</span>
-        <span className="save-status" style={{ color: '#2e7d32' }}>{saveStatus}</span>
+        <span className="save-status" style={{ color: '#1e9e57' }}>{saveStatus}</span>
         <span style={{ color: '#888' }}>最近一次编辑：{lastEdit}</span>
         <button onClick={handleClear} style={{
-          border: '1px solid #c62828', color: '#c62828', background: '#fff', borderRadius: 6,
+          border: '1px solid #d92d20', color: '#d92d20', background: '#fff', borderRadius: 8,
           padding: '5px 12px', cursor: 'pointer', marginLeft: 'auto'
         }}>清空重开</button>
       </div>
       {view === 'sheet' && (<>
       <div className="doc-bar" style={{
-        padding: '8px 14px', fontFamily: 'sans-serif', fontSize: 14,
+        margin: '12px 14px 0', padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
         display: 'flex', alignItems: 'stretch', gap: 10, flexWrap: 'wrap',
-        borderTop: '1px solid #e3e6ea', background: '#fbfcfe',
+        background: '#fff', border: '1px solid #dbe2ec', borderRadius: 12,
+        boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
       }}>
         <div className="ws-cluster">
         <span className="ws-cluster-label">单据</span>
@@ -2328,8 +2422,8 @@ function App() {
           onClick={handleDeleteInquiry}
           title="删除当前这张询价单（连同它名下的报价单）；已转出订单的删不掉"
           style={{
-            border: '1px solid #c62828', color: '#c62828', background: '#fff',
-            borderRadius: 6, padding: '5px 12px', cursor: 'pointer',
+            border: '1px solid #d92d20', color: '#d92d20', background: '#fff',
+            borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
           }}
         >删除此询价单</button>
         {docList
@@ -2343,10 +2437,10 @@ function App() {
             data-doc-id={d.docId}
             onClick={() => switchDoc(d.docId)}
             style={{
-              border: '1px solid ' + (d.docId === activeDocId ? '#2f6fed' : '#c6cfd9'),
-              background: d.docId === activeDocId ? '#e3edfd' : '#fff',
-              color: d.docId === activeDocId ? '#1f56c4' : '#37404a',
-              borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
+              border: '1px solid ' + (d.docId === activeDocId ? '#2f6bff' : '#c9d2de'),
+              background: d.docId === activeDocId ? '#e8effe' : '#fff',
+              color: d.docId === activeDocId ? '#1f56d6' : '#37404a',
+              borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
               fontWeight: d.docId === activeDocId ? 600 : 400,
             }}
           >{d.kind === 'inquiry'
@@ -2385,7 +2479,7 @@ function App() {
               style={{ padding: '3px 6px', border: '1px solid #bbb', borderRadius: 4 }}
             />
             <button className="factory-add-ok" onClick={confirmAddFactory} style={{
-              border: '1px solid #2f6fed', color: '#2f6fed', background: '#fff', borderRadius: 6,
+              border: '1px solid #2f6bff', color: '#2f6bff', background: '#fff', borderRadius: 8,
               padding: '5px 12px', cursor: 'pointer'
             }}>确定</button>
             <button onClick={() => { setAddingFactory(false); setFactoryInput(''); }} style={barBtn}>取消</button>
@@ -2395,13 +2489,13 @@ function App() {
           className="send-to-factory"
           onClick={handleSendToFactory}
           style={{
-            border: '1px solid #2e7d32', background: '#2e7d32', color: '#fff',
-            borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
+            border: '1px solid #1e9e57', background: '#1e9e57', color: '#fff',
+            borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
           }}
         >发给工厂</button>
         <label className="upload-return" style={{
           border: '1px solid #6a1b9a', color: '#6a1b9a', background: '#fff',
-          borderRadius: 6, padding: '5px 12px', cursor: 'pointer',
+          borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
         }}>
           上传回表（.xlsx）
           <input
@@ -2414,13 +2508,13 @@ function App() {
         <div className="ws-cluster">
         <span className="ws-cluster-label">导出 · 分享</span>
         <button className="download-quote" onClick={handleDownload} style={{
-          border: '1px solid #2f6fed', background: '#2f6fed', color: '#fff',
-          borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
+          border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
+          borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
         }}>{activeIsQuote ? '下载报价单' : '下载询价单'}</button>
         {canShareFiles ? (
           <button className="share-wechat" onClick={handleShare} style={{
             border: '1px solid #07c160', background: '#07c160', color: '#fff',
-            borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
+            borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
           }}>发送到微信…</button>
         ) : (
           <span className="share-hint" style={{ color: '#98a2ae' }}>
@@ -2441,10 +2535,10 @@ function App() {
         <div className="final-quote-bar" style={{
           margin: '10px 14px 0', padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
           display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
-          border: '1px solid #cfe3cf', borderRadius: 10, background: '#f3faf3',
-          boxShadow: '0 1px 3px rgba(16,24,40,0.06)',
+          border: '1px solid #dbe2ec', borderLeft: '4px solid #1e9e57', borderRadius: 12, background: '#fff',
+          boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
         }}>
-          <b>最终报价</b>
+          <b style={{ color: '#157347' }}>最终报价</b>
           <span style={{ color: '#888', fontSize: 12 }}>（按定厂工厂价算，与定价条按成本价列算的「销售价」不是一列）</span>
           <span style={{ color: '#555' }}>客户：</span>
           <select
@@ -2480,7 +2574,7 @@ function App() {
                 style={{ padding: '3px 6px', border: '1px solid #bbb', borderRadius: 4, width: 150 }}
               />
               <button className="inq-customer-new-ok" onClick={commitNewCustomer} style={{
-                border: '1px solid #2e7d32', color: '#2e7d32', background: '#fff', borderRadius: 6,
+                border: '1px solid #1e9e57', color: '#1e9e57', background: '#fff', borderRadius: 8,
                 padding: '5px 12px', cursor: 'pointer',
               }}>确定</button>
               <button onClick={() => { setCustNewMode(false); setCustNewName(''); }} style={barBtn}>取消</button>
@@ -2499,8 +2593,8 @@ function App() {
             className="fq-generate"
             onClick={handleGenerateFinalQuote}
             style={{
-              border: '1px solid #2e7d32', background: '#2e7d32', color: '#fff',
-              borderRadius: 6, padding: '3px 12px', cursor: 'pointer',
+              border: '1px solid #1e9e57', background: '#1e9e57', color: '#fff',
+              borderRadius: 8, padding: '3px 12px', cursor: 'pointer',
             }}
           >生成最终报价列</button>
           <span className="fq-status" style={{ color: '#666' }}>
@@ -2514,20 +2608,20 @@ function App() {
             className="export-toggle"
             onClick={() => { setShowExport((s) => !s); setExportTick((t) => t + 1); }}
             style={{
-              border: '1px solid ' + (showExport ? '#2e7d32' : '#888'),
-              background: showExport ? '#2e7d32' : '#fff',
+              border: '1px solid ' + (showExport ? '#1e9e57' : '#888'),
+              background: showExport ? '#1e9e57' : '#fff',
               color: showExport ? '#fff' : '#444',
-              borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
+              borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
             }}
           >{showExport ? '收起对客导出' : '对客报价导出'}</button>
           <button
             className="convert-toggle"
             onClick={() => setShowConvert((s) => !s)}
             style={{
-              border: '1px solid ' + (showConvert ? '#b26a00' : '#888'),
-              background: showConvert ? '#b26a00' : '#fff',
+              border: '1px solid ' + (showConvert ? '#b45309' : '#888'),
+              background: showConvert ? '#b45309' : '#fff',
               color: showConvert ? '#fff' : '#444',
-              borderRadius: 6, padding: '5px 14px', cursor: 'pointer',
+              borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
             }}
           >{showConvert ? '收起转订单' : '转订单'}</button>
         </div>
@@ -2535,8 +2629,8 @@ function App() {
       {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && fqBreakdowns.length > 0 && (
         <div className="fq-breakdowns" style={{
           margin: '0 14px', padding: '6px 14px 10px', fontFamily: 'sans-serif', fontSize: 12.5,
-          color: '#555', background: '#f3faf3', border: '1px solid #cfe3cf', borderTop: '1px dashed #d8e6d8',
-          borderRadius: '0 0 10px 10px',
+          color: '#555', background: '#fff', border: '1px solid #dbe2ec', borderTop: '1px dashed #d8e6d8',
+          borderRadius: '0 0 12px 12px',
           maxHeight: 132, overflowY: 'auto', lineHeight: 1.7,
         }}>
           <span style={{ color: '#888' }}>最终价是这样算出来的（基数 = 每行定厂那家的报价列）：</span>
@@ -2612,8 +2706,8 @@ function App() {
                     applyPriceMark({ ...g.mark, col: g.info.costCol });
                   }}
                   style={{
-                    border: '1px solid #2e7d32', background: '#2e7d32', color: '#fff',
-                    borderRadius: 6, padding: '6px 16px', cursor: 'pointer',
+                    border: '1px solid #1e9e57', background: '#1e9e57', color: '#fff',
+                    borderRadius: 8, padding: '6px 16px', cursor: 'pointer',
                   }}
                 >改标成本价{markGuard.info.costHeader ? '『' + markGuard.info.costHeader + '』' : ''}</button>
               )}
@@ -2625,8 +2719,8 @@ function App() {
                   applyPriceMark(g.mark);
                 }}
                 style={{
-                  border: '1px solid #b26a00', background: '#fff', color: '#b26a00',
-                  borderRadius: 6, padding: '6px 16px', cursor: 'pointer',
+                  border: '1px solid #b45309', background: '#fff', color: '#b45309',
+                  borderRadius: 8, padding: '6px 16px', cursor: 'pointer',
                 }}
               >仍要这样标记</button>
               <button
@@ -2634,7 +2728,7 @@ function App() {
                 onClick={() => setMarkGuard(null)}
                 style={{
                   border: '1px solid #888', background: '#fff', color: '#444',
-                  borderRadius: 6, padding: '6px 16px', cursor: 'pointer',
+                  borderRadius: 8, padding: '6px 16px', cursor: 'pointer',
                 }}
               >取消</button>
             </div>
@@ -2723,9 +2817,9 @@ function App() {
         />
       ) : (
       <div className="sheet-wrap" style={{
-        flex: 1, margin: '10px 14px 14px', border: '1px solid #dde3ea',
-        borderRadius: 8, overflow: 'hidden',
-        boxShadow: '0 1px 3px rgba(16,24,40,0.06)',
+        flex: 1, margin: '12px 14px 16px', border: '1px solid #dbe2ec',
+        borderRadius: 12, overflow: 'hidden',
+        boxShadow: '0 2px 6px rgba(23,34,62,0.05), 0 10px 24px rgba(23,34,62,0.06)',
       }}>
         <Workbook
           key={wbKey}
