@@ -1,1 +1,32 @@
-IyDmsb3phY3lpJbotLggRVJQ77yI5paw54mI77yJCgrlm7Tnu5XlrqLmiLfljp/ooajlt6XkvZznmoTmsb3phY3lpJbotLjlt6XkvZzlj7DvvJrljp/moLflr7zlhaXlrqLmiLcgRXhjZWwg4oaSIOWcqOWOn+agvOW8j+ihqOagvOS4iuebtOaOpee8lui+kSDihpIK5Y+R57uZ5aSa5a625bel5Y6CIOKGkiDlkITlrrblm57ooajljp/moLfkuIrkvKAg4oaSIOavlOS7t+WumuWOgiDihpIg5a+55a6i5oql5Lu3IOKGkiDovazorqLljZUg4oaSIOaUtuasvi/ku5jmrL4v5Y+R6LSn44CCCgotIOmcgOaxguS4juS4muWKoeinhOWIme+8mltTUEVDLm1kXShTUEVDLm1kKe+8iOWUr+S4gOmcgOaxguWPo+W+hO+8iQotIOaKgOacr+aetuaehO+8mltBUkNISVRFQ1RVUkUubWRdKEFSQ0hJVEVDVFVSRS5tZCkKLSDooajmoLznu4Tku7bvvJpGb3J0dW5lU2hlZXTvvIhNSVTvvInvvJvmlofku7blsYLvvIh4bHN4IOivu+WGmeOAgVdQUyDljZXlhYPmoLzlm77niYfjgIHljp/moLflm57lhpnvvInoh6rnoJQKLSDov5DooYzlvaLmgIHvvJrnuq/liY3nq6/jgIHljZXmnLrvvIzmnoTlu7rkuqfniankuLrljZXkuKogSFRNTO+8jOWPjOWHu+aJk+W8gOWNs+WPr+eUqAoKIyMg54q25oCBCgrlip/og73ljIUgMeKAkzkg5YWo6YOo5a6M5oiQ77yIMjAyNi0xMC0xMu+8ie+8muWvvOWFpeWOn+ihqC/nvJbovpEv6Ieq5Yqo5L+d5a2Y44CBSW5kZXhlZERCIOaWh+S7tuS7k+W6k+OAgQrlrprku7fmnaHjgIHlj5Hnu5nlt6XljoLkuI7ljp/ku7blm57lhpnkuIvovb3jgIHkuIrkvKDlm57ooagv5qCH5Lu3L+avlOS7t+WumuWOguOAgeacgOe7iOaKpeS7t+S4juWvueWuouWvvOWHuu+8iOmYsuazhOa8j++8ieOAgQrovazorqLljZXkuI7lsaXnuqbjgIHlj7DotKYv5oC76KeI44CB5a6M5pW05aSH5Lu95oGi5aSN44CBQUkg5YiG5p6Q44CB6Ieq5qOA44CC55yf5a6e5paH5Lu25YWo6ZO+5Zue5b2S6YCa6L+H44CCCgojIyDlvIDlj5EKCmBgYGJhc2gKY2QgYXBwCm5wbSBpbnN0YWxsCm5wbSBydW4gZGV2ICAgICAjIOacrOWcsOiwg+ivlQpucG0gcnVuIGJ1aWxkICAgIyDmnoTlu7rljZXmlofku7YgZGlzdC9pbmRleC5odG1sCmBgYAo=
+# 汽配外贸 ERP（新版）
+
+给汽配外贸业务用的单机版 ERP：客户询价单导入后在原格式表格里直接改，分别发给多家工厂报价，
+回表原样上传、标价列后比价定厂，生成对客最终报价并导出（不泄漏工厂价），再转订单管收款、付款、发货。
+
+## 直接使用（推荐）
+
+成品是一个单独的网页文件 **`汽配ERP-新版-正式版.html`**（由 Muse 每次更新后发到聊天里）：
+
+1. 把文件放到固定位置（别频繁换文件夹——浏览器按文件位置存数据，换位置会像个空白新系统）；
+2. 双击用 Edge / Chrome 打开即可使用，不用装任何东西、不用联网；
+3. 数据存在本机浏览器里，请定期在左侧「数据备份」里导出完整备份。
+
+本仓库里是**源代码**，下载下来不能直接双击运行（源代码是给构建工具看的"图纸"）。
+
+## 自行构建（懂开发的再看）
+
+需要 Node.js 18+：
+
+```bash
+cd app
+npm install
+npm run build   # 产物在 app/dist/index.html，双击打开即是成品
+npm run dev     # 或本地开发预览
+```
+
+## 文档
+
+- `SPEC.md`：需求规格（业务规则的权威来源）
+- `ARCHITECTURE.md`：技术架构
+
+当前版本：v2-pkg16。
