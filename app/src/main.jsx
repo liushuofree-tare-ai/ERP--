@@ -8,6 +8,7 @@ import { buildQuoteXlsx, buildMinimalXlsx } from './xlsx/writeback.js';
 import {
   computeFinalPrices, inquiryDataRows, applyFinalQuoteColumn,
   buildPlainExportSheet, buildPicturedExportSheet, finalQuoteColOf,
+  resolveChoiceTaxRatePct, qtyPrefillForInquiry, finalBreakdownFor,
   FINAL_QUOTE_HEADER,
 } from './quoteExport.js';
 import QuoteExportPanel from './QuoteExportPanel.jsx';
@@ -24,6 +25,7 @@ import CompareView from './CompareView.jsx';
 import {
   headerRowOf, detectPeriodColumn, computeFactoryExtras,
   buildCompareRows, choiceFromCell, pickDisplayColumns,
+  generatedSalesCols, salesMarkGuardInfo,
 } from './compare.js';
 import {
   isFileDbAvailable, putFile, getFile, clearFiles, listOriginals,
@@ -375,6 +377,9 @@ function App() {
   const [rowChoices, setRowChoicesState] = useState(INIT_ROW_CHOICES);
   const rowChoicesRef = useRef(INIT_ROW_CHOICES);
   const [markTick, setMarkTick] = useState(0); // 标价列保存后让标价条重挂对齐
+  // 重复加价守卫（包 12）：要标的列是定价条生成的销售价列时，先
+  // 把待保存的标记扣在这里弹确认，用户选了改标/照标才真正落盘
+  const [markGuard, setMarkGuard] = useState(null); // { mark, info }
   // 最终报价 / 对客导出（包 7）：面板开关 + 每次打开时让默认勾选重算
   const [showExport, setShowExport] = useState(false);
   const [exportTick, setExportTick] = useState(0);
@@ -1173,11 +1178,28 @@ function App() {
 
   /* ---------- 标价列 / 删除报价单（包 6） ---------- */
 
-  function handleSavePriceMark(mark) {
+  function applyPriceMark(mark) {
     docRef.current.priceMark = mark;
     flushDocRef();
     setMarkTick((t) => t + 1); // 让标价条按已保存的标记重挂（状态文案对齐）
     scheduleSave();
+  }
+
+  /**
+   * 保存标价列标记（包 6），包 12 起先过重复加价守卫：要标的列是
+   * 定价条在这张单上生成的「销售价」列（卖价已含税+加价）时不直接
+   * 落盘——用户把卖价当工厂价标过一次，最终价被重复加价还无从
+   * 察觉。守卫弹窗里默认走安全路（改标成本价）；用户明确点"仍要
+   * 这样标记"才照原样保存。
+   */
+  function handleSavePriceMark(mark) {
+    if (mark && mark.col !== null && mark.col !== undefined) {
+      flushDocRef();
+      const doc = docsRef.current.find((d) => d.docId === activeDocIdRef.current);
+      const info = doc ? salesMarkGuardInfo(doc, mark.col) : null;
+      if (info) { setMarkGuard({ mark, info }); return; }
+    }
+    applyPriceMark(mark);
   }
 
   function handleDeleteQuote() {
@@ -1265,6 +1287,31 @@ function App() {
 
   /* ---------- 下载 / 微信分享 ---------- */
 
+  /**
+   * 导出前补图字节（包 12）：表上的图若只剩仓库引用（fileId）而没有
+   * 现成的 dataURL（刚从存档恢复、还没点亮的那批），先去文件仓库把
+   * 字节取回，免得导出嵌图时漏掉。用在 images 与 exportImages 两处。
+   */
+  async function resolveExportImageBytes(sheet) {
+    const need = new Set();
+    for (const list of [(sheet && sheet.images) || [], (sheet && sheet.exportImages) || []]) {
+      for (const img of list) {
+        if (img && img.fileId && !(img.src && String(img.src).startsWith('data:'))) {
+          need.add(img.fileId);
+        }
+      }
+    }
+    if (!need.size) return undefined;
+    const map = {};
+    for (const fid of need) {
+      try {
+        const rec = await getFile(fid);
+        if (rec && rec.bytes) map[fid] = rec.bytes;
+      } catch (e) { /* 取不到就跳过这张，不挡导出 */ }
+    }
+    return Object.keys(map).length ? map : undefined;
+  }
+
   /** 生成当前文档的下载件：有原件就在原件上原样回写现值，否则现生成 */
   async function buildActiveFile() {
     flushDocRef();
@@ -1281,6 +1328,7 @@ function App() {
       originalBytes: origBytes,
       sheetName: (doc.source && doc.source.sheetName) || doc.sheet.name,
       sheet: doc.sheet,
+      imageBytes: await resolveExportImageBytes(doc.sheet),
     });
     const fileName = doc.kind === 'quote'
       ? '报价单-' + doc.factoryName + '.xlsx'
@@ -1443,6 +1491,11 @@ function App() {
     return { inq, quotes, finalPrices };
   }
 
+  /** 一个定厂行的最终价解说（来源感知的统一实现在 quoteExport.js） */
+  function breakdownFor(lineId, choice, quotes, inq) {
+    return finalBreakdownFor(lineId, choice, { inquiry: inq, quotes });
+  }
+
   /** 生成最终报价列：把每个已定厂行的最终销售价写进询价单专属列 */
   function handleGenerateFinalQuote() {
     const sheet = liveRef.current && liveRef.current[0];
@@ -1478,7 +1531,7 @@ function App() {
    * 订单删了/改了，这里的状态自动跟着对（派生，不存陈旧状态）。
    */
   function buildConvertRows() {
-    const { inq, finalPrices } = finalPriceContext();
+    const { inq, quotes, finalPrices } = finalPriceContext();
     if (!inq) return [];
     const model = buildModel();
     const converted = convertedLineIds(ordersRef.current, inq.docId);
@@ -1494,9 +1547,30 @@ function App() {
         product: r.product,
         choice,
         finalPrice: fp,
+        breakdown: breakdownFor(r.lineId, choice, quotes, inq),
         convertedTo,
         convertible: !convertedTo && fp !== null && fp !== undefined,
       });
+    }
+    return out;
+  }
+
+  /** 最终报价条下的算式清单：每个已定厂行一行（与转订单面板同一份） */
+  function buildFinalBreakdowns() {
+    const { inq, quotes, finalPrices } = finalPriceContext();
+    if (!inq) return [];
+    const model = buildModel();
+    const out = [];
+    for (const r of model.rows) {
+      const choice = rowChoicesRef.current[r.lineId];
+      if (!choice) continue;
+      const text = breakdownFor(r.lineId, choice, quotes, inq);
+      if (text) {
+        out.push({
+          lineId: r.lineId, oe: r.oe || '', text,
+          final: finalPrices.has(r.lineId) ? finalPrices.get(r.lineId) : null,
+        });
+      }
     }
     return out;
   }
@@ -1603,7 +1677,7 @@ function App() {
         selectedColKeys: selection.colKeys,
         finalPrices,
       });
-      bytes = buildMinimalXlsx(sheetName, sheet);
+      bytes = buildMinimalXlsx(sheetName, sheet, await resolveExportImageBytes(sheet));
       fileName = '报价单-客户版.xlsx';
     } else {
       let origBytes = null;
@@ -1622,7 +1696,10 @@ function App() {
         selectedLineIds: selection.lineIds,
         finalPrices,
       });
-      bytes = buildQuoteXlsx({ originalBytes: origBytes, sheetName, sheet });
+      bytes = buildQuoteXlsx({
+        originalBytes: origBytes, sheetName, sheet,
+        imageBytes: await resolveExportImageBytes(sheet),
+      });
       fileName = '报价单-带图版.xlsx';
     }
     window.__lastExport = {
@@ -1884,6 +1961,25 @@ function App() {
   const convertRows = (showConvert && !showCompare && !showOrders && !showOverview && !showAi &&
     !showCustomers && !showFactories && !activeIsQuote)
     ? buildConvertRows() : null;
+  // 最终报价的算式清单（包 12 透明化）：有定厂行且在表格区时才算
+  const fqBreakdowns = (fqCtx && fqCtx.inq && fqCtx.finalPrices.size > 0)
+    ? buildFinalBreakdowns() : [];
+  // 转订单数量带入（包 12）：当前询价单的数量列与每行数量
+  const convQtyInfo = convertRows && fqCtx && fqCtx.inq
+    ? qtyPrefillForInquiry(fqCtx.inq) : null;
+  // 标价列下拉的选项（包 12 B3）：定价条生成的销售价列挂上后缀，
+  // 让它的性质在标记之前就看得见（守卫是第二道，这里是第一道）
+  const pmSheet = (liveRef.current && liveRef.current[0]) ||
+    (typeof sheetsData !== 'undefined' && sheetsData ? sheetsData[0] : null);
+  const pmDocForLabels = (activeIsQuote && docRef.current.docId === activeDocId && pmSheet)
+    ? { sheet: pmSheet, headerRow: docRef.current.headerRow, pricing: docRef.current.pricing }
+    : null;
+  const pmSalesCols = pmDocForLabels ? generatedSalesCols(pmDocForLabels) : new Set();
+  const pmHeaders = pmSheet
+    ? columnHeaders(pmSheet).map((h) => (pmSalesCols.has(h.col)
+      ? { ...h, label: h.label + '（定价条生成的销售价）' }
+      : h))
+    : [];
   const fqChosen = fqCtx ? fqCtx.finalPrices.size : 0;
   const fqPriced = fqCtx
     ? [...fqCtx.finalPrices.values()].filter((v) => v !== null && v !== undefined).length
@@ -2128,6 +2224,7 @@ function App() {
           borderTop: '1px solid #e3e6ea', background: '#f3faf3',
         }}>
           <b>最终报价</b>
+          <span style={{ color: '#888', fontSize: 12 }}>（按定厂工厂价算，与定价条按成本价列算的「销售价」不是一列）</span>
           <span style={{ color: '#555' }}>客户：</span>
           <select
             className="inq-customer-select"
@@ -2205,11 +2302,27 @@ function App() {
           >{showConvert ? '收起转订单' : '转订单'}</button>
         </div>
       )}
+      {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && fqBreakdowns.length > 0 && (
+        <div className="fq-breakdowns" style={{
+          padding: '4px 12px 8px', fontFamily: 'sans-serif', fontSize: 12,
+          color: '#555', background: '#f3faf3', borderTop: '1px dashed #d8e6d8',
+          maxHeight: 132, overflowY: 'auto', lineHeight: 1.7,
+        }}>
+          <span style={{ color: '#888' }}>最终价是这样算出来的（基数 = 每行定厂那家的报价列）：</span>
+          {fqBreakdowns.map((b) => (
+            <div key={b.lineId} className="fq-breakdown-row" data-line={b.lineId}>
+              {b.oe ? b.oe + ' · ' : ''}{b.text}
+            </div>
+          ))}
+        </div>
+      )}
       {showConvert && !showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && convertRows && (
         <ConvertPanel
           key={'conv-' + activeDocId}
           rows={convertRows}
           customerName={customerName}
+          sheetQtys={convQtyInfo ? convQtyInfo.qtys : null}
+          qtyColumnName={convQtyInfo ? convQtyInfo.header : null}
           onCreate={handleCreateOrder}
           onClose={() => setShowConvert(false)}
         />
@@ -2230,7 +2343,7 @@ function App() {
         <PriceMarkBar
           key={'pm-' + activeDocId + '-' + markTick}
           factoryName={activeDocMeta.factoryName}
-          headers={columnHeaders(liveRef.current[0] || sheetsData[0])}
+          headers={pmHeaders}
           mark={docRef.current.docId === activeDocId ? docRef.current.priceMark : null}
           defaultPeriodCol={detectPeriodColumn(
             liveRef.current[0] || sheetsData[0],
@@ -2238,6 +2351,63 @@ function App() {
           onSave={handleSavePriceMark}
           onDelete={handleDeleteQuote}
         />
+      )}
+      {markGuard && (
+        <div className="mark-guard" style={{
+          position: 'fixed', inset: 0, background: 'rgba(20,26,34,0.45)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 60,
+        }}>
+          <div style={{
+            background: '#fff', borderRadius: 10, padding: '18px 20px', maxWidth: 520,
+            fontFamily: 'sans-serif', fontSize: 14, lineHeight: 1.7,
+            boxShadow: '0 10px 34px rgba(0,0,0,0.28)',
+          }}>
+            <b style={{ fontSize: 15 }}>等一下，这列是卖价，不是工厂价</b>
+            <div className="mark-guard-text" style={{ marginTop: 8, color: '#333' }}>
+              『{markGuard.info.salesHeader}』这列是定价条算出来的卖价（已经加过税和加价）。
+              把它当工厂价标记，最终报价会在它上面再加一次税和加价（等于重复加价）。
+              {markGuard.info.costHeader
+                ? '建议改标它旁边的成本价列『' + markGuard.info.costHeader + '』。'
+                : '但系统里没记着它是从哪一列成本价算出来的，没法自动改标——请取消后手动选成本价列。'}
+            </div>
+            <div style={{ display: 'flex', gap: 8, marginTop: 14, flexWrap: 'wrap' }}>
+              {markGuard.info.costCol !== null && (
+                <button
+                  className="mark-guard-cost"
+                  onClick={() => {
+                    const g = markGuard;
+                    setMarkGuard(null);
+                    applyPriceMark({ ...g.mark, col: g.info.costCol });
+                  }}
+                  style={{
+                    border: '1px solid #2e7d32', background: '#2e7d32', color: '#fff',
+                    borderRadius: 6, padding: '6px 16px', cursor: 'pointer',
+                  }}
+                >改标成本价{markGuard.info.costHeader ? '『' + markGuard.info.costHeader + '』' : ''}</button>
+              )}
+              <button
+                className="mark-guard-anyway"
+                onClick={() => {
+                  const g = markGuard;
+                  setMarkGuard(null);
+                  applyPriceMark(g.mark);
+                }}
+                style={{
+                  border: '1px solid #b26a00', background: '#fff', color: '#b26a00',
+                  borderRadius: 6, padding: '6px 16px', cursor: 'pointer',
+                }}
+              >仍要这样标记</button>
+              <button
+                className="mark-guard-cancel"
+                onClick={() => setMarkGuard(null)}
+                style={{
+                  border: '1px solid #888', background: '#fff', color: '#444',
+                  borderRadius: 6, padding: '6px 16px', cursor: 'pointer',
+                }}
+              >取消</button>
+            </div>
+          </div>
+        </div>
       )}
       </>
       )}
