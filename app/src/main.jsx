@@ -2116,11 +2116,38 @@ function App() {
     }
   }
 
-  /** 比价下一步「去生成最终报价」：落位后直接生成（同订单引导口径） */
-  function goCompareGenerateFinals() {
-    goCompareToInquirySheet();
-    // 这一步出现的前提是最终报价列还没生成，直接生成不会弹覆盖确认
-    setTimeout(() => handleGenerateFinalQuote(), 400);
+  /**
+   * 包 17：比价下一步「生成最终报价」改为原地生成，不切视图。用户问
+   * 「为什么生成最终报价的按钮会在询价单模块」——道理讲清后（对客价
+   * 写回客户的询价单、导出从询价单出），他拍板比价页点完不切页。
+   * 实现不走工作台的 handleGenerateFinalQuote + commitSheets：那条路
+   * 要求编辑器里装的正是询价单（flush 会把 liveRef[0] 写回 docRef 的
+   * 条目），而比价页下编辑器装的可能是报价单，混用会把最终报价列写
+   * 串。这里直接对存档里的询价单条目套用同一个 applyFinalQuoteColumn
+   * （与工作台同一函数、同一批现算最终价，定价规则完全一致）。
+   * 这一步出现的前提是最终报价列还没生成（条的状态由存档现算），
+   * applyFinalQuoteColumn 追加新列，不存在覆盖已有数据的确认问题；
+   * 现算不出任何最终价时和工作台一样弹提示、不写列，条不会假装成功。
+   */
+  function handleGenerateFinalQuoteInPlace() {
+    const { inq, finalPrices } = finalPriceContext();
+    if (!inq) return;
+    if (finalPrices.size === 0) {
+      window.alert('已定厂的行暂时算不出最终报价——定厂的工厂在这些行上还没有可用报价，补齐后再来生成');
+      return;
+    }
+    const res = applyFinalQuoteColumn(inq.sheet, headerRowOf(inq), finalPrices, inq.ledger);
+    inq.sheet = res.sheet;
+    // 编辑器里正装着这张询价单时同步 live 数据：回工作区看到的就是
+    // 生成后的表，下一次 flush 也不会拿旧表把新列盖回去
+    if (docRef.current.docId === inq.docId && liveRef.current && liveRef.current[0]) {
+      const next = [res.sheet, ...liveRef.current.slice(1)];
+      liveRef.current = next;
+      window.__wbData = next;
+      setSheetsData(next);
+      bumpWbKey();
+    }
+    doSave(); // 落盘；保存状态行刷新触发重渲染，比价条按新事实翻到 convert 态
   }
 
   /** 比价下一步「去转订单」：落位后打开转订单面板 */
@@ -2811,7 +2838,7 @@ function App() {
           onGoUploadReturn={goCompareUploadReturn}
           onGoMarkQuote={goCompareMarkQuote}
           nextStep={compareNextStep}
-          onGoGenerateFinals={goCompareGenerateFinals}
+          onGenerateFinals={handleGenerateFinalQuoteInPlace}
           onGoConvert={goCompareConvert}
           onGoExport={goCompareExport}
         />
