@@ -1,3 +1,6 @@
 node_modules/
 dist/
 .DS_Store
+
+# 后端运行时数据（SQLite 库 / 文件仓库 / 备份目录）不进仓库
+server/data/
