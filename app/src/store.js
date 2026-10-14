@@ -167,3 +167,80 @@ export function saveWork(payload, opts = {}) {
 export function clearSaved() {
   try { localStorage.removeItem(DB_KEY); } catch (e) { /* 忽略 */ }
 }
+
+/* ================================================================
+ * 云端同步层（可选）：后端在线时，本地存档之后异步推一份到服务器。
+ * 策略（写入顺序，绝不阻塞打字）：
+ *   1) saveWork 先同步写 localStorage（离线兜底，0ms 落袋为安）；
+ *   2) 服务器在线 → buildServerPayload（与 saveWork 同一套剥图源码，
+ *      避免把图片 dataURL 原样推上去）→ PUT /api/state 带 baseRevision。
+ * 冲突（409）：绝不静默覆盖——lastSync 置为 conflict，UI 提示用户
+ * 去「数据备份」页拉取服务器数据；本地工作原样保留。
+ * ================================================================ */
+import { isServerAvailable, pushState, getServerRevision } from './apiClient.js';
+
+let syncListeners = [];
+let lastSync = { status: 'idle' };
+
+export function onSyncChange(fn) {
+  syncListeners.push(fn);
+  return () => { syncListeners = syncListeners.filter((f) => f !== fn); };
+}
+export function lastSyncInfo() { return lastSync; }
+function notifySync() { for (const fn of syncListeners) { try { fn(lastSync); } catch (e) { /* UI 兜底 */ } } }
+
+/** 与 saveWork 的 refd 同一套：剥掉图片字节只留引用（服务器不收 dataURL） */
+export function buildServerPayload(payload) {
+  return {
+    version: DB_VERSION,
+    imagesPersisted: true,
+    imageStore: 'idb',
+    ...payload,
+    docs: stripDocsImageBytes(payload.docs),
+  };
+}
+
+/**
+ * 本地落袋 + 云端推送。本地失败直接不再推云端（本地是兜底事实源）；
+ * 推送失败不影响工作数据，只影响 lastSync（UI 显示同步状态）。
+ */
+export function saveWorkAndSync(payload, opts = {}) {
+  const res = saveWork(payload, opts);
+  if (!res.ok) {
+    lastSync = { status: 'local-failed', at: new Date().toISOString() };
+    notifySync();
+    return res;
+  }
+  if (isServerAvailable()) {
+    lastSync = { status: 'local-only', at: null };
+    return res;
+  }
+  const base = getServerRevision();
+  lastSync = { status: 'pushing', at: new Date().toISOString() };
+  notifySync();
+  pushState(base, buildServerPayload(payload)).then((d) => {
+    lastSync = { status: 'ok', at: d.savedAt || new Date().toISOString(), revision: d.revision };
+    notifySync();
+  }).catch((e) => {
+    if (e && e.code === 'REVISION_CONFLICT') {
+      lastSync = { status: 'conflict', currentRevision: e.currentRevision, localRevision: base, at: new Date().toISOString() };
+    } else if (e && e.code === 'NEED_AUTH') {
+      lastSync = { status: 'need-auth', at: new Date().toISOString() };
+    } else {
+      lastSync = { status: 'error', message: String(e && e.message || e), at: new Date().toISOString() };
+    }
+    notifySync();
+  });
+  return res;
+}
+
+
+/** 采纳服务器状态为本地镜像（服务器是新事实源时调用；调用方随后 reload） */
+export function adoptRemoteState(state) {
+  try {
+    localStorage.setItem(DB_KEY, JSON.stringify(state));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}

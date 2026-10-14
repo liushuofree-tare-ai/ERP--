@@ -14,6 +14,7 @@
 // 返回值决定是否降级回包 2 的行为（图片只进 localStorage / 会话可见）。
 
 import { bytesToDataUrl } from './xlsx/zip.js';
+import { isServerAvailable, pushFile, fetchFileBytes } from './apiClient.js';
 
 export const FILE_DB_NAME = 'qipei_v2_files';
 const FILE_DB_VERSION = 1;
@@ -109,9 +110,28 @@ export function fileBytesToDataUrl(bytes, mime) {
 
 /**
  * 存一份文件。rec: { id, kind: 'image'|'original', bytes, mime, name? }
- * 返回存入的元数据（不含字节）；失败返回 null。
+ * 落两处：本地 IndexedDB（离线事实源）+ 服务器（在线模式，云端事实源）。
+ * 任何一处成功都返回元数据（不含字节）；只有两处全失败才返回 null。
  */
 export async function putFile(rec) {
+  const localMeta = await putLocal(rec);
+  let serverMeta = null;
+  if (rec && rec.id && rec.bytes && isServerAvailable()) {
+    try { serverMeta = await pushFile(rec); } catch (e) { /* 云端推送失败不挡本地 */ }
+  }
+  if (localMeta) return localMeta;
+  if (serverMeta && serverMeta.ok) {
+    return {
+      id: serverMeta.id, kind: rec.kind || 'image', mime: rec.mime || '',
+      name: rec.name || '', size: serverMeta.size || 0, savedAt: rec.savedAt || null,
+      where: 'server',
+    };
+  }
+  return null;
+}
+
+/** 本地 IndexedDB 写入（原 putFile 主体；本地失败返回 null） */
+async function putLocal(rec) {
   const db = await openDb();
   if (!db || !rec || !rec.id || !rec.bytes) return null;
   const bytes = rec.bytes instanceof Uint8Array ? rec.bytes : new Uint8Array(rec.bytes);
@@ -135,17 +155,30 @@ export async function putFile(rec) {
   }
 }
 
-/** 按 id 读整条记录（含字节）；没有/失败返回 null */
+/**
+ * 按 id 读整条记录（含字节）。顺序：本地 → 服务器（在线模式回源）。
+ * 本地没有但云端有：回 Cached 后不写回本地（下次仍走云端，避免本地
+ * 配额误差造成"看起来存上了其实没有"的假象——原件下载用完即弃）。
+ */
 export async function getFile(id) {
   const db = await openDb();
-  if (!db || !id) return null;
-  return new Promise((resolve) => {
-    try {
-      const req = db.transaction(STORE, 'readonly').objectStore(STORE).get(id);
-      req.onsuccess = () => resolve(req.result || null);
-      req.onerror = () => resolve(null);
-    } catch (e) { resolve(null); }
-  });
+  if (db && id) {
+    const hit = await new Promise((resolve) => {
+      try {
+        const req = db.transaction(STORE, 'readonly').objectStore(STORE).get(id);
+        req.onsuccess = () => resolve(req.result || null);
+        req.onerror = () => resolve(null);
+      } catch (e) { resolve(null); }
+    });
+    if (hit) return hit;
+  }
+  if (!id || !isServerAvailable()) return null;
+  try {
+    const rec = await fetchFileBytes(id);
+    return rec; // { id, kind, name, mime, bytes }；没有返回 null
+  } catch (e) {
+    return null;
+  }
 }
 
 /** 按 id 删除；返回是否执行了删除事务 */

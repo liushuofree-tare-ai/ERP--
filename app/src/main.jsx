@@ -17,7 +17,8 @@ import ConvertPanel from './ConvertPanel.jsx';
 import OrdersView from './OrdersView.jsx';
 import { formatOrderNo, convertedLineIds } from './orders.js';
 import { createLedger, noteWorkColumn, cloneLedgerForQuote } from './ledger.js';
-import { loadSaved, saveWork, clearSaved } from './store.js';
+import { loadSaved, saveWork, clearSaved, saveWorkAndSync, buildServerPayload, adoptRemoteState, onSyncChange, lastSyncInfo } from './store.js';
+import { detectServer, fetchServerState, pushState } from './apiClient.js';
 import { computeSalesPrice } from './pricing.js';
 import { cellValue, detectHeaderRow, columnHeaders, setCellValue, appendColumn } from './sheetOps.js';
 import PricingBar from './PricingBar.jsx';
@@ -302,6 +303,20 @@ function fmtClock(iso) {
   return Number.isNaN(d.getTime()) ? '' : d.toLocaleTimeString('zh-CN', { hour12: false });
 }
 
+/** 云端同步小字：按推送状态生成一句话（单机/空闲返回空不渲染） */
+function serverSyncText(s) {
+  switch (s && s.status) {
+    case 'pushing': return '云端同步中…';
+    case 'ok': return '已同步服务器 · ' + fmtClock(s.at) + '（rev ' + s.revision + '）';
+    case 'ok-local-blank': return '服务器在线 · 数据云端化已就绪';
+    case 'migrated': case 'ok-migrated-newer': return '本地工作已上服务器 · ' + fmtClock(s.at);
+    case 'conflict': return '⚠ 服务器上已有其他窗口的更新，本窗口未覆盖——请到「数据备份」拉取';
+    case 'need-auth': return '⚠ 服务器要求登录——请到「数据备份」输入访问口令';
+    case 'error': return '⚠ 云端同步失败：' + (s.message || '未知原因');
+    default: return '';
+  }
+}
+
 /** 深克隆一份规范表（克隆报价单用）：格子/配置拷贝，图片对象只换壳不换字节引用 */
 function cloneSheetData(sheet) {
   if (!sheet) return sheet;
@@ -513,6 +528,8 @@ function App() {
           ? ' · 正在从文件仓库恢复图片…'
           : '');
   });
+  // 云端同步小字（服务器在线时的推送状态；单机模式恒为 null 不渲染）
+  const [serverSync, setServerSync] = useState(null);
   const [showCheck, setShowCheck] = useState(false);
   const [lastEdit, setLastEdit] = useState('（还没有编辑）');
   const [pricing, setPricingState] = useState(() => ({ ...DEFAULT_PRICING, ...(INIT_ACTIVE_DOC.pricing || {}) }));
@@ -879,7 +896,8 @@ function App() {
     const payload = currentPayload();
     const key = workKeyOf(payload);
     if (key !== null && key === savedKeyRef.current) return; // 没变化：不重写、不改状态行
-    const res = saveWork(payload, { imagesInIdb: imageStoreRef.current });
+    // 云端同步走 saveWorkAndSync：本地先落袋（同步），服务器在线时异步推送
+    const res = saveWorkAndSync(payload, { imagesInIdb: imageStoreRef.current });
     if (res.ok) savedKeyRef.current = key;
     if (res.ok) {
       setSaveStatus(
@@ -1050,6 +1068,71 @@ function App() {
     return () => { alive = false; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  /* ---------- 启动对账（云端模式）：本地镜像 ↔ 服务器事实源 ---------- */
+  // 规则（启动时跑一次，绝不打断用户已开始的新工作）：
+  //  · 服务器不通 → 维持单机模式（saveWorkAndSync 自然走本地）；
+  //  · 服务器空 + 本地有工作 → 把本地推上去（首次迁移）；
+  //  · 本地空白 + 服务器有数据 → 采纳服务器（写镜像后刷新）；
+  //  · 两边都有 → savedAt 新者赢（本轮先对齐一次；此后每次保存由
+  //    revision 乐观锁守护，冲突不静默覆盖，去「数据备份」拉取）。
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      const det = await detectServer();
+      if (!alive) return;
+      if (!det.available) { setServerSync({ status: 'local-only' }); return; }
+      try {
+        const remote = await fetchServerState();
+        if (!alive || workEpochRef.current > 0) return; // 用户已导入新工作，不打扰
+        const localState = RAW_RESTORED;
+        if (!remote.state) {
+          if (localState && Array.isArray(localState.docs) && localState.docs.length) {
+            try {
+              flushDocRef();
+              await pushState(remote.revision, buildServerPayload(currentPayload()));
+              setServerSync({ status: 'migrated', at: new Date().toISOString() });
+            } catch (e) {
+              setServerSync({ status: 'error', message: '本地工作迁移到服务器失败：' + (e && e.message || e) });
+            }
+          } else {
+            setServerSync({ status: 'ok-local-blank', at: null });
+          }
+          return;
+        }
+        if (!localState) {
+          if (adoptRemoteState(remote.state)) location.reload();
+          return;
+        }
+        const serverNewer = !localState.savedAt ||
+          (remote.state.savedAt || '') >= localState.savedAt;
+        if (serverNewer) {
+          if (adoptRemoteState(remote.state)) location.reload();
+        } else {
+          try {
+            flushDocRef();
+            await pushState(remote.revision, buildServerPayload(currentPayload()));
+            setServerSync({ status: 'ok-migrated-newer', at: new Date().toISOString() });
+          } catch (e) {
+            setServerSync({ status: 'error', message: '本地数据推到服务器失败：' + (e && e.code === 'REVISION_CONFLICT' ? '云端已有别的修改，请到数据备份拉取' : (e && e.message || e)) });
+          }
+        }
+      } catch (e) {
+        setServerSync({ status: 'error', message: '服务器已连通但读取失败：' + (e && e.message || e) });
+      }
+    })();
+    return () => { alive = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 云端同步状态订阅：saveWorkAndSync 的推送结果 → 顶栏小字
+  useEffect(() => {
+    const last = lastSyncInfo();
+    if (last && last.status !== 'idle') setServerSync(last);
+    const off = onSyncChange((s) => setServerSync({ ...s }));
+    return off;
+  }, []);
+
 
   /**
    * 一张客户原表落位成询价单文档（包 11 起是"新增"，不再替换全部）：
@@ -2566,6 +2649,12 @@ function App() {
         ))}
         <span style={{ color: '#444' }}>{importInfo}</span>
         <span className="save-status" style={{ color: '#1e9e57' }}>{saveStatus}</span>
+        {serverSync && serverSyncText(serverSync) && (
+          <span className="sync-status" style={{
+            color: serverSync.status === 'conflict' || serverSync.status === 'error' || serverSync.status === 'need-auth'
+              ? '#d92d20' : '#1f56d6', fontWeight: serverSync.status === 'conflict' ? 600 : 400,
+          }}>{serverSyncText(serverSync)}</span>
+        )}
         <span style={{ color: '#888' }}>最近一次编辑：{lastEdit}</span>
         <button onClick={handleClear} style={{
           border: '1px solid #d92d20', color: '#d92d20', background: '#fff', borderRadius: 8,

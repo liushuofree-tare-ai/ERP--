@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { APP_VERSION } from './version.js';
 import { DB_KEY, savedInfo } from './store.js';
 import { FILE_DB_NAME, idbSelfTest, fileStats } from './filedb.js';
+import { detectServer } from './apiClient.js';
 
 // 环境自检（SPEC 第四节第 13 项）：在用户自己的浏览器里现场验证——
 // 版本对不对、数据存不存得住、图片仓库通不通、空间还剩多少、
@@ -28,6 +29,24 @@ async function runChecks() {
   const rows = [];
   // 1. 版本
   rows.push({ ok: true, label: '应用版本', detail: APP_VERSION });
+  // 1b. 后端服务器（在线模式才有效；file:// 单机模式明确说明不适用）
+  {
+    const det = await detectServer();
+    if (det.available) {
+      const info = det.info || {};
+      rows.push({
+        ok: true, label: '后端服务器（云端保存）',
+        detail: '在线 · rev ' + det.revision + ' · 数据库' + (info.dbOk === false ? '异常' : '正常') +
+          (info.auth ? ' · 需访问口令' : '') +
+          ' · 飞书' + ((info.feishu && (info.feishu.webhook || info.feishu.app)) ? '已配置' : '未配置'),
+      });
+    } else {
+      rows.push({
+        ok: true, label: '后端服务器（云端保存）',
+        detail: '未启用（单机模式：' + (det.reason || '服务器不可达') + '）——数据只存本机浏览器',
+      });
+    }
+  }
   // 2. localStorage 读写往返（表格数据就存这里）
   try {
     localStorage.setItem(LS_PROBE_KEY, 'ok123');
