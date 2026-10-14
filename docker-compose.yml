@@ -1,0 +1,35 @@
+# docker-compose：一键起 ERP（前端 + 后端 + SQLite 持久化 + 飞书集成）。
+# 用法：
+#   1. 在 .env（同目录）里按需配置（ PORT 可留默认；上线务必设 ERP_ACCESS_PASSWORD）
+#   2. docker compose up -d --build
+#   3. 访问 http://<服务器IP>:3100（或挂在 nginx 后面，见 nginx.conf.example）
+services:
+  qipei-erp:
+    build: .
+    container_name: qipei-erp
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3100}:3100"
+    environment:
+      - PORT=3100
+      # 数据目录挂到宿主机，重建容器不丢数据（SQLite + 文件仓库 + 备份）
+      - DATA_DIR=/app/server/data
+      # 访问口令（上线必配！不配 = 任何能访问到端口的人都可读写全部数据）
+      - ERP_ACCESS_PASSWORD=${ERP_ACCESS_PASSWORD:-}
+      # 登录态签名密钥（不设则每次重启后已登录用户需重输口令）
+      - ERP_AUTH_SECRET=${ERP_AUTH_SECRET:-}
+      # 飞书群机器人 Webhook（可选：配了订单创建/收付款/发货会播报到群）
+      - FEISHU_WEBHOOK_URL=${FEISHU_WEBHOOK_URL:-}
+      - FEISHU_WEBHOOK_SECRET=${FEISHU_WEBHOOK_SECRET:-}
+      # 飞书自建应用（可选：免登 + 发文件）
+      - FEISHU_APP_ID=${FEISHU_APP_ID:-}
+      - FEISHU_APP_SECRET=${FEISHU_APP_SECRET:-}
+      # AI 转发（可选：浏览器直连 AI 接口被 CORS 拦时在 AI 设置里走 /api/ai/proxy）
+    volumes:
+      - ./data:/app/server/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3100/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
