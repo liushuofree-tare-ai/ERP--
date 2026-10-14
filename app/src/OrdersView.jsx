@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { orderFacts, checkOverAmount, validateShipQty, lineUnitCostWithTax } from './orders.js';
+import { isServerAvailable, feishuNotify } from './apiClient.js';
 // 订单视图（SPEC 第四节第 9 项）：订单列表 + 详情履约。
 // 订单上只存事实（行/收款/付款/已发），应收、应付、未收、未付、
 // 发货状态、是否完成全部由 orders.js 现算，这里只负责录入与呈现。
@@ -8,6 +9,12 @@ import { orderFacts, checkOverAmount, validateShipQty, lineUnitCostWithTax } fro
 //   确认才入账（超额不是禁止，是"必须提醒"，SPEC 原文）；
 // · 发货数量硬校验：必须 > 0 且 ≤ 该行待发量，不合法直接给一句
 //   白话说明，不入账。
+// 飞书播报：登记收款/付款/发货后向群机器人发一句进度（服务器
+// 在线且 Webhook 已配置才生效；失败静默，通知绝不挡业务）。
+const announce = (text) => {
+  if (!isServerAvailable()) return;
+  feishuNotify(text).catch(() => { /* 静默 */ });
+};
 const today = () => new Date().toISOString().slice(0, 10);
 const fmt = (n) => (typeof n === 'number' && Number.isFinite(n) ? n.toFixed(2) : '—');
 
@@ -43,6 +50,9 @@ function OrderDetail({ order, onUpdateOrder, onJumpInquiry }) {
       receipts: [...(order.receipts || []),
         { amount: amt, date: recDate || today(), note: recNote.trim() }],
     });
+    announce('💰 订单 ' + order.orderNo + ' 收款 ' + amt.toFixed(2) +
+      ' 元（客户「' + (order.customerName || '未填') + '」，已收 ' +
+      fmt(facts.received + amt) + ' / 应收 ' + fmt(facts.receivable) + '）');
     setRecAmount(''); setRecNote('');
   }
 
@@ -60,6 +70,9 @@ function OrderDetail({ order, onUpdateOrder, onJumpInquiry }) {
       factoryPays: [...(order.factoryPays || []),
         { factory, amount: amt, date: today(), note: '' }],
     });
+    announce('🧱 订单 ' + order.orderNo + ' 向「' + factory + '」付款 ' + amt.toFixed(2) +
+      ' 元（已付 ' + fmt((facts.factories.find((f) => f.factory === factory) || { paid: 0 }).paid + amt) +
+      ' / 应付 ' + fmt(fac.payable) + '）');
     setPayAmounts({ ...payAmounts, [factory]: '' });
   }
 
@@ -82,6 +95,9 @@ function OrderDetail({ order, onUpdateOrder, onJumpInquiry }) {
       shipments: [...(order.shipments || []),
         { lineId: line.lineId, oe: line.oe || '', qty, date: today(), note: '' }],
     });
+    announce('📦 订单 ' + order.orderNo + ' 发货 ' + qty + ' 件（' +
+      (line.oe || line.lineId) + (line.name ? ' · ' + line.name : '') +
+      '，已发 ' + (facts.shippedQty + qty) + ' / ' + facts.totalQty + ' 件）');
     setShipQty('');
   }
 

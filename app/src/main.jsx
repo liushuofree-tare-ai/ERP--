@@ -18,7 +18,7 @@ import OrdersView from './OrdersView.jsx';
 import { formatOrderNo, convertedLineIds } from './orders.js';
 import { createLedger, noteWorkColumn, cloneLedgerForQuote } from './ledger.js';
 import { loadSaved, saveWork, clearSaved, saveWorkAndSync, buildServerPayload, adoptRemoteState, onSyncChange, lastSyncInfo } from './store.js';
-import { detectServer, fetchServerState, pushState } from './apiClient.js';
+import { detectServer, fetchServerState, pushState, isServerAvailable, openTempDownload, feishuNotify } from './apiClient.js';
 import { computeSalesPrice } from './pricing.js';
 import { cellValue, detectHeaderRow, columnHeaders, setCellValue, appendColumn } from './sheetOps.js';
 import PricingBar from './PricingBar.jsx';
@@ -51,6 +51,17 @@ import { reconcileEchoImages, reconcileDomImages } from './imageSync.js';
 import { APP_VERSION } from './version.js';
 
 const XLSX_MIME = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+
+// 飞书环境（内置 WebView）：它对 blob: 链接的 <a download> 常拦不住或不弹
+// 保存对话框——服务器在线时改走「临时下载直链」（后端 5 分钟有效的标准
+// 附件流）。拿到不到直链就退回普通 blob 下载，两条路都留。
+const IS_FEISHU_UA = typeof navigator !== 'undefined' && /feishu|lark/i.test(navigator.userAgent);
+
+/** 云端播报（Webhook 未配置时服务端 501，这里静默吞掉，绝不打扰业务流） */
+function feishuAnnounce(text, card) {
+  if (!isServerAvailable()) return;
+  feishuNotify(text, card).catch(() => { /* 静默：通知不挡业务 */ });
+}
 
 // 初始示例数据（未导入前展示）：结构接近真实客户单，仅作占位演示。
 const initialData = [
@@ -1676,6 +1687,10 @@ function App() {
   async function handleDownload() {
     const f = await buildActiveFile();
     if (!f) return;
+    // 飞书内置浏览器：blob 下载常被拦——服务器在线时走临时直链
+    if (IS_FEISHU_UA && isServerAvailable()) {
+      try { await openTempDownload(f.bytes, f.fileName, XLSX_MIME); return; } catch (e) { /* 掉回普通下载 */ }
+    }
     const blob = new Blob([f.bytes], { type: XLSX_MIME });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -1949,6 +1964,17 @@ function App() {
     setOrders([...ordersRef.current, order]);
     setSelectedOrderNo(orderNo);
     doSave(); // 生成订单是明确动作，立即落盘
+    // 飞书播报（Webhook 已配置才生效）：新订单的要点一次说完
+    {
+      const receivable = picked.reduce((s, p) =>
+        s + Math.round((p.row.finalPrice || 0) * p.qty * 100) / 100, 0);
+      const factorySet = [...new Set(picked.map((p) => p.row.choice.factory))];
+      feishuAnnounce('🧾 新订单 ' + orderNo + '：客户「' + (inq.customerName || '未填') +
+        '」成交 ' + order.lines.length + ' 行 · 共 ' +
+        order.lines.reduce((s, l) => s + (Number(l.qty) || 0), 0) +
+        ' 件 · 应收 ' + receivable.toFixed(2) + ' 元 · 供货工厂：' +
+        (factorySet.join('、') || '未记'));
+    }
     return orderNo;
   }
 
@@ -2053,6 +2079,14 @@ function App() {
         });
       } catch (e) { /* 取消分享是正常操作，静默 */ }
       return;
+    }
+    await downloadViaFeishuOrBlob(bytes, fileName);
+  }
+
+  /** 飞书 UI 环境下、云端在线时用临时直链替代 blob 下载（其余走普通下载） */
+  async function downloadViaFeishuOrBlob(bytes, fileName) {
+    if (IS_FEISHU_UA && isServerAvailable()) {
+      try { await openTempDownload(bytes, fileName, XLSX_MIME); return; } catch (e) { /* 掉回普通下载 */ }
     }
     const blob = new Blob([bytes], { type: XLSX_MIME });
     const url = URL.createObjectURL(blob);
