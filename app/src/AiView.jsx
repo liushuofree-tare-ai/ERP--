@@ -1,1 +1,227 @@
-aW1wb3J0IFJlYWN0LCB7IHVzZVJlZiwgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7CmltcG9ydCB7IGxvYWRBaUNvbmZpZywgc2F2ZUFpQ29uZmlnIH0gZnJvbSAnLi9haUNvbmZpZy5qcyc7CgovLyBBSSDliIbmnpDpobXvvIhTUEVDIOesrOWbm+iKguesrCAxMSDpobnvvIzlj6ror7vml4HmjILvvInvvJrmiorlhajlupPmlbDmja7mkZjopoEKLy8g77yIYWlEaWdlc3QuanMg546w566X77yJ6ZqP6Zeu6aKY5Y+R57uZ55So5oi36Ieq5bex6YWN572u55qEIEFJIOaOpeWPo++8jOWbnuetlOWPquWxleekuuOAgQovLyDmsLjkuI3lm57lhpnkuJrliqHmlbDmja7jgILpkqXljJnlj6rlrZggYWlDb25maWcg55qE54us56uL6ZSu4oCU4oCU5LiN6L+b5a2Y5qGj44CB5LiN6L+b5aSH5Lu944CCCgpjb25zdCBTWVNURU1fUFJPTVBUID0KICAn5L2g5piv5LiA5ZCN5rG96YWN5aSW6LS457uP6JCl5YiG5p6Q5Yqp5omL44CC5Zue562U5Y+q6IO95L6d5o2u5LiL6Z2i5o+Q5L6b55qE5pWw5o2u5pGY6KaB77yMJyArCiAgJ+S4jeiuuOe8lumAoOaRmOimgemHjOayoeacieeahOaVsOWtl+OAgeWuouaIt+OAgeW3peWOguaIluiuouWNle+8m+aRmOimgemHjOayoeacieeahO+8jOWwseebtOivtOOAjOaVsOaNrumHjOayoeacieOAjeOAgicgKwogICfph5Hpop3ljZXkvY3mmK/lhYPjgILnlKjkuK3mloflm57nrZTvvIzlhYjnu5nnu5PorrrvvIzlho3nu5nkvp3mja7vvIznroDmtIHjgIInOwoKY29uc3QgQ0hJUFMgPSBbCiAgJ+WTquS4quWuouaIt+asoOasvuacgOWkmu+8nycsCiAgJ+WTquWutuW3peWOguW6lOS7mOacgOWkmu+8nycsCiAgJ+acgOi/keiuouWNleaDheWGteaAjuS5iOagt++8nycsCl07CmNvbnN0IFJFUE9SVF9RVUVTVElPTiA9CiAgJ+ivt+agueaNruaVsOaNruaRmOimgee7meaIkeS4gOS7vee7j+iQpeS9k+ajgOaKpeWRiu+8muWFiOivtOaVtOS9k+aDheWGte+8iOW6lOaUtuW6lOS7mOOAgeacquaUtuacquS7mO+8ie+8jCcgKwogICflho3mjIflh7rmnIDor6Xnm6/nmoTkuInku7bkuovvvIjmrKDmrL7mnIDkuYUv5pyA5aSa55qE5a6i5oi344CB5bqU5LuY5Y6L5Yqb44CB5b6F5Y+R6LSn77yJ77yM5pyA5ZCO57uZ5LiA5Y+l6K+d5bu66K6u44CCJzsKCmZ1bmN0aW9uIGZyaWVuZGx5RXJyb3IoZXJyKSB7CiAgaWYgKGVyciAmJiBlcnIuc3RhdHVzKSB7CiAgICBpZiAoZXJyLnN0YXR1cyA9PT0gNDAxIHx8IGVyci5zdGF0dXMgPT09IDQwMykgewogICAgICByZXR1cm4gJ+mSpeWMmeS4jeWvueaIluayoeadg+mZkO+8iCcgKyBlcnIuc3RhdHVzICsgJ++8ieKAlOKAlOajgOafpeS4gOS4i+aOpeWPo+mSpeWMme+8jOaIluaNouS4quacieadg+mZkOeahCc7CiAgICB9CiAgICBpZiAoZXJyLnN0YXR1cyA9PT0gNDA0KSB7CiAgICAgIHJldHVybiAn5o6l5Y+j5Zyw5Z2A5oiW5qih5Z6L5ZCN5a+55LiN5LiK77yINDA077yJ4oCU4oCU5qOA5p+l5LiA5LiL5o6l5Y+j5Zyw5Z2A5ZKM5qih5Z6LJzsKICAgIH0KICAgIGlmIChlcnIuc3RhdHVzID09PSA0MjkpIHsKICAgICAgcmV0dXJuICfpl67lvpflpKrpopHnuYHvvIzooqvmjqXlj6PpmZDmtYHkuobvvIg0MjnvvInigJTigJTnrYnkuIDkvJrlhL/lho3pl64nOwogICAgfQogICAgcmV0dXJuICfmjqXlj6Pov5Tlm57kuobplJnor6/vvIgnICsgZXJyLnN0YXR1cyArICfvvInigJTigJTnqI3lkI7lho3or5XvvIzmiJbmiornirbmgIHnoIHlj5Hnu5nlvIDlj5HogIXnnIsnOwogIH0KICBpZiAoZXJyICYmIGVyci5uYW1lID09PSAnQWJvcnRFcnJvcicpIHsKICAgIHJldHVybiAn562J5aSq5LmF5rKh562J5Yiw5Zue5aSN77yI6LaF5pe277yJ4oCU4oCU572R57uc5Y+v6IO95LiN56iz77yM56iN5ZCO5YaN6Zeu5LiA5qyhJzsKICB9CiAgLy8gZmV0Y2gg5pys6Lqr5oqb6ZSZ77ya6L+e5LiN5LiK44CB6KKr5rWP6KeI5Zmo6Leo5Z+f5oum5LiL77yM6YO96JC95Zyo6L+Z5LiA57G7CiAgcmV0dXJuICfov57kuI3kuIrmjqXlj6PigJTigJTlj6/og73mmK/nvZHnu5zpl67popjvvIzkuZ/lj6/og73mmK/mjqXlj6PkuI3orqnnvZHpobXnm7TmjqXosIPnlKjvvIjot6jln5/ooqvmi6bvvInjgILlhYjmo4Dmn6XnvZHnu5zvvIzov5jkuI3ooYzmiorov5nmnaHlj5Hnu5nlvIDlj5HogIXnnIsnOwp9CgpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBBaVZpZXcoeyBkaWdlc3QsIG9uQ2xvc2UgfSkgewogIGNvbnN0IFtjZmcsIHNldENmZ10gPSB1c2VTdGF0ZShsb2FkQWlDb25maWcpOwogIGNvbnN0IFtjZmdUaXAsIHNldENmZ1RpcF0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3QgW21lc3NhZ2VzLCBzZXRNZXNzYWdlc10gPSB1c2VTdGF0ZShbXSk7CiAgY29uc3QgW2lucHV0LCBzZXRJbnB1dF0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3QgW2J1c3ksIHNldEJ1c3ldID0gdXNlU3RhdGUoZmFsc2UpOwogIGNvbnN0IGJ1c3lSZWYgPSB1c2VSZWYoZmFsc2UpOwoKICBmdW5jdGlvbiBoYW5kbGVTYXZlQ2ZnKCkgewogICAgY29uc3QgY2xlYW4gPSBzYXZlQWlDb25maWcoY2ZnKTsKICAgIHNldENmZyhjbGVhbik7CiAgICBzZXRDZmdUaXAoJ+W3suS/neWtmO+8iOWPquWtmOWcqOi/meWPsOa1j+iniOWZqOmHjO+8jOS4jei/m+S4muWKoeaVsOaNruOAgeS4jei/m+Wkh+S7ve+8iScpOwogIH0KCiAgYXN5bmMgZnVuY3Rpb24gYXNrKHJhd1F1ZXN0aW9uKSB7CiAgICBjb25zdCBxID0gKHJhd1F1ZXN0aW9uIHx8ICcnKS50cmltKCk7CiAgICBpZiAoIXEgfHwgYnVzeVJlZi5jdXJyZW50KSByZXR1cm47CiAgICBjb25zdCBjb25mID0gbG9hZEFpQ29uZmlnKCk7CiAgICBjb25zdCBoaXN0b3J5ID0gbWVzc2FnZXMuc2xpY2UoLTgpOwogICAgc2V0TWVzc2FnZXMoKG0pID0+IFsuLi5tLCB7IHJvbGU6ICd1c2VyJywgdGV4dDogcSB9XSk7CiAgICBzZXRJbnB1dCgnJyk7CiAgICBpZiAoIWNvbmYuYXBpS2V5KSB7CiAgICAgIHNldE1lc3NhZ2VzKChtKSA9PiBbLi4ubSwgewogICAgICAgIHJvbGU6ICdhc3Npc3RhbnQnLAogICAgICAgIHRleHQ6ICfimqAg6L+Z5qyh5rKh6Zeu5oiQ77ya6L+Y5rKh5aGrIEFQSSDpkqXljJnigJTigJTlnKjkuIrpnaLloavlpb3pkqXljJnjgIHngrnjgIzkv53lrZjorr7nva7jgI3lho3pl67jgIInLAogICAgICB9XSk7CiAgICAgIHJldHVybjsKICAgIH0KICAgIGJ1c3lSZWYuY3VycmVudCA9IHRydWU7CiAgICBzZXRCdXN5KHRydWUpOwogICAgY29uc3QgdXJsID0gY29uZi5iYXNlVXJsLnJlcGxhY2UoL1wvKyQvLCAnJykgKyAnL2NoYXQvY29tcGxldGlvbnMnOwogICAgY29uc3QgYm9keSA9IHsKICAgICAgbW9kZWw6IGNvbmYubW9kZWwsCiAgICAgIG1lc3NhZ2VzOiBbCiAgICAgICAgeyByb2xlOiAnc3lzdGVtJywgY29udGVudDogU1lTVEVNX1BST01QVCArICdcblxuJyArIGRpZ2VzdCB9LAogICAgICAgIC4uLmhpc3RvcnkubWFwKChoKSA9PiAoeyByb2xlOiBoLnJvbGUgPT09ICd1c2VyJyA/ICd1c2VyJyA6ICdhc3Npc3RhbnQnLCBjb250ZW50OiBoLnRleHQgfSkpLAogICAgICAgIHsgcm9sZTogJ3VzZXInLCBjb250ZW50OiBxIH0sCiAgICAgIF0sCiAgICAgIHRlbXBlcmF0dXJlOiAwLjMsCiAgICB9OwogICAgLy8g6aqM5pS2L+iwg+ivlemSqeWtkO+8iOS4jiBfX2xhc3RFeHBvcnQg5ZCM6aOO5qC877yJ77ya5pyA6L+R5LiA5qyh5a6e6ZmF5Y+R5Ye655qE6K+35rGCCiAgICB3aW5kb3cuX19haUxhc3RSZXF1ZXN0ID0geyB1cmwsIGJvZHksIGF0OiBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCkgfTsKICAgIHRyeSB7CiAgICAgIGNvbnN0IGN0cmwgPSBuZXcgQWJvcnRDb250cm9sbGVyKCk7CiAgICAgIGNvbnN0IHRpbWVyID0gc2V0VGltZW91dCgoKSA9PiBjdHJsLmFib3J0KCksIDYwMDAwKTsKICAgICAgbGV0IHJlczsKICAgICAgdHJ5IHsKICAgICAgICByZXMgPSBhd2FpdCBmZXRjaCh1cmwsIHsKICAgICAgICAgIG1ldGhvZDogJ1BPU1QnLAogICAgICAgICAgaGVhZGVyczogewogICAgICAgICAgICAnQ29udGVudC1UeXBlJzogJ2FwcGxpY2F0aW9uL2pzb24nLAogICAgICAgICAgICAnQXV0aG9yaXphdGlvbic6ICdCZWFyZXIgJyArIGNvbmYuYXBpS2V5LAogICAgICAgICAgfSwKICAgICAgICAgIGJvZHk6IEpTT04uc3RyaW5naWZ5KGJvZHkpLAogICAgICAgICAgc2lnbmFsOiBjdHJsLnNpZ25hbCwKICAgICAgICB9KTsKICAgICAgfSBmaW5hbGx5IHsKICAgICAgICBjbGVhclRpbWVvdXQodGltZXIpOwogICAgICB9CiAgICAgIGlmICghcmVzLm9rKSB0aHJvdyB7IHN0YXR1czogcmVzLnN0YXR1cyB9OwogICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVzLmpzb24oKTsKICAgICAgY29uc3QgbXNnID0gZGF0YSAmJiBkYXRhLmNob2ljZXMgJiYgZGF0YS5jaG9pY2VzWzBdICYmIGRhdGEuY2hvaWNlc1swXS5tZXNzYWdlOwogICAgICBjb25zdCBhbnN3ZXIgPSAobXNnICYmIChtc2cuY29udGVudCB8fCBtc2cucmVhc29uaW5nX2NvbnRlbnQpIHx8ICcnKS50cmltKCk7CiAgICAgIGlmICghYW5zd2VyKSB0aHJvdyBuZXcgRXJyb3IoJ25vLWFuc3dlcicpOwogICAgICBzZXRNZXNzYWdlcygobSkgPT4gWy4uLm0sIHsgcm9sZTogJ2Fzc2lzdGFudCcsIHRleHQ6IGFuc3dlciB9XSk7CiAgICB9IGNhdGNoIChlcnIpIHsKICAgICAgY29uc3QgcmVhc29uID0gZXJyICYmIGVyci5tZXNzYWdlID09PSAnbm8tYW5zd2VyJwogICAgICAgID8gJ+aOpeWPo+WbnuS6huS4quepuuetlOahiOKAlOKAlOaNouS4qumXruazle+8jOaIluiAheeojeWQjuWGjeivlScKICAgICAgICA6IGZyaWVuZGx5RXJyb3IoZXJyKTsKICAgICAgc2V0TWVzc2FnZXMoKG0pID0+IFsuLi5tLCB7IHJvbGU6ICdhc3Npc3RhbnQnLCB0ZXh0OiAn4pqgIOi/measoeayoemXruaIkO+8micgKyByZWFzb24gfV0pOwogICAgfSBmaW5hbGx5IHsKICAgICAgYnVzeVJlZi5jdXJyZW50ID0gZmFsc2U7CiAgICAgIHNldEJ1c3koZmFsc2UpOwogICAgfQogIH0KCiAgY29uc3QgaW5wdXRTdHlsZSA9IHsKICAgIHBhZGRpbmc6ICc1cHggOHB4JywgYm9yZGVyOiAnMXB4IHNvbGlkICNjOWQyZGUnLCBib3JkZXJSYWRpdXM6IDgsIGZvbnRTaXplOiAxNCwKICB9OwogIGNvbnN0IGNoaXBTdHlsZSA9IHsKICAgIGJvcmRlcjogJzFweCBzb2xpZCAjMmY2YmZmJywgY29sb3I6ICcjMmY2YmZmJywgYmFja2dyb3VuZDogJyNmZmYnLAogICAgYm9yZGVyUmFkaXVzOiA5OTksIHBhZGRpbmc6ICc1cHggMTRweCcsIGN1cnNvcjogJ3BvaW50ZXInLCBmb250U2l6ZTogMTMuNSwKICB9OwoKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9ImFpLXZpZXciIHN0eWxlPXt7CiAgICAgIGZsZXg6IDEsIG92ZXJmbG93OiAnYXV0bycsIHBhZGRpbmc6ICcxNnB4IDE4cHgnLAogICAgICBmb250RmFtaWx5OiAnc2Fucy1zZXJpZicsIGZvbnRTaXplOiAxNCwKICAgIH19PgogICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgYWxpZ25JdGVtczogJ2NlbnRlcicsIGdhcDogMTAgfX0+CiAgICAgICAgPGIgc3R5bGU9e3sgZm9udFNpemU6IDE5IH19PuKcpiBBSSDliIbmnpA8L2I+CiAgICAgICAgPHNwYW4gc3R5bGU9e3sgY29sb3I6ICcjODg4JyB9fT5BSSDlj6rnnIvmlbDmja7mkZjopoHlgZrliIbmnpDvvIzmsLjkuI3mlLnotKbvvJvlm57nrZTku4Xkvpvlj4LogIM8L3NwYW4+CiAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImFpLWNsb3NlIiBvbkNsaWNrPXtvbkNsb3NlfSBzdHlsZT17ewogICAgICAgICAgbWFyZ2luTGVmdDogJ2F1dG8nLCBib3JkZXI6ICcxcHggc29saWQgI2M5ZDJkZScsIGNvbG9yOiAnIzM3NDA0YScsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgICAgICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzVweCAxMnB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgICAgICAgfX0+6L+U5Zue6KGo5qC8PC9idXR0b24+CiAgICAgIDwvZGl2PgoKICAgICAgPGRpdiBjbGFzc05hbWU9ImFpLWNvbmZpZyIgc3R5bGU9e3sKICAgICAgICBkaXNwbGF5OiAnZmxleCcsIGdhcDogOCwgYWxpZ25JdGVtczogJ2NlbnRlcicsIGZsZXhXcmFwOiAnd3JhcCcsCiAgICAgICAgbWFyZ2luOiAnMTJweCAwJywgcGFkZGluZzogJzEycHggMTRweCcsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgICAgICBib3JkZXI6ICcxcHggc29saWQgI2RiZTJlYycsIGJvcmRlclJhZGl1czogMTIsCiAgICAgIH19PgogICAgICAgIDxsYWJlbD7mjqXlj6PlnLDlnYB7JyAnfQogICAgICAgICAgPGlucHV0CiAgICAgICAgICAgIGNsYXNzTmFtZT0iYWktYmFzZSIgc3R5bGU9e3sgLi4uaW5wdXRTdHlsZSwgd2lkdGg6IDI0MCB9fQogICAgICAgICAgICB2YWx1ZT17Y2ZnLmJhc2VVcmx9CiAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gc2V0Q2ZnKHsgLi4uY2ZnLCBiYXNlVXJsOiBlLnRhcmdldC52YWx1ZSB9KX0KICAgICAgICAgIC8+CiAgICAgICAgPC9sYWJlbD4KICAgICAgICA8bGFiZWw+6ZKl5YyZeycgJ30KICAgICAgICAgIDxpbnB1dAogICAgICAgICAgICBjbGFzc05hbWU9ImFpLWtleSIgdHlwZT0icGFzc3dvcmQiIHN0eWxlPXt7IC4uLmlucHV0U3R5bGUsIHdpZHRoOiAxODAgfX0KICAgICAgICAgICAgdmFsdWU9e2NmZy5hcGlLZXl9IHBsYWNlaG9sZGVyPSLnspjotLTkvaDnmoQgQVBJIOmSpeWMmSIKICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRDZmcoeyAuLi5jZmcsIGFwaUtleTogZS50YXJnZXQudmFsdWUgfSl9CiAgICAgICAgICAvPgogICAgICAgIDwvbGFiZWw+CiAgICAgICAgPGxhYmVsPuaooeWei3snICd9CiAgICAgICAgICA8aW5wdXQKICAgICAgICAgICAgY2xhc3NOYW1lPSJhaS1tb2RlbCIgc3R5bGU9e3sgLi4uaW5wdXRTdHlsZSwgd2lkdGg6IDE1MCB9fQogICAgICAgICAgICB2YWx1ZT17Y2ZnLm1vZGVsfQogICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldENmZyh7IC4uLmNmZywgbW9kZWw6IGUudGFyZ2V0LnZhbHVlIH0pfQogICAgICAgICAgLz4KICAgICAgICA8L2xhYmVsPgogICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJhaS1zYXZlIiBvbkNsaWNrPXtoYW5kbGVTYXZlQ2ZnfSBzdHlsZT17ewogICAgICAgICAgYm9yZGVyOiAnMXB4IHNvbGlkICMyZjZiZmYnLCBiYWNrZ3JvdW5kOiAnIzJmNmJmZicsIGNvbG9yOiAnI2ZmZicsCiAgICAgICAgICBib3JkZXJSYWRpdXM6IDgsIHBhZGRpbmc6ICc1cHggMTZweCcsIGN1cnNvcjogJ3BvaW50ZXInLAogICAgICAgIH19PuS/neWtmOiuvue9rjwvYnV0dG9uPgogICAgICAgIHtjZmdUaXAgJiYgPHNwYW4gY2xhc3NOYW1lPSJhaS1jZmctdGlwIiBzdHlsZT17eyBjb2xvcjogJyMxZTllNTcnIH19PntjZmdUaXB9PC9zcGFuPn0KICAgICAgPC9kaXY+CgogICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgZ2FwOiA4LCBmbGV4V3JhcDogJ3dyYXAnLCBtYXJnaW46ICc0cHggMCAxMHB4JyB9fT4KICAgICAgICB7Q0hJUFMubWFwKChjKSA9PiAoCiAgICAgICAgICA8YnV0dG9uIGtleT17Y30gY2xhc3NOYW1lPSJhaS1jaGlwIiBkYXRhLWNoaXA9e2N9IHN0eWxlPXtjaGlwU3R5bGV9CiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IGFzayhjKX0gZGlzYWJsZWQ9e2J1c3l9PntjfTwvYnV0dG9uPgogICAgICAgICkpfQogICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJhaS1jaGlwIGFpLXJlcG9ydCIgZGF0YS1jaGlwPSJyZXBvcnQiIHN0eWxlPXt7CiAgICAgICAgICAuLi5jaGlwU3R5bGUsIGJvcmRlckNvbG9yOiAnIzFlOWU1NycsIGNvbG9yOiAnIzFlOWU1NycsCiAgICAgICAgfX0gb25DbGljaz17KCkgPT4gYXNrKFJFUE9SVF9RVUVTVElPTil9IGRpc2FibGVkPXtidXN5fT7kuIDplK7nlJ/miJDnu4/okKXkvZPmo4DmiqXlkYo8L2J1dHRvbj4KICAgICAgPC9kaXY+CgogICAgICA8ZGl2IGNsYXNzTmFtZT0iYWktbXNncyIgc3R5bGU9e3sgZGlzcGxheTogJ2ZsZXgnLCBmbGV4RGlyZWN0aW9uOiAnY29sdW1uJywgZ2FwOiA4IH19PgogICAgICAgIHttZXNzYWdlcy5sZW5ndGggPT09IDAgJiYgKAogICAgICAgICAgPGRpdiBzdHlsZT17eyBjb2xvcjogJyM4ODgnIH19PueCueS4iumdoueahOeOsOaIkOmXrumimO+8jOaIluiAheWcqOS4i+mdouebtOaOpeaJk+Wtl+mXruOAgjwvZGl2PgogICAgICAgICl9CiAgICAgICAge21lc3NhZ2VzLm1hcCgobSwgaSkgPT4gKAogICAgICAgICAgPGRpdiBrZXk9e2l9IGNsYXNzTmFtZT17J2FpLW1zZyBhaS1tc2ctJyArIG0ucm9sZX0gc3R5bGU9e3sKICAgICAgICAgICAgYWxpZ25TZWxmOiBtLnJvbGUgPT09ICd1c2VyJyA/ICdmbGV4LWVuZCcgOiAnZmxleC1zdGFydCcsCiAgICAgICAgICAgIG1heFdpZHRoOiAnODIlJywgd2hpdGVTcGFjZTogJ3ByZS13cmFwJywgbGluZUhlaWdodDogMS42LAogICAgICAgICAgICBiYWNrZ3JvdW5kOiBtLnJvbGUgPT09ICd1c2VyJyA/ICcjZThlZmZlJyA6ICcjZmZmJywKICAgICAgICAgICAgYm9yZGVyOiAnMXB4IHNvbGlkICcgKyAobS5yb2xlID09PSAndXNlcicgPyAnI2M5ZGJmZicgOiAnI2RiZTJlYycpLAogICAgICAgICAgICBib3JkZXJSYWRpdXM6IDEwLCBwYWRkaW5nOiAnMTBweCAxNHB4JywKICAgICAgICAgIH19PnttLnRleHR9PC9kaXY+CiAgICAgICAgKSl9CiAgICAgICAge2J1c3kgJiYgPGRpdiBjbGFzc05hbWU9ImFpLWJ1c3kiIHN0eWxlPXt7IGNvbG9yOiAnIzg4OCcgfX0+5q2j5Zyo55yL5pWw5o2u5oCd6ICD4oCmPC9kaXY+fQogICAgICA8L2Rpdj4KCiAgICAgIDxkaXYgc3R5bGU9e3sgZGlzcGxheTogJ2ZsZXgnLCBnYXA6IDgsIG1hcmdpblRvcDogMTIsIGFsaWduSXRlbXM6ICdmbGV4LWVuZCcgfX0+CiAgICAgICAgPHRleHRhcmVhCiAgICAgICAgICBjbGFzc05hbWU9ImFpLXEiIHJvd3M9ezJ9IHZhbHVlPXtpbnB1dH0KICAgICAgICAgIHBsYWNlaG9sZGVyPSLmg7Ppl67ku4DkuYjvvJ/mr5TlpoLvvJrlk6rkuKrlrqLmiLfmrKDmrL7mnIDlpJrvvJ/vvIhDdHJsK0VudGVyIOWPkemAge+8iSIKICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gc2V0SW5wdXQoZS50YXJnZXQudmFsdWUpfQogICAgICAgICAgb25LZXlEb3duPXsoZSkgPT4gewogICAgICAgICAgICBpZiAoKGUuY3RybEtleSB8fCBlLm1ldGFLZXkpICYmIGUua2V5ID09PSAnRW50ZXInKSBhc2soaW5wdXQpOwogICAgICAgICAgfX0KICAgICAgICAgIHN0eWxlPXt7IC4uLmlucHV0U3R5bGUsIGZsZXg6IDEsIHJlc2l6ZTogJ3ZlcnRpY2FsJyB9fQogICAgICAgIC8+CiAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImFpLWFzayIgb25DbGljaz17KCkgPT4gYXNrKGlucHV0KX0gZGlzYWJsZWQ9e2J1c3l9IHN0eWxlPXt7CiAgICAgICAgICBib3JkZXI6ICcxcHggc29saWQgIzJmNmJmZicsIGJhY2tncm91bmQ6ICcjMmY2YmZmJywgY29sb3I6ICcjZmZmJywKICAgICAgICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzhweCAxOHB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgICAgICAgfX0+e2J1c3kgPyAn5oCd6ICD5Lit4oCmJyA6ICfmj5Dpl64nfTwvYnV0dG9uPgogICAgICA8L2Rpdj4KCiAgICAgIDxkZXRhaWxzIGNsYXNzTmFtZT0iYWktZGlnZXN0LXByZXZpZXciIHN0eWxlPXt7IG1hcmdpblRvcDogMTQgfX0+CiAgICAgICAgPHN1bW1hcnkgc3R5bGU9e3sgY3Vyc29yOiAncG9pbnRlcicsIGNvbG9yOiAnIzU1NScgfX0+CiAgICAgICAgICDnnIvkuIDnnLzvvJrmj5Dpl67ml7blrp7pmYXkvJrlj5Hnu5kgQUkg55qE5pWw5o2u5pGY6KaB77yI5bCx5piv5LiL6Z2i6L+Z5Lqb77yM5LiN5aSa5Y+R5Lu75L2V5Lic6KW/77yJCiAgICAgICAgPC9zdW1tYXJ5PgogICAgICAgIDxwcmUgc3R5bGU9e3sKICAgICAgICAgIHdoaXRlU3BhY2U6ICdwcmUtd3JhcCcsIGJhY2tncm91bmQ6ICcjZjZmOGZhJywgYm9yZGVyOiAnMXB4IHNvbGlkICNlMWU0ZTgnLAogICAgICAgICAgYm9yZGVyUmFkaXVzOiA4LCBwYWRkaW5nOiAnMTBweCAxMnB4JywgZm9udFNpemU6IDEyLjUsIGxpbmVIZWlnaHQ6IDEuNiwKICAgICAgICAgIG1heEhlaWdodDogMzIwLCBvdmVyZmxvdzogJ2F1dG8nLAogICAgICAgIH19PntkaWdlc3R9PC9wcmU+CiAgICAgIDwvZGV0YWlscz4KICAgIDwvZGl2PgogICk7Cn0K
+import React, { useRef, useState } from 'react';
+import { loadAiConfig, saveAiConfig } from './aiConfig.js';
+
+// AI 分析页（SPEC 第四节第 11 项，只读旁挂）：把全库数据摘要
+// （aiDigest.js 现算）随问题发给用户自己配置的 AI 接口，回答只展示、
+// 永不回写业务数据。钥匙只存 aiConfig 的独立键——不进存档、不进备份。
+
+const SYSTEM_PROMPT =
+  '你是一名汽配外贸经营分析助手。回答只能依据下面提供的数据摘要，' +
+  '不许编造摘要里没有的数字、客户、工厂或订单；摘要里没有的，就直说「数据里没有」。' +
+  '金额单位是元。用中文回答，先给结论，再给依据，简洁。';
+
+const CHIPS = [
+  '哪个客户欠款最多？',
+  '哪家工厂应付最多？',
+  '最近订单情况怎么样？',
+];
+const REPORT_QUESTION =
+  '请根据数据摘要给我一份经营体检报告：先说整体情况（应收应付、未收未付），' +
+  '再指出最该盯的三件事（欠款最久/最多的客户、应付压力、待发货），最后给一句话建议。';
+
+function friendlyError(err) {
+  if (err && err.status) {
+    if (err.status === 401 || err.status === 403) {
+      return '钥匙不对或没权限（' + err.status + '）——检查一下接口钥匙，或换个有权限的';
+    }
+    if (err.status === 404) {
+      return '接口地址或模型名对不上（404）——检查一下接口地址和模型';
+    }
+    if (err.status === 429) {
+      return '问得太频繁，被接口限流了（429）——等一会儿再问';
+    }
+    return '接口返回了错误（' + err.status + '）——稍后再试，或把状态码发给开发者看';
+  }
+  if (err && err.name === 'AbortError') {
+    return '等太久没等到回复（超时）——网络可能不稳，稍后再问一次';
+  }
+  // fetch 本身抛错：连不上、被浏览器跨域拦下，都落在这一类
+  return '连不上接口——可能是网络问题，也可能是接口不让网页直接调用（跨域被拦）。先检查网络，还不行把这条发给开发者看';
+}
+
+export default function AiView({ digest, onClose }) {
+  const [cfg, setCfg] = useState(loadAiConfig);
+  const [cfgTip, setCfgTip] = useState('');
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [busy, setBusy] = useState(false);
+  const busyRef = useRef(false);
+
+  function handleSaveCfg() {
+    const clean = saveAiConfig(cfg);
+    setCfg(clean);
+    setCfgTip('已保存（只存在这台浏览器里，不进业务数据、不进备份）');
+  }
+
+  async function ask(rawQuestion) {
+    const q = (rawQuestion || '').trim();
+    if (!q || busyRef.current) return;
+    const conf = loadAiConfig();
+    const history = messages.slice(-8);
+    setMessages((m) => [...m, { role: 'user', text: q }]);
+    setInput('');
+    if (!conf.apiKey) {
+      setMessages((m) => [...m, {
+        role: 'assistant',
+        text: '⚠ 这次没问成：还没填 API 钥匙——在上面填好钥匙、点「保存设置」再问。',
+      }]);
+      return;
+    }
+    busyRef.current = true;
+    setBusy(true);
+    const url = conf.baseUrl.replace(/\/+$/, '') + '/chat/completions';
+    const body = {
+      model: conf.model,
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT + '\n\n' + digest },
+        ...history.map((h) => ({ role: h.role === 'user' ? 'user' : 'assistant', content: h.text })),
+        { role: 'user', content: q },
+      ],
+      temperature: 0.3,
+    };
+    // 验收/调试钩子（与 __lastExport 同风格）：最近一次实际发出的请求
+    window.__aiLastRequest = { url, body, at: new Date().toISOString() };
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 60000);
+      let res;
+      try {
+        res = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + conf.apiKey,
+          },
+          body: JSON.stringify(body),
+          signal: ctrl.signal,
+        });
+      } finally {
+        clearTimeout(timer);
+      }
+      if (!res.ok) throw { status: res.status };
+      const data = await res.json();
+      const msg = data && data.choices && data.choices[0] && data.choices[0].message;
+      const answer = (msg && (msg.content || msg.reasoning_content) || '').trim();
+      if (!answer) throw new Error('no-answer');
+      setMessages((m) => [...m, { role: 'assistant', text: answer }]);
+    } catch (err) {
+      const reason = err && err.message === 'no-answer'
+        ? '接口回了个空答案——换个问法，或者稍后再试'
+        : friendlyError(err);
+      setMessages((m) => [...m, { role: 'assistant', text: '⚠ 这次没问成：' + reason }]);
+    } finally {
+      busyRef.current = false;
+      setBusy(false);
+    }
+  }
+
+  const inputStyle = {
+    padding: '5px 8px', border: '1px solid #c9d2de', borderRadius: 8, fontSize: 14,
+  };
+  const chipStyle = {
+    border: '1px solid #2f6bff', color: '#2f6bff', background: '#fff',
+    borderRadius: 999, padding: '5px 14px', cursor: 'pointer', fontSize: 13.5,
+  };
+
+  return (
+    <div className="ai-view" style={{
+      flex: 1, overflow: 'auto', padding: '16px 18px',
+      fontFamily: 'sans-serif', fontSize: 14,
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <b style={{ fontSize: 19 }}>✦ AI 分析</b>
+        <span style={{ color: '#888' }}>AI 只看数据摘要做分析，永不改账；回答仅供参考</span>
+        <button className="ai-close" onClick={onClose} style={{
+          marginLeft: 'auto', border: '1px solid #c9d2de', color: '#37404a', background: '#fff',
+          borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+        }}>返回表格</button>
+      </div>
+
+      <div className="ai-config" style={{
+        display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap',
+        margin: '12px 0', padding: '12px 14px', background: '#fff',
+        border: '1px solid #dbe2ec', borderRadius: 12,
+      }}>
+        <label>接口地址{' '}
+          <input
+            className="ai-base" style={{ ...inputStyle, width: 240 }}
+            value={cfg.baseUrl}
+            onChange={(e) => setCfg({ ...cfg, baseUrl: e.target.value })}
+          />
+        </label>
+        <label>钥匙{' '}
+          <input
+            className="ai-key" type="password" style={{ ...inputStyle, width: 180 }}
+            value={cfg.apiKey} placeholder="粘贴你的 API 钥匙"
+            onChange={(e) => setCfg({ ...cfg, apiKey: e.target.value })}
+          />
+        </label>
+        <label>模型{' '}
+          <input
+            className="ai-model" style={{ ...inputStyle, width: 150 }}
+            value={cfg.model}
+            onChange={(e) => setCfg({ ...cfg, model: e.target.value })}
+          />
+        </label>
+        <button className="ai-save" onClick={handleSaveCfg} style={{
+          border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
+          borderRadius: 8, padding: '5px 16px', cursor: 'pointer',
+        }}>保存设置</button>
+        {cfgTip && <span className="ai-cfg-tip" style={{ color: '#1e9e57' }}>{cfgTip}</span>}
+      </div>
+
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', margin: '4px 0 10px' }}>
+        {CHIPS.map((c) => (
+          <button key={c} className="ai-chip" data-chip={c} style={chipStyle}
+            onClick={() => ask(c)} disabled={busy}>{c}</button>
+        ))}
+        <button className="ai-chip ai-report" data-chip="report" style={{
+          ...chipStyle, borderColor: '#1e9e57', color: '#1e9e57',
+        }} onClick={() => ask(REPORT_QUESTION)} disabled={busy}>一键生成经营体检报告</button>
+      </div>
+
+      <div className="ai-msgs" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {messages.length === 0 && (
+          <div style={{ color: '#888' }}>点上面的现成问题，或者在下面直接打字问。</div>
+        )}
+        {messages.map((m, i) => (
+          <div key={i} className={'ai-msg ai-msg-' + m.role} style={{
+            alignSelf: m.role === 'user' ? 'flex-end' : 'flex-start',
+            maxWidth: '82%', whiteSpace: 'pre-wrap', lineHeight: 1.6,
+            background: m.role === 'user' ? '#e8effe' : '#fff',
+            border: '1px solid ' + (m.role === 'user' ? '#c9dbff' : '#dbe2ec'),
+            borderRadius: 10, padding: '10px 14px',
+          }}>{m.text}</div>
+        ))}
+        {busy && <div className="ai-busy" style={{ color: '#888' }}>正在看数据思考…</div>}
+      </div>
+
+      <div style={{ display: 'flex', gap: 8, marginTop: 12, alignItems: 'flex-end' }}>
+        <textarea
+          className="ai-q" rows={2} value={input}
+          placeholder="想问什么？比如：哪个客户欠款最多？（Ctrl+Enter 发送）"
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') ask(input);
+          }}
+          style={{ ...inputStyle, flex: 1, resize: 'vertical' }}
+        />
+        <button className="ai-ask" onClick={() => ask(input)} disabled={busy} style={{
+          border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
+          borderRadius: 8, padding: '8px 18px', cursor: 'pointer',
+        }}>{busy ? '思考中…' : '提问'}</button>
+      </div>
+
+      <details className="ai-digest-preview" style={{ marginTop: 14 }}>
+        <summary style={{ cursor: 'pointer', color: '#555' }}>
+          看一眼：提问时实际会发给 AI 的数据摘要（就是下面这些，不多发任何东西）
+        </summary>
+        <pre style={{
+          whiteSpace: 'pre-wrap', background: '#f6f8fa', border: '1px solid #e1e4e8',
+          borderRadius: 8, padding: '10px 12px', fontSize: 12.5, lineHeight: 1.6,
+          maxHeight: 320, overflow: 'auto',
+        }}>{digest}</pre>
+      </details>
+    </div>
+  );
+}

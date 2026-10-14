@@ -1,1 +1,86 @@
-aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JzsKCi8vIOWumuS7t+adoe+8iFNQRUMg56ys5Zub6IqC56ysIDMg6aG577yJ77ya5pW06KGo5aGr5LiA5qyh55qE5Y+C5pWw77yM5LiA6ZSu566X5Ye65q+P6KGM6ZSA5ZSu5Lu344CCCi8vIOe7hOaIkO+8muaIkOacrOS7t+WIl++8iOS4i+aLie+8jOmAiemhueaYr+W9k+WJjeihqOeahOWunuaXtuWIl+WktO+8iS8g6K+l5YiX5Y+j5b6E77yI5ZCr56iOL+S4jeWQq+eoju+8iS8KLy8g56iO54K5ICXvvIjku4XkuI3lkKvnqI7ml7bmmL7npLrvvIkvIOWKoOS7t+avlOS+iyAlIC8g5q+P5Lu25Zu95YaF6L+Q6LS5IC8g5rGH546H77yI6YCJ5aGr77yMCi8vIOWhq+S6humUgOWUruS7t+aNouaIkOWkluW4geOAgeWIl+WQjeWPmOOAjOmUgOWUruS7t++8iOWkluW4ge+8ieOAje+8ieOAguWPguaVsOeKtuaAgeeUseeItue7hOS7tuaMgeaciQovLyDlubbpmo/lt6XkvZzlrZjmoaPmjIHkuYXljJbvvJvmnKznu4Tku7blj6rotJ/otKPplb/nm7jkuI7lj5blgLzlm57kvKDjgIIKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gUHJpY2luZ0Jhcih7IGhlYWRlcnMsIHByaWNpbmcsIG9uUHJpY2luZ0NoYW5nZSwgb25DYWxjdWxhdGUgfSkgewogIGNvbnN0IG51bSA9IHsKICAgIHdpZHRoOiA2NCwgcGFkZGluZzogJzRweCA2cHgnLCBib3JkZXI6ICcxcHggc29saWQgI2M5ZDJkZScsIGJvcmRlclJhZGl1czogOCwKICB9OwogIGNvbnN0IGxhYiA9IHsgY29sb3I6ICcjNDQ0JyB9OwogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0icHJpY2luZy1iYXIiIHN0eWxlPXt7CiAgICAgIG1hcmdpbjogJzEwcHggMTRweCAwJywgcGFkZGluZzogJzEwcHggMTRweCcsIGZvbnRGYW1pbHk6ICdzYW5zLXNlcmlmJywgZm9udFNpemU6IDE0LAogICAgICBkaXNwbGF5OiAnZmxleCcsIGFsaWduSXRlbXM6ICdjZW50ZXInLCBnYXA6IDgsIGZsZXhXcmFwOiAnd3JhcCcsCiAgICAgIGJvcmRlcjogJzFweCBzb2xpZCAjZGJlMmVjJywgYm9yZGVyTGVmdDogJzRweCBzb2xpZCAjMmY2YmZmJywgYm9yZGVyUmFkaXVzOiAxMiwgYmFja2dyb3VuZDogJyNmZmYnLAogICAgICBib3hTaGFkb3c6ICcwIDFweCAzcHggcmdiYSgyMywzNCw2MiwwLjA1KScsCiAgICB9fT4KICAgICAgPGIgc3R5bGU9e3sgY29sb3I6ICcjMWY1NmQ2JyB9fT7lrprku7c8L2I+CiAgICAgIDxsYWJlbCBzdHlsZT17bGFifT7miJDmnKzku7fliJcKICAgICAgICA8c2VsZWN0CiAgICAgICAgICBjbGFzc05hbWU9InBiLWNvc3QtY29sIgogICAgICAgICAgdmFsdWU9e3ByaWNpbmcuY29zdENvbCA9PT0gbnVsbCB8fCBwcmljaW5nLmNvc3RDb2wgPT09IHVuZGVmaW5lZCA/ICcnIDogU3RyaW5nKHByaWNpbmcuY29zdENvbCl9CiAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uUHJpY2luZ0NoYW5nZSh7IGNvc3RDb2w6IGUudGFyZ2V0LnZhbHVlID09PSAnJyA/IG51bGwgOiBOdW1iZXIoZS50YXJnZXQudmFsdWUpIH0pfQogICAgICAgICAgc3R5bGU9e3sgbWFyZ2luTGVmdDogNCwgcGFkZGluZzogJzRweCA2cHgnIH19CiAgICAgICAgPgogICAgICAgICAgPG9wdGlvbiB2YWx1ZT0iIj7or7fpgInmi6k8L29wdGlvbj4KICAgICAgICAgIHtoZWFkZXJzLm1hcCgoaCkgPT4gKAogICAgICAgICAgICA8b3B0aW9uIGtleT17aC5jb2x9IHZhbHVlPXtoLmNvbH0+e2gubGFiZWx9PC9vcHRpb24+CiAgICAgICAgICApKX0KICAgICAgICA8L3NlbGVjdD4KICAgICAgPC9sYWJlbD4KICAgICAgPGxhYmVsIHN0eWxlPXtsYWJ9PuivpeWIlwogICAgICAgIDxzZWxlY3QKICAgICAgICAgIGNsYXNzTmFtZT0icGItdGF4LW1vZGUiCiAgICAgICAgICB2YWx1ZT17cHJpY2luZy50YXhJbmNsdXNpdmUgPyAnaW5jbCcgOiAnZXhjbCd9CiAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uUHJpY2luZ0NoYW5nZSh7IHRheEluY2x1c2l2ZTogZS50YXJnZXQudmFsdWUgPT09ICdpbmNsJyB9KX0KICAgICAgICAgIHN0eWxlPXt7IG1hcmdpbkxlZnQ6IDQsIHBhZGRpbmc6ICc0cHggNnB4JyB9fQogICAgICAgID4KICAgICAgICAgIDxvcHRpb24gdmFsdWU9ImV4Y2wiPuS4jeWQq+eojjwvb3B0aW9uPgogICAgICAgICAgPG9wdGlvbiB2YWx1ZT0iaW5jbCI+5ZCr56iOPC9vcHRpb24+CiAgICAgICAgPC9zZWxlY3Q+CiAgICAgIDwvbGFiZWw+CiAgICAgIHshcHJpY2luZy50YXhJbmNsdXNpdmUgJiYgKAogICAgICAgIDxsYWJlbCBzdHlsZT17bGFifT7nqI7ngrkgJQogICAgICAgICAgPGlucHV0CiAgICAgICAgICAgIGNsYXNzTmFtZT0icGItdGF4LXJhdGUiIHR5cGU9Im51bWJlciIgc3RlcD0iMC4wMSIgc3R5bGU9e3sgLi4ubnVtLCBtYXJnaW5MZWZ0OiA0IH19CiAgICAgICAgICAgIHZhbHVlPXtwcmljaW5nLnRheFJhdGVQY3R9CiAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gb25QcmljaW5nQ2hhbmdlKHsgdGF4UmF0ZVBjdDogZS50YXJnZXQudmFsdWUgfSl9CiAgICAgICAgICAvPgogICAgICAgIDwvbGFiZWw+CiAgICAgICl9CiAgICAgIDxsYWJlbCBzdHlsZT17bGFifT7liqDku7fmr5TkvosgJQogICAgICAgIDxpbnB1dAogICAgICAgICAgY2xhc3NOYW1lPSJwYi1tYXJrdXAiIHR5cGU9Im51bWJlciIgc3RlcD0iMC4wMSIgc3R5bGU9e3sgLi4ubnVtLCBtYXJnaW5MZWZ0OiA0IH19CiAgICAgICAgICB2YWx1ZT17cHJpY2luZy5tYXJrdXBQY3R9CiAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uUHJpY2luZ0NoYW5nZSh7IG1hcmt1cFBjdDogZS50YXJnZXQudmFsdWUgfSl9CiAgICAgICAgLz4KICAgICAgPC9sYWJlbD4KICAgICAgPGxhYmVsIHN0eWxlPXtsYWJ9Puavj+S7tuWbveWGhei/kOi0uQogICAgICAgIDxpbnB1dAogICAgICAgICAgY2xhc3NOYW1lPSJwYi1mcmVpZ2h0IiB0eXBlPSJudW1iZXIiIHN0ZXA9IjAuMDEiIHN0eWxlPXt7IC4uLm51bSwgbWFyZ2luTGVmdDogNCB9fQogICAgICAgICAgdmFsdWU9e3ByaWNpbmcuZnJlaWdodH0KICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gb25QcmljaW5nQ2hhbmdlKHsgZnJlaWdodDogZS50YXJnZXQudmFsdWUgfSl9CiAgICAgICAgLz4KICAgICAgPC9sYWJlbD4KICAgICAgPGxhYmVsIHN0eWxlPXtsYWJ9Puaxh+eOh++8iOmAieWhq++8iQogICAgICAgIDxpbnB1dAogICAgICAgICAgY2xhc3NOYW1lPSJwYi1meCIgdHlwZT0ibnVtYmVyIiBzdGVwPSIwLjAwMDEiIHBsYWNlaG9sZGVyPSLnqbogPSDkuI3mjaLnrpciIHN0eWxlPXt7IC4uLm51bSwgd2lkdGg6IDkyLCBtYXJnaW5MZWZ0OiA0IH19CiAgICAgICAgICB2YWx1ZT17cHJpY2luZy5meFJhdGV9CiAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uUHJpY2luZ0NoYW5nZSh7IGZ4UmF0ZTogZS50YXJnZXQudmFsdWUgfSl9CiAgICAgICAgLz4KICAgICAgPC9sYWJlbD4KICAgICAgPGJ1dHRvbgogICAgICAgIGNsYXNzTmFtZT0icGItY2FsYyIKICAgICAgICBvbkNsaWNrPXtvbkNhbGN1bGF0ZX0KICAgICAgICBzdHlsZT17ewogICAgICAgICAgYm9yZGVyOiAnMXB4IHNvbGlkICMyZjZiZmYnLCBiYWNrZ3JvdW5kOiAnIzJmNmJmZicsIGNvbG9yOiAnI2ZmZicsCiAgICAgICAgICBib3JkZXJSYWRpdXM6IDgsIHBhZGRpbmc6ICc1cHggMTRweCcsIGN1cnNvcjogJ3BvaW50ZXInLAogICAgICAgIH19CiAgICAgID7orqHnrpfplIDllK7ku7c8L2J1dHRvbj4KICAgICAgPHNwYW4gc3R5bGU9e3sgY29sb3I6ICcjNzU4MDhkJyB9fT7nu5PmnpzlhpnlhaXjgIzplIDllK7ku7fjgI3liJfvvIjmjInmiJDmnKzku7fliJfnrpfnmoTljZbku7fvvIzkuI3mmK/lt6XljoLku7fvvInvvJvmiJDmnKzkuLrnqbrnmoTooYznlZnnqbo8L3NwYW4+CiAgICA8L2Rpdj4KICApOwp9Cg==
+import React from 'react';
+
+// 定价条（SPEC 第四节第 3 项）：整表填一次的参数，一键算出每行销售价。
+// 组成：成本价列（下拉，选项是当前表的实时列头）/ 该列口径（含税/不含税）/
+// 税点 %（仅不含税时显示）/ 加价比例 % / 每件国内运费 / 汇率（选填，
+// 填了销售价换成外币、列名变「销售价（外币）」）。参数状态由父组件持有
+// 并随工作存档持久化；本组件只负责长相与取值回传。
+export default function PricingBar({ headers, pricing, onPricingChange, onCalculate }) {
+  const num = {
+    width: 64, padding: '4px 6px', border: '1px solid #c9d2de', borderRadius: 8,
+  };
+  const lab = { color: '#444' };
+  return (
+    <div className="pricing-bar" style={{
+      margin: '10px 14px 0', padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
+      display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
+      border: '1px solid #dbe2ec', borderLeft: '4px solid #2f6bff', borderRadius: 12, background: '#fff',
+      boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
+    }}>
+      <b style={{ color: '#1f56d6' }}>定价</b>
+      <label style={lab}>成本价列
+        <select
+          className="pb-cost-col"
+          value={pricing.costCol === null || pricing.costCol === undefined ? '' : String(pricing.costCol)}
+          onChange={(e) => onPricingChange({ costCol: e.target.value === '' ? null : Number(e.target.value) })}
+          style={{ marginLeft: 4, padding: '4px 6px' }}
+        >
+          <option value="">请选择</option>
+          {headers.map((h) => (
+            <option key={h.col} value={h.col}>{h.label}</option>
+          ))}
+        </select>
+      </label>
+      <label style={lab}>该列
+        <select
+          className="pb-tax-mode"
+          value={pricing.taxInclusive ? 'incl' : 'excl'}
+          onChange={(e) => onPricingChange({ taxInclusive: e.target.value === 'incl' })}
+          style={{ marginLeft: 4, padding: '4px 6px' }}
+        >
+          <option value="excl">不含税</option>
+          <option value="incl">含税</option>
+        </select>
+      </label>
+      {!pricing.taxInclusive && (
+        <label style={lab}>税点 %
+          <input
+            className="pb-tax-rate" type="number" step="0.01" style={{ ...num, marginLeft: 4 }}
+            value={pricing.taxRatePct}
+            onChange={(e) => onPricingChange({ taxRatePct: e.target.value })}
+          />
+        </label>
+      )}
+      <label style={lab}>加价比例 %
+        <input
+          className="pb-markup" type="number" step="0.01" style={{ ...num, marginLeft: 4 }}
+          value={pricing.markupPct}
+          onChange={(e) => onPricingChange({ markupPct: e.target.value })}
+        />
+      </label>
+      <label style={lab}>每件国内运费
+        <input
+          className="pb-freight" type="number" step="0.01" style={{ ...num, marginLeft: 4 }}
+          value={pricing.freight}
+          onChange={(e) => onPricingChange({ freight: e.target.value })}
+        />
+      </label>
+      <label style={lab}>汇率（选填）
+        <input
+          className="pb-fx" type="number" step="0.0001" placeholder="空 = 不换算" style={{ ...num, width: 92, marginLeft: 4 }}
+          value={pricing.fxRate}
+          onChange={(e) => onPricingChange({ fxRate: e.target.value })}
+        />
+      </label>
+      <button
+        className="pb-calc"
+        onClick={onCalculate}
+        style={{
+          border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
+          borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
+        }}
+      >计算销售价</button>
+      <span style={{ color: '#75808d' }}>结果写入「销售价」列（按成本价列算的卖价，不是工厂价）；成本为空的行留空</span>
+    </div>
+  );
+}

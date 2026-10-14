@@ -1,1 +1,150 @@
-aW1wb3J0IFJlYWN0LCB7IHVzZVJlZiwgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7CmltcG9ydCB7CiAgY29sbGVjdEJhY2t1cEJ5dGVzLCByZWFkQXJjaGl2ZUpzb24sIHBhcnNlQW5kVmFsaWRhdGVCYWNrdXAsIGFwcGx5QmFja3VwLAp9IGZyb20gJy4vYmFja3VwLmpzJzsKCi8vIOaVsOaNruWkh+S7veS4juaBouWkje+8iFNQRUMg56ys5Zub6IqC56ysIDEyIOmhue+8ie+8muS4jueOr+Wig+iHquajgOWQjOWxgueahOaVsOaNruWMuuOAggovLyDlrozmlbTlpIfku70gPSDkuIDku70gemlw77yI5riF5Y2VICsg5Lia5Yqh5a2Y5qGjICsg5paH5Lu25LuT5bqT55qE5YWo6YOo5paH5Lu277yM6YCQ5Lu2Ci8vIOW4puWkp+Wwj+S4juagoemqjOWAvO+8ie+8m+aBouWkjeWFiOWFqOmHj+agoemqjOOAgeWFqOi/h+aJjeWKqOW9k+WJjeaVsOaNruOAggovLyDovbvph4/pgInpobnlj6rlr7zkuJrliqHlrZjmoaMgSlNPTu+8iOS4jeWQq+WOn+aWh+S7ti/lm77niYfvvIzmjaLmnLrlmajmgaLlpI3kuI3lh7rlm77niYfvvInjgIIKCmZ1bmN0aW9uIGRvd25sb2FkQnl0ZXMoYnl0ZXMsIGZpbGVOYW1lLCBtaW1lKSB7CiAgY29uc3QgYmxvYiA9IG5ldyBCbG9iKFtieXRlc10sIHsgdHlwZTogbWltZSB9KTsKICBjb25zdCB1cmwgPSBVUkwuY3JlYXRlT2JqZWN0VVJMKGJsb2IpOwogIGNvbnN0IGEgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdhJyk7CiAgYS5ocmVmID0gdXJsOwogIGEuZG93bmxvYWQgPSBmaWxlTmFtZTsKICBkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGEpOwogIGEuY2xpY2soKTsKICBkb2N1bWVudC5ib2R5LnJlbW92ZUNoaWxkKGEpOwogIHNldFRpbWVvdXQoKCkgPT4gVVJMLnJldm9rZU9iamVjdFVSTCh1cmwpLCA0MDAwKTsKfQoKZnVuY3Rpb24gZm10TUIoYnl0ZXMpIHsKICByZXR1cm4gKGJ5dGVzIC8gMTAyNCAvIDEwMjQpLnRvRml4ZWQoMSkgKyAnIE1CJzsKfQpmdW5jdGlvbiBmbXRUaW1lKGlzbykgewogIGlmICghaXNvKSByZXR1cm4gJ+acquefpeaXtumXtCc7CiAgY29uc3QgZCA9IG5ldyBEYXRlKGlzbyk7CiAgcmV0dXJuIE51bWJlci5pc05hTihkLmdldFRpbWUoKSkgPyBpc28gOiBkLnRvTG9jYWxlU3RyaW5nKCd6aC1DTicsIHsgaG91cjEyOiBmYWxzZSB9KTsKfQoKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gRGF0YVBhbmVsKHsgb25DbG9zZSB9KSB7CiAgY29uc3QgW3N0YXR1cywgc2V0U3RhdHVzXSA9IHVzZVN0YXRlKCcnKTsKICBjb25zdCBbYnVzeSwgc2V0QnVzeV0gPSB1c2VTdGF0ZShmYWxzZSk7CiAgY29uc3QgZmlsZVJlZiA9IHVzZVJlZihudWxsKTsKCiAgYXN5bmMgZnVuY3Rpb24gaGFuZGxlRXhwb3J0RnVsbCgpIHsKICAgIGlmIChidXN5KSByZXR1cm47CiAgICBzZXRCdXN5KHRydWUpOwogICAgc2V0U3RhdHVzKCfmraPlnKjmiZPljIXvvIjljp/mlofku7blkozlm77niYfpg73miZPov5vljrvvvIzlj6/og73opoHlh6Dnp5LvvInigKYnKTsKICAgIHRyeSB7CiAgICAgIGNvbnN0IHJlcyA9IGF3YWl0IGNvbGxlY3RCYWNrdXBCeXRlcygpOwogICAgICBpZiAoIXJlcy5vaykgewogICAgICAgIHNldFN0YXR1cygn5rKh55Sf5oiQ5aSH5Lu977yaJyArIHJlcy5lcnJvcik7CiAgICAgICAgcmV0dXJuOwogICAgICB9CiAgICAgIC8vIOmqjOaUti/osIPor5XpkqnlrZDvvIjkuI4gX19sYXN0RXhwb3J0IOWQjOmjjuagvO+8ie+8muacgOi/keS4gOasoeWkh+S7veeahOWtl+iKgueVmeS4gOS7vQogICAgICB3aW5kb3cuX19sYXN0QmFja3VwID0gewogICAgICAgIGZpbGVOYW1lOiByZXMuZmlsZU5hbWUsIHNpemU6IHJlcy5ieXRlcy5sZW5ndGgsCiAgICAgICAgYnl0ZXM6IHJlcy5ieXRlcywgbWFuaWZlc3Q6IHJlcy5tYW5pZmVzdCwgYXQ6IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSwKICAgICAgfTsKICAgICAgZG93bmxvYWRCeXRlcyhyZXMuYnl0ZXMsIHJlcy5maWxlTmFtZSwgJ2FwcGxpY2F0aW9uL3ppcCcpOwogICAgICBzZXRTdGF0dXMoJ+WujOaVtOWkh+S7veW3sueUn+aIkO+8micgKyByZXMuZmlsZU5hbWUgKyAn77yI57qmICcgKyBmbXRNQihyZXMuYnl0ZXMubGVuZ3RoKSArCiAgICAgICAgJ++8jOWQqyAnICsgcmVzLm1hbmlmZXN0LmNvdW50cy5maWxlcyArICcg5Liq5paH5Lu244CBJyArIHJlcy5tYW5pZmVzdC5jb3VudHMub3JkZXJzICsKICAgICAgICAnIOS4quiuouWNle+8ieOAguaKiui/meS4quaWh+S7tuWtmOWlve+8jOaNoueUteiEkS/mtY/op4jlmajlh7rpl67popjml7bnlKjlroPmgaLlpI3jgIInKTsKICAgIH0gY2F0Y2ggKGUpIHsKICAgICAgc2V0U3RhdHVzKCfmsqHnlJ/miJDlpIfku73vvJrmiZPljIXml7blh7rplJnvvIgnICsgKGUgJiYgZS5tZXNzYWdlIHx8IGUpICsgJ++8iScpOwogICAgfSBmaW5hbGx5IHsKICAgICAgc2V0QnVzeShmYWxzZSk7CiAgICB9CiAgfQoKICBmdW5jdGlvbiBoYW5kbGVFeHBvcnRKc29uKCkgewogICAgY29uc3QgcmF3ID0gcmVhZEFyY2hpdmVKc29uKCk7CiAgICBpZiAoIXJhdykgewogICAgICBzZXRTdGF0dXMoJ+i/mOayoeacieS/neWtmOi/h+W3peS9nO+8jOeOsOWcqOayoeacieWPr+WvvOWHuueahOaVsOaNricpOwogICAgICByZXR1cm47CiAgICB9CiAgICBkb3dubG9hZEJ5dGVzKG5ldyBUZXh0RW5jb2RlcigpLmVuY29kZShyYXcpLCAn5rG96YWNRVJQ5pWw5o2uLmpzb24nLCAnYXBwbGljYXRpb24vanNvbicpOwogICAgc2V0U3RhdHVzKCfmlbDmja4gSlNPTiDlt7Llr7zlh7rvvIjlj6rmnInkuJrliqHmlbDmja7vvIzkuI3lkKvljp/mlofku7blkozlm77niYflrZfoioLvvJvopoHlrozmlbTlpIfku73or7fnlKjlt6bovrnpgqPkuKrvvIknKTsKICB9CgogIGFzeW5jIGZ1bmN0aW9uIGhhbmRsZVJlc3RvcmVGaWxlKGUpIHsKICAgIGNvbnN0IGZpbGUgPSBlLnRhcmdldC5maWxlcyAmJiBlLnRhcmdldC5maWxlc1swXTsKICAgIGUudGFyZ2V0LnZhbHVlID0gJyc7IC8vIOWFgeiuuOmHjeWkjemAieWQjOS4gOaWh+S7tgogICAgaWYgKCFmaWxlIHx8IGJ1c3kpIHJldHVybjsKICAgIHNldEJ1c3kodHJ1ZSk7CiAgICBzZXRTdGF0dXMoJ+ato+WcqOagoemqjOi/meS7veWkh+S7veKApu+8iOWPquagoemqjO+8jOWFiOS4jeWKqOS9oOeOsOWcqOeahOaVsOaNru+8iScpOwogICAgdHJ5IHsKICAgICAgY29uc3QgYnl0ZXMgPSBuZXcgVWludDhBcnJheShhd2FpdCBmaWxlLmFycmF5QnVmZmVyKCkpOwogICAgICBjb25zdCB2ID0gYXdhaXQgcGFyc2VBbmRWYWxpZGF0ZUJhY2t1cChieXRlcyk7CiAgICAgIGlmICghdi5vaykgewogICAgICAgIHNldFN0YXR1cygn6L+Z5Lu95aSH5Lu95rKh6YCa6L+H5qCh6aqM77yM5bey5ouS57ud5oGi5aSN77yM5L2g546w5Zyo55qE5pWw5o2u5rKh5pyJ5Yqo44CC5Y6f5Zug77yaJyArCiAgICAgICAgICB2LmVycm9ycy5qb2luKCfvvJsnKSk7CiAgICAgICAgcmV0dXJuOwogICAgICB9CiAgICAgIGNvbnN0IGMgPSB2Lm1hbmlmZXN0LmNvdW50cyB8fCB7fTsKICAgICAgaWYgKCF3aW5kb3cuY29uZmlybSgKICAgICAgICAn6L+Z5Lu95aSH5Lu95pivICcgKyBmbXRUaW1lKHYubWFuaWZlc3QuZXhwb3J0ZWRBdCkgKyAnIOWvvOWHuueahO+8jOmHjOmdouaciSAnICsKICAgICAgICAoYy5vcmRlcnMgfHwgMCkgKyAnIOS4quiuouWNleOAgScgKyAoYy5maWxlcyB8fCAwKSArICcg5Liq5paH5Lu244CCXG4nICsKICAgICAgICAn5oGi5aSN5Lya5oqK5b2T5YmN5pWw5o2u5YWo6YOo5o2i5oiQ5aSH5Lu96YeM55qE5YaF5a6577yM56Gu5a6a5oGi5aSN5ZCX77yfJykpIHsKICAgICAgICBzZXRTdGF0dXMoJ+W3suWPlua2iOaBouWkje+8jOW9k+WJjeaVsOaNruayoeacieWKqCcpOwogICAgICAgIHJldHVybjsKICAgICAgfQogICAgICBzZXRTdGF0dXMoJ+agoemqjOmAmui/h++8jOato+WcqOaBouWkjeKApicpOwogICAgICBjb25zdCBhcHBsaWVkID0gYXdhaXQgYXBwbHlCYWNrdXAodik7CiAgICAgIGlmICghYXBwbGllZC5vaykgewogICAgICAgIHNldFN0YXR1cygn5oGi5aSN5rKh5a6M5oiQ77yaJyArIGFwcGxpZWQuZXJyb3IpOwogICAgICAgIHJldHVybjsKICAgICAgfQogICAgICBzZXRTdGF0dXMoJ+aBouWkjeWujOaIkO+8jOato+WcqOmHjeaWsOaJk+W8gOKApicpOwogICAgICBsb2NhdGlvbi5yZWxvYWQoKTsKICAgIH0gY2F0Y2ggKGVycikgewogICAgICBzZXRTdGF0dXMoJ+aBouWkjeayoeWujOaIkO+8micgKyAoZXJyICYmIGVyci5tZXNzYWdlIHx8IGVycikpOwogICAgfSBmaW5hbGx5IHsKICAgICAgc2V0QnVzeShmYWxzZSk7CiAgICB9CiAgfQoKICBjb25zdCBidG4gPSB7CiAgICBib3JkZXI6ICcxcHggc29saWQgIzJmNmJmZicsIGNvbG9yOiAnIzJmNmJmZicsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzZweCAxNHB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgfTsKICByZXR1cm4gKAogICAgPGRpdiBpZD0iZGF0YS1wYW5lbCIgc3R5bGU9e3sKICAgICAgbWFyZ2luOiAnMTRweCAxNnB4JywgYm9yZGVyOiAnMXB4IHNvbGlkICNkYmUyZWMnLCBib3JkZXJSYWRpdXM6IDEyLAogICAgICBiYWNrZ3JvdW5kOiAnI2ZmZicsIHBhZGRpbmc6ICcxNnB4IDIwcHgnLAogICAgICBib3hTaGFkb3c6ICcwIDJweCA2cHggcmdiYSgyMywzNCw2MiwwLjA1KSwgMCAxMHB4IDI0cHggcmdiYSgyMywzNCw2MiwwLjA2KScsCiAgICAgIGZvbnRGYW1pbHk6ICdzYW5zLXNlcmlmJywgZm9udFNpemU6IDE0LCBsaW5lSGVpZ2h0OiAxLjgsCiAgICB9fT4KICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGFsaWduSXRlbXM6ICdjZW50ZXInLCBnYXA6IDEwLCBmbGV4V3JhcDogJ3dyYXAnIH19PgogICAgICAgIDxiIGNsYXNzTmFtZT0ic2VjLXRpdGxlIiBzdHlsZT17eyBmb250U2l6ZTogMTcgfX0+5pWw5o2u5aSH5Lu95LiO5oGi5aSNPC9iPgogICAgICAgIDxzcGFuIHN0eWxlPXt7IGNvbG9yOiAnIzY2NicgfX0+5a6M5pW05aSH5Lu95ZCr5Y6f5paH5Lu25ZKM5Zu+54mH77yM5oGi5aSN5YmN6YCQ5Lu25qCh6aqMPC9zcGFuPgogICAgICAgIDxidXR0b24gb25DbGljaz17b25DbG9zZX0gc3R5bGU9e3sKICAgICAgICAgIGJvcmRlcjogJzFweCBzb2xpZCAjYzlkMmRlJywgY29sb3I6ICcjMzc0MDRhJywgYmFja2dyb3VuZDogJyNmZmYnLAogICAgICAgICAgYm9yZGVyUmFkaXVzOiA4LCBwYWRkaW5nOiAnNHB4IDEycHgnLCBjdXJzb3I6ICdwb2ludGVyJywgbWFyZ2luTGVmdDogJ2F1dG8nLAogICAgICAgIH19PuWFs+mXrTwvYnV0dG9uPgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGdhcDogOCwgZmxleFdyYXA6ICd3cmFwJywgbWFyZ2luVG9wOiA2IH19PgogICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJiYWNrdXAtZXhwb3J0LWZ1bGwiIG9uQ2xpY2s9e2hhbmRsZUV4cG9ydEZ1bGx9IGRpc2FibGVkPXtidXN5fSBzdHlsZT17ewogICAgICAgICAgLi4uYnRuLCBiYWNrZ3JvdW5kOiAnIzJmNmJmZicsIGNvbG9yOiAnI2ZmZicsCiAgICAgICAgfX0+5a+85Ye65a6M5pW05aSH5Lu977yILnppcO+8iTwvYnV0dG9uPgogICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJiYWNrdXAtZXhwb3J0LWpzb24iIG9uQ2xpY2s9e2hhbmRsZUV4cG9ydEpzb259IGRpc2FibGVkPXtidXN5fSBzdHlsZT17YnRufT4KICAgICAgICAgIOWvvOWHuuaVsOaNriBKU09O77yI6L276YeP77yM5LiN5ZCr5Zu+54mH77yJCiAgICAgICAgPC9idXR0b24+CiAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT0iYmFja3VwLXJlc3RvcmUiIHN0eWxlPXt7IC4uLmJ0biwgYm9yZGVyQ29sb3I6ICcjYjQ1MzA5JywgY29sb3I6ICcjYjQ1MzA5JyB9fT4KICAgICAgICAgIOaBouWkjeWkh+S7ve+8iC56aXDvvInigKYKICAgICAgICAgIDxpbnB1dAogICAgICAgICAgICByZWY9e2ZpbGVSZWZ9IGNsYXNzTmFtZT0iYmFja3VwLXJlc3RvcmUtaW5wdXQiIHR5cGU9ImZpbGUiIGFjY2VwdD0iLnppcCIKICAgICAgICAgICAgb25DaGFuZ2U9e2hhbmRsZVJlc3RvcmVGaWxlfSBzdHlsZT17eyBkaXNwbGF5OiAnbm9uZScgfX0KICAgICAgICAgIC8+CiAgICAgICAgPC9sYWJlbD4KICAgICAgPC9kaXY+CiAgICAgIDxkaXYgc3R5bGU9e3sgY29sb3I6ICcjNjY2JywgZm9udFNpemU6IDEzIH19PgogICAgICAgIOazqOaEj++8mkFJIOaOpeWPo+mSpeWMmeS4jeWcqOWkh+S7vemHjO+8iOWug+WNleeLrOWtmOaUvu+8ie+8jOaBouWkjeWQjumcgOimgemHjeaWsOWhq+S4gOasoeOAggogICAgICA8L2Rpdj4KICAgICAge3N0YXR1cyAmJiA8ZGl2IGNsYXNzTmFtZT0iYmFja3VwLXN0YXR1cyIgc3R5bGU9e3sgY29sb3I6ICcjMzMzJyB9fT57c3RhdHVzfTwvZGl2Pn0KICAgIDwvZGl2PgogICk7Cn0K
+import React, { useRef, useState } from 'react';
+import {
+  collectBackupBytes, readArchiveJson, parseAndValidateBackup, applyBackup,
+} from './backup.js';
+
+// 数据备份与恢复（SPEC 第四节第 12 项）：与环境自检同层的数据区。
+// 完整备份 = 一份 zip（清单 + 业务存档 + 文件仓库的全部文件，逐件
+// 带大小与校验值）；恢复先全量校验、全过才动当前数据。
+// 轻量选项只导业务存档 JSON（不含原文件/图片，换机器恢复不出图片）。
+
+function downloadBytes(bytes, fileName, mime) {
+  const blob = new Blob([bytes], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+}
+
+function fmtMB(bytes) {
+  return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+}
+function fmtTime(iso) {
+  if (!iso) return '未知时间';
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? iso : d.toLocaleString('zh-CN', { hour12: false });
+}
+
+export default function DataPanel({ onClose }) {
+  const [status, setStatus] = useState('');
+  const [busy, setBusy] = useState(false);
+  const fileRef = useRef(null);
+
+  async function handleExportFull() {
+    if (busy) return;
+    setBusy(true);
+    setStatus('正在打包（原文件和图片都打进去，可能要几秒）…');
+    try {
+      const res = await collectBackupBytes();
+      if (!res.ok) {
+        setStatus('没生成备份：' + res.error);
+        return;
+      }
+      // 验收/调试钩子（与 __lastExport 同风格）：最近一次备份的字节留一份
+      window.__lastBackup = {
+        fileName: res.fileName, size: res.bytes.length,
+        bytes: res.bytes, manifest: res.manifest, at: new Date().toISOString(),
+      };
+      downloadBytes(res.bytes, res.fileName, 'application/zip');
+      setStatus('完整备份已生成：' + res.fileName + '（约 ' + fmtMB(res.bytes.length) +
+        '，含 ' + res.manifest.counts.files + ' 个文件、' + res.manifest.counts.orders +
+        ' 个订单）。把这个文件存好，换电脑/浏览器出问题时用它恢复。');
+    } catch (e) {
+      setStatus('没生成备份：打包时出错（' + (e && e.message || e) + '）');
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function handleExportJson() {
+    const raw = readArchiveJson();
+    if (!raw) {
+      setStatus('还没有保存过工作，现在没有可导出的数据');
+      return;
+    }
+    downloadBytes(new TextEncoder().encode(raw), '汽配ERP数据.json', 'application/json');
+    setStatus('数据 JSON 已导出（只有业务数据，不含原文件和图片字节；要完整备份请用左边那个）');
+  }
+
+  async function handleRestoreFile(e) {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = ''; // 允许重复选同一文件
+    if (!file || busy) return;
+    setBusy(true);
+    setStatus('正在校验这份备份…（只校验，先不动你现在的数据）');
+    try {
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      const v = await parseAndValidateBackup(bytes);
+      if (!v.ok) {
+        setStatus('这份备份没通过校验，已拒绝恢复，你现在的数据没有动。原因：' +
+          v.errors.join('；'));
+        return;
+      }
+      const c = v.manifest.counts || {};
+      if (!window.confirm(
+        '这份备份是 ' + fmtTime(v.manifest.exportedAt) + ' 导出的，里面有 ' +
+        (c.orders || 0) + ' 个订单、' + (c.files || 0) + ' 个文件。\n' +
+        '恢复会把当前数据全部换成备份里的内容，确定恢复吗？')) {
+        setStatus('已取消恢复，当前数据没有动');
+        return;
+      }
+      setStatus('校验通过，正在恢复…');
+      const applied = await applyBackup(v);
+      if (!applied.ok) {
+        setStatus('恢复没完成：' + applied.error);
+        return;
+      }
+      setStatus('恢复完成，正在重新打开…');
+      location.reload();
+    } catch (err) {
+      setStatus('恢复没完成：' + (err && err.message || err));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const btn = {
+    border: '1px solid #2f6bff', color: '#2f6bff', background: '#fff',
+    borderRadius: 8, padding: '6px 14px', cursor: 'pointer',
+  };
+  return (
+    <div id="data-panel" style={{
+      margin: '14px 16px', border: '1px solid #dbe2ec', borderRadius: 12,
+      background: '#fff', padding: '16px 20px',
+      boxShadow: '0 2px 6px rgba(23,34,62,0.05), 0 10px 24px rgba(23,34,62,0.06)',
+      fontFamily: 'sans-serif', fontSize: 14, lineHeight: 1.8,
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+        <b className="sec-title" style={{ fontSize: 17 }}>数据备份与恢复</b>
+        <span style={{ color: '#666' }}>完整备份含原文件和图片，恢复前逐件校验</span>
+        <button onClick={onClose} style={{
+          border: '1px solid #c9d2de', color: '#37404a', background: '#fff',
+          borderRadius: 8, padding: '4px 12px', cursor: 'pointer', marginLeft: 'auto',
+        }}>关闭</button>
+      </div>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 6 }}>
+        <button className="backup-export-full" onClick={handleExportFull} disabled={busy} style={{
+          ...btn, background: '#2f6bff', color: '#fff',
+        }}>导出完整备份（.zip）</button>
+        <button className="backup-export-json" onClick={handleExportJson} disabled={busy} style={btn}>
+          导出数据 JSON（轻量，不含图片）
+        </button>
+        <label className="backup-restore" style={{ ...btn, borderColor: '#b45309', color: '#b45309' }}>
+          恢复备份（.zip）…
+          <input
+            ref={fileRef} className="backup-restore-input" type="file" accept=".zip"
+            onChange={handleRestoreFile} style={{ display: 'none' }}
+          />
+        </label>
+      </div>
+      <div style={{ color: '#666', fontSize: 13 }}>
+        注意：AI 接口钥匙不在备份里（它单独存放），恢复后需要重新填一次。
+      </div>
+      {status && <div className="backup-status" style={{ color: '#333' }}>{status}</div>}
+    </div>
+  );
+}

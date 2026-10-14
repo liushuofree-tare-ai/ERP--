@@ -1,1 +1,80 @@
-Lyog5YyFIDE0IOWNleWFg+a1i+ivle+8muavlOS7t+OAjOS4i+S4gOatpeadoeOAjeeahOeKtuaAgeaOqOWvvO+8iGd1aWRhbmNlLmpzIOeahAogKiBjb21wYXJlTmV4dFN0ZXBPZu+8ieOAgua1j+iniOWZqOmHjOeahOWujOaVtOmTvui3r++8iOadoeWHuueOsCDihpIg54K55Y6755Sf5oiQIOKGkgogKiDmnaHlj5jljrvovazorqLljZUg4oaSIOW7uuWNleaIkOWKn+aPkOekuiDihpIg5p+l55yL6L+Z5byg6K6i5Y2V77yJ55SxCiAqIHByb2JlL2NkcC1wa2cxNC1uZXh0c3RlcC5tanMg6aqM44CCCiAqIOaWreiogOmjjuagvOS4juaXouacieWll+S7tuS4gOiHtO+8muWksei0peWNs+aKm+mUme+8iOmdnumbtumAgOWHuu+8ieOAgiAqLwppbXBvcnQgeyBjb21wYXJlTmV4dFN0ZXBPZiB9IGZyb20gJy4uL3NyYy9ndWlkYW5jZS5qcyc7CgpsZXQgbiA9IDA7CmZ1bmN0aW9uIG9rKGNvbmQsIG5hbWUpIHsKICBuICs9IDE7CiAgaWYgKCFjb25kKSB0aHJvdyBuZXcgRXJyb3IoJ0ZBSUw6ICcgKyBuYW1lKTsKICBjb25zb2xlLmxvZygnICDinJMnLCBuYW1lKTsKfQpmdW5jdGlvbiBlcShhLCBiLCBuYW1lKSB7CiAgbiArPSAxOwogIGNvbnN0IHggPSBKU09OLnN0cmluZ2lmeShhKSwgeSA9IEpTT04uc3RyaW5naWZ5KGIpOwogIGlmICh4ICE9PSB5KSB0aHJvdyBuZXcgRXJyb3IoJ0ZBSUw6ICcgKyBuYW1lICsgJ1xuICBnb3Q6ICcgKyB4ICsgJ1xuICBleHA6ICcgKyB5KTsKICBjb25zb2xlLmxvZygnICDinJMnLCBuYW1lKTsKfQoKLyogPT09PT09PT09PT09PT09PT0g5q+U5Lu35LiL5LiA5q2l77yIY29tcGFyZU5leHRTdGVwT2bvvIkgPT09PT09PT09PT09PT09PT0gKi8KY29uc29sZS5sb2coJz09IOavlOS7t+S4i+S4gOatpeadoeeKtuaAgScpOwpjb25zdCBiYXNlID0gewogIGd1aWRhbmNlU3RhdGU6ICdyZWFkeScsIHRvdGFsUm93czogNSwgY2hvc2VuQ291bnQ6IDAsCiAgcXVvdGVkQ291bnQ6IDIsIGNob3NlblF1b3RlZENvdW50OiAwLCB1bnF1b3RlZENvdW50OiAzLAogIGZpbmFsQ29sdW1uR2VuZXJhdGVkOiBmYWxzZSwKfTsKewogIC8vIOW8leWvvOWdl+WcqOWcuuaXtuS4jeWPoOWKoO+8iOayoeaKpeS7t+WNlSAvIOayoeagh+S7t+WIl+eUseWMhSAxMyDnmoTlnZfotJ/otKPvvIkKICBlcShjb21wYXJlTmV4dFN0ZXBPZih7IC4uLmJhc2UsIGd1aWRhbmNlU3RhdGU6ICduby1xdW90ZXMnLCBjaG9zZW5Db3VudDogMiB9KSwKICAgIG51bGwsICduby1xdW90ZXMg5byV5a+85Zyo5Zy6IOKGkiDkuI3lh7rkuIvkuIDmraXmnaEnKTsKICBlcShjb21wYXJlTmV4dFN0ZXBPZih7IC4uLmJhc2UsIGd1aWRhbmNlU3RhdGU6ICd1bm1hcmtlZCcsIGNob3NlbkNvdW50OiAyIH0pLAogICAgbnVsbCwgJ3VubWFya2VkIOW8leWvvOWcqOWcuiDihpIg5LiN5Ye65LiL5LiA5q2l5p2hJyk7CiAgLy8g5rKh5pyJ5pWw5o2u6KGM77ya6L+e6KGo6YO95piv56m655qE77yM5rKh5pyJ5LiL5LiA5q2lCiAgZXEoY29tcGFyZU5leHRTdGVwT2YoeyAuLi5iYXNlLCB0b3RhbFJvd3M6IDAsIGNob3NlbkNvdW50OiAyIH0pLAogICAgbnVsbCwgJzAg6KGMIOKGkiDkuI3lh7rkuIvkuIDmraXmnaEnKTsKICBlcShjb21wYXJlTmV4dFN0ZXBPZigpLCBudWxsLCAn5peg5YWl5Y+CIOKGkiBudWxs77yI5LiN54K477yJJyk7CiAgLy8g6L+Y5rKh5a6a5Y6C77ya5LiA6KGM5pON5L2c5o+Q56S677yIcGFydGlhbCDlvJXlr7zlnKjlnLrkuZ/nhaflh7rvvIznrqHnmoTmmK/lj6bkuIDku7bkuovvvIkKICBlcShjb21wYXJlTmV4dFN0ZXBPZihiYXNlKSwgeyBraW5kOiAnaGludCcsIGNob3NlbkNvdW50OiAwLCB1bnF1b3RlZENvdW50OiAzIH0sCiAgICAn5rKh5a6a5Y6CIOKGkiBoaW50Jyk7CiAgZXEoY29tcGFyZU5leHRTdGVwT2YoeyAuLi5iYXNlLCBndWlkYW5jZVN0YXRlOiAncGFydGlhbCcgfSkua2luZCwgJ2hpbnQnLAogICAgJ3BhcnRpYWwg5byV5a+8ICsg5rKh5a6a5Y6CIOKGkiBoaW50Jyk7CiAgLy8g5a6a5LqG5Y6C44CB5pyA57uI5oql5Lu35rKh55Sf5oiQIOKGkiDljrvnlJ/miJDvvIjml6Dku7fooYzmlbDluKblh7rnu5npg6jliIbopobnm5bmj5DnpLrvvIkKICBlcShjb21wYXJlTmV4dFN0ZXBPZih7IC4uLmJhc2UsIGNob3NlbkNvdW50OiAyLCBjaG9zZW5RdW90ZWRDb3VudDogMiB9KSwKICAgIHsga2luZDogJ2dlbmVyYXRlJywgY2hvc2VuQ291bnQ6IDIsIHVucXVvdGVkQ291bnQ6IDMgfSwKICAgICflrprljoIgMiDooYzjgIHml6DmnIDnu4jmiqXku7fliJcg4oaSIGdlbmVyYXRl77yM5bimIHVucXVvdGVkQ291bnQ9MycpOwogIGVxKGNvbXBhcmVOZXh0U3RlcE9mKHsgLi4uYmFzZSwgZ3VpZGFuY2VTdGF0ZTogJ3BhcnRpYWwnLCBjaG9zZW5Db3VudDogMSwgY2hvc2VuUXVvdGVkQ291bnQ6IDEgfSkua2luZCwKICAgICdnZW5lcmF0ZScsICdwYXJ0aWFsIOW8leWvvCArIOWumuS6huWOgiDihpIg5LuN5Ye6IGdlbmVyYXRlIOadoScpOwogIC8vIOacgOe7iOaKpeS7t+acieS6huOAgei/mOacieacieS7t+ihjOayoeWumiDihpIg5Y676L2s6K6i5Y2VCiAgZXEoY29tcGFyZU5leHRTdGVwT2YoewogICAgLi4uYmFzZSwgY2hvc2VuQ291bnQ6IDIsIGNob3NlblF1b3RlZENvdW50OiAyLCBxdW90ZWRDb3VudDogNCwKICAgIHVucXVvdGVkQ291bnQ6IDEsIGZpbmFsQ29sdW1uR2VuZXJhdGVkOiB0cnVlLAogIH0pLCB7IGtpbmQ6ICdjb252ZXJ0JywgY2hvc2VuQ291bnQ6IDIsIHVucXVvdGVkQ291bnQ6IDEgfSwKICAgICfmnInmnIDnu4jmiqXku7fjgIHlj6rlrprkuobkuIDpg6jliIbmnInku7fooYwg4oaSIGNvbnZlcnQnKTsKICAvLyDmnInmiqXku7fnmoTooYzlhajlrprlrowgKyDmnIDnu4jmiqXku7flt7LmnIkg4oaSIGNvbnZlcnQtYWxsCiAgZXEoY29tcGFyZU5leHRTdGVwT2YoewogICAgLi4uYmFzZSwgY2hvc2VuQ291bnQ6IDIsIGNob3NlblF1b3RlZENvdW50OiAyLCBxdW90ZWRDb3VudDogMiwKICAgIHVucXVvdGVkQ291bnQ6IDMsIGZpbmFsQ29sdW1uR2VuZXJhdGVkOiB0cnVlLAogIH0pLmtpbmQsICdjb252ZXJ0LWFsbCcsICfmnInku7fooYzlhajlrprlrowgKyDmnInmnIDnu4jmiqXku7cg4oaSIGNvbnZlcnQtYWxsJyk7CiAgLy8g5YWo6YOo6KGM6YO95pyJ5Lu35LiU5YWo5a6a5a6M44CB5peg5peg5Lu36KGMCiAgZXEoY29tcGFyZU5leHRTdGVwT2YoewogICAgZ3VpZGFuY2VTdGF0ZTogJ3JlYWR5JywgdG90YWxSb3dzOiA1LCBjaG9zZW5Db3VudDogNSwgcXVvdGVkQ291bnQ6IDUsCiAgICBjaG9zZW5RdW90ZWRDb3VudDogNSwgdW5xdW90ZWRDb3VudDogMCwgZmluYWxDb2x1bW5HZW5lcmF0ZWQ6IHRydWUsCiAgfSksIHsga2luZDogJ2NvbnZlcnQtYWxsJywgY2hvc2VuQ291bnQ6IDUsIHVucXVvdGVkQ291bnQ6IDAgfSwKICAgICflhajooYzmnInku7flhajlrprlrowg4oaSIGNvbnZlcnQtYWxs77yMdW5xdW90ZWRDb3VudD0wJyk7CiAgLy8g5a6a5Y6C5pWw5q+U5pyJ5Lu36KGM5aSa77yI5Y6G5Y+y5a6a5Y6C55qE5oql5Lu36KKr5Yig77yJ5LiN6K+v5oqlIGNvbnZlcnQtYWxsCiAgZXEoY29tcGFyZU5leHRTdGVwT2YoewogICAgLi4uYmFzZSwgY2hvc2VuQ291bnQ6IDQsIGNob3NlblF1b3RlZENvdW50OiAxLCBxdW90ZWRDb3VudDogMiwKICAgIGZpbmFsQ29sdW1uR2VuZXJhdGVkOiB0cnVlLAogIH0pLmtpbmQsICdjb252ZXJ0JywgJ2Nob3NlblF1b3RlZENvdW50IDwgcXVvdGVkQ291bnQg4oaSIOS7jeaYryBjb252ZXJ0Jyk7CiAgLy8g5pyJ5a6a5Y6C5L2G5LiA6KGM5pyJ5Lu36YO95rKh5pyJ77yI5p6B56uv5Y6G5Y+y5pWw5o2u77yJ77ya5LiN566XIGNvbnZlcnQtYWxsCiAgZXEoY29tcGFyZU5leHRTdGVwT2YoewogICAgLi4uYmFzZSwgY2hvc2VuQ291bnQ6IDEsIGNob3NlblF1b3RlZENvdW50OiAwLCBxdW90ZWRDb3VudDogMCwKICAgIHVucXVvdGVkQ291bnQ6IDUsIGZpbmFsQ29sdW1uR2VuZXJhdGVkOiB0cnVlLAogIH0pLmtpbmQsICdjb252ZXJ0JywgJ3F1b3RlZENvdW50PTAg4oaSIGNvbnZlcnTvvIjkuI3or6/miqXlhajlrprlrozvvIknKTsKICBvayhjb21wYXJlTmV4dFN0ZXBPZih7IC4uLmJhc2UsIGNob3NlbkNvdW50OiAxLCBjaG9zZW5RdW90ZWRDb3VudDogMSB9KS5jaG9zZW5Db3VudCA9PT0gMSwKICAgICdnZW5lcmF0ZSDluKYgY2hvc2VuQ291bnQnKTsKfQoKY29uc29sZS5sb2coYFxu5YyFIDE0IOWNleWFg+a1i+ivle+8mlBBU1MgJHtufSAvIEZBSUwgMGApOwo=
+/* 包 14 单元测试：比价「下一步条」的状态推导（guidance.js 的
+ * compareNextStepOf）。浏览器里的完整链路（条出现 → 点去生成 →
+ * 条变去转订单 → 建单成功提示 → 查看这张订单）由
+ * probe/cdp-pkg14-nextstep.mjs 验。
+ * 断言风格与既有套件一致：失败即抛错（非零退出）。 */
+import { compareNextStepOf } from '../src/guidance.js';
+
+let n = 0;
+function ok(cond, name) {
+  n += 1;
+  if (!cond) throw new Error('FAIL: ' + name);
+  console.log('  ✓', name);
+}
+function eq(a, b, name) {
+  n += 1;
+  const x = JSON.stringify(a), y = JSON.stringify(b);
+  if (x !== y) throw new Error('FAIL: ' + name + '\n  got: ' + x + '\n  exp: ' + y);
+  console.log('  ✓', name);
+}
+
+/* ================= 比价下一步（compareNextStepOf） ================= */
+console.log('== 比价下一步条状态');
+const base = {
+  guidanceState: 'ready', totalRows: 5, chosenCount: 0,
+  quotedCount: 2, chosenQuotedCount: 0, unquotedCount: 3,
+  finalColumnGenerated: false,
+};
+{
+  // 引导块在场时不叠加（没报价单 / 没标价列由包 13 的块负责）
+  eq(compareNextStepOf({ ...base, guidanceState: 'no-quotes', chosenCount: 2 }),
+    null, 'no-quotes 引导在场 → 不出下一步条');
+  eq(compareNextStepOf({ ...base, guidanceState: 'unmarked', chosenCount: 2 }),
+    null, 'unmarked 引导在场 → 不出下一步条');
+  // 没有数据行：连表都是空的，没有下一步
+  eq(compareNextStepOf({ ...base, totalRows: 0, chosenCount: 2 }),
+    null, '0 行 → 不出下一步条');
+  eq(compareNextStepOf(), null, '无入参 → null（不炸）');
+  // 还没定厂：一行操作提示（partial 引导在场也照出，管的是另一件事）
+  eq(compareNextStepOf(base), { kind: 'hint', chosenCount: 0, unquotedCount: 3 },
+    '没定厂 → hint');
+  eq(compareNextStepOf({ ...base, guidanceState: 'partial' }).kind, 'hint',
+    'partial 引导 + 没定厂 → hint');
+  // 定了厂、最终报价没生成 → 去生成（无价行数带出给部分覆盖提示）
+  eq(compareNextStepOf({ ...base, chosenCount: 2, chosenQuotedCount: 2 }),
+    { kind: 'generate', chosenCount: 2, unquotedCount: 3 },
+    '定厂 2 行、无最终报价列 → generate，带 unquotedCount=3');
+  eq(compareNextStepOf({ ...base, guidanceState: 'partial', chosenCount: 1, chosenQuotedCount: 1 }).kind,
+    'generate', 'partial 引导 + 定了厂 → 仍出 generate 条');
+  // 最终报价有了、还有有价行没定 → 去转订单
+  eq(compareNextStepOf({
+    ...base, chosenCount: 2, chosenQuotedCount: 2, quotedCount: 4,
+    unquotedCount: 1, finalColumnGenerated: true,
+  }), { kind: 'convert', chosenCount: 2, unquotedCount: 1 },
+    '有最终报价、只定了一部分有价行 → convert');
+  // 有报价的行全定完 + 最终报价已有 → convert-all
+  eq(compareNextStepOf({
+    ...base, chosenCount: 2, chosenQuotedCount: 2, quotedCount: 2,
+    unquotedCount: 3, finalColumnGenerated: true,
+  }).kind, 'convert-all', '有价行全定完 + 有最终报价 → convert-all');
+  // 全部行都有价且全定完、无无价行
+  eq(compareNextStepOf({
+    guidanceState: 'ready', totalRows: 5, chosenCount: 5, quotedCount: 5,
+    chosenQuotedCount: 5, unquotedCount: 0, finalColumnGenerated: true,
+  }), { kind: 'convert-all', chosenCount: 5, unquotedCount: 0 },
+    '全行有价全定完 → convert-all，unquotedCount=0');
+  // 定厂数比有价行多（历史定厂的报价被删）不误报 convert-all
+  eq(compareNextStepOf({
+    ...base, chosenCount: 4, chosenQuotedCount: 1, quotedCount: 2,
+    finalColumnGenerated: true,
+  }).kind, 'convert', 'chosenQuotedCount < quotedCount → 仍是 convert');
+  // 有定厂但一行有价都没有（极端历史数据）：不算 convert-all
+  eq(compareNextStepOf({
+    ...base, chosenCount: 1, chosenQuotedCount: 0, quotedCount: 0,
+    unquotedCount: 5, finalColumnGenerated: true,
+  }).kind, 'convert', 'quotedCount=0 → convert（不误报全定完）');
+  ok(compareNextStepOf({ ...base, chosenCount: 1, chosenQuotedCount: 1 }).chosenCount === 1,
+    'generate 带 chosenCount');
+}
+
+console.log(`\n包 14 单元测试：PASS ${n} / FAIL 0`);

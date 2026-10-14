@@ -1,1 +1,116 @@
-Ly8g5p6B6JaE55qEIFhNTCDlt6XlhbflsYLvvJrmtY/op4jlmajnlKjljp/nlJ8gRE9NUGFyc2Vy77yMTm9kZSDlm57lvZLmtYvor5Xph4znlLEKLy8gQHhtbGRvbS94bWxkb20g5o+Q5L6b5ZCM5ZCN5YWo5bGA44CC5omA5pyJ5p+l5om+6YO95oyJIGxvY2FsTmFtZSDlgZrvvIzkuI7lkb3lkI3nqbrpl7QKLy8g5YmN57yA5peg5YWz77yIT09YTUwg6YeM5ZCM5LiA5YWD57Sg5Zyo5LiN5ZCM5paH5Lu26YeM5YmN57yA5Y+v6IO95LiN5ZCM77yJ44CCCgpleHBvcnQgZnVuY3Rpb24gcGFyc2VYbWwodGV4dCkgewogIGNvbnN0IERQID0gZ2xvYmFsVGhpcy5ET01QYXJzZXI7CiAgaWYgKCFEUCkgewogICAgdGhyb3cgbmV3IEVycm9yKCdET01QYXJzZXIg5LiN5Y+v55So77ya5rWP6KeI5Zmo5bqU6Ieq5bim77yMTm9kZSDmtYvor5XpnIDlhYjms6jlhaUgQHhtbGRvbS94bWxkb20nKTsKICB9CiAgY29uc3QgZG9jID0gbmV3IERQKCkucGFyc2VGcm9tU3RyaW5nKHRleHQsICd0ZXh0L3htbCcpOwogIC8vIERPTVBhcnNlciDop6PmnpDlpLHotKXml7bkuI3mipvplJnvvIzogIzmmK/ov5Tlm57luKYgcGFyc2VyZXJyb3Ig55qE5paH5qGj77yM6L+Z6YeM5pi+5byP5qOA5p+lCiAgY29uc3QgZXJycyA9IGRvYy5nZXRFbGVtZW50c0J5VGFnTmFtZSgncGFyc2VyZXJyb3InKTsKICBpZiAoZXJycyAmJiBlcnJzLmxlbmd0aCA+IDApIHsKICAgIHRocm93IG5ldyBFcnJvcignWE1MIOino+aekOWksei0pTogJyArIChlcnJzWzBdLnRleHRDb250ZW50IHx8ICcnKS5zbGljZSgwLCAyMDApKTsKICB9CiAgcmV0dXJuIGRvYzsKfQoKZXhwb3J0IGZ1bmN0aW9uIGxvY2FsTmFtZShub2RlKSB7CiAgaWYgKCFub2RlKSByZXR1cm4gJyc7CiAgaWYgKG5vZGUubG9jYWxOYW1lKSByZXR1cm4gbm9kZS5sb2NhbE5hbWU7CiAgY29uc3QgdGFnID0gbm9kZS50YWdOYW1lIHx8IG5vZGUubm9kZU5hbWUgfHwgJyc7CiAgY29uc3QgaSA9IHRhZy5pbmRleE9mKCc6Jyk7CiAgcmV0dXJuIGkgPj0gMCA/IHRhZy5zbGljZShpICsgMSkgOiB0YWc7Cn0KCmZ1bmN0aW9uIG1hdGNoZXMoZWwsIG5hbWUpIHsKICByZXR1cm4gZWwgJiYgZWwubm9kZVR5cGUgPT09IDEgJiYgbG9jYWxOYW1lKGVsKSA9PT0gbmFtZTsKfQoKLyoqIOebtOaOpeWtkOWFg+e0oOS4reWQjeWtl+S4uiBuYW1lIOeahOWFqOmDqCAqLwpleHBvcnQgZnVuY3Rpb24gY2hpbGRyZW4oZWwsIG5hbWUpIHsKICBjb25zdCBvdXQgPSBbXTsKICBpZiAoIWVsIHx8ICFlbC5jaGlsZE5vZGVzKSByZXR1cm4gb3V0OwogIGZvciAobGV0IGkgPSAwOyBpIDwgZWwuY2hpbGROb2Rlcy5sZW5ndGg7IGkrKykgewogICAgY29uc3QgbiA9IGVsLmNoaWxkTm9kZXNbaV07CiAgICBpZiAobWF0Y2hlcyhuLCBuYW1lKSkgb3V0LnB1c2gobik7CiAgfQogIHJldHVybiBvdXQ7Cn0KCi8qKiDnm7TmjqXlrZDlhYPntKDkuK3lkI3lrZfkuLogbmFtZSDnmoTnrKzkuIDkuKrvvIzmsqHmnInov5Tlm54gbnVsbCAqLwpleHBvcnQgZnVuY3Rpb24gZmlyc3RDaGlsZChlbCwgbmFtZSkgewogIGNvbnN0IGxpc3QgPSBjaGlsZHJlbihlbCwgbmFtZSk7CiAgcmV0dXJuIGxpc3QubGVuZ3RoID8gbGlzdFswXSA6IG51bGw7Cn0KCi8qKiDlhajpg6jlkI7ku6PlhYPntKDkuK3lkI3lrZfkuLogbmFtZSDnmoTvvIjmlofmoaPluo/vvIkgKi8KZXhwb3J0IGZ1bmN0aW9uIGRlc2NlbmRhbnRzKGVsLCBuYW1lKSB7CiAgY29uc3Qgb3V0ID0gW107CiAgaWYgKCFlbCB8fCAhZWwuZ2V0RWxlbWVudHNCeVRhZ05hbWUpIHJldHVybiBvdXQ7CiAgY29uc3QgYWxsID0gZWwuZ2V0RWxlbWVudHNCeVRhZ05hbWUoJyonKTsKICBmb3IgKGxldCBpID0gMDsgaSA8IGFsbC5sZW5ndGg7IGkrKykgewogICAgaWYgKG1hdGNoZXMoYWxsW2ldLCBuYW1lKSkgb3V0LnB1c2goYWxsW2ldKTsKICB9CiAgcmV0dXJuIG91dDsKfQoKLyoqIOivu+WxnuaAp++8muWFiOaMieWujOaVtOWQje+8iOWmgiByOmlk77yJ6K+V77yM5YaN5oyJIGxvY2FsTmFtZSDlnKjlsZ7mgKfliJfooajph4zmib4gKi8KZXhwb3J0IGZ1bmN0aW9uIGF0dHIoZWwsIHF1YWxpZmllZE5hbWUsIGxvY2FsKSB7CiAgaWYgKCFlbCB8fCAhZWwuZ2V0QXR0cmlidXRlKSByZXR1cm4gbnVsbDsKICBsZXQgdiA9IGVsLmdldEF0dHJpYnV0ZShxdWFsaWZpZWROYW1lKTsKICBpZiAodiAhPSBudWxsKSByZXR1cm4gdjsKICBjb25zdCB3YW50ID0gbG9jYWwgfHwgKHF1YWxpZmllZE5hbWUuaW5jbHVkZXMoJzonKSA/IHF1YWxpZmllZE5hbWUuc3BsaXQoJzonKS5wb3AoKSA6IHF1YWxpZmllZE5hbWUpOwogIGlmIChlbC5hdHRyaWJ1dGVzKSB7CiAgICBmb3IgKGxldCBpID0gMDsgaSA8IGVsLmF0dHJpYnV0ZXMubGVuZ3RoOyBpKyspIHsKICAgICAgY29uc3QgYSA9IGVsLmF0dHJpYnV0ZXNbaV07CiAgICAgIGNvbnN0IGFuID0gYS5sb2NhbE5hbWUgfHwgKGEubmFtZSAmJiBhLm5hbWUuaW5jbHVkZXMoJzonKSA/IGEubmFtZS5zcGxpdCgnOicpLnBvcCgpIDogYS5uYW1lKTsKICAgICAgaWYgKGFuID09PSB3YW50KSByZXR1cm4gYS52YWx1ZTsKICAgIH0KICB9CiAgcmV0dXJuIG51bGw7Cn0KCmV4cG9ydCBmdW5jdGlvbiB0ZXh0T2YoZWwpIHsKICByZXR1cm4gZWwgPyAoZWwudGV4dENvbnRlbnQgfHwgJycpIDogJyc7Cn0KCi8qKiDmlofmoaMg4oaSIFhNTCDlrZfnrKbkuLLvvIjlhpnot6/lvoTnlKjvvJvmtY/op4jlmagvWE1MU2VyaWFsaXplciDlnYfnlLHlrr/kuLvmj5DkvpvvvIwKICogIE5vZGUg5rWL6K+V55SxIEB4bWxkb20veG1sZG9tIOazqOWFpeWQjOWQjeWFqOWxgO+8ieOAggogKiAg5rOo5oSP77yaeG1sZG9tIOeahOW6j+WIl+WMluS8muW4puS4iuaWh+aho+mHjOW3suacieeahCBYTUwg5aOw5piO77yM5rWP6KeI5Zmo55qE5LiN5Lya77ybCiAqICDlhpnot6/lvoTnu5/kuIDlnKjliY3pnaLmi7wgWE1MX0RFQ0zvvIzmiYDku6Xov5nph4zmiorluo/liJfljJbnu5PmnpzlvIDlpLTlt7LmnInnmoQKICogIOWjsOaYju+8iOWPr+iDveS4jeatouS4gOS7veKAlOKAlOWkmui9ruWbnuWGmeeahOmDqOS7tumHjOS8muaUku+8ieWFqOmDqOWJpeaOie+8jOS/neivgeaIkOWTgQogKiAg6YeM5pyJ5LiU5Y+q5pyJ5LiA5Lu95aOw5piO44CC5aSa5LiA5Lu95aOw5piOIExpYnJlT2ZmaWNlIOWwseaLkuivu++8iOWMhSAxMiDlrp7mtYvvvInjgIIgKi8KZXhwb3J0IGZ1bmN0aW9uIHNlcmlhbGl6ZVhtbChkb2MpIHsKICBjb25zdCBYUyA9IGdsb2JhbFRoaXMuWE1MU2VyaWFsaXplcjsKICBpZiAoIVhTKSB7CiAgICB0aHJvdyBuZXcgRXJyb3IoJ1hNTFNlcmlhbGl6ZXIg5LiN5Y+v55So77ya5rWP6KeI5Zmo5bqU6Ieq5bim77yMTm9kZSDmtYvor5XpnIDlhYjms6jlhaUgQHhtbGRvbS94bWxkb20nKTsKICB9CiAgbGV0IG91dCA9IG5ldyBYUygpLnNlcmlhbGl6ZVRvU3RyaW5nKGRvYyk7CiAgbGV0IHByZXY7CiAgZG8gewogICAgcHJldiA9IG91dDsKICAgIG91dCA9IG91dC5yZXBsYWNlKC9eXHMqPFw/eG1sW14/XSpcPz5ccyovLCAnJyk7CiAgfSB3aGlsZSAob3V0ICE9PSBwcmV2KTsKICByZXR1cm4gb3V0Owp9CgovKioKICog5Zyo5paH5qGj6YeM5paw5bu65YWD57Sg77ya5bim5LiK5qC55YWD57Sg55qE5ZG95ZCN56m66Ze077yIT09YTUwg6YO95piv6buY6K6k5ZG95ZCN56m66Ze077yMCiAqIOaXoOWJjee8gO+8ieOAguS4jeeUqCBjcmVhdGVFbGVtZW50TlMg5pe25rWP6KeI5Zmo5bqP5YiX5YyW5Lya57uZ5paw5YWD57Sg5omTIHhtbG5zPSIi77yMCiAqIOaKiuWNleWFg+agvOi4ouWHuuihqOagvOWRveWQjeepuumXtOOAgeS7pCBFeGNlbCDor7vkuI3liLDigJTigJTlv4XpobvotbAgTlMg54mI44CCCiAqLwpleHBvcnQgZnVuY3Rpb24gY3JlYXRlRWwoZG9jLCBuYW1lKSB7CiAgY29uc3QgbnMgPSBkb2MgJiYgZG9jLmRvY3VtZW50RWxlbWVudCA/IGRvYy5kb2N1bWVudEVsZW1lbnQubmFtZXNwYWNlVVJJIDogbnVsbDsKICBpZiAobnMgJiYgZG9jLmNyZWF0ZUVsZW1lbnROUykgcmV0dXJuIGRvYy5jcmVhdGVFbGVtZW50TlMobnMsIG5hbWUpOwogIHJldHVybiBkb2MuY3JlYXRlRWxlbWVudChuYW1lKTsKfQoKLyoqIOaLvOaOpeWFg+e0oOS4i+aJgOaciSA8dD4g55qE5paH5pys77yI5YWx5Lqr5a2X56ym5Liy55qE5a+M5paH5pysIHJ1buOAgeWGheiBlOWtl+espuS4sumDveeUqOWug++8iSAqLwpleHBvcnQgZnVuY3Rpb24gY29uY2F0VChlbCkgewogIGlmICghZWwpIHJldHVybiAnJzsKICBjb25zdCB0cyA9IGRlc2NlbmRhbnRzKGVsLCAndCcpOwogIGlmICh0cy5sZW5ndGggPT09IDApIHJldHVybiB0ZXh0T2YoZWwpOwogIHJldHVybiB0cy5tYXAoKHQpID0+IHQudGV4dENvbnRlbnQgfHwgJycpLmpvaW4oJycpOwp9Cg==
+// 极薄的 XML 工具层：浏览器用原生 DOMParser，Node 回归测试里由
+// @xmldom/xmldom 提供同名全局。所有查找都按 localName 做，与命名空间
+// 前缀无关（OOXML 里同一元素在不同文件里前缀可能不同）。
+
+export function parseXml(text) {
+  const DP = globalThis.DOMParser;
+  if (!DP) {
+    throw new Error('DOMParser 不可用：浏览器应自带，Node 测试需先注入 @xmldom/xmldom');
+  }
+  const doc = new DP().parseFromString(text, 'text/xml');
+  // DOMParser 解析失败时不抛错，而是返回带 parsererror 的文档，这里显式检查
+  const errs = doc.getElementsByTagName('parsererror');
+  if (errs && errs.length > 0) {
+    throw new Error('XML 解析失败: ' + (errs[0].textContent || '').slice(0, 200));
+  }
+  return doc;
+}
+
+export function localName(node) {
+  if (!node) return '';
+  if (node.localName) return node.localName;
+  const tag = node.tagName || node.nodeName || '';
+  const i = tag.indexOf(':');
+  return i >= 0 ? tag.slice(i + 1) : tag;
+}
+
+function matches(el, name) {
+  return el && el.nodeType === 1 && localName(el) === name;
+}
+
+/** 直接子元素中名字为 name 的全部 */
+export function children(el, name) {
+  const out = [];
+  if (!el || !el.childNodes) return out;
+  for (let i = 0; i < el.childNodes.length; i++) {
+    const n = el.childNodes[i];
+    if (matches(n, name)) out.push(n);
+  }
+  return out;
+}
+
+/** 直接子元素中名字为 name 的第一个，没有返回 null */
+export function firstChild(el, name) {
+  const list = children(el, name);
+  return list.length ? list[0] : null;
+}
+
+/** 全部后代元素中名字为 name 的（文档序） */
+export function descendants(el, name) {
+  const out = [];
+  if (!el || !el.getElementsByTagName) return out;
+  const all = el.getElementsByTagName('*');
+  for (let i = 0; i < all.length; i++) {
+    if (matches(all[i], name)) out.push(all[i]);
+  }
+  return out;
+}
+
+/** 读属性：先按完整名（如 r:id）试，再按 localName 在属性列表里找 */
+export function attr(el, qualifiedName, local) {
+  if (!el || !el.getAttribute) return null;
+  let v = el.getAttribute(qualifiedName);
+  if (v != null) return v;
+  const want = local || (qualifiedName.includes(':') ? qualifiedName.split(':').pop() : qualifiedName);
+  if (el.attributes) {
+    for (let i = 0; i < el.attributes.length; i++) {
+      const a = el.attributes[i];
+      const an = a.localName || (a.name && a.name.includes(':') ? a.name.split(':').pop() : a.name);
+      if (an === want) return a.value;
+    }
+  }
+  return null;
+}
+
+export function textOf(el) {
+  return el ? (el.textContent || '') : '';
+}
+
+/** 文档 → XML 字符串（写路径用；浏览器/XMLSerializer 均由宿主提供，
+ *  Node 测试由 @xmldom/xmldom 注入同名全局）。
+ *  注意：xmldom 的序列化会带上文档里已有的 XML 声明，浏览器的不会；
+ *  写路径统一在前面拼 XML_DECL，所以这里把序列化结果开头已有的
+ *  声明（可能不止一份——多轮回写的部件里会攒）全部剥掉，保证成品
+ *  里有且只有一份声明。多一份声明 LibreOffice 就拒读（包 12 实测）。 */
+export function serializeXml(doc) {
+  const XS = globalThis.XMLSerializer;
+  if (!XS) {
+    throw new Error('XMLSerializer 不可用：浏览器应自带，Node 测试需先注入 @xmldom/xmldom');
+  }
+  let out = new XS().serializeToString(doc);
+  let prev;
+  do {
+    prev = out;
+    out = out.replace(/^\s*<\?xml[^?]*\?>\s*/, '');
+  } while (out !== prev);
+  return out;
+}
+
+/**
+ * 在文档里新建元素：带上根元素的命名空间（OOXML 都是默认命名空间，
+ * 无前缀）。不用 createElementNS 时浏览器序列化会给新元素打 xmlns=""，
+ * 把单元格踢出表格命名空间、令 Excel 读不到——必须走 NS 版。
+ */
+export function createEl(doc, name) {
+  const ns = doc && doc.documentElement ? doc.documentElement.namespaceURI : null;
+  if (ns && doc.createElementNS) return doc.createElementNS(ns, name);
+  return doc.createElement(name);
+}
+
+/** 拼接元素下所有 <t> 的文本（共享字符串的富文本 run、内联字符串都用它） */
+export function concatT(el) {
+  if (!el) return '';
+  const ts = descendants(el, 't');
+  if (ts.length === 0) return textOf(el);
+  return ts.map((t) => t.textContent || '').join('');
+}

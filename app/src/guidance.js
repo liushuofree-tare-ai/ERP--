@@ -1,1 +1,99 @@
-LyogPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQogKiBndWlkYW5jZS5qcyDigJTigJQg5YyFIDEz77ya5rWB56iL44CM6L+Y5beu5ZOq5LiA5q2l44CN55qE5byV5a+854q25oCB5o6o5a+877yI57qv5Ye95pWw77yJCiAqCiAqIOeUqOaIt+S4iuaJi+WPjemmiO+8iOWMhSAxMiDkuYvlkI7vvInvvJoKICogICAtIOayoeaKpeS7t+WNleaXtuavlOS7t+mhteWPqueUu+S4gOW8oOayoeacieW3peWOguWIl+eahOihqO+8jOeci+edgOWDj+Wdj+S6hu+8mwogKiAgIC0g5rKh6K6i5Y2V5pe26K6i5Y2V6aG15Y+q5pyJ5LiA5Y+l6KKr5Yqo5paH5a2X77yM5rKh5pyJ5LiL5LiA5q2l5Yqo5L2c44CCCiAqIOi/memHjOaKiuOAjOW9k+WJjeivouS7t+WNlei1sOWIsOWTquS4gOatpeS6huOAjeS7juWtmOaho+S6i+Wunu+8iOaKpeS7t+WNlSAvIOagh+S7t+WIlyAvCiAqIOWumuWOgiAvIOacgOe7iOaKpeS7t+WIl++8ieehruWumuaAp+aOqOWvvOWHuuadpe+8jOavlOS7t+mhteS4juiuouWNlemhteaNruatpOe7meWHugogKiDmmI7noa7or7TmmI4gKyDkuIDplK7nm7Tovr7nmoTmjInpkq7jgILkuI3lrZjku7vkvZXmlrDnirbmgIHigJTigJTnirbmgIHmsLjov5znlLEKICog5a2Y5qGj546w566X77yM5a2Y5qGj5pS55LqG5byV5a+86Ieq54S26Lef552A5Y+Y44CCCiAqID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gKi8KCi8qKiDkuIDlvKDmiqXku7fljZXmmK/lkKblt7LmoIfku7fliJfvvIhwcmljZU1hcmsg5a2Y5Zyo5LiU5qCH5LqG5YiX77yJ44CCICovCmV4cG9ydCBmdW5jdGlvbiBxdW90ZUlzTWFya2VkKHEpIHsKICByZXR1cm4gISEocSAmJiBxLnByaWNlTWFyayAmJiBxLnByaWNlTWFyay5jb2wgIT09IG51bGwgJiYgcS5wcmljZU1hcmsuY29sICE9PSB1bmRlZmluZWQpOwp9CgovKioKICog5q+U5Lu36aG15byV5a+854q25oCB44CCCiAqIOWFpeWPgiBxdW90ZXPvvJrmtLvliqjor6Lku7fljZXlkI3kuIvnmoTmiqXku7fljZXmlofmoaPmlbDnu4TjgIIKICog6L+U5ZueIHsKICogICBzdGF0ZTogJ25vLXF1b3RlcyfvvIjkuIDlvKDmiqXku7fljZXpg73msqHmnInvvIl8CiAqICAgICAgICAgICd1bm1hcmtlZCfvvIjmnInmiqXku7fljZXvvIzkvYbkuIDlvKDpg73msqHmoIfku7fliJfvvIl8CiAqICAgICAgICAgICdwYXJ0aWFsJ++8iOacieeahOagh+S6huOAgeacieeahOayoeagh++8iXwKICogICAgICAgICAgJ3JlYWR5J++8iOWFqOagh+S6hu+8jOS4jemcgOimgeW8leWvvO+8iSwKICogICBxdW90ZUNvdW50LCB1bm1hcmtlZDogW3sgZmFjdG9yeU5hbWUsIGRvY0lkIH3igKZdCiAqIH0KICovCmV4cG9ydCBmdW5jdGlvbiBjb21wYXJlR3VpZGFuY2VPZihxdW90ZXMpIHsKICBjb25zdCBsaXN0ID0gKHF1b3RlcyB8fCBbXSkuZmlsdGVyKChxKSA9PiBxICYmIHEua2luZCA9PT0gJ3F1b3RlJyk7CiAgY29uc3QgdW5tYXJrZWQgPSBsaXN0CiAgICAuZmlsdGVyKChxKSA9PiAhcXVvdGVJc01hcmtlZChxKSkKICAgIC5tYXAoKHEpID0+ICh7IGZhY3RvcnlOYW1lOiBxLmZhY3RvcnlOYW1lLCBkb2NJZDogcS5kb2NJZCB9KSk7CiAgY29uc3Qgc3RhdGUgPSBsaXN0Lmxlbmd0aCA9PT0gMCA/ICduby1xdW90ZXMnCiAgICA6IHVubWFya2VkLmxlbmd0aCA9PT0gbGlzdC5sZW5ndGggPyAndW5tYXJrZWQnCiAgICA6IHVubWFya2VkLmxlbmd0aCA+IDAgPyAncGFydGlhbCcKICAgIDogJ3JlYWR5JzsKICByZXR1cm4geyBzdGF0ZSwgcXVvdGVDb3VudDogbGlzdC5sZW5ndGgsIHVubWFya2VkIH07Cn0KCi8qKgogKiDmr5Tku7fpobXjgIzlrprlrozljoLkuYvlkI7lkaLjgI3nmoTkuIvkuIDmraXmnaHvvIjljIUgMTTvvInjgILnlKjmiLflnKjnnJ/lrp7ljZXlrZDkuIrlrprlrowKICog5Yeg6KGM5Y6C5LmL5ZCO6Zeu44CM54S25ZCO5ZGi77yf5q+U6L6D5LmL5ZCO5oCO5LmI5Yqe77yf44CN4oCU4oCU5q+U5Lu36aG15q2k5YmN5Y+q5oqlCiAqIOOAjOW3suWumuWOgiBOIOihjOOAje+8jOS4jee7meS4i+S4gOatpeOAgui/memHjOWSjOiuouWNleW8leWvvOWQjOaAnei3r++8mueKtuaAgeWFqOmDqOeUsQogKiDmr5Tku7fmqKHlnovkuI7lrZjmoaPnjrDnrpfvvIzkuI3lrZjmlrDnirbmgIHjgIIKICog5YWl5Y+C77yaCiAqICAgZ3VpZGFuY2VTdGF0Ze+8mmNvbXBhcmVHdWlkYW5jZU9mIOeahCBzdGF0ZeOAgiduby1xdW90ZXMnIC8KICogICAgICd1bm1hcmtlZCcg5pe25byV5a+85Z2X5bey57uP5Y2g5LqG6aG16Z2i6aG26YOo77yM6L+Z6YeM6L+U5ZueIG51bGwg5LiN5Y+g5Yqg77ybCiAqICAgdG90YWxSb3dz77ya5q+U5Lu36KGM5pWw77yIMCDooYzml7bkuZ/msqHmnInkuIvkuIDmraXlj6/oqIDvvIzov5Tlm54gbnVsbO+8ie+8mwogKiAgIGNob3NlbkNvdW5077ya5bey5a6a5Y6C6KGM5pWw77ybCiAqICAgcXVvdGVkQ291bnTvvJroh7PlsJHmnInkuIDlrrbmiqXkuobku7fnmoTooYzmlbDvvJsKICogICBjaG9zZW5RdW90ZWRDb3VudO+8muW3suWumuWOguOAgeS4lOivpeihjOehruacieaKpeS7t+eahOihjOaVsO+8iOato+W4uOetieS6jgogKiAgICAgY2hvc2VuQ291bnTvvJvmiqXku7flkI7mnaXooqvliKDlhYnnmoTljoblj7LlrprljoLkuI3nrpci5pyJ5oql5Lu35bey5a6a5Y6CIu+8ie+8mwogKiAgIHVucXVvdGVkQ291bnTvvJrkuIDlrrbpg73msqHmiqXku7fnmoTooYzmlbDvvIjmnaHkuIrnmoTpg6jliIbopobnm5bmj5DnpLrnlKjvvInvvJsKICogICBmaW5hbENvbHVtbkdlbmVyYXRlZO+8muivouS7t+WNleihqOmHjOaYr+WQpuW3sueUn+aIkOOAjOacgOe7iOaKpeS7t+OAjeWIlwogKiAgICAg77yI5LiO6K6i5Y2V5byV5a+85ZCM5LiA5Y+j5b6E77yaZmluYWxRdW90ZUNvbE9mIOmdnuepuu+8ieOAggogKiDov5Tlm54gbnVsbCB8IHsKICogICBraW5kOiAnaGludCfvvIjov5jmsqHlrprljoLvvIzkuIDooYzmk43kvZzmj5DnpLrvvIl8CiAqICAgICAgICAgJ2dlbmVyYXRlJ++8iOWumuS6huWOguOAgei/mOayoeacgOe7iOaKpeS7tyDihpIg5Y6755Sf5oiQ77yJfAogKiAgICAgICAgICdjb252ZXJ0J++8iOacgOe7iOaKpeS7t+acieS6hiDihpIg5Y676L2s6K6i5Y2VL+WvueWuouWvvOWHuu+8iXwKICogICAgICAgICAnY29udmVydC1hbGwn77yI5pyJ5oql5Lu355qE6KGM5YWo5a6a5a6MICsg5pyA57uI5oql5Lu35bey5pyJ77yJLAogKiAgIGNob3NlbkNvdW50LCB1bnF1b3RlZENvdW50IH0KICovCmV4cG9ydCBmdW5jdGlvbiBjb21wYXJlTmV4dFN0ZXBPZih7CiAgZ3VpZGFuY2VTdGF0ZSwgdG90YWxSb3dzID0gMCwgY2hvc2VuQ291bnQgPSAwLCBxdW90ZWRDb3VudCA9IDAsCiAgY2hvc2VuUXVvdGVkQ291bnQgPSAwLCB1bnF1b3RlZENvdW50ID0gMCwgZmluYWxDb2x1bW5HZW5lcmF0ZWQgPSBmYWxzZSwKfSA9IHt9KSB7CiAgaWYgKGd1aWRhbmNlU3RhdGUgPT09ICduby1xdW90ZXMnIHx8IGd1aWRhbmNlU3RhdGUgPT09ICd1bm1hcmtlZCcpIHJldHVybiBudWxsOwogIGlmICghdG90YWxSb3dzKSByZXR1cm4gbnVsbDsKICBpZiAoY2hvc2VuQ291bnQgPD0gMCkgcmV0dXJuIHsga2luZDogJ2hpbnQnLCBjaG9zZW5Db3VudDogMCwgdW5xdW90ZWRDb3VudCB9OwogIGlmICghZmluYWxDb2x1bW5HZW5lcmF0ZWQpIHJldHVybiB7IGtpbmQ6ICdnZW5lcmF0ZScsIGNob3NlbkNvdW50LCB1bnF1b3RlZENvdW50IH07CiAgY29uc3QgYWxsUXVvdGVkQ2hvc2VuID0gcXVvdGVkQ291bnQgPiAwICYmIGNob3NlblF1b3RlZENvdW50ID49IHF1b3RlZENvdW50OwogIHJldHVybiB7CiAgICBraW5kOiBhbGxRdW90ZWRDaG9zZW4gPyAnY29udmVydC1hbGwnIDogJ2NvbnZlcnQnLAogICAgY2hvc2VuQ291bnQsIHVucXVvdGVkQ291bnQsCiAgfTsKfQoKLyoqCiAqIOiuouWNlemhte+8iOaXoOiuouWNleaXtu+8ieW8leWvvOeKtuaAge+8mua0u+WKqOivouS7t+WNleemu+OAjOiDvei9rOiuouWNleOAjei/mOW3ruWTquS4gOatpeOAggogKiDlhaXlj4LvvJoKICogICBxdW90ZXPvvJrmtLvliqjor6Lku7fljZXlkI3kuIvnmoTmiqXku7fljZXmlofmoaPmlbDnu4TvvJsKICogICBjaG9pY2Vz77ya6K+i5Lu35Y2V55qE5a6a5Y6C77yIcm93Q2hvaWNlcyDlr7nosaHvvInvvJsKICogICBmaW5hbENvbHVtbkdlbmVyYXRlZO+8muivouS7t+WNleihqOmHjOaYr+WQpuW3sueUn+aIkOOAjOacgOe7iOaKpeS7t+OAjeWIl+OAggogKiDov5Tlm54gc3RhZ2XvvJoKICogICAnbm8taW5xdWlyeSfvvIjmsqHmnInmtLvliqjor6Lku7fljZXvvIl8ICduby1xdW90ZXMn77yI6L+Y5rKh5Y+R57uZ5bel5Y6CL+ayoeWbnuihqO+8iXwKICogICAndW5tYXJrZWQn77yI5pyJ5oql5Lu35Y2V5L2G5rKh5qCH5Lu35YiX77yJfCAnbm8tY2hvaWNlcyfvvIjmsqHlrprljoLvvIl8CiAqICAgJ25vLWZpbmFscyfvvIjlrprljoLkuobkvYbmsqHnlJ/miJDmnIDnu4jmiqXku7fliJfvvIl8ICdyZWFkeSfvvIjlj6/ku6XovazorqLljZXkuobvvIkKICovCmV4cG9ydCBmdW5jdGlvbiBvcmRlckd1aWRhbmNlT2YoeyBoYXNJbnF1aXJ5LCBxdW90ZXMsIGNob2ljZXMsIGZpbmFsQ29sdW1uR2VuZXJhdGVkIH0gPSB7fSkgewogIGlmICghaGFzSW5xdWlyeSkgcmV0dXJuICduby1pbnF1aXJ5JzsKICBjb25zdCBxcyA9IHF1b3RlcyB8fCBbXTsKICBpZiAocXMubGVuZ3RoID09PSAwKSByZXR1cm4gJ25vLXF1b3Rlcyc7CiAgaWYgKCFxcy5zb21lKHF1b3RlSXNNYXJrZWQpKSByZXR1cm4gJ3VubWFya2VkJzsKICBjb25zdCBjaG9pY2VDb3VudCA9IGNob2ljZXMgPyBPYmplY3Qua2V5cyhjaG9pY2VzKS5sZW5ndGggOiAwOwogIGlmIChjaG9pY2VDb3VudCA9PT0gMCkgcmV0dXJuICduby1jaG9pY2VzJzsKICBpZiAoIWZpbmFsQ29sdW1uR2VuZXJhdGVkKSByZXR1cm4gJ25vLWZpbmFscyc7CiAgcmV0dXJuICdyZWFkeSc7Cn0K
+/* ================================================================
+ * guidance.js —— 包 13：流程「还差哪一步」的引导状态推导（纯函数）
+ *
+ * 用户上手反馈（包 12 之后）：
+ *   - 没报价单时比价页只画一张没有工厂列的表，看着像坏了；
+ *   - 没订单时订单页只有一句被动文字，没有下一步动作。
+ * 这里把「当前询价单走到哪一步了」从存档事实（报价单 / 标价列 /
+ * 定厂 / 最终报价列）确定性推导出来，比价页与订单页据此给出
+ * 明确说明 + 一键直达的按钮。不存任何新状态——状态永远由
+ * 存档现算，存档改了引导自然跟着变。
+ * ================================================================ */
+
+/** 一张报价单是否已标价列（priceMark 存在且标了列）。 */
+export function quoteIsMarked(q) {
+  return !!(q && q.priceMark && q.priceMark.col !== null && q.priceMark.col !== undefined);
+}
+
+/**
+ * 比价页引导状态。
+ * 入参 quotes：活动询价单名下的报价单文档数组。
+ * 返回 {
+ *   state: 'no-quotes'（一张报价单都没有）|
+ *          'unmarked'（有报价单，但一张都没标价列）|
+ *          'partial'（有的标了、有的没标）|
+ *          'ready'（全标了，不需要引导）,
+ *   quoteCount, unmarked: [{ factoryName, docId }…]
+ * }
+ */
+export function compareGuidanceOf(quotes) {
+  const list = (quotes || []).filter((q) => q && q.kind === 'quote');
+  const unmarked = list
+    .filter((q) => !quoteIsMarked(q))
+    .map((q) => ({ factoryName: q.factoryName, docId: q.docId }));
+  const state = list.length === 0 ? 'no-quotes'
+    : unmarked.length === list.length ? 'unmarked'
+    : unmarked.length > 0 ? 'partial'
+    : 'ready';
+  return { state, quoteCount: list.length, unmarked };
+}
+
+/**
+ * 比价页「定完厂之后呢」的下一步条（包 14）。用户在真实单子上定完
+ * 几行厂之后问「然后呢？比较之后怎么办？」——比价页此前只报
+ * 「已定厂 N 行」，不给下一步。这里和订单引导同思路：状态全部由
+ * 比价模型与存档现算，不存新状态。
+ * 入参：
+ *   guidanceState：compareGuidanceOf 的 state。'no-quotes' /
+ *     'unmarked' 时引导块已经占了页面顶部，这里返回 null 不叠加；
+ *   totalRows：比价行数（0 行时也没有下一步可言，返回 null）；
+ *   chosenCount：已定厂行数；
+ *   quotedCount：至少有一家报了价的行数；
+ *   chosenQuotedCount：已定厂、且该行确有报价的行数（正常等于
+ *     chosenCount；报价后来被删光的历史定厂不算"有报价已定厂"）；
+ *   unquotedCount：一家都没报价的行数（条上的部分覆盖提示用）；
+ *   finalColumnGenerated：询价单表里是否已生成「最终报价」列
+ *     （与订单引导同一口径：finalQuoteColOf 非空）。
+ * 返回 null | {
+ *   kind: 'hint'（还没定厂，一行操作提示）|
+ *         'generate'（定了厂、还没最终报价 → 去生成）|
+ *         'convert'（最终报价有了 → 去转订单/对客导出）|
+ *         'convert-all'（有报价的行全定完 + 最终报价已有）,
+ *   chosenCount, unquotedCount }
+ */
+export function compareNextStepOf({
+  guidanceState, totalRows = 0, chosenCount = 0, quotedCount = 0,
+  chosenQuotedCount = 0, unquotedCount = 0, finalColumnGenerated = false,
+} = {}) {
+  if (guidanceState === 'no-quotes' || guidanceState === 'unmarked') return null;
+  if (!totalRows) return null;
+  if (chosenCount <= 0) return { kind: 'hint', chosenCount: 0, unquotedCount };
+  if (!finalColumnGenerated) return { kind: 'generate', chosenCount, unquotedCount };
+  const allQuotedChosen = quotedCount > 0 && chosenQuotedCount >= quotedCount;
+  return {
+    kind: allQuotedChosen ? 'convert-all' : 'convert',
+    chosenCount, unquotedCount,
+  };
+}
+
+/**
+ * 订单页（无订单时）引导状态：活动询价单离「能转订单」还差哪一步。
+ * 入参：
+ *   quotes：活动询价单名下的报价单文档数组；
+ *   choices：询价单的定厂（rowChoices 对象）；
+ *   finalColumnGenerated：询价单表里是否已生成「最终报价」列。
+ * 返回 stage：
+ *   'no-inquiry'（没有活动询价单）| 'no-quotes'（还没发给工厂/没回表）|
+ *   'unmarked'（有报价单但没标价列）| 'no-choices'（没定厂）|
+ *   'no-finals'（定厂了但没生成最终报价列）| 'ready'（可以转订单了）
+ */
+export function orderGuidanceOf({ hasInquiry, quotes, choices, finalColumnGenerated } = {}) {
+  if (!hasInquiry) return 'no-inquiry';
+  const qs = quotes || [];
+  if (qs.length === 0) return 'no-quotes';
+  if (!qs.some(quoteIsMarked)) return 'unmarked';
+  const choiceCount = choices ? Object.keys(choices).length : 0;
+  if (choiceCount === 0) return 'no-choices';
+  if (!finalColumnGenerated) return 'no-finals';
+  return 'ready';
+}

@@ -1,1 +1,72 @@
-Ly8g6KGM6LSm5pys77yIQVJDSElURUNUVVJFIOiusOi0puWxgu+8ie+8mueos+WumiBsaW5lSWQg4oaUIOeJqeeQhuihjOaYoOWwhOOAggovLyDotKbmnKzni6znq4vkuo4gRm9ydHVuZVNoZWV0IOeahOihqOagvOaVsOaNruS/neWtmOKAlOKAlOe7hOS7tuWPquaYr+i0puacrOeahOS4gOS4quinhuWbvu+8jAovLyDotKbmnKzmiY3mmK/kuovlrp7mupDjgIJsaW5lSWQg6Ieq5a+85YWl6LW35YiG6YWN77yM5rC45LiN6YeN55So44CB5rC45LiN6ZqP57yW6L6R5pS55Y+Y77ybCi8vIOihjOS4juWOn+aWh+S7tueahOWvueW6lOWPquaMieeJqeeQhuS9jee9ru+8iOW3peS9nOihqCArIOeJqeeQhuihjO+8ieiusO+8jOS4jemdoCBPRS/lkI3np7DnjJzjgIIKLy8KLy8g5pys5YyF6IyD5Zu077ya5bu66LSm77yI5a+85YWl5pe25oyJ54mp55CG6KGM6YCQ6KGM5YiG6YWN77yJ44CB6ZqP5bel5L2c54q25oCB5LiA6LW35oyB5LmF5YyW44CBCi8vIOaBouWkjeaXtuWOn+agt+W4puWbnuOAguihjOeKtuaAgeS4jue8lui+keaXpeW/l+WcqOWQjue7reWMhemHjOW+gOi0puacrOS4iumVv+OAggoKLyoqIOWvvOWFpeS4gOW8oOihqOaXtuW7uui0pu+8mueJqeeQhuihjCAwLi5yb3dDb3VudC0xIOmAkOihjOWIhumFjSBsaW5lSWTvvIhMMeOAgUwy44CB4oCm77yJICovCmV4cG9ydCBmdW5jdGlvbiBjcmVhdGVMZWRnZXIoeyBmaWxlTmFtZSA9ICcnLCBzaGVldE5hbWUgPSAnJywgc2hlZXRJbmRleCA9IDAsIHJvd0NvdW50ID0gMCB9ID0ge30pIHsKICBjb25zdCByb3dzID0gW107CiAgZm9yIChsZXQgciA9IDA7IHIgPCByb3dDb3VudDsgcisrKSB7CiAgICByb3dzLnB1c2goeyBsaW5lSWQ6ICdMJyArIChyICsgMSksIHJvdzogciB9KTsKICB9CiAgcmV0dXJuIHsKICAgIHZlcnNpb246IDEsCiAgICBmaWxlTmFtZSwKICAgIHNoZWV0TmFtZSwKICAgIHNoZWV0SW5kZXgsCiAgICAvLyDkuIvkuIDkuKrlj6/liIbphY3luo/lj7fvvJrlj6rlop7kuI3lh4/vvIzkv53or4EgbGluZUlkIOawuOS4jemHjeeUqAogICAgbmV4dFNlcTogcm93Q291bnQgKyAxLAogICAgcm93cywKICAgIC8vIOW3peS9nOWIl+a4heWNle+8mueUqOaIt+WcqOWOn+ihqOWPs+S+p+aJi+W3peWKoOeahOWIl++8iOS4jeaYr+WOn+aWh+S7tueahOWIl++8ie+8jAogICAgLy8gW3sgY29sLCBuYW1lLCBhZGRlZEF0IH1d77yb5Y6f5YiX5LiO5bel5L2c5YiX55qE5Yy65YiG5Y+q6K6w5Zyo6L+Z6YeM44CCCiAgICB3b3JrQ29sdW1uczogW10sCiAgfTsKfQoKLyoqCiAqIOWcqOi0puacrOS4iuiusOS4gOeslOW3peS9nOWIl++8iOeUqOaIt+aJi+W3peWKoOeahOWIl++8ieOAgui/lOWbnuaWsOi0puacrO+8iOS4jeWOn+WcsOaUue+8ie+8mwogKiDotKbmnKznvLrlpLHmiJbml6flrZjmoaPmsqHmnIkgd29ya0NvbHVtbnMg5a2X5q615pe26YO96IO95a6J5YWo6LCD55So44CCCiAqLwpleHBvcnQgZnVuY3Rpb24gbm90ZVdvcmtDb2x1bW4obGVkZ2VyLCBjb2wsIG5hbWUpIHsKICBpZiAoIWxlZGdlcikgcmV0dXJuIGxlZGdlcjsKICBjb25zdCBlbnRyeSA9IHsgY29sLCBuYW1lLCBhZGRlZEF0OiBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCkgfTsKICByZXR1cm4geyAuLi5sZWRnZXIsIHdvcmtDb2x1bW5zOiBbLi4uKGxlZGdlci53b3JrQ29sdW1ucyB8fCBbXSksIGVudHJ5XSB9Owp9CgovKioKICog5Y+R57uZ5bel5Y6C5pe25YWL6ZqG6LSm5pys77yI5YyFIDXvvInvvJrmiqXku7fljZXkuI7or6Lku7fljZXlhbHnlKjlkIzkuIDlpZcgbGluZUlk4oCU4oCUCiAqIOaKpeS7t+WNleesrCByIOihjOWwseaYr+ivouS7t+WNleesrCByIOihjO+8iOWFi+mahumCo+S4gOWIu+aMieeJqeeQhuihjOWvuem9kOiusOS4i+aYoOWwhO+8jAogKiDkuYvlkI7kuKTovrnlkIToh6rnvJbovpHkuZ/kuI3mlLnov5nkuKrlh7rouqvvvInjgIJyb3dzL3dvcmtDb2x1bW5zIOa3seaLt+i0ne+8jAogKiDkuKTku73otKbmnKzku47mraTkupLkuI3lvbHlk43vvJtuZXh0U2VxIOS4gOW5tuW4pui/h+WOu++8jOe8luWPt+awuOS4jemHjeeUqOeahOinhOefqeS4jeaWreOAggogKi8KZXhwb3J0IGZ1bmN0aW9uIGNsb25lTGVkZ2VyRm9yUXVvdGUobGVkZ2VyLCBmYWN0b3J5TmFtZSkgewogIGlmICghbGVkZ2VyKSByZXR1cm4gbGVkZ2VyOwogIHJldHVybiB7CiAgICAuLi5sZWRnZXIsCiAgICByb3dzOiAobGVkZ2VyLnJvd3MgfHwgW10pLm1hcCgoeCkgPT4gKHsgLi4ueCB9KSksCiAgICB3b3JrQ29sdW1uczogKGxlZGdlci53b3JrQ29sdW1ucyB8fCBbXSkubWFwKCh4KSA9PiAoeyAuLi54IH0pKSwKICAgIGNsb25lZEZyb206IHsKICAgICAgZmlsZU5hbWU6IGxlZGdlci5maWxlTmFtZSB8fCAnJywKICAgICAgc2hlZXROYW1lOiBsZWRnZXIuc2hlZXROYW1lIHx8ICcnLAogICAgICBmYWN0b3J5TmFtZTogZmFjdG9yeU5hbWUgfHwgJycsCiAgICAgIGNsb25lZEF0OiBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCksCiAgICB9LAogIH07Cn0KCi8qKiDniannkIbooYwg4oaSIGxpbmVJZO+8iOi0puacrOmHjOayoeaciei/meS4gOihjOaXtui/lOWbniBudWxs77yJICovCmV4cG9ydCBmdW5jdGlvbiBsaW5lSWRBdChsZWRnZXIsIHJvdykgewogIGlmICghbGVkZ2VyIHx8ICFBcnJheS5pc0FycmF5KGxlZGdlci5yb3dzKSkgcmV0dXJuIG51bGw7CiAgY29uc3QgaGl0ID0gbGVkZ2VyLnJvd3MuZmluZCgoeCkgPT4geC5yb3cgPT09IHJvdyk7CiAgcmV0dXJuIGhpdCA/IGhpdC5saW5lSWQgOiBudWxsOwp9CgovKiogbGluZUlkIOKGkiDniannkIbooYzvvIjmib7kuI3liLDov5Tlm54gLTHvvIkgKi8KZXhwb3J0IGZ1bmN0aW9uIHJvd09mTGluZUlkKGxlZGdlciwgbGluZUlkKSB7CiAgaWYgKCFsZWRnZXIgfHwgIUFycmF5LmlzQXJyYXkobGVkZ2VyLnJvd3MpKSByZXR1cm4gLTE7CiAgY29uc3QgaGl0ID0gbGVkZ2VyLnJvd3MuZmluZCgoeCkgPT4geC5saW5lSWQgPT09IGxpbmVJZCk7CiAgcmV0dXJuIGhpdCA/IGhpdC5yb3cgOiAtMTsKfQo=
+// 行账本（ARCHITECTURE 记账层）：稳定 lineId ↔ 物理行映射。
+// 账本独立于 FortuneSheet 的表格数据保存——组件只是账本的一个视图，
+// 账本才是事实源。lineId 自导入起分配，永不重用、永不随编辑改变；
+// 行与原文件的对应只按物理位置（工作表 + 物理行）记，不靠 OE/名称猜。
+//
+// 本包范围：建账（导入时按物理行逐行分配）、随工作状态一起持久化、
+// 恢复时原样带回。行状态与编辑日志在后续包里往账本上长。
+
+/** 导入一张表时建账：物理行 0..rowCount-1 逐行分配 lineId（L1、L2、…） */
+export function createLedger({ fileName = '', sheetName = '', sheetIndex = 0, rowCount = 0 } = {}) {
+  const rows = [];
+  for (let r = 0; r < rowCount; r++) {
+    rows.push({ lineId: 'L' + (r + 1), row: r });
+  }
+  return {
+    version: 1,
+    fileName,
+    sheetName,
+    sheetIndex,
+    // 下一个可分配序号：只增不减，保证 lineId 永不重用
+    nextSeq: rowCount + 1,
+    rows,
+    // 工作列清单：用户在原表右侧手工加的列（不是原文件的列），
+    // [{ col, name, addedAt }]；原列与工作列的区分只记在这里。
+    workColumns: [],
+  };
+}
+
+/**
+ * 在账本上记一笔工作列（用户手工加的列）。返回新账本（不原地改）；
+ * 账本缺失或旧存档没有 workColumns 字段时都能安全调用。
+ */
+export function noteWorkColumn(ledger, col, name) {
+  if (!ledger) return ledger;
+  const entry = { col, name, addedAt: new Date().toISOString() };
+  return { ...ledger, workColumns: [...(ledger.workColumns || []), entry] };
+}
+
+/**
+ * 发给工厂时克隆账本（包 5）：报价单与询价单共用同一套 lineId——
+ * 报价单第 r 行就是询价单第 r 行（克隆那一刻按物理行对齐记下映射，
+ * 之后两边各自编辑也不改这个出身）。rows/workColumns 深拷贝，
+ * 两份账本从此互不影响；nextSeq 一并带过去，编号永不重用的规矩不断。
+ */
+export function cloneLedgerForQuote(ledger, factoryName) {
+  if (!ledger) return ledger;
+  return {
+    ...ledger,
+    rows: (ledger.rows || []).map((x) => ({ ...x })),
+    workColumns: (ledger.workColumns || []).map((x) => ({ ...x })),
+    clonedFrom: {
+      fileName: ledger.fileName || '',
+      sheetName: ledger.sheetName || '',
+      factoryName: factoryName || '',
+      clonedAt: new Date().toISOString(),
+    },
+  };
+}
+
+/** 物理行 → lineId（账本里没有这一行时返回 null） */
+export function lineIdAt(ledger, row) {
+  if (!ledger || !Array.isArray(ledger.rows)) return null;
+  const hit = ledger.rows.find((x) => x.row === row);
+  return hit ? hit.lineId : null;
+}
+
+/** lineId → 物理行（找不到返回 -1） */
+export function rowOfLineId(ledger, lineId) {
+  if (!ledger || !Array.isArray(ledger.rows)) return -1;
+  const hit = ledger.rows.find((x) => x.lineId === lineId);
+  return hit ? hit.row : -1;
+}

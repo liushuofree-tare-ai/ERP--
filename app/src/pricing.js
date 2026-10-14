@@ -1,1 +1,51 @@
-Ly8g5a6a5Lu36K6h566X77yIU1BFQyDnrKzkupToioLvvIznuq/lh73mlbDjgIHml6Dlia/kvZznlKjvvIzph5Hpop3kuIDlvovnlLHov5nph4znrpfvvInvvJoKLy8KLy8gICDplIDllK7ku7cgPSDmiJDmnKzku7cgw5fvvIgxICsg56iO54K577yJw5fvvIgxICsg5Yqg5Lu35q+U5L6L77yJKyDmr4/ku7blm73lhoXov5DotLkKLy8gICDCtyDmiJDmnKzliJflj6PlvoTkuLrjgIzlkKvnqI7jgI3ml7bot7Pov4fnqI7ngrnkuIDmraXvvIjlt7LlkKvnqI7nmoTku7fmoLzkuI3lvpflho3liqDnqI7vvInvvJsKLy8gICDCtyDnqI7ngrkgLyDliqDku7fmr5Tkvovku6Xnmb7liIbmlbDkvKDlhaXvvIgxMyDooajnpLogMTMl77yMMjAg6KGo56S6IDIwJe+8ie+8mwovLyAgIMK3IOi/kOi0ueaYr+avj+S7tuS4gOS4quaVsO+8iOaVtOaJuei/kOi0ueaMieaAu+S7tuaVsOWdh+aRiuWQjueahOe7k+aenO+8jOeUseeUqOaIt+Whq+WFpe+8ie+8mwovLyAgIMK3IOaxh+eOh+WPr+mAie+8muWhq+S6huWwsemZpOS7peaxh+eOh+aNouaIkOWkluW4geS7t++8iOacrOmhueebruWPo+W+hO+8muS6uuawkeW4geS7tyDDtyDmsYfnjofvvInvvJsKLy8gICDCtyDnu5PmnpzkuIDlvovlm5voiI3kupTlhaXliLDliIbvvIgyIOS9jeWwj+aVsO+8ieOAggovLyAgIMK3IOaIkOacrOagvOS4uuepuuaIluS4jeaYr+aVsOWtlyDihpIg6L+U5ZueIG51bGzvvIjplIDllK7ku7fnlZnnqbrvvIznu53kuI3nlKggMCDlhpLlhYXmnKrlrprku7fvvInjgIIKCi8qKiDmiorku7vmhI/ljZXlhYPmoLznjrDlgLzop6PmnpDmiJDmiJDmnKzmlbDvvJrmlbDlrZfljp/moLfjgIHmlbDlrZflrZfnrKbkuLLop6PmnpDvvIzlhbbkvZnvvIjnqbov5paH5a2X77yJ6L+U5ZueIG51bGwgKi8KZXhwb3J0IGZ1bmN0aW9uIHBhcnNlQ29zdFZhbHVlKHJhdykgewogIGlmIChyYXcgPT09IG51bGwgfHwgcmF3ID09PSB1bmRlZmluZWQpIHJldHVybiBudWxsOwogIGlmICh0eXBlb2YgcmF3ID09PSAnbnVtYmVyJykgcmV0dXJuIE51bWJlci5pc0Zpbml0ZShyYXcpID8gcmF3IDogbnVsbDsKICBpZiAodHlwZW9mIHJhdyA9PT0gJ3N0cmluZycpIHsKICAgIGNvbnN0IHQgPSByYXcudHJpbSgpOwogICAgaWYgKHQgPT09ICcnKSByZXR1cm4gbnVsbDsKICAgIGNvbnN0IG4gPSBOdW1iZXIodCk7CiAgICByZXR1cm4gTnVtYmVyLmlzRmluaXRlKG4pID8gbiA6IG51bGw7CiAgfQogIHJldHVybiBudWxsOwp9CgovKiog5Y+C5pWw6Kej5p6Q77ya56m6L+mdnuazlSDihpIgZmFsbGJhY2vvvIjnqI7ngrkv5Yqg5Lu3L+i/kOi0ueeUqCAw77yM5rGH546H55SoIG51bGzvvIkgKi8KZnVuY3Rpb24gcGFyYW1OdW0oeCwgZmFsbGJhY2spIHsKICBpZiAoeCA9PT0gbnVsbCB8fCB4ID09PSB1bmRlZmluZWQgfHwgeCA9PT0gJycpIHJldHVybiBmYWxsYmFjazsKICBjb25zdCBuID0gdHlwZW9mIHggPT09ICdudW1iZXInID8geCA6IE51bWJlcihTdHJpbmcoeCkudHJpbSgpKTsKICByZXR1cm4gTnVtYmVyLmlzRmluaXRlKG4pID8gbiA6IGZhbGxiYWNrOwp9CgovKiog5Zub6IiN5LqU5YWl5YiwIDIg5L2N5bCP5pWw77yI6YeR6aKd5Y+j5b6E77yJICovCmV4cG9ydCBmdW5jdGlvbiByb3VuZDIobikgewogIHJldHVybiBNYXRoLnJvdW5kKChuICsgTnVtYmVyLkVQU0lMT04pICogMTAwKSAvIDEwMDsKfQoKLyoqCiAqIOeul+S4gOihjOmUgOWUruS7t+OAggogKiDlhaXlj4LvvJp7IGNvc3QsIHRheEluY2x1c2l2ZSwgdGF4UmF0ZVBjdCwgbWFya3VwUGN0LCBmcmVpZ2h0UGVyVW5pdCwgZnhSYXRlIH0KICog6L+U5Zue5pWw5a2X77yIMiDkvY3lsI/mlbDvvInmiJYgbnVsbO+8iOaIkOacrOS4jeWPr+eUqCDihpIg6K+l6KGM55WZ56m677yJ44CCCiAqLwpleHBvcnQgZnVuY3Rpb24gY29tcHV0ZVNhbGVzUHJpY2UoeyBjb3N0LCB0YXhJbmNsdXNpdmUsIHRheFJhdGVQY3QsIG1hcmt1cFBjdCwgZnJlaWdodFBlclVuaXQsIGZ4UmF0ZSB9ID0ge30pIHsKICBjb25zdCBjID0gcGFyc2VDb3N0VmFsdWUoY29zdCk7CiAgaWYgKGMgPT09IG51bGwpIHJldHVybiBudWxsOwogIGxldCBwID0gYzsKICBpZiAoIXRheEluY2x1c2l2ZSkgcCAqPSAxICsgcGFyYW1OdW0odGF4UmF0ZVBjdCwgMCkgLyAxMDA7CiAgcCAqPSAxICsgcGFyYW1OdW0obWFya3VwUGN0LCAwKSAvIDEwMDsKICBwICs9IHBhcmFtTnVtKGZyZWlnaHRQZXJVbml0LCAwKTsKICBjb25zdCBmeCA9IHBhcmFtTnVtKGZ4UmF0ZSwgbnVsbCk7CiAgaWYgKGZ4ICE9PSBudWxsICYmIGZ4ID4gMCkgcCAvPSBmeDsKICByZXR1cm4gcm91bmQyKHApOwp9Cg==
+// 定价计算（SPEC 第五节，纯函数、无副作用，金额一律由这里算）：
+//
+//   销售价 = 成本价 ×（1 + 税点）×（1 + 加价比例）+ 每件国内运费
+//   · 成本列口径为「含税」时跳过税点一步（已含税的价格不得再加税）；
+//   · 税点 / 加价比例以百分数传入（13 表示 13%，20 表示 20%）；
+//   · 运费是每件一个数（整批运费按总件数均摊后的结果，由用户填入）；
+//   · 汇率可选：填了就除以汇率换成外币价（本项目口径：人民币价 ÷ 汇率）；
+//   · 结果一律四舍五入到分（2 位小数）。
+//   · 成本格为空或不是数字 → 返回 null（销售价留空，绝不用 0 冒充未定价）。
+
+/** 把任意单元格现值解析成成本数：数字原样、数字字符串解析，其余（空/文字）返回 null */
+export function parseCostValue(raw) {
+  if (raw === null || raw === undefined) return null;
+  if (typeof raw === 'number') return Number.isFinite(raw) ? raw : null;
+  if (typeof raw === 'string') {
+    const t = raw.trim();
+    if (t === '') return null;
+    const n = Number(t);
+    return Number.isFinite(n) ? n : null;
+  }
+  return null;
+}
+
+/** 参数解析：空/非法 → fallback（税点/加价/运费用 0，汇率用 null） */
+function paramNum(x, fallback) {
+  if (x === null || x === undefined || x === '') return fallback;
+  const n = typeof x === 'number' ? x : Number(String(x).trim());
+  return Number.isFinite(n) ? n : fallback;
+}
+
+/** 四舍五入到 2 位小数（金额口径） */
+export function round2(n) {
+  return Math.round((n + Number.EPSILON) * 100) / 100;
+}
+
+/**
+ * 算一行销售价。
+ * 入参：{ cost, taxInclusive, taxRatePct, markupPct, freightPerUnit, fxRate }
+ * 返回数字（2 位小数）或 null（成本不可用 → 该行留空）。
+ */
+export function computeSalesPrice({ cost, taxInclusive, taxRatePct, markupPct, freightPerUnit, fxRate } = {}) {
+  const c = parseCostValue(cost);
+  if (c === null) return null;
+  let p = c;
+  if (!taxInclusive) p *= 1 + paramNum(taxRatePct, 0) / 100;
+  p *= 1 + paramNum(markupPct, 0) / 100;
+  p += paramNum(freightPerUnit, 0);
+  const fx = paramNum(fxRate, null);
+  if (fx !== null && fx > 0) p /= fx;
+  return round2(p);
+}

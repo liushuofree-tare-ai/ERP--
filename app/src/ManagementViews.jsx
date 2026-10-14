@@ -1,1 +1,359 @@
-aW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyBvcmRlclN1bW1hcnkgfSBmcm9tICcuL3JlZ2lzdHJ5LmpzJzsKCi8vIOWuouaIt+euoeeQhiAvIOW3peWOgueuoeeQhu+8iOWMhSAxMe+8ie+8muazqOWGjOihqOe7tOaKpCArIOaVsOaNruiBlOWKqOeahCLnnIvlvpfop4Ei4oCU4oCUCi8vIOeCueS4gOS4quWuouaIty/lt6XljoLvvIznq4vliLvnnIvliLDlroPlkI3kuIvnmoTor6Lku7fljZXjgIHmiqXku7fljZXjgIHorqLljZXvvIzngrnku7vmhI8KLy8g5LiA5p2h5bCx6Lez6L+H5Y6744CC5pWw5a2X55SxIHJlZ2lzdHJ5LmpzIOeOsOeul+S8oOWFpe+8jOacrOe7hOS7tuWPqui0n+i0o+WRiOeOsOS4jgovLyDmlLbpm4bovpPlhaXvvJvmlLnlkI0v5Yig6Zmk55qE6KeE5YiZ5Yik5pat77yI5ZCM5q2l6IyD5Zu044CB6IO95LiN6IO95Yig77yJ5Zyo5Li756iL5bqPICsKLy8gcmVnaXN0cnkuanMg6YeM77yM6L+Z6YeM5Y+q566h5oqK57uT5p6c77yI5by556qX5Y6f5Zug77yJ6YCS57uZ55So5oi355yL44CCCgpjb25zdCBtb25leSA9IChuKSA9PiAoTnVtYmVyKG4pIHx8IDApLnRvRml4ZWQoMik7CmNvbnN0IHRoID0gewogIHRleHRBbGlnbjogJ3JpZ2h0JywgcGFkZGluZzogJzhweCAxMnB4JywgYm9yZGVyQm90dG9tOiAnMXB4IHNvbGlkICNkYmUyZWMnLAogIGJhY2tncm91bmQ6ICcjZWRmMWY3JywKICBjb2xvcjogJyM0NTUxNWYnLCBmb250V2VpZ2h0OiA2MDAsIHdoaXRlU3BhY2U6ICdub3dyYXAnLAp9Owpjb25zdCB0aEwgPSB7IC4uLnRoLCB0ZXh0QWxpZ246ICdsZWZ0JyB9Owpjb25zdCB0ZCA9IHsKICB0ZXh0QWxpZ246ICdyaWdodCcsIHBhZGRpbmc6ICc4cHggMTJweCcsIGJvcmRlckJvdHRvbTogJzFweCBzb2xpZCAjZWVmMWY0Jywgd2hpdGVTcGFjZTogJ25vd3JhcCcsCn07CmNvbnN0IHRkTCA9IHsgLi4udGQsIHRleHRBbGlnbjogJ2xlZnQnIH07CmNvbnN0IGlucHV0ID0geyBwYWRkaW5nOiAnNXB4IDhweCcsIGJvcmRlcjogJzFweCBzb2xpZCAjYzlkMmRlJywgYm9yZGVyUmFkaXVzOiA2IH07CmNvbnN0IGJ0biA9IHsKICBib3JkZXI6ICcxcHggc29saWQgIzJmNmJmZicsIGJhY2tncm91bmQ6ICcjMmY2YmZmJywgY29sb3I6ICcjZmZmJywKICBib3JkZXJSYWRpdXM6IDgsIHBhZGRpbmc6ICc1cHggMTRweCcsIGN1cnNvcjogJ3BvaW50ZXInLAp9Owpjb25zdCBidG5HaG9zdCA9IHsgLi4uYnRuLCBiYWNrZ3JvdW5kOiAnI2ZmZicsIGNvbG9yOiAnIzJmNmJmZicgfTsKY29uc3QgYnRuRGFuZ2VyID0geyAuLi5idG4sIGJhY2tncm91bmQ6ICcjZmZmJywgY29sb3I6ICcjZDkyZDIwJywgYm9yZGVyOiAnMXB4IHNvbGlkICNkOTJkMjAnIH07CmNvbnN0IHdyYXAgPSB7CiAgZmxleDogMSwgb3ZlcmZsb3c6ICdhdXRvJywgcGFkZGluZzogJzE2cHggMThweCcsCiAgZm9udEZhbWlseTogJ3NhbnMtc2VyaWYnLCBmb250U2l6ZTogMTQsCn07CmNvbnN0IGxpbmtSb3cgPSB7CiAgY3Vyc29yOiAncG9pbnRlcicsIGNvbG9yOiAnIzJmNmJmZicsIHBhZGRpbmc6ICczcHggMCcsCiAgYm9yZGVyQm90dG9tOiAnMXB4IGRhc2hlZCAjZTNlOGVlJywKfTsKY29uc3QgZm10RGF0ZSA9IChpc28pID0+IHsKICBpZiAoIWlzbykgcmV0dXJuICfljoblj7LljZXmja4nOwogIGNvbnN0IGQgPSBuZXcgRGF0ZShpc28pOwogIHJldHVybiBOdW1iZXIuaXNOYU4oZC5nZXRUaW1lKCkpID8gJ+WOhuWPsuWNleaNricgOiBkLnRvTG9jYWxlRGF0ZVN0cmluZygnemgtQ04nKTsKfTsKCi8qIC0tLS0tLS0tLS0tLS0tLS0g5a6i5oi3566h55CGIC0tLS0tLS0tLS0tLS0tLS0gKi8KCmZ1bmN0aW9uIEN1c3RvbWVyRGV0YWlsKHsgaXRlbSwgb25SZW5hbWUsIG9uVXBkYXRlSW5mbywgb25EZWxldGUsIG9uSnVtcElucXVpcnksIG9uSnVtcE9yZGVyIH0pIHsKICBjb25zdCB7IGVudHJ5LCBpbnF1aXJpZXMsIG9yZGVycyB9ID0gaXRlbTsKICBjb25zdCBbY29udGFjdCwgc2V0Q29udGFjdF0gPSB1c2VTdGF0ZShlbnRyeS5jb250YWN0IHx8ICcnKTsKICBjb25zdCBbbm90ZSwgc2V0Tm90ZV0gPSB1c2VTdGF0ZShlbnRyeS5ub3RlIHx8ICcnKTsKICBjb25zdCBbbmV3TmFtZSwgc2V0TmV3TmFtZV0gPSB1c2VTdGF0ZShlbnRyeS5uYW1lKTsKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9ImN1c3QtZGV0YWlsIiBzdHlsZT17ewogICAgICBtYXJnaW5Ub3A6IDEyLCBib3JkZXI6ICcxcHggc29saWQgI2RiZTJlYycsIGJvcmRlclJhZGl1czogMTIsCiAgICAgIGJhY2tncm91bmQ6ICcjZmZmJywgcGFkZGluZzogJzE0cHggMThweCcsIG1heFdpZHRoOiAxMTIwLAogICAgfX0+CiAgICAgIDxiIGNsYXNzTmFtZT0iY3VzdC1kZXRhaWwtbmFtZSIgc3R5bGU9e3sgZm9udFNpemU6IDE2IH19PntlbnRyeS5uYW1lfTwvYj4KICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGdhcDogMjAsIGZsZXhXcmFwOiAnd3JhcCcsIG1hcmdpblRvcDogMTAgfX0+CiAgICAgICAgPGRpdiBzdHlsZT17eyBmbGV4OiAnMSAxIDMwMHB4JyB9fT4KICAgICAgICAgIDxkaXYgc3R5bGU9e3sgY29sb3I6ICcjODg4JywgZm9udFNpemU6IDEyLCBtYXJnaW5Cb3R0b206IDQgfX0+5Z+65pys5L+h5oGv77yI6IGU57O75Lq65LiO5aSH5rOo77yJPC9kaXY+CiAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgZ2FwOiA2LCBmbGV4V3JhcDogJ3dyYXAnLCBhbGlnbkl0ZW1zOiAnY2VudGVyJyB9fT4KICAgICAgICAgICAgPGxhYmVsIHN0eWxlPXt7IGNvbG9yOiAnIzY2NicgfX0+6IGU57O75Lq6CiAgICAgICAgICAgICAgPGlucHV0IGNsYXNzTmFtZT0iY3VzdC1jb250YWN0LWlucHV0IiBwbGFjZWhvbGRlcj0i6IGU57O75Lq6IgogICAgICAgICAgICAgICAgdmFsdWU9e2NvbnRhY3R9IG9uQ2hhbmdlPXsoZSkgPT4gc2V0Q29udGFjdChlLnRhcmdldC52YWx1ZSl9CiAgICAgICAgICAgICAgICBzdHlsZT17eyAuLi5pbnB1dCwgd2lkdGg6IDEzMCwgbWFyZ2luTGVmdDogNCB9fSAvPgogICAgICAgICAgICA8L2xhYmVsPgogICAgICAgICAgICA8bGFiZWwgc3R5bGU9e3sgY29sb3I6ICcjNjY2JyB9fT7lpIfms6gKICAgICAgICAgICAgICA8aW5wdXQgY2xhc3NOYW1lPSJjdXN0LW5vdGUtaW5wdXQiIHBsYWNlaG9sZGVyPSLlpIfms6jvvIjotKbmnJ/jgIHkuaDmg6/nrYnvvIkiCiAgICAgICAgICAgICAgICB2YWx1ZT17bm90ZX0gb25DaGFuZ2U9eyhlKSA9PiBzZXROb3RlKGUudGFyZ2V0LnZhbHVlKX0KICAgICAgICAgICAgICAgIHN0eWxlPXt7IC4uLmlucHV0LCB3aWR0aDogMTkwLCBtYXJnaW5MZWZ0OiA0IH19IC8+CiAgICAgICAgICAgIDwvbGFiZWw+CiAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJjdXN0LWluZm8tc2F2ZSIgc3R5bGU9e2J0bn0KICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvblVwZGF0ZUluZm8oZW50cnkubmFtZSwgeyBjb250YWN0OiBjb250YWN0LnRyaW0oKSwgbm90ZTogbm90ZS50cmltKCkgfSl9PgogICAgICAgICAgICAgIOS/neWtmOS/oeaBrwogICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGdhcDogNiwgZmxleFdyYXA6ICd3cmFwJywgYWxpZ25JdGVtczogJ2NlbnRlcicsIG1hcmdpblRvcDogMTAgfX0+CiAgICAgICAgICAgIDxpbnB1dCBjbGFzc05hbWU9ImN1c3QtcmVuYW1lLWlucHV0IiBwbGFjZWhvbGRlcj0i5paw5a6i5oi35ZCNIgogICAgICAgICAgICAgIHZhbHVlPXtuZXdOYW1lfSBvbkNoYW5nZT17KGUpID0+IHNldE5ld05hbWUoZS50YXJnZXQudmFsdWUpfQogICAgICAgICAgICAgIHN0eWxlPXt7IC4uLmlucHV0LCB3aWR0aDogMTYwIH19IC8+CiAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJjdXN0LXJlbmFtZS1idG4iIHN0eWxlPXtidG5HaG9zdH0KICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvblJlbmFtZShlbnRyeS5uYW1lLCBuZXdOYW1lKX0+CiAgICAgICAgICAgICAg5pS55ZCN77yI6K+i5Lu35Y2V5LiO6K6i5Y2V5LiA6LW35pS577yJCiAgICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0iY3VzdC1kZWxldGUtYnRuIiBzdHlsZT17YnRuRGFuZ2VyfQogICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uRGVsZXRlKGVudHJ5Lm5hbWUpfT4KICAgICAgICAgICAgICDliKDpmaTlrqLmiLcKICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDxkaXYgc3R5bGU9e3sgY29sb3I6ICcjOTk5JywgZm9udFNpemU6IDEyLCBtYXJnaW5Ub3A6IDYgfX0+CiAgICAgICAgICAgIOWIoOmZpOinhOWIme+8muWQjeS4i+acieivouS7t+WNleaIluiuouWNleeahOWuouaIt+WIoOS4jeaOie+8iOWOhuWPsuimgeeVmeedgOafpei0pu+8ieOAggogICAgICAgICAgPC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBzdHlsZT17eyBmbGV4OiAnMSAxIDMwMHB4JyB9fT4KICAgICAgICAgIDxkaXYgc3R5bGU9e3sgY29sb3I6ICcjODg4JywgZm9udFNpemU6IDEyLCBtYXJnaW5Cb3R0b206IDQgfX0+CiAgICAgICAgICAgIOS7lueahOivouS7t+WNle+8iHtpbnF1aXJpZXMubGVuZ3Rofe+8ieKAlCDngrnkuIDmnaHot7PliLDpgqPlvKDljZUKICAgICAgICAgIDwvZGl2PgogICAgICAgICAge2lucXVpcmllcy5tYXAoKHEpID0+ICgKICAgICAgICAgICAgPGRpdiBrZXk9e3EuZG9jSWR9IGNsYXNzTmFtZT0iY3VzdC1pbnEtcm93IiBkYXRhLWRvYy1pZD17cS5kb2NJZH0KICAgICAgICAgICAgICBzdHlsZT17bGlua1Jvd30gb25DbGljaz17KCkgPT4gb25KdW1wSW5xdWlyeShxLmRvY0lkKX0+CiAgICAgICAgICAgICAge2ZtdERhdGUocS5jcmVhdGVkQXQpfSDCtyB7cS5zdGF0dXN9CiAgICAgICAgICAgICAge3Euc291cmNlRmlsZU5hbWUgPyAnIMK3ICcgKyBxLnNvdXJjZUZpbGVOYW1lIDogJyd9CiAgICAgICAgICAgICAge3Eubm90ZSA/ICgKICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0iY3VzdC1pbnEtbm90ZSIgc3R5bGU9e3sgY29sb3I6ICcjODg4JyB9fT4gwrcg5aSH5rOo77yae3Eubm90ZX08L3NwYW4+CiAgICAgICAgICAgICAgKSA6IG51bGx9CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgKSl9CiAgICAgICAgICB7aW5xdWlyaWVzLmxlbmd0aCA9PT0gMCAmJiA8ZGl2IHN0eWxlPXt7IGNvbG9yOiAnI2JiYicgfX0+6L+Y5rKh5pyJ6K+i5Lu35Y2VPC9kaXY+fQogICAgICAgICAgPGRpdiBzdHlsZT17eyBjb2xvcjogJyM4ODgnLCBmb250U2l6ZTogMTIsIG1hcmdpbjogJzEwcHggMCA0cHgnIH19PgogICAgICAgICAgICDku5bnmoTorqLljZXvvIh7b3JkZXJzLmxlbmd0aH3vvInigJQg54K55LiA5p2h6Lez5Yiw6K6i5Y2V6K+m5oOFCiAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIHtvcmRlcnMubWFwKChvKSA9PiB7CiAgICAgICAgICAgIGNvbnN0IHMgPSBvcmRlclN1bW1hcnkobyk7CiAgICAgICAgICAgIHJldHVybiAoCiAgICAgICAgICAgICAgPGRpdiBrZXk9e3Mub3JkZXJOb30gY2xhc3NOYW1lPSJjdXN0LW9yZC1yb3ciIGRhdGEtbm89e3Mub3JkZXJOb30KICAgICAgICAgICAgICAgIHN0eWxlPXtsaW5rUm93fSBvbkNsaWNrPXsoKSA9PiBvbkp1bXBPcmRlcihzLm9yZGVyTm8pfT4KICAgICAgICAgICAgICAgIHtzLm9yZGVyTm99IMK3IOW6lOaUtiB7bW9uZXkocy5yZWNlaXZhYmxlKX0gwrcge3Muc3RhdHVzVGV4dH0KICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgKTsKICAgICAgICAgIH0pfQogICAgICAgICAge29yZGVycy5sZW5ndGggPT09IDAgJiYgPGRpdiBzdHlsZT17eyBjb2xvcjogJyNiYmInIH19Pui/mOayoeacieiuouWNlTwvZGl2Pn0KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICApOwp9CgpleHBvcnQgZnVuY3Rpb24gQ3VzdG9tZXJzVmlldyh7CiAgbW9kZWwsIHNlbGVjdGVkTmFtZSwgb25TZWxlY3QsIG9uQWRkLCBvblJlbmFtZSwgb25VcGRhdGVJbmZvLCBvbkRlbGV0ZSwKICBvbkp1bXBJbnF1aXJ5LCBvbkp1bXBPcmRlciwgb25DbG9zZSwKfSkgewogIGNvbnN0IFthZGROYW1lLCBzZXRBZGROYW1lXSA9IHVzZVN0YXRlKCcnKTsKICBjb25zdCBzZWwgPSAobW9kZWwgfHwgW10pLmZpbmQoKG0pID0+IG0uZW50cnkubmFtZSA9PT0gc2VsZWN0ZWROYW1lKSB8fCBudWxsOwogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0iY3VzdG9tZXJzLXZpZXciIHN0eWxlPXt3cmFwfT4KICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGFsaWduSXRlbXM6ICdjZW50ZXInLCBnYXA6IDEwIH19PgogICAgICAgIDxiIGNsYXNzTmFtZT0ic2VjLXRpdGxlIiBzdHlsZT17eyBmb250U2l6ZTogMTkgfX0+5a6i5oi3566h55CGPC9iPgogICAgICAgIDxzcGFuIHN0eWxlPXt7IGNvbG9yOiAnIzg4OCcgfX0+54K55a6i5oi355yL5a6D5ZCN5LiL55qE6K+i5Lu35Y2V5LiO6K6i5Y2V77yb5pS55ZCN5Lya5ZCM5q2l5Yiw5omA5pyJ5Y2V5o2uPC9zcGFuPgogICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJjdXN0LWNsb3NlIiBvbkNsaWNrPXtvbkNsb3NlfSBzdHlsZT17ewogICAgICAgICAgbWFyZ2luTGVmdDogJ2F1dG8nLCBib3JkZXI6ICcxcHggc29saWQgI2M5ZDJkZScsIGNvbG9yOiAnIzM3NDA0YScsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgICAgICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzVweCAxMnB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgICAgICAgfX0+6L+U5Zue6KGo5qC8PC9idXR0b24+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgZ2FwOiA2LCBtYXJnaW5Ub3A6IDEyLCBhbGlnbkl0ZW1zOiAnY2VudGVyJyB9fT4KICAgICAgICA8aW5wdXQgY2xhc3NOYW1lPSJjdXN0LWFkZC1pbnB1dCIgcGxhY2Vob2xkZXI9IuaWsOWuouaIt+WQjSIKICAgICAgICAgIHZhbHVlPXthZGROYW1lfSBvbkNoYW5nZT17KGUpID0+IHNldEFkZE5hbWUoZS50YXJnZXQudmFsdWUpfQogICAgICAgICAgb25LZXlEb3duPXsoZSkgPT4geyBpZiAoZS5rZXkgPT09ICdFbnRlcicgJiYgYWRkTmFtZS50cmltKCkpIHsgb25BZGQoYWRkTmFtZSk7IHNldEFkZE5hbWUoJycpOyB9IH19CiAgICAgICAgICBzdHlsZT17eyAuLi5pbnB1dCwgd2lkdGg6IDE4MCB9fSAvPgogICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJjdXN0LWFkZC1idG4iIHN0eWxlPXtidG59CiAgICAgICAgICBvbkNsaWNrPXsoKSA9PiB7IGlmIChhZGROYW1lLnRyaW0oKSkgeyBvbkFkZChhZGROYW1lKTsgc2V0QWRkTmFtZSgnJyk7IH0gfX0+CiAgICAgICAgICDmlrDlop7lrqLmiLcKICAgICAgICA8L2J1dHRvbj4KICAgICAgPC9kaXY+CiAgICAgIHsobW9kZWwgfHwgW10pLmxlbmd0aCA9PT0gMCA/ICgKICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY3VzdC1lbXB0eSIgc3R5bGU9e3sgY29sb3I6ICcjODg4JywgbWFyZ2luVG9wOiAxMiB9fT4KICAgICAgICAgIOi/mOayoeacieWuouaIt+KAlOKAlOWcqOS4iumdouaWsOWinu+8jOaIluWcqOivouS7t+WNleS4iue7meWuouaIt+i1t+WQje+8jOi/memHjOS8muiHquWKqOWHuueOsOOAggogICAgICAgIDwvZGl2PgogICAgICApIDogKAogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJsZWRnZXItY2FyZCIgc3R5bGU9e3sgbWFyZ2luVG9wOiAxMCB9fT4KICAgICAgICA8dGFibGUgY2xhc3NOYW1lPSJjdXN0LXRhYmxlIiBzdHlsZT17eyBib3JkZXJDb2xsYXBzZTogJ2NvbGxhcHNlJywgYmFja2dyb3VuZDogJyNmZmYnLCB3aWR0aDogJzEwMCUnIH19PgogICAgICAgICAgPHRoZWFkPgogICAgICAgICAgICA8dHI+CiAgICAgICAgICAgICAgPHRoIHN0eWxlPXt0aEx9PuWuouaItzwvdGg+PHRoIHN0eWxlPXt0aEx9PuWkh+azqDwvdGg+PHRoIHN0eWxlPXt0aH0+6K+i5Lu35Y2VPC90aD48dGggc3R5bGU9e3RofT7orqLljZU8L3RoPgogICAgICAgICAgICAgIDx0aCBzdHlsZT17dGh9PuW6lOaUtjwvdGg+PHRoIHN0eWxlPXt0aH0+5bey5pS2PC90aD48dGggc3R5bGU9e3RofT7mnKrmlLY8L3RoPgogICAgICAgICAgICA8L3RyPgogICAgICAgICAgPC90aGVhZD4KICAgICAgICAgIDx0Ym9keT4KICAgICAgICAgICAgeyhtb2RlbCB8fCBbXSkubWFwKChtKSA9PiAoCiAgICAgICAgICAgICAgPHRyIGtleT17bS5lbnRyeS5uYW1lfSBjbGFzc05hbWU9ImN1c3Qtcm93IiBkYXRhLWN1c3RvbWVyPXttLmVudHJ5Lm5hbWV9CiAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvblNlbGVjdChtLmVudHJ5Lm5hbWUpfQogICAgICAgICAgICAgICAgc3R5bGU9e3sKICAgICAgICAgICAgICAgICAgY3Vyc29yOiAncG9pbnRlcicsCiAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQ6IHNlbCAmJiBzZWwuZW50cnkubmFtZSA9PT0gbS5lbnRyeS5uYW1lID8gJyNlOGVmZmUnIDogJ3RyYW5zcGFyZW50JywKICAgICAgICAgICAgICAgIH19PgogICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt0ZEx9PnttLmVudHJ5Lm5hbWV9PC90ZD4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17eyAuLi50ZEwsIG1heFdpZHRoOiAyMDAsIG92ZXJmbG93OiAnaGlkZGVuJywgdGV4dE92ZXJmbG93OiAnZWxsaXBzaXMnIH19CiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT0iY3VzdC1ub3RlIiB0aXRsZT17bS5lbnRyeS5ub3RlIHx8ICcnfT4KICAgICAgICAgICAgICAgICAge20uZW50cnkubm90ZSB8fCAn4oCUJ30KICAgICAgICAgICAgICAgIDwvdGQ+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkfSBjbGFzc05hbWU9ImN1c3QtaW5xLWNvdW50Ij57bS5zdGF0cy5pbnF1aXJpZXN9PC90ZD4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGR9IGNsYXNzTmFtZT0iY3VzdC1vcmQtY291bnQiPnttLnN0YXRzLm9yZGVyc308L3RkPgogICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt0ZH0gY2xhc3NOYW1lPSJjdXN0LXJlY2VpdmFibGUiPnttb25leShtLnN0YXRzLnJlY2VpdmFibGUpfTwvdGQ+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkfT57bW9uZXkobS5zdGF0cy5yZWNlaXZlZCl9PC90ZD4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGR9IGNsYXNzTmFtZT0iY3VzdC11bnBhaWQiPnttb25leShtLnN0YXRzLnVucGFpZCl9PC90ZD4KICAgICAgICAgICAgICA8L3RyPgogICAgICAgICAgICApKX0KICAgICAgICAgIDwvdGJvZHk+CiAgICAgICAgPC90YWJsZT4KICAgICAgICA8L2Rpdj4KICAgICAgKX0KICAgICAge3NlbCAmJiAoCiAgICAgICAgPEN1c3RvbWVyRGV0YWlsCiAgICAgICAgICBrZXk9e3NlbC5lbnRyeS5uYW1lfQogICAgICAgICAgaXRlbT17c2VsfQogICAgICAgICAgb25SZW5hbWU9e29uUmVuYW1lfQogICAgICAgICAgb25VcGRhdGVJbmZvPXtvblVwZGF0ZUluZm99CiAgICAgICAgICBvbkRlbGV0ZT17b25EZWxldGV9CiAgICAgICAgICBvbkp1bXBJbnF1aXJ5PXtvbkp1bXBJbnF1aXJ5fQogICAgICAgICAgb25KdW1wT3JkZXI9e29uSnVtcE9yZGVyfQogICAgICAgIC8+CiAgICAgICl9CiAgICA8L2Rpdj4KICApOwp9CgovKiAtLS0tLS0tLS0tLS0tLS0tIOW3peWOgueuoeeQhiAtLS0tLS0tLS0tLS0tLS0tICovCgpmdW5jdGlvbiBGYWN0b3J5RGV0YWlsKHsgaXRlbSwgb25SZW5hbWUsIG9uVXBkYXRlSW5mbywgb25EZWxldGUsIG9uSnVtcERvYywgb25KdW1wT3JkZXIgfSkgewogIGNvbnN0IFtuZXdOYW1lLCBzZXROZXdOYW1lXSA9IHVzZVN0YXRlKGl0ZW0ubmFtZSk7CiAgY29uc3QgW2NvbnRhY3QsIHNldENvbnRhY3RdID0gdXNlU3RhdGUoKGl0ZW0uaW5mbyAmJiBpdGVtLmluZm8uY29udGFjdCkgfHwgJycpOwogIGNvbnN0IFtub3RlLCBzZXROb3RlXSA9IHVzZVN0YXRlKChpdGVtLmluZm8gJiYgaXRlbS5pbmZvLm5vdGUpIHx8ICcnKTsKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9ImZhYy1kZXRhaWwiIHN0eWxlPXt7CiAgICAgIG1hcmdpblRvcDogMTIsIGJvcmRlcjogJzFweCBzb2xpZCAjZGJlMmVjJywgYm9yZGVyUmFkaXVzOiAxMiwKICAgICAgYmFja2dyb3VuZDogJyNmZmYnLCBwYWRkaW5nOiAnMTRweCAxOHB4JywgbWF4V2lkdGg6IDExMjAsCiAgICB9fT4KICAgICAgPGIgY2xhc3NOYW1lPSJmYWMtZGV0YWlsLW5hbWUiIHN0eWxlPXt7IGZvbnRTaXplOiAxNiB9fT57aXRlbS5uYW1lfTwvYj4KICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGdhcDogMjAsIGZsZXhXcmFwOiAnd3JhcCcsIG1hcmdpblRvcDogMTAgfX0+CiAgICAgICAgPGRpdiBzdHlsZT17eyBmbGV4OiAnMSAxIDMwMHB4JyB9fT4KICAgICAgICAgIDxkaXYgc3R5bGU9e3sgY29sb3I6ICcjODg4JywgZm9udFNpemU6IDEyLCBtYXJnaW5Cb3R0b206IDQgfX0+5Z+65pys5L+h5oGv77yI6IGU57O75Lq65LiO5aSH5rOo77yJPC9kaXY+CiAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgZ2FwOiA2LCBmbGV4V3JhcDogJ3dyYXAnLCBhbGlnbkl0ZW1zOiAnY2VudGVyJyB9fT4KICAgICAgICAgICAgPGxhYmVsIHN0eWxlPXt7IGNvbG9yOiAnIzY2NicgfX0+6IGU57O75Lq6CiAgICAgICAgICAgICAgPGlucHV0IGNsYXNzTmFtZT0iZmFjLWNvbnRhY3QtaW5wdXQiIHBsYWNlaG9sZGVyPSLogZTns7vkuroiCiAgICAgICAgICAgICAgICB2YWx1ZT17Y29udGFjdH0gb25DaGFuZ2U9eyhlKSA9PiBzZXRDb250YWN0KGUudGFyZ2V0LnZhbHVlKX0KICAgICAgICAgICAgICAgIHN0eWxlPXt7IC4uLmlucHV0LCB3aWR0aDogMTMwLCBtYXJnaW5MZWZ0OiA0IH19IC8+CiAgICAgICAgICAgIDwvbGFiZWw+CiAgICAgICAgICAgIDxsYWJlbCBzdHlsZT17eyBjb2xvcjogJyM2NjYnIH19PuWkh+azqAogICAgICAgICAgICAgIDxpbnB1dCBjbGFzc05hbWU9ImZhYy1ub3RlLWlucHV0IiBwbGFjZWhvbGRlcj0i5aSH5rOo77yI6LSm5pyf44CB5Lmg5oOv562J77yJIgogICAgICAgICAgICAgICAgdmFsdWU9e25vdGV9IG9uQ2hhbmdlPXsoZSkgPT4gc2V0Tm90ZShlLnRhcmdldC52YWx1ZSl9CiAgICAgICAgICAgICAgICBzdHlsZT17eyAuLi5pbnB1dCwgd2lkdGg6IDE5MCwgbWFyZ2luTGVmdDogNCB9fSAvPgogICAgICAgICAgICA8L2xhYmVsPgogICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0iZmFjLWluZm8tc2F2ZSIgc3R5bGU9e2J0bn0KICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvblVwZGF0ZUluZm8oaXRlbS5uYW1lLCB7IGNvbnRhY3Q6IGNvbnRhY3QudHJpbSgpLCBub3RlOiBub3RlLnRyaW0oKSB9KX0+CiAgICAgICAgICAgICAg5L+d5a2Y5L+h5oGvCiAgICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgICAgPC9kaXY+CiAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGNvbG9yOiAnIzg4OCcsIGZvbnRTaXplOiAxMiwgbWFyZ2luOiAnMTJweCAwIDRweCcgfX0+5pS55ZCNIC8g5Yig6ZmkPC9kaXY+CiAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgZ2FwOiA2LCBmbGV4V3JhcDogJ3dyYXAnLCBhbGlnbkl0ZW1zOiAnY2VudGVyJyB9fT4KICAgICAgICAgICAgPGlucHV0IGNsYXNzTmFtZT0iZmFjLXJlbmFtZS1pbnB1dCIgcGxhY2Vob2xkZXI9IuaWsOW3peWOguWQjSIKICAgICAgICAgICAgICB2YWx1ZT17bmV3TmFtZX0gb25DaGFuZ2U9eyhlKSA9PiBzZXROZXdOYW1lKGUudGFyZ2V0LnZhbHVlKX0KICAgICAgICAgICAgICBzdHlsZT17eyAuLi5pbnB1dCwgd2lkdGg6IDE2MCB9fSAvPgogICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0iZmFjLXJlbmFtZS1idG4iIHN0eWxlPXtidG5HaG9zdH0KICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvblJlbmFtZShpdGVtLm5hbWUsIG5ld05hbWUpfT4KICAgICAgICAgICAgICDmlLnlkI3vvIjmiqXku7fljZXjgIHlrprljoLkuI7orqLljZXkuIDotbfmlLnvvIkKICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJmYWMtZGVsZXRlLWJ0biIgc3R5bGU9e2J0bkRhbmdlcn0KICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvbkRlbGV0ZShpdGVtLm5hbWUpfT4KICAgICAgICAgICAgICDliKDpmaTlt6XljoIKICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICAgIDxkaXYgc3R5bGU9e3sgY29sb3I6ICcjOTk5JywgZm9udFNpemU6IDEyLCBtYXJnaW5Ub3A6IDYgfX0+CiAgICAgICAgICAgIOWIoOmZpOinhOWIme+8muWQjeS4i+acieaKpeS7t+WNleOAgeWumuWOguiusOW9leaIluiuouWNleW8leeUqOeahOW3peWOguWIoOS4jeaOieOAggogICAgICAgICAgPC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBzdHlsZT17eyBmbGV4OiAnMSAxIDMwMHB4JyB9fT4KICAgICAgICAgIDxkaXYgc3R5bGU9e3sgY29sb3I6ICcjODg4JywgZm9udFNpemU6IDEyLCBtYXJnaW5Cb3R0b206IDQgfX0+CiAgICAgICAgICAgIOWug+eahOaKpeS7t+WNle+8iHtpdGVtLnF1b3RlRG9jcy5sZW5ndGh977yJ4oCUIOeCueS4gOadoei3s+WIsOmCo+W8oOWNlQogICAgICAgICAgPC9kaXY+CiAgICAgICAgICB7aXRlbS5xdW90ZURvY3MubWFwKChxKSA9PiAoCiAgICAgICAgICAgIDxkaXYga2V5PXtxLmRvY0lkfSBjbGFzc05hbWU9ImZhYy1xdW90ZS1yb3ciIGRhdGEtZG9jLWlkPXtxLmRvY0lkfQogICAgICAgICAgICAgIHN0eWxlPXtsaW5rUm93fSBvbkNsaWNrPXsoKSA9PiBvbkp1bXBEb2MocS5kb2NJZCl9PgogICAgICAgICAgICAgIOaKpeS7t+WNlSDCtyB7aXRlbS5uYW1lfQogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICkpfQogICAgICAgICAge2l0ZW0ucXVvdGVEb2NzLmxlbmd0aCA9PT0gMCAmJiA8ZGl2IHN0eWxlPXt7IGNvbG9yOiAnI2JiYicgfX0+6L+Y5rKh5pyJ5oql5Lu35Y2VPC9kaXY+fQogICAgICAgICAgPGRpdiBzdHlsZT17eyBjb2xvcjogJyM4ODgnLCBmb250U2l6ZTogMTIsIG1hcmdpbjogJzEwcHggMCA0cHgnIH19PgogICAgICAgICAgICDkuI7lroPmnInlhbPnmoTorqLljZXvvIh7aXRlbS5vcmRlcnMubGVuZ3Rofe+8ieKAlCDngrnkuIDmnaHot7PliLDorqLljZXor6bmg4UKICAgICAgICAgIDwvZGl2PgogICAgICAgICAge2l0ZW0ub3JkZXJzLm1hcCgobykgPT4gewogICAgICAgICAgICBjb25zdCBzID0gb3JkZXJTdW1tYXJ5KG8pOwogICAgICAgICAgICByZXR1cm4gKAogICAgICAgICAgICAgIDxkaXYga2V5PXtzLm9yZGVyTm99IGNsYXNzTmFtZT0iZmFjLW9yZC1yb3ciIGRhdGEtbm89e3Mub3JkZXJOb30KICAgICAgICAgICAgICAgIHN0eWxlPXtsaW5rUm93fSBvbkNsaWNrPXsoKSA9PiBvbkp1bXBPcmRlcihzLm9yZGVyTm8pfT4KICAgICAgICAgICAgICAgIHtzLm9yZGVyTm99IMK3IOWuouaItyB7cy5jdXN0b21lck5hbWUgfHwgJ++8iOacquWhq++8iSd9IMK3IOW6lOaUtiB7bW9uZXkocy5yZWNlaXZhYmxlKX0gwrcge3Muc3RhdHVzVGV4dH0KICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgKTsKICAgICAgICAgIH0pfQogICAgICAgICAge2l0ZW0ub3JkZXJzLmxlbmd0aCA9PT0gMCAmJiA8ZGl2IHN0eWxlPXt7IGNvbG9yOiAnI2JiYicgfX0+6L+Y5rKh5pyJ6K6i5Y2VPC9kaXY+fQogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICk7Cn0KCmV4cG9ydCBmdW5jdGlvbiBGYWN0b3JpZXNWaWV3KHsKICBtb2RlbCwgc2VsZWN0ZWROYW1lLCBvblNlbGVjdCwgb25BZGQsIG9uUmVuYW1lLCBvblVwZGF0ZUluZm8sIG9uRGVsZXRlLAogIG9uSnVtcERvYywgb25KdW1wT3JkZXIsIG9uQ2xvc2UsCn0pIHsKICBjb25zdCBbYWRkTmFtZSwgc2V0QWRkTmFtZV0gPSB1c2VTdGF0ZSgnJyk7CiAgY29uc3Qgc2VsID0gKG1vZGVsIHx8IFtdKS5maW5kKChtKSA9PiBtLm5hbWUgPT09IHNlbGVjdGVkTmFtZSkgfHwgbnVsbDsKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9ImZhY3Rvcmllcy12aWV3IiBzdHlsZT17d3JhcH0+CiAgICAgIDxkaXYgc3R5bGU9e3sgZGlzcGxheTogJ2ZsZXgnLCBhbGlnbkl0ZW1zOiAnY2VudGVyJywgZ2FwOiAxMCB9fT4KICAgICAgICA8YiBjbGFzc05hbWU9InNlYy10aXRsZSIgc3R5bGU9e3sgZm9udFNpemU6IDE5IH19PuW3peWOgueuoeeQhjwvYj4KICAgICAgICA8c3BhbiBzdHlsZT17eyBjb2xvcjogJyM4ODgnIH19PueCueW3peWOgueci+Wug+eahOaKpeS7t+WNleS4juiuouWNle+8m+aUueWQjeS8muWQjOatpeWIsOaJgOacieWNleaNrjwvc3Bhbj4KICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0iZmFjLWNsb3NlIiBvbkNsaWNrPXtvbkNsb3NlfSBzdHlsZT17ewogICAgICAgICAgbWFyZ2luTGVmdDogJ2F1dG8nLCBib3JkZXI6ICcxcHggc29saWQgI2M5ZDJkZScsIGNvbG9yOiAnIzM3NDA0YScsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgICAgICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzVweCAxMnB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgICAgICAgfX0+6L+U5Zue6KGo5qC8PC9idXR0b24+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgZ2FwOiA2LCBtYXJnaW5Ub3A6IDEyLCBhbGlnbkl0ZW1zOiAnY2VudGVyJyB9fT4KICAgICAgICA8aW5wdXQgY2xhc3NOYW1lPSJmYWMtYWRkLWlucHV0IiBwbGFjZWhvbGRlcj0i5paw5bel5Y6C5ZCNIgogICAgICAgICAgdmFsdWU9e2FkZE5hbWV9IG9uQ2hhbmdlPXsoZSkgPT4gc2V0QWRkTmFtZShlLnRhcmdldC52YWx1ZSl9CiAgICAgICAgICBvbktleURvd249eyhlKSA9PiB7IGlmIChlLmtleSA9PT0gJ0VudGVyJyAmJiBhZGROYW1lLnRyaW0oKSkgeyBvbkFkZChhZGROYW1lKTsgc2V0QWRkTmFtZSgnJyk7IH0gfX0KICAgICAgICAgIHN0eWxlPXt7IC4uLmlucHV0LCB3aWR0aDogMTgwIH19IC8+CiAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImZhYy1hZGQtYnRuIiBzdHlsZT17YnRufQogICAgICAgICAgb25DbGljaz17KCkgPT4geyBpZiAoYWRkTmFtZS50cmltKCkpIHsgb25BZGQoYWRkTmFtZSk7IHNldEFkZE5hbWUoJycpOyB9IH19PgogICAgICAgICAg5paw5aKe5bel5Y6CCiAgICAgICAgPC9idXR0b24+CiAgICAgICAgPHNwYW4gc3R5bGU9e3sgY29sb3I6ICcjOTk5JywgZm9udFNpemU6IDEyIH19Pu+8iOWcqOihqOagvOW3peS9nOWMuuOAjOWPkee7meW3peWOguOAjeaXtuaWsOW7uueahOW3peWOguS5n+S8muWHuueOsOWcqOi/memHjO+8iTwvc3Bhbj4KICAgICAgPC9kaXY+CiAgICAgIHsobW9kZWwgfHwgW10pLmxlbmd0aCA9PT0gMCA/ICgKICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmFjLWVtcHR5IiBzdHlsZT17eyBjb2xvcjogJyM4ODgnLCBtYXJnaW5Ub3A6IDEyIH19PgogICAgICAgICAg6L+Y5rKh5pyJ5bel5Y6C4oCU4oCU5Zyo5LiK6Z2i5paw5aKe77yM5oiW5Zyo6KGo5qC85bel5L2c5Yy65paw5bu65bel5Y6C77yM6L+Z6YeM5Lya6Ieq5Yqo5Ye6546w44CCCiAgICAgICAgPC9kaXY+CiAgICAgICkgOiAoCiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImxlZGdlci1jYXJkIiBzdHlsZT17eyBtYXJnaW5Ub3A6IDEwIH19PgogICAgICAgIDx0YWJsZSBjbGFzc05hbWU9ImZhYy10YWJsZSIgc3R5bGU9e3sgYm9yZGVyQ29sbGFwc2U6ICdjb2xsYXBzZScsIGJhY2tncm91bmQ6ICcjZmZmJywgd2lkdGg6ICcxMDAlJyB9fT4KICAgICAgICAgIDx0aGVhZD4KICAgICAgICAgICAgPHRyPgogICAgICAgICAgICAgIDx0aCBzdHlsZT17dGhMfT7lt6XljoI8L3RoPjx0aCBzdHlsZT17dGhMfT7lpIfms6g8L3RoPjx0aCBzdHlsZT17dGh9PuaKpeS7t+WNlTwvdGg+PHRoIHN0eWxlPXt0aH0+6K6i5Y2V6KGMPC90aD4KICAgICAgICAgICAgICA8dGggc3R5bGU9e3RofT7lupTku5g8L3RoPjx0aCBzdHlsZT17dGh9PuW3suS7mDwvdGg+PHRoIHN0eWxlPXt0aH0+5pyq5LuYPC90aD4KICAgICAgICAgICAgPC90cj4KICAgICAgICAgIDwvdGhlYWQ+CiAgICAgICAgICA8dGJvZHk+CiAgICAgICAgICAgIHsobW9kZWwgfHwgW10pLm1hcCgobSkgPT4gKAogICAgICAgICAgICAgIDx0ciBrZXk9e20ubmFtZX0gY2xhc3NOYW1lPSJmYWMtcm93IiBkYXRhLWZhY3Rvcnk9e20ubmFtZX0KICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uU2VsZWN0KG0ubmFtZSl9CiAgICAgICAgICAgICAgICBzdHlsZT17ewogICAgICAgICAgICAgICAgICBjdXJzb3I6ICdwb2ludGVyJywKICAgICAgICAgICAgICAgICAgYmFja2dyb3VuZDogc2VsICYmIHNlbC5uYW1lID09PSBtLm5hbWUgPyAnI2U4ZWZmZScgOiAndHJhbnNwYXJlbnQnLAogICAgICAgICAgICAgICAgfX0+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkTH0+e20ubmFtZX08L3RkPgogICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt7IC4uLnRkTCwgbWF4V2lkdGg6IDIwMCwgb3ZlcmZsb3c6ICdoaWRkZW4nLCB0ZXh0T3ZlcmZsb3c6ICdlbGxpcHNpcycgfX0KICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPSJmYWMtbm90ZSIgdGl0bGU9eyhtLmluZm8gJiYgbS5pbmZvLm5vdGUpIHx8ICcnfT4KICAgICAgICAgICAgICAgICAgeyhtLmluZm8gJiYgbS5pbmZvLm5vdGUpIHx8ICfigJQnfQogICAgICAgICAgICAgICAgPC90ZD4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGR9IGNsYXNzTmFtZT0iZmFjLXF1b3Rlcy1jb3VudCI+e20uc3RhdHMucXVvdGVzfTwvdGQ+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkfSBjbGFzc05hbWU9ImZhYy1saW5lcy1jb3VudCI+e20uc3RhdHMub3JkZXJMaW5lc308L3RkPgogICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt0ZH0gY2xhc3NOYW1lPSJmYWMtcGF5YWJsZSI+e21vbmV5KG0uc3RhdHMucGF5YWJsZSl9PC90ZD4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGR9Pnttb25leShtLnN0YXRzLnBhaWQpfTwvdGQ+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkfSBjbGFzc05hbWU9ImZhYy11bnBhaWQiPnttb25leShtLnN0YXRzLnVucGFpZCl9PC90ZD4KICAgICAgICAgICAgICA8L3RyPgogICAgICAgICAgICApKX0KICAgICAgICAgIDwvdGJvZHk+CiAgICAgICAgPC90YWJsZT4KICAgICAgICA8L2Rpdj4KICAgICAgKX0KICAgICAge3NlbCAmJiAoCiAgICAgICAgPEZhY3RvcnlEZXRhaWwKICAgICAgICAgIGtleT17c2VsLm5hbWV9CiAgICAgICAgICBpdGVtPXtzZWx9CiAgICAgICAgICBvblJlbmFtZT17b25SZW5hbWV9CiAgICAgICAgICBvblVwZGF0ZUluZm89e29uVXBkYXRlSW5mb30KICAgICAgICAgIG9uRGVsZXRlPXtvbkRlbGV0ZX0KICAgICAgICAgIG9uSnVtcERvYz17b25KdW1wRG9jfQogICAgICAgICAgb25KdW1wT3JkZXI9e29uSnVtcE9yZGVyfQogICAgICAgIC8+CiAgICAgICl9CiAgICA8L2Rpdj4KICApOwp9Cg==
+import React, { useState } from 'react';
+import { orderSummary } from './registry.js';
+
+// 客户管理 / 工厂管理（包 11）：注册表维护 + 数据联动的"看得见"——
+// 点一个客户/工厂，立刻看到它名下的询价单、报价单、订单，点任意
+// 一条就跳过去。数字由 registry.js 现算传入，本组件只负责呈现与
+// 收集输入；改名/删除的规则判断（同步范围、能不能删）在主程序 +
+// registry.js 里，这里只管把结果（弹窗原因）递给用户看。
+
+const money = (n) => (Number(n) || 0).toFixed(2);
+const th = {
+  textAlign: 'right', padding: '8px 12px', borderBottom: '1px solid #dbe2ec',
+  background: '#edf1f7',
+  color: '#45515f', fontWeight: 600, whiteSpace: 'nowrap',
+};
+const thL = { ...th, textAlign: 'left' };
+const td = {
+  textAlign: 'right', padding: '8px 12px', borderBottom: '1px solid #eef1f4', whiteSpace: 'nowrap',
+};
+const tdL = { ...td, textAlign: 'left' };
+const input = { padding: '5px 8px', border: '1px solid #c9d2de', borderRadius: 6 };
+const btn = {
+  border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
+  borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
+};
+const btnGhost = { ...btn, background: '#fff', color: '#2f6bff' };
+const btnDanger = { ...btn, background: '#fff', color: '#d92d20', border: '1px solid #d92d20' };
+const wrap = {
+  flex: 1, overflow: 'auto', padding: '16px 18px',
+  fontFamily: 'sans-serif', fontSize: 14,
+};
+const linkRow = {
+  cursor: 'pointer', color: '#2f6bff', padding: '3px 0',
+  borderBottom: '1px dashed #e3e8ee',
+};
+const fmtDate = (iso) => {
+  if (!iso) return '历史单据';
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? '历史单据' : d.toLocaleDateString('zh-CN');
+};
+
+/* ---------------- 客户管理 ---------------- */
+
+function CustomerDetail({ item, onRename, onUpdateInfo, onDelete, onJumpInquiry, onJumpOrder }) {
+  const { entry, inquiries, orders } = item;
+  const [contact, setContact] = useState(entry.contact || '');
+  const [note, setNote] = useState(entry.note || '');
+  const [newName, setNewName] = useState(entry.name);
+  return (
+    <div className="cust-detail" style={{
+      marginTop: 12, border: '1px solid #dbe2ec', borderRadius: 12,
+      background: '#fff', padding: '14px 18px', maxWidth: 1120,
+    }}>
+      <b className="cust-detail-name" style={{ fontSize: 16 }}>{entry.name}</b>
+      <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginTop: 10 }}>
+        <div style={{ flex: '1 1 300px' }}>
+          <div style={{ color: '#888', fontSize: 12, marginBottom: 4 }}>基本信息（联系人与备注）</div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
+            <label style={{ color: '#666' }}>联系人
+              <input className="cust-contact-input" placeholder="联系人"
+                value={contact} onChange={(e) => setContact(e.target.value)}
+                style={{ ...input, width: 130, marginLeft: 4 }} />
+            </label>
+            <label style={{ color: '#666' }}>备注
+              <input className="cust-note-input" placeholder="备注（账期、习惯等）"
+                value={note} onChange={(e) => setNote(e.target.value)}
+                style={{ ...input, width: 190, marginLeft: 4 }} />
+            </label>
+            <button className="cust-info-save" style={btn}
+              onClick={() => onUpdateInfo(entry.name, { contact: contact.trim(), note: note.trim() })}>
+              保存信息
+            </button>
+          </div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center', marginTop: 10 }}>
+            <input className="cust-rename-input" placeholder="新客户名"
+              value={newName} onChange={(e) => setNewName(e.target.value)}
+              style={{ ...input, width: 160 }} />
+            <button className="cust-rename-btn" style={btnGhost}
+              onClick={() => onRename(entry.name, newName)}>
+              改名（询价单与订单一起改）
+            </button>
+            <button className="cust-delete-btn" style={btnDanger}
+              onClick={() => onDelete(entry.name)}>
+              删除客户
+            </button>
+          </div>
+          <div style={{ color: '#999', fontSize: 12, marginTop: 6 }}>
+            删除规则：名下有询价单或订单的客户删不掉（历史要留着查账）。
+          </div>
+        </div>
+        <div style={{ flex: '1 1 300px' }}>
+          <div style={{ color: '#888', fontSize: 12, marginBottom: 4 }}>
+            他的询价单（{inquiries.length}）— 点一条跳到那张单
+          </div>
+          {inquiries.map((q) => (
+            <div key={q.docId} className="cust-inq-row" data-doc-id={q.docId}
+              style={linkRow} onClick={() => onJumpInquiry(q.docId)}>
+              {fmtDate(q.createdAt)} · {q.status}
+              {q.sourceFileName ? ' · ' + q.sourceFileName : ''}
+              {q.note ? (
+                <span className="cust-inq-note" style={{ color: '#888' }}> · 备注：{q.note}</span>
+              ) : null}
+            </div>
+          ))}
+          {inquiries.length === 0 && <div style={{ color: '#bbb' }}>还没有询价单</div>}
+          <div style={{ color: '#888', fontSize: 12, margin: '10px 0 4px' }}>
+            他的订单（{orders.length}）— 点一条跳到订单详情
+          </div>
+          {orders.map((o) => {
+            const s = orderSummary(o);
+            return (
+              <div key={s.orderNo} className="cust-ord-row" data-no={s.orderNo}
+                style={linkRow} onClick={() => onJumpOrder(s.orderNo)}>
+                {s.orderNo} · 应收 {money(s.receivable)} · {s.statusText}
+              </div>
+            );
+          })}
+          {orders.length === 0 && <div style={{ color: '#bbb' }}>还没有订单</div>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function CustomersView({
+  model, selectedName, onSelect, onAdd, onRename, onUpdateInfo, onDelete,
+  onJumpInquiry, onJumpOrder, onClose,
+}) {
+  const [addName, setAddName] = useState('');
+  const sel = (model || []).find((m) => m.entry.name === selectedName) || null;
+  return (
+    <div className="customers-view" style={wrap}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <b className="sec-title" style={{ fontSize: 19 }}>客户管理</b>
+        <span style={{ color: '#888' }}>点客户看它名下的询价单与订单；改名会同步到所有单据</span>
+        <button className="cust-close" onClick={onClose} style={{
+          marginLeft: 'auto', border: '1px solid #c9d2de', color: '#37404a', background: '#fff',
+          borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+        }}>返回表格</button>
+      </div>
+      <div style={{ display: 'flex', gap: 6, marginTop: 12, alignItems: 'center' }}>
+        <input className="cust-add-input" placeholder="新客户名"
+          value={addName} onChange={(e) => setAddName(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter' && addName.trim()) { onAdd(addName); setAddName(''); } }}
+          style={{ ...input, width: 180 }} />
+        <button className="cust-add-btn" style={btn}
+          onClick={() => { if (addName.trim()) { onAdd(addName); setAddName(''); } }}>
+          新增客户
+        </button>
+      </div>
+      {(model || []).length === 0 ? (
+        <div className="cust-empty" style={{ color: '#888', marginTop: 12 }}>
+          还没有客户——在上面新增，或在询价单上给客户起名，这里会自动出现。
+        </div>
+      ) : (
+        <div className="ledger-card" style={{ marginTop: 10 }}>
+        <table className="cust-table" style={{ borderCollapse: 'collapse', background: '#fff', width: '100%' }}>
+          <thead>
+            <tr>
+              <th style={thL}>客户</th><th style={thL}>备注</th><th style={th}>询价单</th><th style={th}>订单</th>
+              <th style={th}>应收</th><th style={th}>已收</th><th style={th}>未收</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(model || []).map((m) => (
+              <tr key={m.entry.name} className="cust-row" data-customer={m.entry.name}
+                onClick={() => onSelect(m.entry.name)}
+                style={{
+                  cursor: 'pointer',
+                  background: sel && sel.entry.name === m.entry.name ? '#e8effe' : 'transparent',
+                }}>
+                <td style={tdL}>{m.entry.name}</td>
+                <td style={{ ...tdL, maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis' }}
+                  className="cust-note" title={m.entry.note || ''}>
+                  {m.entry.note || '—'}
+                </td>
+                <td style={td} className="cust-inq-count">{m.stats.inquiries}</td>
+                <td style={td} className="cust-ord-count">{m.stats.orders}</td>
+                <td style={td} className="cust-receivable">{money(m.stats.receivable)}</td>
+                <td style={td}>{money(m.stats.received)}</td>
+                <td style={td} className="cust-unpaid">{money(m.stats.unpaid)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </div>
+      )}
+      {sel && (
+        <CustomerDetail
+          key={sel.entry.name}
+          item={sel}
+          onRename={onRename}
+          onUpdateInfo={onUpdateInfo}
+          onDelete={onDelete}
+          onJumpInquiry={onJumpInquiry}
+          onJumpOrder={onJumpOrder}
+        />
+      )}
+    </div>
+  );
+}
+
+/* ---------------- 工厂管理 ---------------- */
+
+function FactoryDetail({ item, onRename, onUpdateInfo, onDelete, onJumpDoc, onJumpOrder }) {
+  const [newName, setNewName] = useState(item.name);
+  const [contact, setContact] = useState((item.info && item.info.contact) || '');
+  const [note, setNote] = useState((item.info && item.info.note) || '');
+  return (
+    <div className="fac-detail" style={{
+      marginTop: 12, border: '1px solid #dbe2ec', borderRadius: 12,
+      background: '#fff', padding: '14px 18px', maxWidth: 1120,
+    }}>
+      <b className="fac-detail-name" style={{ fontSize: 16 }}>{item.name}</b>
+      <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginTop: 10 }}>
+        <div style={{ flex: '1 1 300px' }}>
+          <div style={{ color: '#888', fontSize: 12, marginBottom: 4 }}>基本信息（联系人与备注）</div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
+            <label style={{ color: '#666' }}>联系人
+              <input className="fac-contact-input" placeholder="联系人"
+                value={contact} onChange={(e) => setContact(e.target.value)}
+                style={{ ...input, width: 130, marginLeft: 4 }} />
+            </label>
+            <label style={{ color: '#666' }}>备注
+              <input className="fac-note-input" placeholder="备注（账期、习惯等）"
+                value={note} onChange={(e) => setNote(e.target.value)}
+                style={{ ...input, width: 190, marginLeft: 4 }} />
+            </label>
+            <button className="fac-info-save" style={btn}
+              onClick={() => onUpdateInfo(item.name, { contact: contact.trim(), note: note.trim() })}>
+              保存信息
+            </button>
+          </div>
+          <div style={{ color: '#888', fontSize: 12, margin: '12px 0 4px' }}>改名 / 删除</div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
+            <input className="fac-rename-input" placeholder="新工厂名"
+              value={newName} onChange={(e) => setNewName(e.target.value)}
+              style={{ ...input, width: 160 }} />
+            <button className="fac-rename-btn" style={btnGhost}
+              onClick={() => onRename(item.name, newName)}>
+              改名（报价单、定厂与订单一起改）
+            </button>
+            <button className="fac-delete-btn" style={btnDanger}
+              onClick={() => onDelete(item.name)}>
+              删除工厂
+            </button>
+          </div>
+          <div style={{ color: '#999', fontSize: 12, marginTop: 6 }}>
+            删除规则：名下有报价单、定厂记录或订单引用的工厂删不掉。
+          </div>
+        </div>
+        <div style={{ flex: '1 1 300px' }}>
+          <div style={{ color: '#888', fontSize: 12, marginBottom: 4 }}>
+            它的报价单（{item.quoteDocs.length}）— 点一条跳到那张单
+          </div>
+          {item.quoteDocs.map((q) => (
+            <div key={q.docId} className="fac-quote-row" data-doc-id={q.docId}
+              style={linkRow} onClick={() => onJumpDoc(q.docId)}>
+              报价单 · {item.name}
+            </div>
+          ))}
+          {item.quoteDocs.length === 0 && <div style={{ color: '#bbb' }}>还没有报价单</div>}
+          <div style={{ color: '#888', fontSize: 12, margin: '10px 0 4px' }}>
+            与它有关的订单（{item.orders.length}）— 点一条跳到订单详情
+          </div>
+          {item.orders.map((o) => {
+            const s = orderSummary(o);
+            return (
+              <div key={s.orderNo} className="fac-ord-row" data-no={s.orderNo}
+                style={linkRow} onClick={() => onJumpOrder(s.orderNo)}>
+                {s.orderNo} · 客户 {s.customerName || '（未填）'} · 应收 {money(s.receivable)} · {s.statusText}
+              </div>
+            );
+          })}
+          {item.orders.length === 0 && <div style={{ color: '#bbb' }}>还没有订单</div>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function FactoriesView({
+  model, selectedName, onSelect, onAdd, onRename, onUpdateInfo, onDelete,
+  onJumpDoc, onJumpOrder, onClose,
+}) {
+  const [addName, setAddName] = useState('');
+  const sel = (model || []).find((m) => m.name === selectedName) || null;
+  return (
+    <div className="factories-view" style={wrap}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <b className="sec-title" style={{ fontSize: 19 }}>工厂管理</b>
+        <span style={{ color: '#888' }}>点工厂看它的报价单与订单；改名会同步到所有单据</span>
+        <button className="fac-close" onClick={onClose} style={{
+          marginLeft: 'auto', border: '1px solid #c9d2de', color: '#37404a', background: '#fff',
+          borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+        }}>返回表格</button>
+      </div>
+      <div style={{ display: 'flex', gap: 6, marginTop: 12, alignItems: 'center' }}>
+        <input className="fac-add-input" placeholder="新工厂名"
+          value={addName} onChange={(e) => setAddName(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter' && addName.trim()) { onAdd(addName); setAddName(''); } }}
+          style={{ ...input, width: 180 }} />
+        <button className="fac-add-btn" style={btn}
+          onClick={() => { if (addName.trim()) { onAdd(addName); setAddName(''); } }}>
+          新增工厂
+        </button>
+        <span style={{ color: '#999', fontSize: 12 }}>（在表格工作区「发给工厂」时新建的工厂也会出现在这里）</span>
+      </div>
+      {(model || []).length === 0 ? (
+        <div className="fac-empty" style={{ color: '#888', marginTop: 12 }}>
+          还没有工厂——在上面新增，或在表格工作区新建工厂，这里会自动出现。
+        </div>
+      ) : (
+        <div className="ledger-card" style={{ marginTop: 10 }}>
+        <table className="fac-table" style={{ borderCollapse: 'collapse', background: '#fff', width: '100%' }}>
+          <thead>
+            <tr>
+              <th style={thL}>工厂</th><th style={thL}>备注</th><th style={th}>报价单</th><th style={th}>订单行</th>
+              <th style={th}>应付</th><th style={th}>已付</th><th style={th}>未付</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(model || []).map((m) => (
+              <tr key={m.name} className="fac-row" data-factory={m.name}
+                onClick={() => onSelect(m.name)}
+                style={{
+                  cursor: 'pointer',
+                  background: sel && sel.name === m.name ? '#e8effe' : 'transparent',
+                }}>
+                <td style={tdL}>{m.name}</td>
+                <td style={{ ...tdL, maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis' }}
+                  className="fac-note" title={(m.info && m.info.note) || ''}>
+                  {(m.info && m.info.note) || '—'}
+                </td>
+                <td style={td} className="fac-quotes-count">{m.stats.quotes}</td>
+                <td style={td} className="fac-lines-count">{m.stats.orderLines}</td>
+                <td style={td} className="fac-payable">{money(m.stats.payable)}</td>
+                <td style={td}>{money(m.stats.paid)}</td>
+                <td style={td} className="fac-unpaid">{money(m.stats.unpaid)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </div>
+      )}
+      {sel && (
+        <FactoryDetail
+          key={sel.name}
+          item={sel}
+          onRename={onRename}
+          onUpdateInfo={onUpdateInfo}
+          onDelete={onDelete}
+          onJumpDoc={onJumpDoc}
+          onJumpOrder={onJumpOrder}
+        />
+      )}
+    </div>
+  );
+}

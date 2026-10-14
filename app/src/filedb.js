@@ -1,1 +1,271 @@
-Ly8g5paH5Lu25LuT5bqT77yISW5kZXhlZERC77yJ77ya5a2Y5LqM6L+b5Yi25a2X6IqC4oCU4oCU5a+85YWl55qE5Y6f5paH5Lu277yI5Y6f5Lu255WZ5bqV77yJ5LiOCi8vIOihqOagvOWbvueJh+OAgmxvY2FsU3RvcmFnZSDlj6rlrZjlt6XkvZznjrDlnLrkuI7lm77niYci5byV55SoIu+8iOingSBzdG9yZS5qc++8ie+8jAovLyDlrZfoioLkuIDlvovmlL7ov5nph4zvvIzpgb/lhY3nhafniYfmkpHniIYgbG9jYWxTdG9yYWdlIOeahCA14oCTMTBNQiDphY3pop3vvIjljIUgMiDlrp7mtYsKLy8g54Wn54mH5aSa55qE5a+85YWl5Lya5rqi5Ye677yM5Zu+54mH5Y+q6IO95b2T5qyh5Lya6K+d5Y+v6KeB77yb5pys5YyF5oqK5Zu+54mH6L2s5q2j5Li66ICQ5LmF5a2Y5YKo77yJ44CCCi8vCi8vIElEIOiuvuiuoe+8iOWGheWuueWvu+WdgO+8ie+8mgovLyAgIOWbvueJhyAgIGlkID0gJ2ltZy0nICArIFNIQS0yNTYo5a2X6IqCKSDliY0gMjAg5L2N5Y2B5YWt6L+b5Yi2Ci8vICAg5Y6f5paH5Lu2IGlkID0gJ29yaWctJyArIFNIQS0yNTYo5a2X6IqCKSDliY0gMjAg5L2N5Y2B5YWt6L+b5Yi2Ci8vIOebuOWQjOWtl+iKgiDihpIg55u45ZCMIGlkIOKGkiDku5PlupPph4zlj6rlrZjkuIDku73vvIzlpJrkuKrplJrngrkv5aSa5qyh5a+85YWl5byV55So5ZCM5LiA5Lu977yMCi8vIOWkqeeEtuWOu+mHje+8iOecn+WunuWuouaIt+WNlSAyNCDlvKDlm77ph4zlsLHmnIkgMiDlvKDlrZfoioLnm7jlkIzvvIzljrvph43lkI7lrZggMjMg5Lu977yJ44CCCi8vIGNyeXB0by5zdWJ0bGUg5LiN5Y+v55So5pe26YCA5YyW5Li6IEZOVi0xYSDlk4jluIzvvIhpZCDku43nqLPlrprvvIzlj6rmmK/mipfmkp7mgKflvLHvvInjgIIKLy8KLy8g5omA5pyJ5Ye95pWw5aSx6LSl5pe26L+U5ZueIG51bGwvZmFsc2Uv56m657uf6K6h77yM57ud5LiN5oqb6ZSZ5omT5pat6aG16Z2i4oCU4oCU6LCD55So5pa55o2uCi8vIOi/lOWbnuWAvOWGs+WumuaYr+WQpumZjee6p+WbnuWMhSAyIOeahOihjOS4uu+8iOWbvueJh+WPqui/myBsb2NhbFN0b3JhZ2UgLyDkvJror53lj6/op4HvvInjgIIKCmltcG9ydCB7IGJ5dGVzVG9EYXRhVXJsIH0gZnJvbSAnLi94bHN4L3ppcC5qcyc7CgpleHBvcnQgY29uc3QgRklMRV9EQl9OQU1FID0gJ3FpcGVpX3YyX2ZpbGVzJzsKY29uc3QgRklMRV9EQl9WRVJTSU9OID0gMTsKY29uc3QgU1RPUkUgPSAnZmlsZXMnOwpjb25zdCBQUk9CRV9JRCA9ICdfX2ZpbGVkYl9wcm9iZV9fJzsKCmxldCBkYlByb21pc2UgPSBudWxsOwpsZXQgZGJGYWlsZWQgPSBmYWxzZTsKCi8qKiDmiZPlvIDvvIjlubbmjInpnIDlu7rvvInmlofku7bku5PlupPvvJvlpLHotKXov5Tlm54gbnVsbO+8jOS4lOS4jee8k+WtmOWksei0peS7peS+v+mHjeivlSAqLwpmdW5jdGlvbiBvcGVuRGIoKSB7CiAgaWYgKGRiRmFpbGVkICYmICFkYlByb21pc2UpIHJldHVybiBQcm9taXNlLnJlc29sdmUobnVsbCk7CiAgaWYgKGRiUHJvbWlzZSkgcmV0dXJuIGRiUHJvbWlzZTsKICBkYlByb21pc2UgPSBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gewogICAgaWYgKCF3aW5kb3cuaW5kZXhlZERCKSB7IGRiUHJvbWlzZSA9IG51bGw7IGRiRmFpbGVkID0gdHJ1ZTsgcmVzb2x2ZShudWxsKTsgcmV0dXJuOyB9CiAgICBsZXQgcmVxOwogICAgdHJ5IHsgcmVxID0gaW5kZXhlZERCLm9wZW4oRklMRV9EQl9OQU1FLCBGSUxFX0RCX1ZFUlNJT04pOyB9IGNhdGNoIChlKSB7CiAgICAgIGRiUHJvbWlzZSA9IG51bGw7IGRiRmFpbGVkID0gdHJ1ZTsgcmVzb2x2ZShudWxsKTsgcmV0dXJuOwogICAgfQogICAgcmVxLm9uZXJyb3IgPSAoKSA9PiB7IGRiUHJvbWlzZSA9IG51bGw7IGRiRmFpbGVkID0gdHJ1ZTsgcmVzb2x2ZShudWxsKTsgfTsKICAgIHJlcS5vbmJsb2NrZWQgPSAoKSA9PiB7IC8qIOWIq+eahOmhtemdouWNoOedgOaXp+eJiOacrOaXtuetieS4gOetie+8jG9uc3VjY2Vzcy9vbmVycm9yIOS8mui3n+S4iiAqLyB9OwogICAgcmVxLm9udXBncmFkZW5lZWRlZCA9ICgpID0+IHsKICAgICAgdHJ5IHsgcmVxLnJlc3VsdC5jcmVhdGVPYmplY3RTdG9yZShTVE9SRSwgeyBrZXlQYXRoOiAnaWQnIH0pOyB9IGNhdGNoIChlKSB7IC8qIOW3suWtmOWcqCAqLyB9CiAgICB9OwogICAgcmVxLm9uc3VjY2VzcyA9ICgpID0+IHJlc29sdmUocmVxLnJlc3VsdCk7CiAgfSk7CiAgcmV0dXJuIGRiUHJvbWlzZTsKfQoKLyoqIOS7k+W6k+aYr+WQpuWPr+eUqO+8iOiHquajgOS4jumZjee6p+WIpOaWreeUqO+8iSAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gaXNGaWxlRGJBdmFpbGFibGUoKSB7CiAgcmV0dXJuICEhKGF3YWl0IG9wZW5EYigpKTsKfQoKZnVuY3Rpb24gdHhEb25lKHR4KSB7CiAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXNvbHZlLCByZWplY3QpID0+IHsKICAgIHR4Lm9uY29tcGxldGUgPSAoKSA9PiByZXNvbHZlKHRydWUpOwogICAgdHgub25lcnJvciA9ICgpID0+IHJlamVjdCh0eC5lcnJvciB8fCBuZXcgRXJyb3IoJ+S6i+WKoeWksei0pScpKTsKICAgIHR4Lm9uYWJvcnQgPSAoKSA9PiByZWplY3QodHguZXJyb3IgfHwgbmV3IEVycm9yKCfkuovliqHooqvkuK3mraInKSk7CiAgfSk7Cn0KCi8qIC0tLS0tLS0tLS0g5ZOI5biM5LiO57yW56CBIC0tLS0tLS0tLS0gKi8KCi8qKiDlrZfoioIg4oaSIOWGheWuueWTiOW4jO+8iOWNgeWFrei/m+WItu+8ieOAguS8mOWFiCBTSEEtMjU277yM57y65aSx5pe2IEZOVi0xYSDlhZzlupUgKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGhhc2hCeXRlcyhieXRlcykgewogIGNvbnN0IHU4ID0gYnl0ZXMgaW5zdGFuY2VvZiBVaW50OEFycmF5ID8gYnl0ZXMgOiBuZXcgVWludDhBcnJheShieXRlcyk7CiAgaWYgKHdpbmRvdy5jcnlwdG8gJiYgY3J5cHRvLnN1YnRsZSAmJiBjcnlwdG8uc3VidGxlLmRpZ2VzdCkgewogICAgdHJ5IHsKICAgICAgY29uc3QgYnVmID0gYXdhaXQgY3J5cHRvLnN1YnRsZS5kaWdlc3QoJ1NIQS0yNTYnLCB1OCk7CiAgICAgIHJldHVybiBbLi4ubmV3IFVpbnQ4QXJyYXkoYnVmKV0ubWFwKChiKSA9PiBiLnRvU3RyaW5nKDE2KS5wYWRTdGFydCgyLCAnMCcpKS5qb2luKCcnKTsKICAgIH0gY2F0Y2ggKGUpIHsgLyog6JC95Yiw5YWc5bqVICovIH0KICB9CiAgbGV0IGgxID0gMHg4MTFjOWRjNSwgaDIgPSAweDAxMDAwMTkzOwogIGZvciAobGV0IGkgPSAwOyBpIDwgdTgubGVuZ3RoOyBpKyspIHsKICAgIGgxID0gTWF0aC5pbXVsKGgxIF4gdThbaV0sIDB4MDEwMDAxOTMpID4+PiAwOwogICAgaDIgPSAoTWF0aC5pbXVsKGgyLCAzMSkgKyB1OFtpXSkgPj4+IDA7CiAgfQogIHJldHVybiAnZm52JyArIGgxLnRvU3RyaW5nKDE2KS5wYWRTdGFydCg4LCAnMCcpICsgaDIudG9TdHJpbmcoMTYpLnBhZFN0YXJ0KDgsICcwJykgKwogICAgdTgubGVuZ3RoLnRvU3RyaW5nKDE2KTsKfQoKLyoqIOWbvueJh+Wtl+iKgiDihpIg5LuT5bqTIGlkICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBpbWFnZUlkRm9yKGJ5dGVzKSB7CiAgcmV0dXJuICdpbWctJyArIChhd2FpdCBoYXNoQnl0ZXMoYnl0ZXMpKS5zbGljZSgwLCAyMCk7Cn0KCi8qKiDljp/mlofku7blrZfoioIg4oaSIOS7k+W6kyBpZCAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gb3JpZ2luYWxJZEZvcihieXRlcykgewogIHJldHVybiAnb3JpZy0nICsgKGF3YWl0IGhhc2hCeXRlcyhieXRlcykpLnNsaWNlKDAsIDIwKTsKfQoKLyoqIGRhdGEgVVJMIOKGkiB7IGJ5dGVzLCBtaW1lIH3vvIjlr7zlhaXml7bmioogeGxzeCDlsYLnmoQgZGF0YSBVUkwg6L2s5Zue5a2X6IqC5a2Y5LuT5bqT77yJICovCmV4cG9ydCBmdW5jdGlvbiBkYXRhVXJsVG9CeXRlcyhkYXRhVXJsKSB7CiAgY29uc3QgbSA9IC9eZGF0YTooW147LF0qKSg7YmFzZTY0KT8sKFtcc1xTXSopJC8uZXhlYyhkYXRhVXJsIHx8ICcnKTsKICBpZiAoIW0pIHJldHVybiBudWxsOwogIGNvbnN0IG1pbWUgPSBtWzFdIHx8ICdhcHBsaWNhdGlvbi9vY3RldC1zdHJlYW0nOwogIGlmIChtWzJdKSB7CiAgICBjb25zdCBiaW4gPSBhdG9iKG1bM10pOwogICAgY29uc3QgYnl0ZXMgPSBuZXcgVWludDhBcnJheShiaW4ubGVuZ3RoKTsKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgYmluLmxlbmd0aDsgaSsrKSBieXRlc1tpXSA9IGJpbi5jaGFyQ29kZUF0KGkpOwogICAgcmV0dXJuIHsgYnl0ZXMsIG1pbWUgfTsKICB9CiAgcmV0dXJuIHsgYnl0ZXM6IG5ldyBUZXh0RW5jb2RlcigpLmVuY29kZShkZWNvZGVVUklDb21wb25lbnQobVszXSkpLCBtaW1lIH07Cn0KCi8qKiDlrZfoioIg4oaSIGRhdGEgVVJM77yI5oGi5aSN5pe257uZIEZvcnR1bmVTaGVldCDlvZPlm77niYcgc3Jj77yJICovCmV4cG9ydCBmdW5jdGlvbiBmaWxlQnl0ZXNUb0RhdGFVcmwoYnl0ZXMsIG1pbWUpIHsKICByZXR1cm4gYnl0ZXNUb0RhdGFVcmwoYnl0ZXMsIG1pbWUgfHwgJ2FwcGxpY2F0aW9uL29jdGV0LXN0cmVhbScpOwp9CgovKiAtLS0tLS0tLS0tIOS7k+W6k+aTjeS9nCAtLS0tLS0tLS0tICovCgovKioKICog5a2Y5LiA5Lu95paH5Lu244CCcmVjOiB7IGlkLCBraW5kOiAnaW1hZ2UnfCdvcmlnaW5hbCcsIGJ5dGVzLCBtaW1lLCBuYW1lPyB9CiAqIOi/lOWbnuWtmOWFpeeahOWFg+aVsOaNru+8iOS4jeWQq+Wtl+iKgu+8ie+8m+Wksei0pei/lOWbniBudWxs44CCCiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gcHV0RmlsZShyZWMpIHsKICBjb25zdCBkYiA9IGF3YWl0IG9wZW5EYigpOwogIGlmICghZGIgfHwgIXJlYyB8fCAhcmVjLmlkIHx8ICFyZWMuYnl0ZXMpIHJldHVybiBudWxsOwogIGNvbnN0IGJ5dGVzID0gcmVjLmJ5dGVzIGluc3RhbmNlb2YgVWludDhBcnJheSA/IHJlYy5ieXRlcyA6IG5ldyBVaW50OEFycmF5KHJlYy5ieXRlcyk7CiAgY29uc3QgZnVsbCA9IHsKICAgIGlkOiByZWMuaWQsCiAgICBraW5kOiByZWMua2luZCB8fCAnaW1hZ2UnLAogICAgbWltZTogcmVjLm1pbWUgfHwgJ2FwcGxpY2F0aW9uL29jdGV0LXN0cmVhbScsCiAgICBuYW1lOiByZWMubmFtZSB8fCAnJywKICAgIHNpemU6IGJ5dGVzLmxlbmd0aCwKICAgIHNhdmVkQXQ6IHJlYy5zYXZlZEF0IHx8IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSwKICAgIGJ5dGVzLAogIH07CiAgdHJ5IHsKICAgIGNvbnN0IHR4ID0gZGIudHJhbnNhY3Rpb24oU1RPUkUsICdyZWFkd3JpdGUnKTsKICAgIHR4Lm9iamVjdFN0b3JlKFNUT1JFKS5wdXQoZnVsbCk7CiAgICBhd2FpdCB0eERvbmUodHgpOwogICAgY29uc3QgeyBieXRlczogX29taXQsIC4uLm1ldGEgfSA9IGZ1bGw7CiAgICByZXR1cm4gbWV0YTsKICB9IGNhdGNoIChlKSB7CiAgICByZXR1cm4gbnVsbDsKICB9Cn0KCi8qKiDmjIkgaWQg6K+75pW05p2h6K6w5b2V77yI5ZCr5a2X6IqC77yJ77yb5rKh5pyJL+Wksei0pei/lOWbniBudWxsICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBnZXRGaWxlKGlkKSB7CiAgY29uc3QgZGIgPSBhd2FpdCBvcGVuRGIoKTsKICBpZiAoIWRiIHx8ICFpZCkgcmV0dXJuIG51bGw7CiAgcmV0dXJuIG5ldyBQcm9taXNlKChyZXNvbHZlKSA9PiB7CiAgICB0cnkgewogICAgICBjb25zdCByZXEgPSBkYi50cmFuc2FjdGlvbihTVE9SRSwgJ3JlYWRvbmx5Jykub2JqZWN0U3RvcmUoU1RPUkUpLmdldChpZCk7CiAgICAgIHJlcS5vbnN1Y2Nlc3MgPSAoKSA9PiByZXNvbHZlKHJlcS5yZXN1bHQgfHwgbnVsbCk7CiAgICAgIHJlcS5vbmVycm9yID0gKCkgPT4gcmVzb2x2ZShudWxsKTsKICAgIH0gY2F0Y2ggKGUpIHsgcmVzb2x2ZShudWxsKTsgfQogIH0pOwp9CgovKiog5oyJIGlkIOWIoOmZpO+8m+i/lOWbnuaYr+WQpuaJp+ihjOS6huWIoOmZpOS6i+WKoSAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gZGVsZXRlRmlsZShpZCkgewogIGNvbnN0IGRiID0gYXdhaXQgb3BlbkRiKCk7CiAgaWYgKCFkYiB8fCAhaWQpIHJldHVybiBmYWxzZTsKICB0cnkgewogICAgY29uc3QgdHggPSBkYi50cmFuc2FjdGlvbihTVE9SRSwgJ3JlYWR3cml0ZScpOwogICAgdHgub2JqZWN0U3RvcmUoU1RPUkUpLmRlbGV0ZShpZCk7CiAgICBhd2FpdCB0eERvbmUodHgpOwogICAgcmV0dXJuIHRydWU7CiAgfSBjYXRjaCAoZSkgewogICAgcmV0dXJuIGZhbHNlOwogIH0KfQoKLyoqIOa4heepuuaVtOS4quS7k+W6k++8iOOAjOa4heepuumHjeW8gOOAjeeUqO+8ie+8m+i/lOWbnuaYr+WQpuaIkOWKnyAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gY2xlYXJGaWxlcygpIHsKICBjb25zdCBkYiA9IGF3YWl0IG9wZW5EYigpOwogIGlmICghZGIpIHJldHVybiBmYWxzZTsKICB0cnkgewogICAgY29uc3QgdHggPSBkYi50cmFuc2FjdGlvbihTVE9SRSwgJ3JlYWR3cml0ZScpOwogICAgdHgub2JqZWN0U3RvcmUoU1RPUkUpLmNsZWFyKCk7CiAgICBhd2FpdCB0eERvbmUodHgpOwogICAgcmV0dXJuIHRydWU7CiAgfSBjYXRjaCAoZSkgewogICAgcmV0dXJuIGZhbHNlOwogIH0KfQoKLyoqCiAqIOS7k+W6k+e7n+iuoe+8iOiHquajgOmhteeUqO+8ie+8muWPquaxh+aAu+WFg+aVsOaNru+8jOS4jeaKiuWtl+iKguivu+i/m+WGheWtmOa4heWNleOAggogKiDov5Tlm54geyBvcmlnaW5hbENvdW50LCBvcmlnaW5hbEJ5dGVzLCBpbWFnZUNvdW50LCBpbWFnZUJ5dGVzLCB0b3RhbENvdW50LCB0b3RhbEJ5dGVzIH0KICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBmaWxlU3RhdHMoKSB7CiAgY29uc3QgZW1wdHkgPSB7CiAgICBvcmlnaW5hbENvdW50OiAwLCBvcmlnaW5hbEJ5dGVzOiAwLAogICAgaW1hZ2VDb3VudDogMCwgaW1hZ2VCeXRlczogMCwKICAgIHRvdGFsQ291bnQ6IDAsIHRvdGFsQnl0ZXM6IDAsCiAgfTsKICBjb25zdCBkYiA9IGF3YWl0IG9wZW5EYigpOwogIGlmICghZGIpIHJldHVybiBlbXB0eTsKICBjb25zdCBhbGwgPSBhd2FpdCBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gewogICAgdHJ5IHsKICAgICAgY29uc3QgcmVxID0gZGIudHJhbnNhY3Rpb24oU1RPUkUsICdyZWFkb25seScpLm9iamVjdFN0b3JlKFNUT1JFKS5nZXRBbGwoKTsKICAgICAgcmVxLm9uc3VjY2VzcyA9ICgpID0+IHJlc29sdmUocmVxLnJlc3VsdCB8fCBbXSk7CiAgICAgIHJlcS5vbmVycm9yID0gKCkgPT4gcmVzb2x2ZShbXSk7CiAgICB9IGNhdGNoIChlKSB7IHJlc29sdmUoW10pOyB9CiAgfSk7CiAgY29uc3Qgc3QgPSB7IC4uLmVtcHR5IH07CiAgZm9yIChjb25zdCByZWMgb2YgYWxsKSB7CiAgICBpZiAoIXJlYyB8fCByZWMuaWQgPT09IFBST0JFX0lEKSBjb250aW51ZTsKICAgIGNvbnN0IHNpemUgPSByZWMuc2l6ZSAhPSBudWxsID8gcmVjLnNpemUgOiAocmVjLmJ5dGVzID8gcmVjLmJ5dGVzLmxlbmd0aCA6IDApOwogICAgc3QudG90YWxDb3VudCArPSAxOwogICAgc3QudG90YWxCeXRlcyArPSBzaXplOwogICAgaWYgKHJlYy5raW5kID09PSAnb3JpZ2luYWwnKSB7IHN0Lm9yaWdpbmFsQ291bnQgKz0gMTsgc3Qub3JpZ2luYWxCeXRlcyArPSBzaXplOyB9CiAgICBlbHNlIHsgc3QuaW1hZ2VDb3VudCArPSAxOyBzdC5pbWFnZUJ5dGVzICs9IHNpemU7IH0KICB9CiAgcmV0dXJuIHN0Owp9CgovKioKICog5YiX5Ye65LuT5bqT6YeM55qE5Y6f5Lu26K6w5b2V77yI5Y+q5Zue5YWD5pWw5o2u77yM5LiN5bim5a2X6IqC77yJ77yaCiAqIFt7IGlkLCBuYW1lLCBzaXplLCBzYXZlZEF0IH1d44CC5a2Y5qGj6L+B56e7L+aBouWkjeaXtuaMieWOn+aWh+S7tuWQjeaJvuWbngogKiBzb3VyY2VGaWxlSWQg55So4oCU4oCU5YyFIDMvNCDnmoTlrZjmoaPph4zmsqHorrDljp/ku7YgaWTvvIzpnaDmlofku7blkI3lr7nkuIrlj7fjgIIKICovCmV4cG9ydCBhc3luYyBmdW5jdGlvbiBsaXN0T3JpZ2luYWxzKCkgewogIGNvbnN0IGRiID0gYXdhaXQgb3BlbkRiKCk7CiAgaWYgKCFkYikgcmV0dXJuIFtdOwogIGNvbnN0IGFsbCA9IGF3YWl0IG5ldyBQcm9taXNlKChyZXNvbHZlKSA9PiB7CiAgICB0cnkgewogICAgICBjb25zdCByZXEgPSBkYi50cmFuc2FjdGlvbihTVE9SRSwgJ3JlYWRvbmx5Jykub2JqZWN0U3RvcmUoU1RPUkUpLmdldEFsbCgpOwogICAgICByZXEub25zdWNjZXNzID0gKCkgPT4gcmVzb2x2ZShyZXEucmVzdWx0IHx8IFtdKTsKICAgICAgcmVxLm9uZXJyb3IgPSAoKSA9PiByZXNvbHZlKFtdKTsKICAgIH0gY2F0Y2ggKGUpIHsgcmVzb2x2ZShbXSk7IH0KICB9KTsKICByZXR1cm4gYWxsCiAgICAuZmlsdGVyKChyZWMpID0+IHJlYyAmJiByZWMua2luZCA9PT0gJ29yaWdpbmFsJykKICAgIC5tYXAoKHJlYykgPT4gKHsKICAgICAgaWQ6IHJlYy5pZCwgbmFtZTogcmVjLm5hbWUgfHwgJycsCiAgICAgIHNpemU6IHJlYy5zaXplICE9IG51bGwgPyByZWMuc2l6ZSA6IChyZWMuYnl0ZXMgPyByZWMuYnl0ZXMubGVuZ3RoIDogMCksCiAgICAgIHNhdmVkQXQ6IHJlYy5zYXZlZEF0IHx8IG51bGwsCiAgICB9KSk7Cn0KCi8qKgogKiDliJflh7rku5PlupPph4znmoTlhajpg6jorrDlvZXvvIjlkKvlrZfoioLvvInvvJrlrozmlbTlpIfku73lr7zlh7rnlKjvvIjljIUgOe+8ieOAggogKiDku5PlupPmiZPkuI3lvIDml7bov5Tlm54gbnVsbO+8iOS4jiLku5PlupPmmK/nqbrnmoQgW10i5Yy65YiG4oCU4oCU5aSH5Lu95o2u5q2k5oql6ZSZ77yMCiAqIOe7neS4jeaChOaChOeUn+aIkOS4gOS7vee8uuWOn+aWh+S7ti/lm77niYfnmoQi5a6M5pW05aSH5Lu9Iu+8ieOAggogKi8KZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGxpc3RBbGxGaWxlcygpIHsKICBjb25zdCBkYiA9IGF3YWl0IG9wZW5EYigpOwogIGlmICghZGIpIHJldHVybiBudWxsOwogIGNvbnN0IGFsbCA9IGF3YWl0IG5ldyBQcm9taXNlKChyZXNvbHZlKSA9PiB7CiAgICB0cnkgewogICAgICBjb25zdCByZXEgPSBkYi50cmFuc2FjdGlvbihTVE9SRSwgJ3JlYWRvbmx5Jykub2JqZWN0U3RvcmUoU1RPUkUpLmdldEFsbCgpOwogICAgICByZXEub25zdWNjZXNzID0gKCkgPT4gcmVzb2x2ZShyZXEucmVzdWx0IHx8IFtdKTsKICAgICAgcmVxLm9uZXJyb3IgPSAoKSA9PiByZXNvbHZlKG51bGwpOwogICAgfSBjYXRjaCAoZSkgeyByZXNvbHZlKG51bGwpOyB9CiAgfSk7CiAgaWYgKCFhbGwpIHJldHVybiBudWxsOwogIHJldHVybiBhbGwuZmlsdGVyKChyZWMpID0+IHJlYyAmJiByZWMuaWQgIT09IFBST0JFX0lEKTsKfQoKLyoqCiAqIOS7k+W6k+W+gOi/lOiHquajgO+8iOiHquajgOmhteiwg+eUqO+8ie+8muWGmeS4gOadoeaOoumSiCDihpIg6K+75Zue6YCQ5a2X6IqC5q+U5a+5IOKGkiDliKDpmaTjgIIKICog55So55qE5piv55yf5a6e5LuT5bqTIHFpcGVpX3YyX2ZpbGVz77yM6ICM5LiN5piv5Y+m5byA55qE5rWL6K+V5bqT4oCU4oCU6aqM55qE5bCx5piv55Sf5Lqn6Lev5b6E44CCCiAqLwpleHBvcnQgYXN5bmMgZnVuY3Rpb24gaWRiU2VsZlRlc3QoKSB7CiAgaWYgKCF3aW5kb3cuaW5kZXhlZERCKSByZXR1cm4geyBvazogZmFsc2UsIGRldGFpbDogJ+a1j+iniOWZqOS4jeaUr+aMgSBJbmRleGVkREInIH07CiAgY29uc3QgcHJvYmUgPSBuZXcgVWludDhBcnJheShbMTEzLCAxMDUsIDExMiwgMTAxLCAxMDUsIDQ1LCAxMTgsIDUwXSk7IC8vICJxaXBlaS12MiIKICBjb25zdCBwdXQgPSBhd2FpdCBwdXRGaWxlKHsKICAgIGlkOiBQUk9CRV9JRCwga2luZDogJ2ltYWdlJywgYnl0ZXM6IHByb2JlLCBtaW1lOiAnYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFtJywKICB9KTsKICBpZiAoIXB1dCkgcmV0dXJuIHsgb2s6IGZhbHNlLCBkZXRhaWw6ICflvoDlm77niYfku5PlupPlhpnmlbDmja7lpLHotKXvvIjmtY/op4jlmajlj6/og73npoHnlKjkuoYgSW5kZXhlZERC77yM5oiW56m66Ze05LiN6Laz77yJJyB9OwogIGNvbnN0IGdvdCA9IGF3YWl0IGdldEZpbGUoUFJPQkVfSUQpOwogIGF3YWl0IGRlbGV0ZUZpbGUoUFJPQkVfSUQpOwogIGNvbnN0IGdvb2QgPSAhIShnb3QgJiYgZ290LmJ5dGVzICYmIGdvdC5ieXRlcy5sZW5ndGggPT09IHByb2JlLmxlbmd0aCAmJgogICAgcHJvYmUuZXZlcnkoKGIsIGkpID0+IGdvdC5ieXRlc1tpXSA9PT0gYikpOwogIHJldHVybiBnb29kCiAgICA/IHsgb2s6IHRydWUsIGRldGFpbDogJ+ivu+WGmeato+W4uO+8iOWvvOWFpeeahOWOn+aWh+S7tuS4juWbvueJh+Wtl+iKguWwseWtmOi/memHjO+8jOWFs+mhtemHjeW8gOS5n+WcqO+8iScgfQogICAgOiB7IG9rOiBmYWxzZSwgZGV0YWlsOiAn5YaZ6L+b5Y675LqG5L2G6K+75LiN5Zue5p2l77yM5Zu+54mH5Y+v6IO95a2Y5LiN5L2PJyB9Owp9Cg==
+// 文件仓库（IndexedDB）：存二进制字节——导入的原文件（原件留底）与
+// 表格图片。localStorage 只存工作现场与图片"引用"（见 store.js），
+// 字节一律放这里，避免照片撑爆 localStorage 的 5–10MB 配额（包 2 实测
+// 照片多的导入会溢出，图片只能当次会话可见；本包把图片转正为耐久存储）。
+//
+// ID 设计（内容寻址）：
+//   图片   id = 'img-'  + SHA-256(字节) 前 20 位十六进制
+//   原文件 id = 'orig-' + SHA-256(字节) 前 20 位十六进制
+// 相同字节 → 相同 id → 仓库里只存一份，多个锚点/多次导入引用同一份，
+// 天然去重（真实客户单 24 张图里就有 2 张字节相同，去重后存 23 份）。
+// crypto.subtle 不可用时退化为 FNV-1a 哈希（id 仍稳定，只是抗撞性弱）。
+//
+// 所有函数失败时返回 null/false/空统计，绝不抛错打断页面——调用方据
+// 返回值决定是否降级回包 2 的行为（图片只进 localStorage / 会话可见）。
+
+import { bytesToDataUrl } from './xlsx/zip.js';
+
+export const FILE_DB_NAME = 'qipei_v2_files';
+const FILE_DB_VERSION = 1;
+const STORE = 'files';
+const PROBE_ID = '__filedb_probe__';
+
+let dbPromise = null;
+let dbFailed = false;
+
+/** 打开（并按需建）文件仓库；失败返回 null，且不缓存失败以便重试 */
+function openDb() {
+  if (dbFailed && !dbPromise) return Promise.resolve(null);
+  if (dbPromise) return dbPromise;
+  dbPromise = new Promise((resolve) => {
+    if (!window.indexedDB) { dbPromise = null; dbFailed = true; resolve(null); return; }
+    let req;
+    try { req = indexedDB.open(FILE_DB_NAME, FILE_DB_VERSION); } catch (e) {
+      dbPromise = null; dbFailed = true; resolve(null); return;
+    }
+    req.onerror = () => { dbPromise = null; dbFailed = true; resolve(null); };
+    req.onblocked = () => { /* 别的页面占着旧版本时等一等，onsuccess/onerror 会跟上 */ };
+    req.onupgradeneeded = () => {
+      try { req.result.createObjectStore(STORE, { keyPath: 'id' }); } catch (e) { /* 已存在 */ }
+    };
+    req.onsuccess = () => resolve(req.result);
+  });
+  return dbPromise;
+}
+
+/** 仓库是否可用（自检与降级判断用） */
+export async function isFileDbAvailable() {
+  return !!(await openDb());
+}
+
+function txDone(tx) {
+  return new Promise((resolve, reject) => {
+    tx.oncomplete = () => resolve(true);
+    tx.onerror = () => reject(tx.error || new Error('事务失败'));
+    tx.onabort = () => reject(tx.error || new Error('事务被中止'));
+  });
+}
+
+/* ---------- 哈希与编码 ---------- */
+
+/** 字节 → 内容哈希（十六进制）。优先 SHA-256，缺失时 FNV-1a 兜底 */
+export async function hashBytes(bytes) {
+  const u8 = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
+  if (window.crypto && crypto.subtle && crypto.subtle.digest) {
+    try {
+      const buf = await crypto.subtle.digest('SHA-256', u8);
+      return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+    } catch (e) { /* 落到兜底 */ }
+  }
+  let h1 = 0x811c9dc5, h2 = 0x01000193;
+  for (let i = 0; i < u8.length; i++) {
+    h1 = Math.imul(h1 ^ u8[i], 0x01000193) >>> 0;
+    h2 = (Math.imul(h2, 31) + u8[i]) >>> 0;
+  }
+  return 'fnv' + h1.toString(16).padStart(8, '0') + h2.toString(16).padStart(8, '0') +
+    u8.length.toString(16);
+}
+
+/** 图片字节 → 仓库 id */
+export async function imageIdFor(bytes) {
+  return 'img-' + (await hashBytes(bytes)).slice(0, 20);
+}
+
+/** 原文件字节 → 仓库 id */
+export async function originalIdFor(bytes) {
+  return 'orig-' + (await hashBytes(bytes)).slice(0, 20);
+}
+
+/** data URL → { bytes, mime }（导入时把 xlsx 层的 data URL 转回字节存仓库） */
+export function dataUrlToBytes(dataUrl) {
+  const m = /^data:([^;,]*)(;base64)?,([\s\S]*)$/.exec(dataUrl || '');
+  if (!m) return null;
+  const mime = m[1] || 'application/octet-stream';
+  if (m[2]) {
+    const bin = atob(m[3]);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return { bytes, mime };
+  }
+  return { bytes: new TextEncoder().encode(decodeURIComponent(m[3])), mime };
+}
+
+/** 字节 → data URL（恢复时给 FortuneSheet 当图片 src） */
+export function fileBytesToDataUrl(bytes, mime) {
+  return bytesToDataUrl(bytes, mime || 'application/octet-stream');
+}
+
+/* ---------- 仓库操作 ---------- */
+
+/**
+ * 存一份文件。rec: { id, kind: 'image'|'original', bytes, mime, name? }
+ * 返回存入的元数据（不含字节）；失败返回 null。
+ */
+export async function putFile(rec) {
+  const db = await openDb();
+  if (!db || !rec || !rec.id || !rec.bytes) return null;
+  const bytes = rec.bytes instanceof Uint8Array ? rec.bytes : new Uint8Array(rec.bytes);
+  const full = {
+    id: rec.id,
+    kind: rec.kind || 'image',
+    mime: rec.mime || 'application/octet-stream',
+    name: rec.name || '',
+    size: bytes.length,
+    savedAt: rec.savedAt || new Date().toISOString(),
+    bytes,
+  };
+  try {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).put(full);
+    await txDone(tx);
+    const { bytes: _omit, ...meta } = full;
+    return meta;
+  } catch (e) {
+    return null;
+  }
+}
+
+/** 按 id 读整条记录（含字节）；没有/失败返回 null */
+export async function getFile(id) {
+  const db = await openDb();
+  if (!db || !id) return null;
+  return new Promise((resolve) => {
+    try {
+      const req = db.transaction(STORE, 'readonly').objectStore(STORE).get(id);
+      req.onsuccess = () => resolve(req.result || null);
+      req.onerror = () => resolve(null);
+    } catch (e) { resolve(null); }
+  });
+}
+
+/** 按 id 删除；返回是否执行了删除事务 */
+export async function deleteFile(id) {
+  const db = await openDb();
+  if (!db || !id) return false;
+  try {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).delete(id);
+    await txDone(tx);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+/** 清空整个仓库（「清空重开」用）；返回是否成功 */
+export async function clearFiles() {
+  const db = await openDb();
+  if (!db) return false;
+  try {
+    const tx = db.transaction(STORE, 'readwrite');
+    tx.objectStore(STORE).clear();
+    await txDone(tx);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * 仓库统计（自检页用）：只汇总元数据，不把字节读进内存清单。
+ * 返回 { originalCount, originalBytes, imageCount, imageBytes, totalCount, totalBytes }
+ */
+export async function fileStats() {
+  const empty = {
+    originalCount: 0, originalBytes: 0,
+    imageCount: 0, imageBytes: 0,
+    totalCount: 0, totalBytes: 0,
+  };
+  const db = await openDb();
+  if (!db) return empty;
+  const all = await new Promise((resolve) => {
+    try {
+      const req = db.transaction(STORE, 'readonly').objectStore(STORE).getAll();
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => resolve([]);
+    } catch (e) { resolve([]); }
+  });
+  const st = { ...empty };
+  for (const rec of all) {
+    if (!rec || rec.id === PROBE_ID) continue;
+    const size = rec.size != null ? rec.size : (rec.bytes ? rec.bytes.length : 0);
+    st.totalCount += 1;
+    st.totalBytes += size;
+    if (rec.kind === 'original') { st.originalCount += 1; st.originalBytes += size; }
+    else { st.imageCount += 1; st.imageBytes += size; }
+  }
+  return st;
+}
+
+/**
+ * 列出仓库里的原件记录（只回元数据，不带字节）：
+ * [{ id, name, size, savedAt }]。存档迁移/恢复时按原文件名找回
+ * sourceFileId 用——包 3/4 的存档里没记原件 id，靠文件名对上号。
+ */
+export async function listOriginals() {
+  const db = await openDb();
+  if (!db) return [];
+  const all = await new Promise((resolve) => {
+    try {
+      const req = db.transaction(STORE, 'readonly').objectStore(STORE).getAll();
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => resolve([]);
+    } catch (e) { resolve([]); }
+  });
+  return all
+    .filter((rec) => rec && rec.kind === 'original')
+    .map((rec) => ({
+      id: rec.id, name: rec.name || '',
+      size: rec.size != null ? rec.size : (rec.bytes ? rec.bytes.length : 0),
+      savedAt: rec.savedAt || null,
+    }));
+}
+
+/**
+ * 列出仓库里的全部记录（含字节）：完整备份导出用（包 9）。
+ * 仓库打不开时返回 null（与"仓库是空的 []"区分——备份据此报错，
+ * 绝不悄悄生成一份缺原文件/图片的"完整备份"）。
+ */
+export async function listAllFiles() {
+  const db = await openDb();
+  if (!db) return null;
+  const all = await new Promise((resolve) => {
+    try {
+      const req = db.transaction(STORE, 'readonly').objectStore(STORE).getAll();
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => resolve(null);
+    } catch (e) { resolve(null); }
+  });
+  if (!all) return null;
+  return all.filter((rec) => rec && rec.id !== PROBE_ID);
+}
+
+/**
+ * 仓库往返自检（自检页调用）：写一条探针 → 读回逐字节比对 → 删除。
+ * 用的是真实仓库 qipei_v2_files，而不是另开的测试库——验的就是生产路径。
+ */
+export async function idbSelfTest() {
+  if (!window.indexedDB) return { ok: false, detail: '浏览器不支持 IndexedDB' };
+  const probe = new Uint8Array([113, 105, 112, 101, 105, 45, 118, 50]); // "qipei-v2"
+  const put = await putFile({
+    id: PROBE_ID, kind: 'image', bytes: probe, mime: 'application/octet-stream',
+  });
+  if (!put) return { ok: false, detail: '往图片仓库写数据失败（浏览器可能禁用了 IndexedDB，或空间不足）' };
+  const got = await getFile(PROBE_ID);
+  await deleteFile(PROBE_ID);
+  const good = !!(got && got.bytes && got.bytes.length === probe.length &&
+    probe.every((b, i) => got.bytes[i] === b));
+  return good
+    ? { ok: true, detail: '读写正常（导入的原文件与图片字节就存这里，关页重开也在）' }
+    : { ok: false, detail: '写进去了但读不回来，图片可能存不住' };
+}

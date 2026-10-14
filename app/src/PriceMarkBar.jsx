@@ -1,1 +1,124 @@
-aW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnOwoKLy8g5qCH5Lu35YiX5p2h77yIU1BFQyDnrKzkuInoioIgKyDnrKzlm5voioLnrKwgNSDpobnvvInvvJrlj6rlnKjnnIvmiqXku7fljZXml7blh7rnjrDjgIIKLy8g5bel5Y6C5Zue6KGo5Y6f5qC35LiK5Lyg5ZCO77yM57O757uf5LiN55+l6YGT5ZOq5YiX5piv5Lu34oCU4oCU55Sx55So5oi35Zyo6L+Z6YeM5qCH6K6w77yaCi8vIOaKpeS7t+WIlyArIOivpeWIl+WPo+W+hO+8iOWQq+eoji/kuI3lkKvnqI7vvIkrIOeojueCue+8iOS4jeWQq+eojuaXtueUqO+8iSsg5ZGo5pyf5YiXCi8vIO+8iOm7mOiupOiHquWKqOiupOagh+mimOWQqyLlkajmnJ8v5Lqk5pyfIueahOmCo+WIl++8jOWPr+aUue+8ieOAgueCueOAjOS/neWtmOagh+iusOOAjeaJjQovLyDokL3liLDmlofmoaPkuIrvvIhwcmljZU1hcmvvvInvvIzmr5Tku7fpobXmjInov5nku73moIforrDor7vku7fjgIHmjaLnrpflj6PlvoTjgIIKLy8g5oql5Lu35YiX55WZ56m65YaN5L+d5a2YID0g5Y+W5raI5qCH6K6w44CCCmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIFByaWNlTWFya0Jhcih7CiAgZmFjdG9yeU5hbWUsIGhlYWRlcnMsIG1hcmssIGRlZmF1bHRQZXJpb2RDb2wsIG9uU2F2ZSwgb25EZWxldGUsCn0pIHsKICBjb25zdCBbY29sLCBzZXRDb2xdID0gdXNlU3RhdGUoCiAgICBtYXJrICYmIG1hcmsuY29sICE9PSBudWxsICYmIG1hcmsuY29sICE9PSB1bmRlZmluZWQgPyBTdHJpbmcobWFyay5jb2wpIDogJycpOwogIGNvbnN0IFt0YXhJbmNsdXNpdmUsIHNldFRheEluY2x1c2l2ZV0gPSB1c2VTdGF0ZShtYXJrID8gISFtYXJrLnRheEluY2x1c2l2ZSA6IHRydWUpOwogIGNvbnN0IFt0YXhSYXRlUGN0LCBzZXRUYXhSYXRlUGN0XSA9IHVzZVN0YXRlKAogICAgbWFyayAmJiBtYXJrLnRheFJhdGVQY3QgIT09IHVuZGVmaW5lZCAmJiBtYXJrLnRheFJhdGVQY3QgIT09IG51bGwgPyBTdHJpbmcobWFyay50YXhSYXRlUGN0KSA6ICcxMycpOwogIGNvbnN0IFtwZXJpb2RDb2wsIHNldFBlcmlvZENvbF0gPSB1c2VTdGF0ZSgoKSA9PiB7CiAgICBpZiAobWFyayAmJiBtYXJrLnBlcmlvZENvbCAhPT0gdW5kZWZpbmVkKSB7CiAgICAgIHJldHVybiBtYXJrLnBlcmlvZENvbCA9PT0gbnVsbCA/ICcnIDogU3RyaW5nKG1hcmsucGVyaW9kQ29sKTsKICAgIH0KICAgIHJldHVybiBkZWZhdWx0UGVyaW9kQ29sID09PSBudWxsIHx8IGRlZmF1bHRQZXJpb2RDb2wgPT09IHVuZGVmaW5lZAogICAgICA/ICcnIDogU3RyaW5nKGRlZmF1bHRQZXJpb2RDb2wpOwogIH0pOwoKICBjb25zdCBudW0gPSB7IHdpZHRoOiA2NCwgcGFkZGluZzogJzRweCA2cHgnLCBib3JkZXI6ICcxcHggc29saWQgI2M5ZDJkZScsIGJvcmRlclJhZGl1czogNiB9OwogIGNvbnN0IGxhYiA9IHsgY29sb3I6ICcjNDQ0JyB9OwogIGNvbnN0IGxhYmVsT2YgPSAoYykgPT4gewogICAgY29uc3QgaCA9IGhlYWRlcnMuZmluZCgoeCkgPT4geC5jb2wgPT09IGMpOwogICAgcmV0dXJuIGggPyBoLmxhYmVsIDogJ+esrCAnICsgKGMgKyAxKSArICcg5YiXJzsKICB9OwoKICBmdW5jdGlvbiBoYW5kbGVTYXZlKCkgewogICAgaWYgKGNvbCA9PT0gJycpIHsgb25TYXZlKG51bGwpOyByZXR1cm47IH0KICAgIG9uU2F2ZSh7CiAgICAgIGNvbDogTnVtYmVyKGNvbCksCiAgICAgIHRheEluY2x1c2l2ZSwKICAgICAgdGF4UmF0ZVBjdCwKICAgICAgcGVyaW9kQ29sOiBwZXJpb2RDb2wgPT09ICcnID8gbnVsbCA6IE51bWJlcihwZXJpb2RDb2wpLAogICAgfSk7CiAgfQoKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9InByaWNlLW1hcmstYmFyIiBzdHlsZT17ewogICAgICBtYXJnaW46ICcxMHB4IDE0cHggMCcsIHBhZGRpbmc6ICcxMHB4IDE0cHgnLCBmb250RmFtaWx5OiAnc2Fucy1zZXJpZicsIGZvbnRTaXplOiAxNCwKICAgICAgZGlzcGxheTogJ2ZsZXgnLCBhbGlnbkl0ZW1zOiAnY2VudGVyJywgZ2FwOiA4LCBmbGV4V3JhcDogJ3dyYXAnLAogICAgICBib3JkZXI6ICcxcHggc29saWQgI2RiZTJlYycsIGJvcmRlckxlZnQ6ICc0cHggc29saWQgI2Q5NzcwNicsIGJvcmRlclJhZGl1czogMTIsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgICAgYm94U2hhZG93OiAnMCAxcHggM3B4IHJnYmEoMjMsMzQsNjIsMC4wNSknLAogICAgfX0+CiAgICAgIDxiIHN0eWxlPXt7IGNvbG9yOiAnI2I0NTMwOScgfX0+5qCH5Lu35YiXPC9iPgogICAgICA8c3BhbiBzdHlsZT17eyBjb2xvcjogJyM2NjYnIH19PuaKpeS7t+WNlSDCtyB7ZmFjdG9yeU5hbWV9PC9zcGFuPgogICAgICA8bGFiZWwgc3R5bGU9e2xhYn0+5oql5Lu35YiXCiAgICAgICAgPHNlbGVjdAogICAgICAgICAgY2xhc3NOYW1lPSJwbS1jb2wiCiAgICAgICAgICB2YWx1ZT17Y29sfQogICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRDb2woZS50YXJnZXQudmFsdWUpfQogICAgICAgICAgc3R5bGU9e3sgbWFyZ2luTGVmdDogNCwgcGFkZGluZzogJzRweCA2cHgnIH19CiAgICAgICAgPgogICAgICAgICAgPG9wdGlvbiB2YWx1ZT0iIj7mnKrmoIforrA8L29wdGlvbj4KICAgICAgICAgIHtoZWFkZXJzLm1hcCgoaCkgPT4gKAogICAgICAgICAgICA8b3B0aW9uIGtleT17aC5jb2x9IHZhbHVlPXtoLmNvbH0+e2gubGFiZWx9PC9vcHRpb24+CiAgICAgICAgICApKX0KICAgICAgICA8L3NlbGVjdD4KICAgICAgPC9sYWJlbD4KICAgICAgPGxhYmVsIHN0eWxlPXtsYWJ9PuivpeWIlwogICAgICAgIDxzZWxlY3QKICAgICAgICAgIGNsYXNzTmFtZT0icG0tdGF4LW1vZGUiCiAgICAgICAgICB2YWx1ZT17dGF4SW5jbHVzaXZlID8gJ2luY2wnIDogJ2V4Y2wnfQogICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRUYXhJbmNsdXNpdmUoZS50YXJnZXQudmFsdWUgPT09ICdpbmNsJyl9CiAgICAgICAgICBzdHlsZT17eyBtYXJnaW5MZWZ0OiA0LCBwYWRkaW5nOiAnNHB4IDZweCcgfX0KICAgICAgICA+CiAgICAgICAgICA8b3B0aW9uIHZhbHVlPSJpbmNsIj7lkKvnqI48L29wdGlvbj4KICAgICAgICAgIDxvcHRpb24gdmFsdWU9ImV4Y2wiPuS4jeWQq+eojjwvb3B0aW9uPgogICAgICAgIDwvc2VsZWN0PgogICAgICA8L2xhYmVsPgogICAgICB7IXRheEluY2x1c2l2ZSAmJiAoCiAgICAgICAgPGxhYmVsIHN0eWxlPXtsYWJ9PueojueCuSAlCiAgICAgICAgICA8aW5wdXQKICAgICAgICAgICAgY2xhc3NOYW1lPSJwbS10YXgtcmF0ZSIgdHlwZT0ibnVtYmVyIiBzdGVwPSIwLjAxIiBzdHlsZT17eyAuLi5udW0sIG1hcmdpbkxlZnQ6IDQgfX0KICAgICAgICAgICAgdmFsdWU9e3RheFJhdGVQY3R9CiAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gc2V0VGF4UmF0ZVBjdChlLnRhcmdldC52YWx1ZSl9CiAgICAgICAgICAvPgogICAgICAgIDwvbGFiZWw+CiAgICAgICl9CiAgICAgIDxsYWJlbCBzdHlsZT17bGFifT7lkajmnJ/liJcKICAgICAgICA8c2VsZWN0CiAgICAgICAgICBjbGFzc05hbWU9InBtLXBlcmlvZC1jb2wiCiAgICAgICAgICB2YWx1ZT17cGVyaW9kQ29sfQogICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRQZXJpb2RDb2woZS50YXJnZXQudmFsdWUpfQogICAgICAgICAgc3R5bGU9e3sgbWFyZ2luTGVmdDogNCwgcGFkZGluZzogJzRweCA2cHgnIH19CiAgICAgICAgPgogICAgICAgICAgPG9wdGlvbiB2YWx1ZT0iIj7vvIjml6DvvIk8L29wdGlvbj4KICAgICAgICAgIHtoZWFkZXJzLm1hcCgoaCkgPT4gKAogICAgICAgICAgICA8b3B0aW9uIGtleT17aC5jb2x9IHZhbHVlPXtoLmNvbH0+e2gubGFiZWx9PC9vcHRpb24+CiAgICAgICAgICApKX0KICAgICAgICA8L3NlbGVjdD4KICAgICAgPC9sYWJlbD4KICAgICAgPGJ1dHRvbgogICAgICAgIGNsYXNzTmFtZT0icG0tc2F2ZSIKICAgICAgICBvbkNsaWNrPXtoYW5kbGVTYXZlfQogICAgICAgIHN0eWxlPXt7CiAgICAgICAgICBib3JkZXI6ICcxcHggc29saWQgI2I0NTMwOScsIGJhY2tncm91bmQ6ICcjYjQ1MzA5JywgY29sb3I6ICcjZmZmJywKICAgICAgICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzVweCAxNHB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgICAgICAgfX0KICAgICAgPuS/neWtmOagh+iusDwvYnV0dG9uPgogICAgICA8c3BhbiBjbGFzc05hbWU9InBtLXN0YXR1cyIgc3R5bGU9e3sgY29sb3I6ICcjODg4JyB9fT4KICAgICAgICB7bWFyayAmJiBtYXJrLmNvbCAhPT0gbnVsbCAmJiBtYXJrLmNvbCAhPT0gdW5kZWZpbmVkCiAgICAgICAgICA/ICflt7LmoIforrDvvJonICsgbGFiZWxPZihtYXJrLmNvbCkgKyAnIMK3ICcgKwogICAgICAgICAgICAobWFyay50YXhJbmNsdXNpdmUgPyAn5ZCr56iOJyA6ICfkuI3lkKvnqI7vvIjnqI7ngrkgJyArIChtYXJrLnRheFJhdGVQY3QgPz8gJycpICsgJyXvvIknKSArCiAgICAgICAgICAgICcgwrcg5ZGo5pyf5YiXICcgKyAobWFyay5wZXJpb2RDb2wgPT09IG51bGwgfHwgbWFyay5wZXJpb2RDb2wgPT09IHVuZGVmaW5lZAogICAgICAgICAgICAgID8gJ+aXoCcgOiBsYWJlbE9mKG1hcmsucGVyaW9kQ29sKSkKICAgICAgICAgIDogJ+Wwmuacquagh+iusOaKpeS7t+WIl+KAlOKAlOavlOS7t+mhteivu+S4jeWIsOi/meWutueahOS7tyd9CiAgICAgIDwvc3Bhbj4KICAgICAgPHNwYW4gc3R5bGU9e3sgbWFyZ2luTGVmdDogJ2F1dG8nIH19IC8+CiAgICAgIDxidXR0b24KICAgICAgICBjbGFzc05hbWU9InBtLWRlbGV0ZSIKICAgICAgICBvbkNsaWNrPXtvbkRlbGV0ZX0KICAgICAgICBzdHlsZT17ewogICAgICAgICAgYm9yZGVyOiAnMXB4IHNvbGlkICNkOTJkMjAnLCBjb2xvcjogJyNkOTJkMjAnLCBiYWNrZ3JvdW5kOiAnI2ZmZicsCiAgICAgICAgICBib3JkZXJSYWRpdXM6IDgsIHBhZGRpbmc6ICc1cHggMTJweCcsIGN1cnNvcjogJ3BvaW50ZXInLAogICAgICAgIH19CiAgICAgID7liKDpmaTmiqXku7fljZU8L2J1dHRvbj4KICAgIDwvZGl2PgogICk7Cn0K
+import React, { useState } from 'react';
+
+// 标价列条（SPEC 第三节 + 第四节第 5 项）：只在看报价单时出现。
+// 工厂回表原样上传后，系统不知道哪列是价——由用户在这里标记：
+// 报价列 + 该列口径（含税/不含税）+ 税点（不含税时用）+ 周期列
+// （默认自动认标题含"周期/交期"的那列，可改）。点「保存标记」才
+// 落到文档上（priceMark），比价页按这份标记读价、换算口径。
+// 报价列留空再保存 = 取消标记。
+export default function PriceMarkBar({
+  factoryName, headers, mark, defaultPeriodCol, onSave, onDelete,
+}) {
+  const [col, setCol] = useState(
+    mark && mark.col !== null && mark.col !== undefined ? String(mark.col) : '');
+  const [taxInclusive, setTaxInclusive] = useState(mark ? !!mark.taxInclusive : true);
+  const [taxRatePct, setTaxRatePct] = useState(
+    mark && mark.taxRatePct !== undefined && mark.taxRatePct !== null ? String(mark.taxRatePct) : '13');
+  const [periodCol, setPeriodCol] = useState(() => {
+    if (mark && mark.periodCol !== undefined) {
+      return mark.periodCol === null ? '' : String(mark.periodCol);
+    }
+    return defaultPeriodCol === null || defaultPeriodCol === undefined
+      ? '' : String(defaultPeriodCol);
+  });
+
+  const num = { width: 64, padding: '4px 6px', border: '1px solid #c9d2de', borderRadius: 6 };
+  const lab = { color: '#444' };
+  const labelOf = (c) => {
+    const h = headers.find((x) => x.col === c);
+    return h ? h.label : '第 ' + (c + 1) + ' 列';
+  };
+
+  function handleSave() {
+    if (col === '') { onSave(null); return; }
+    onSave({
+      col: Number(col),
+      taxInclusive,
+      taxRatePct,
+      periodCol: periodCol === '' ? null : Number(periodCol),
+    });
+  }
+
+  return (
+    <div className="price-mark-bar" style={{
+      margin: '10px 14px 0', padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
+      display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
+      border: '1px solid #dbe2ec', borderLeft: '4px solid #d97706', borderRadius: 12, background: '#fff',
+      boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
+    }}>
+      <b style={{ color: '#b45309' }}>标价列</b>
+      <span style={{ color: '#666' }}>报价单 · {factoryName}</span>
+      <label style={lab}>报价列
+        <select
+          className="pm-col"
+          value={col}
+          onChange={(e) => setCol(e.target.value)}
+          style={{ marginLeft: 4, padding: '4px 6px' }}
+        >
+          <option value="">未标记</option>
+          {headers.map((h) => (
+            <option key={h.col} value={h.col}>{h.label}</option>
+          ))}
+        </select>
+      </label>
+      <label style={lab}>该列
+        <select
+          className="pm-tax-mode"
+          value={taxInclusive ? 'incl' : 'excl'}
+          onChange={(e) => setTaxInclusive(e.target.value === 'incl')}
+          style={{ marginLeft: 4, padding: '4px 6px' }}
+        >
+          <option value="incl">含税</option>
+          <option value="excl">不含税</option>
+        </select>
+      </label>
+      {!taxInclusive && (
+        <label style={lab}>税点 %
+          <input
+            className="pm-tax-rate" type="number" step="0.01" style={{ ...num, marginLeft: 4 }}
+            value={taxRatePct}
+            onChange={(e) => setTaxRatePct(e.target.value)}
+          />
+        </label>
+      )}
+      <label style={lab}>周期列
+        <select
+          className="pm-period-col"
+          value={periodCol}
+          onChange={(e) => setPeriodCol(e.target.value)}
+          style={{ marginLeft: 4, padding: '4px 6px' }}
+        >
+          <option value="">（无）</option>
+          {headers.map((h) => (
+            <option key={h.col} value={h.col}>{h.label}</option>
+          ))}
+        </select>
+      </label>
+      <button
+        className="pm-save"
+        onClick={handleSave}
+        style={{
+          border: '1px solid #b45309', background: '#b45309', color: '#fff',
+          borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
+        }}
+      >保存标记</button>
+      <span className="pm-status" style={{ color: '#888' }}>
+        {mark && mark.col !== null && mark.col !== undefined
+          ? '已标记：' + labelOf(mark.col) + ' · ' +
+            (mark.taxInclusive ? '含税' : '不含税（税点 ' + (mark.taxRatePct ?? '') + '%）') +
+            ' · 周期列 ' + (mark.periodCol === null || mark.periodCol === undefined
+              ? '无' : labelOf(mark.periodCol))
+          : '尚未标记报价列——比价页读不到这家的价'}
+      </span>
+      <span style={{ marginLeft: 'auto' }} />
+      <button
+        className="pm-delete"
+        onClick={onDelete}
+        style={{
+          border: '1px solid #d92d20', color: '#d92d20', background: '#fff',
+          borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+        }}
+      >删除报价单</button>
+    </div>
+  );
+}

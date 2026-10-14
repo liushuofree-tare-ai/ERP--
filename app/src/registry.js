@@ -1,1 +1,368 @@
-Ly8g5a6i5oi3L+W3peWOguazqOWGjOihqOS4juWkmuivouS7t+WNleeahOiBlOWKqOinhOWIme+8iOWMhSAxMe+8ieOAggovLwovLyDog4zmma/vvJrljIUgMTAg5Lul5YmN57O757uf5Y+q5pyJIuS4gOW8oOivouS7t+WNlSArIOiLpeW5suaKpeS7t+WNlSLvvIzlrqLmiLflj6rmtLvlnKgKLy8g6K+i5Lu35Y2V55qEIGN1c3RvbWVyTmFtZSDph4zjgIHlt6XljoLlj6rmtLvlnKjkuIDkuLLlkI3lrZfph4zvvIznnIvkuI3liLDogZTliqjjgIHmsqHmnIkKLy8g566h55CG6aG177yM5a+85YWl5paw5Y2V6L+Y5Lya5oqK5pen5Y2V6L+e5ZCM5oql5Lu35Y2V5LiA6LW36ZSA5q+B44CC5YyFIDExIOi1t++8mgovLyDCtyDor6Lku7fljZXlj6/ku6XmnInlvojlpJrlvKDvvIjljoblj7LljZXnlZnnnYDmn6XvvInvvJvmr4/lvKDmiqXku7fljZXnlKggaW5xdWlyeUlkIOiusAovLyAgIOWug+WxnuS6juWTquW8oOivouS7t+WNle+8iOWFi+mahi/lm57ooajml7blrprmrbvvvInvvIzorqLljZXml6nmnIkgaW5xdWlyeURvY0lk77ybCi8vIMK3IOWuouaIt+acieS6huazqOWGjOihqCBjdXN0b21lcnM6IFt7IG5hbWUsIGNvbnRhY3QsIG5vdGUgfV3vvIzpmo/lrZjmoaPotbDvvJsKLy8gICDouqvku73lsLHmmK/lkI3lrZflrZfnrKbkuLLmnKzouqvvvIjkuI4gb3ZlcnZpZXcg55qE5ZCM5ZCN5ZCI5bm25Y+j5b6E5LiA6Ie077yJ77yMCi8vICAg5pS55ZCNID0g5rOo5YaM6KGoICsg5YWo6YOo6K+i5Lu35Y2VICsg5YWo6YOo6K6i5Y2V5LiA6LW35pS577yM5LiA5qyh5Yiw5L2N77ybCi8vIMK3IOW3peWOguS7jeaYr+WQjeWtl+a4heWNle+8iGZhY3Rvcmllc++8ie+8jOaUueWQjeWQjOagt+WFqOWfn+WQjOatpe+8muaKpeS7t+WNleOAgQovLyAgIOWumuWOguW/q+eFp++8iHJvd0Nob2ljZXPvvInjgIHorqLljZXooYzjgIHorqLljZXku5jmrL7orrDlvZXkuIDotbfmlLnvvJsKLy8gwrcg5Yig6Zmk5pyJ56Gs6KeE5YiZ77ya5a6i5oi35ZCN5LiL5pyJ6K+i5Lu35Y2V5oiW6K6i5Y2V44CB5bel5Y6C5ZCN5LiL5pyJ5oql5Lu35Y2VL+iuouWNlQovLyAgIOW8leeUqOOAgeivouS7t+WNleW3sui9rOWHuuiuouWNleKAlOKAlOS4gOW+i+aLpuS4i+W5tue7meS4gOWPpeS6uuivneWOn+WboO+8jOWOhuWPsuS4jeiuuOWIoOOAggovLyDmnKzmlofku7blhajpg6jnuq/lh73mlbDvvJrlhaXlj4LmmK/lrZjmoaPlvaLnirYgeyBkb2NzLCBvcmRlcnMsIGN1c3RvbWVycywKLy8gZmFjdG9yaWVzIH3vvIjnvLrlrZfmrrXmjInnqbrlpITnkIbvvInvvIzmlLnlkI0v6L+B56e76L+U5Zue5paw5a+56LGh44CB5LiN5Y6f5Zyw5pS55YWl5Y+C44CCCmltcG9ydCB7IG9yZGVyRmFjdHMgfSBmcm9tICcuL29yZGVycy5qcyc7CmltcG9ydCB7IGJ1aWxkT3ZlcnZpZXcgfSBmcm9tICcuL292ZXJ2aWV3LmpzJzsKCmNvbnN0IHRyaW0gPSAocykgPT4gKHMgPT09IG51bGwgfHwgcyA9PT0gdW5kZWZpbmVkID8gJycgOiBTdHJpbmcocykudHJpbSgpKTsKCi8qKiDlsZ7kuo7mn5DlvKDor6Lku7fljZXnmoTmiqXku7fljZXvvIjmjInmlofmoaPpobrluo/vvIkgKi8KZXhwb3J0IGZ1bmN0aW9uIHF1b3Rlc0ZvcklucXVpcnkoZG9jcywgaW5xdWlyeUlkKSB7CiAgcmV0dXJuIChkb2NzIHx8IFtdKS5maWx0ZXIoKGQpID0+IGQgJiYgZC5raW5kID09PSAncXVvdGUnICYmIGQuaW5xdWlyeUlkID09PSBpbnF1aXJ5SWQpOwp9CgovKiog5LiA5byg5Y2V5o2u5omA5bGe55qE6K+i5Lu35Y2V77yI6K+i5Lu35Y2V6L+U5Zue6Ieq5bex77yb5oql5Lu35Y2V5oyJIGlucXVpcnlJZCDmib7vvIkgKi8KZXhwb3J0IGZ1bmN0aW9uIGlucXVpcnlPZkRvYyhkb2NzLCBkb2MpIHsKICBpZiAoIWRvYykgcmV0dXJuIG51bGw7CiAgaWYgKGRvYy5raW5kID09PSAnaW5xdWlyeScpIHJldHVybiBkb2M7CiAgcmV0dXJuIChkb2NzIHx8IFtdKS5maW5kKChkKSA9PiBkICYmIGQuZG9jSWQgPT09IGRvYy5pbnF1aXJ5SWQpIHx8IG51bGw7Cn0KCi8qKiDor6Lku7fljZXnirbmgIHvvIjmtL7nlJ/vvIzkuI3lrZjvvInvvJrovazlh7rov4forqLljZXlsLHmmK/jgIzlt7LovazorqLljZXjgI3vvIzlkKbliJnjgIzov5vooYzkuK3jgI0gKi8KZXhwb3J0IGZ1bmN0aW9uIGlucXVpcnlTdGF0dXNPZihkb2MsIG9yZGVycykgewogIGlmICghZG9jKSByZXR1cm4gJyc7CiAgcmV0dXJuIChvcmRlcnMgfHwgW10pLnNvbWUoKG8pID0+IG8gJiYgby5pbnF1aXJ5RG9jSWQgPT09IGRvYy5kb2NJZCkKICAgID8gJ+W3sui9rOiuouWNlScKICAgIDogJ+i/m+ihjOS4rSc7Cn0KCi8qKiDku47njrDmnInljZXmja7ph4zmlLbpm4blrqLmiLflkI3vvIjor6Lku7fljZXlnKjliY3jgIHorqLljZXlnKjlkI7vvIzmjInpppbmrKHlh7rnjrDmjpLluo/vvIzljrvnqbrljrvph43vvIkgKi8KZXhwb3J0IGZ1bmN0aW9uIHNlZWRDdXN0b21lck5hbWVzKGRvY3MsIG9yZGVycykgewogIGNvbnN0IHNlZW4gPSBuZXcgU2V0KCk7CiAgY29uc3Qgb3V0ID0gW107CiAgY29uc3QgcHVzaCA9IChuYW1lKSA9PiB7CiAgICBjb25zdCBuID0gdHJpbShuYW1lKTsKICAgIGlmIChuICYmICFzZWVuLmhhcyhuKSkgeyBzZWVuLmFkZChuKTsgb3V0LnB1c2gobik7IH0KICB9OwogIGZvciAoY29uc3QgZCBvZiBkb2NzIHx8IFtdKSB7CiAgICBpZiAoZCAmJiBkLmtpbmQgPT09ICdpbnF1aXJ5JykgcHVzaChkLmN1c3RvbWVyTmFtZSk7CiAgfQogIGZvciAoY29uc3QgbyBvZiBvcmRlcnMgfHwgW10pIHB1c2gobyAmJiBvLmN1c3RvbWVyTmFtZSk7CiAgcmV0dXJuIG91dDsKfQoKLyoqCiAqIOWMhSAxMSDov4Hnp7vvvIjluYLnrYnvvIznuq/lh73mlbDvvInvvJrnu5nkuIDku73ml6flrZjmoaPooaXpvZDigJTigJQKICogwrcg5oql5Lu35Y2V57y6IGlucXVpcnlJZCDihpIg6KGl5oiQ77yI5ZSv5LiA55qE77yJ6YKj5byg6K+i5Lu35Y2V55qEIGRvY0lkCiAqICAg77yI5YyFIDEwIOS7peWJjeWFqOW6k+WPquacieS4gOW8oOivouS7t+WNle+8jOS4jeS8muiupOmUme+8ie+8mwogKiDCtyBjdXN0b21lcnMg5rOo5YaM6KGo57y65aSxL+S4jeWFqCDihpIg55SoIHNlZWRDdXN0b21lck5hbWVzIOS7juWNleaNruaSreenje+8jAogKiAgIOW3sueZu+iusOeahOadoeebru+8iOiBlOezu+S6ui/lpIfms6jvvInljp/moLfkv53nlZnjgIIKICog6L+U5ZueIHsgc3RhdGUsIGNoYW5nZWQgfe+8m+ayoeWKqOi/h+WwseWOn+agt+i/lOWbnuWFpeWPguW8leeUqOOAggogKi8KZXhwb3J0IGZ1bmN0aW9uIG1pZ3JhdGVTdGF0ZShzdGF0ZSkgewogIGlmICghc3RhdGUgfHwgIUFycmF5LmlzQXJyYXkoc3RhdGUuZG9jcykpIHJldHVybiB7IHN0YXRlLCBjaGFuZ2VkOiBmYWxzZSB9OwogIGxldCBjaGFuZ2VkID0gZmFsc2U7CiAgY29uc3QgZmlyc3RJbnF1aXJ5ID0gc3RhdGUuZG9jcy5maW5kKChkKSA9PiBkICYmIGQua2luZCA9PT0gJ2lucXVpcnknKTsKICBsZXQgZG9jcyA9IHN0YXRlLmRvY3M7CiAgaWYgKGZpcnN0SW5xdWlyeSkgewogICAgbGV0IHRvdWNoZWQgPSBmYWxzZTsKICAgIGNvbnN0IG5leHQgPSBzdGF0ZS5kb2NzLm1hcCgoZCkgPT4gewogICAgICBpZiAoZCAmJiBkLmtpbmQgPT09ICdxdW90ZScgJiYgIWQuaW5xdWlyeUlkKSB7CiAgICAgICAgdG91Y2hlZCA9IHRydWU7CiAgICAgICAgcmV0dXJuIHsgLi4uZCwgaW5xdWlyeUlkOiBmaXJzdElucXVpcnkuZG9jSWQgfTsKICAgICAgfQogICAgICByZXR1cm4gZDsKICAgIH0pOwogICAgaWYgKHRvdWNoZWQpIHsgZG9jcyA9IG5leHQ7IGNoYW5nZWQgPSB0cnVlOyB9CiAgfQogIGNvbnN0IGV4aXN0aW5nID0gQXJyYXkuaXNBcnJheShzdGF0ZS5jdXN0b21lcnMpID8gc3RhdGUuY3VzdG9tZXJzIDogbnVsbDsKICBjb25zdCBrbm93biA9IG5ldyBTZXQoKGV4aXN0aW5nIHx8IFtdKS5tYXAoKGMpID0+IHRyaW0oYyAmJiBjLm5hbWUpKSk7CiAgY29uc3QgbWlzc2luZyA9IHNlZWRDdXN0b21lck5hbWVzKGRvY3MsIHN0YXRlLm9yZGVycykKICAgIC5maWx0ZXIoKG4pID0+ICFrbm93bi5oYXMobikpCiAgICAubWFwKChuYW1lKSA9PiAoeyBuYW1lLCBjb250YWN0OiAnJywgbm90ZTogJycgfSkpOwogIGxldCBjdXN0b21lcnMgPSBleGlzdGluZzsKICBpZiAoIWV4aXN0aW5nKSB7CiAgICBjdXN0b21lcnMgPSBtaXNzaW5nOwogICAgY2hhbmdlZCA9IHRydWU7CiAgfSBlbHNlIGlmIChtaXNzaW5nLmxlbmd0aCkgewogICAgY3VzdG9tZXJzID0gWy4uLmV4aXN0aW5nLCAuLi5taXNzaW5nXTsKICAgIGNoYW5nZWQgPSB0cnVlOwogIH0KICBpZiAoIWNoYW5nZWQpIHJldHVybiB7IHN0YXRlLCBjaGFuZ2VkOiBmYWxzZSB9OwogIHJldHVybiB7IHN0YXRlOiB7IC4uLnN0YXRlLCBkb2NzLCBjdXN0b21lcnMgfSwgY2hhbmdlZDogdHJ1ZSB9Owp9CgovKiAtLS0tLS0tLS0tIOaUueWQje+8iOWFqOWfn+WQjOatpe+8m+WGsueqgS/ml6Dlj5jljJbov5Tlm54gbnVsbO+8iSAtLS0tLS0tLS0tICovCgovKioKICog5a6i5oi35pS55ZCN77ya5rOo5YaM6KGo5p2h55uu44CB5q+P5byg6K+i5Lu35Y2V55qEIGN1c3RvbWVyTmFtZeOAgeavj+W8oOiuouWNleeahAogKiBjdXN0b21lck5hbWUg5LiA6LW35pS544CC5paw5ZCN5bey6KKr5Y+m5LiA5Liq5a6i5oi35Y2g55So77yI5rOo5YaM6KGo5oiW5Lu75LiA5Y2V5o2uCiAqIOS4iuWHuueOsOi/h++8ieKGkiDov5Tlm54gbnVsbO+8jOS7gOS5iOmDveS4jeaUueOAggogKi8KZXhwb3J0IGZ1bmN0aW9uIHJlbmFtZUN1c3RvbWVyKHN0YXRlLCBvbGROYW1lLCBuZXdOYW1lKSB7CiAgY29uc3QgZnJvbSA9IHRyaW0ob2xkTmFtZSk7CiAgY29uc3QgdG8gPSB0cmltKG5ld05hbWUpOwogIGlmICghZnJvbSB8fCAhdG8gfHwgZnJvbSA9PT0gdG8pIHJldHVybiBudWxsOwogIGNvbnN0IGRvY3MgPSAoc3RhdGUgJiYgc3RhdGUuZG9jcykgfHwgW107CiAgY29uc3Qgb3JkZXJzID0gKHN0YXRlICYmIHN0YXRlLm9yZGVycykgfHwgW107CiAgY29uc3QgY3VzdG9tZXJzID0gKHN0YXRlICYmIHN0YXRlLmN1c3RvbWVycykgfHwgW107CiAgY29uc3QgdGFrZW4gPSBjdXN0b21lcnMuc29tZSgoYykgPT4gdHJpbShjICYmIGMubmFtZSkgPT09IHRvKSB8fAogICAgZG9jcy5zb21lKChkKSA9PiBkICYmIGQua2luZCA9PT0gJ2lucXVpcnknICYmIHRyaW0oZC5jdXN0b21lck5hbWUpID09PSB0bykgfHwKICAgIG9yZGVycy5zb21lKChvKSA9PiBvICYmIHRyaW0oby5jdXN0b21lck5hbWUpID09PSB0byk7CiAgaWYgKHRha2VuKSByZXR1cm4gbnVsbDsKICByZXR1cm4gewogICAgZG9jczogZG9jcy5tYXAoKGQpID0+IChkICYmIGQua2luZCA9PT0gJ2lucXVpcnknICYmIHRyaW0oZC5jdXN0b21lck5hbWUpID09PSBmcm9tCiAgICAgID8geyAuLi5kLCBjdXN0b21lck5hbWU6IHRvIH0KICAgICAgOiBkKSksCiAgICBvcmRlcnM6IG9yZGVycy5tYXAoKG8pID0+IChvICYmIHRyaW0oby5jdXN0b21lck5hbWUpID09PSBmcm9tCiAgICAgID8geyAuLi5vLCBjdXN0b21lck5hbWU6IHRvIH0KICAgICAgOiBvKSksCiAgICBjdXN0b21lcnM6IGN1c3RvbWVycy5tYXAoKGMpID0+IChjICYmIHRyaW0oYy5uYW1lKSA9PT0gZnJvbQogICAgICA/IHsgLi4uYywgbmFtZTogdG8gfQogICAgICA6IGMpKSwKICB9Owp9CgovKioKICog5bel5Y6C5pS55ZCN77ya5bel5Y6C5ZCN5Y2V44CB5oql5Lu35Y2VIGZhY3RvcnlOYW1l44CB6K+i5Lu35Y2V5a6a5Y6C5b+r54WnCiAqIHJvd0Nob2ljZXNbKl0uZmFjdG9yeeOAgeiuouWNleihjCBmYWN0b3J544CB6K6i5Y2V5LuY5qy+IGZhY3RvcnlQYXlzWypdLmZhY3RvcnkKICog5LiA6LW35pS544CC5paw5ZCN5bey6KKr5Y+m5LiA5a625bel5Y6C5Y2g55SoIOKGkiDov5Tlm54gbnVsbOOAggogKi8KZXhwb3J0IGZ1bmN0aW9uIHJlbmFtZUZhY3Rvcnkoc3RhdGUsIG9sZE5hbWUsIG5ld05hbWUpIHsKICBjb25zdCBmcm9tID0gdHJpbShvbGROYW1lKTsKICBjb25zdCB0byA9IHRyaW0obmV3TmFtZSk7CiAgaWYgKCFmcm9tIHx8ICF0byB8fCBmcm9tID09PSB0bykgcmV0dXJuIG51bGw7CiAgY29uc3QgZG9jcyA9IChzdGF0ZSAmJiBzdGF0ZS5kb2NzKSB8fCBbXTsKICBjb25zdCBvcmRlcnMgPSAoc3RhdGUgJiYgc3RhdGUub3JkZXJzKSB8fCBbXTsKICBjb25zdCBmYWN0b3JpZXMgPSAoc3RhdGUgJiYgc3RhdGUuZmFjdG9yaWVzKSB8fCBbXTsKICBjb25zdCB0YWtlbiA9IGZhY3Rvcmllcy5zb21lKChmKSA9PiB0cmltKGYpID09PSB0bykgfHwKICAgIGRvY3Muc29tZSgoZCkgPT4gZCAmJiBkLmtpbmQgPT09ICdxdW90ZScgJiYgdHJpbShkLmZhY3RvcnlOYW1lKSA9PT0gdG8pIHx8CiAgICBkb2NzLnNvbWUoKGQpID0+IGQgJiYgZC5yb3dDaG9pY2VzICYmCiAgICAgIE9iamVjdC52YWx1ZXMoZC5yb3dDaG9pY2VzKS5zb21lKChjKSA9PiBjICYmIHRyaW0oYy5mYWN0b3J5KSA9PT0gdG8pKSB8fAogICAgb3JkZXJzLnNvbWUoKG8pID0+IG8gJiYgKAogICAgICAoby5saW5lcyB8fCBbXSkuc29tZSgobCkgPT4gbCAmJiB0cmltKGwuZmFjdG9yeSkgPT09IHRvKSB8fAogICAgICAoby5mYWN0b3J5UGF5cyB8fCBbXSkuc29tZSgocCkgPT4gcCAmJiB0cmltKHAuZmFjdG9yeSkgPT09IHRvKSkpOwogIGlmICh0YWtlbikgcmV0dXJuIG51bGw7CiAgcmV0dXJuIHsKICAgIGRvY3M6IGRvY3MubWFwKChkKSA9PiB7CiAgICAgIGlmICghZCkgcmV0dXJuIGQ7CiAgICAgIGxldCBuZXh0ID0gZDsKICAgICAgaWYgKGQua2luZCA9PT0gJ3F1b3RlJyAmJiB0cmltKGQuZmFjdG9yeU5hbWUpID09PSBmcm9tKSB7CiAgICAgICAgbmV4dCA9IHsgLi4ubmV4dCwgZmFjdG9yeU5hbWU6IHRvIH07CiAgICAgIH0KICAgICAgaWYgKGQucm93Q2hvaWNlcykgewogICAgICAgIGxldCB0b3VjaGVkID0gZmFsc2U7CiAgICAgICAgY29uc3QgcmMgPSB7fTsKICAgICAgICBmb3IgKGNvbnN0IFtsaWQsIGNdIG9mIE9iamVjdC5lbnRyaWVzKGQucm93Q2hvaWNlcykpIHsKICAgICAgICAgIGlmIChjICYmIHRyaW0oYy5mYWN0b3J5KSA9PT0gZnJvbSkgewogICAgICAgICAgICByY1tsaWRdID0geyAuLi5jLCBmYWN0b3J5OiB0byB9OwogICAgICAgICAgICB0b3VjaGVkID0gdHJ1ZTsKICAgICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAgIHJjW2xpZF0gPSBjOwogICAgICAgICAgfQogICAgICAgIH0KICAgICAgICBpZiAodG91Y2hlZCkgbmV4dCA9IHsgLi4ubmV4dCwgcm93Q2hvaWNlczogcmMgfTsKICAgICAgfQogICAgICByZXR1cm4gbmV4dDsKICAgIH0pLAogICAgb3JkZXJzOiBvcmRlcnMubWFwKChvKSA9PiB7CiAgICAgIGlmICghbykgcmV0dXJuIG87CiAgICAgIGNvbnN0IGxpbmVzID0gKG8ubGluZXMgfHwgW10pLm1hcCgobCkgPT4gKGwgJiYgdHJpbShsLmZhY3RvcnkpID09PSBmcm9tCiAgICAgICAgPyB7IC4uLmwsIGZhY3Rvcnk6IHRvIH0KICAgICAgICA6IGwpKTsKICAgICAgY29uc3QgZmFjdG9yeVBheXMgPSAoby5mYWN0b3J5UGF5cyB8fCBbXSkubWFwKChwKSA9PiAocCAmJiB0cmltKHAuZmFjdG9yeSkgPT09IGZyb20KICAgICAgICA/IHsgLi4ucCwgZmFjdG9yeTogdG8gfQogICAgICAgIDogcCkpOwogICAgICByZXR1cm4geyAuLi5vLCBsaW5lcywgZmFjdG9yeVBheXMgfTsKICAgIH0pLAogICAgZmFjdG9yaWVzOiBmYWN0b3JpZXMubWFwKChmKSA9PiAodHJpbShmKSA9PT0gZnJvbSA/IHRvIDogZikpLAogIH07Cn0KCi8qIC0tLS0tLS0tLS0g5Yig6Zmk6KeE5YiZ77yI6L+U5ZueIG51bGwgPSDlj6/liKDvvJvov5Tlm57lrZfnrKbkuLIgPSDmi6bkuIvnmoTljp/lm6DvvIkgLS0tLS0tLS0tLSAqLwoKLyoqIOWuouaIt+WIoOmZpO+8muWQjeS4i+acieivouS7t+WNleaIluiuouWNleWwseS4jeiDveWIoO+8iOWOhuWPsuimgeeVmeedgOafpei0pu+8iSAqLwpleHBvcnQgZnVuY3Rpb24gY3VzdG9tZXJEZWxldGVCbG9jayhzdGF0ZSwgbmFtZSkgewogIGNvbnN0IG4gPSB0cmltKG5hbWUpOwogIGNvbnN0IGRvY3MgPSAoc3RhdGUgJiYgc3RhdGUuZG9jcykgfHwgW107CiAgY29uc3Qgb3JkZXJzID0gKHN0YXRlICYmIHN0YXRlLm9yZGVycykgfHwgW107CiAgY29uc3QgaW5xID0gZG9jcy5maWx0ZXIoKGQpID0+IGQgJiYgZC5raW5kID09PSAnaW5xdWlyeScgJiYgdHJpbShkLmN1c3RvbWVyTmFtZSkgPT09IG4pLmxlbmd0aDsKICBpZiAoaW5xID4gMCkgewogICAgcmV0dXJuICflrqLmiLfjgIwnICsgbiArICfjgI3lkI3kuIvov5jmnIkgJyArIGlucSArCiAgICAgICcg5byg6K+i5Lu35Y2V77yM5LiN6IO95Yig6Zmk4oCU4oCU6KaB5Yig6K+35YWI5oqK6YKj5Lqb6K+i5Lu35Y2V5Yig5o6J77yI5rKh6L2s6K6i5Y2V55qE5omN5Yig5b6X5o6J77yJ77yM5oiW5oqK5a6i5oi35ZCN5pS55Yiw5Yir55qE5Y2V5o2u5LiK44CCJzsKICB9CiAgY29uc3Qgb3JkID0gb3JkZXJzLmZpbHRlcigobykgPT4gbyAmJiB0cmltKG8uY3VzdG9tZXJOYW1lKSA9PT0gbikubGVuZ3RoOwogIGlmIChvcmQgPiAwKSB7CiAgICByZXR1cm4gJ+WuouaIt+OAjCcgKyBuICsgJ+OAjeWQjeS4i+i/mOaciSAnICsgb3JkICsKICAgICAgJyDlvKDorqLljZXvvIzkuI3og73liKDpmaTigJTigJTorqLljZXmmK/ljoblj7LotKbnm67vvIzopoHkuIDnm7TnlZnnnYDmn6XjgIInOwogIH0KICByZXR1cm4gbnVsbDsKfQoKLyoqIOW3peWOguWIoOmZpO+8muWQjeS4i+acieaKpeS7t+WNleOAgeWumuWOguiusOW9leaIluiuouWNleW8leeUqOWwseS4jeiDveWIoCAqLwpleHBvcnQgZnVuY3Rpb24gZmFjdG9yeURlbGV0ZUJsb2NrKHN0YXRlLCBuYW1lKSB7CiAgY29uc3QgbiA9IHRyaW0obmFtZSk7CiAgY29uc3QgZG9jcyA9IChzdGF0ZSAmJiBzdGF0ZS5kb2NzKSB8fCBbXTsKICBjb25zdCBvcmRlcnMgPSAoc3RhdGUgJiYgc3RhdGUub3JkZXJzKSB8fCBbXTsKICBjb25zdCBxdW90ZXMgPSBkb2NzLmZpbHRlcigoZCkgPT4gZCAmJiBkLmtpbmQgPT09ICdxdW90ZScgJiYgdHJpbShkLmZhY3RvcnlOYW1lKSA9PT0gbikubGVuZ3RoOwogIGlmIChxdW90ZXMgPiAwKSB7CiAgICByZXR1cm4gJ+W3peWOguOAjCcgKyBuICsgJ+OAjeWQjeS4i+i/mOaciSAnICsgcXVvdGVzICsKICAgICAgJyDlvKDmiqXku7fljZXvvIzkuI3og73liKDpmaTigJTigJTlhYjlnKjooajmoLzlt6XkvZzljLrmiorpgqPkupvmiqXku7fljZXliKDmjonlho3or7TjgIInOwogIH0KICBjb25zdCBjaG9zZW4gPSBkb2NzLnJlZHVjZSgoYWNjLCBkKSA9PiBhY2MgKyAoZCAmJiBkLnJvd0Nob2ljZXMKICAgID8gT2JqZWN0LnZhbHVlcyhkLnJvd0Nob2ljZXMpLmZpbHRlcigoYykgPT4gYyAmJiB0cmltKGMuZmFjdG9yeSkgPT09IG4pLmxlbmd0aAogICAgOiAwKSwgMCk7CiAgaWYgKGNob3NlbiA+IDApIHsKICAgIHJldHVybiAn5bel5Y6C44CMJyArIG4gKyAn44CN6L+Y5pyJICcgKyBjaG9zZW4gKwogICAgICAnIOihjOWumuWOguiusOW9leaMh+edgOWug++8jOS4jeiDveWIoOmZpOKAlOKAlOWFiOWcqOavlOS7t+WumuWOgumHjOaUueaOiemCo+S6m+ihjOeahOWumuWOguOAgic7CiAgfQogIGNvbnN0IG9yZFJlZnMgPSBvcmRlcnMuZmlsdGVyKChvKSA9PiBvICYmICgKICAgIChvLmxpbmVzIHx8IFtdKS5zb21lKChsKSA9PiBsICYmIHRyaW0obC5mYWN0b3J5KSA9PT0gbikgfHwKICAgIChvLmZhY3RvcnlQYXlzIHx8IFtdKS5zb21lKChwKSA9PiBwICYmIHRyaW0ocC5mYWN0b3J5KSA9PT0gbikpKS5sZW5ndGg7CiAgaWYgKG9yZFJlZnMgPiAwKSB7CiAgICByZXR1cm4gJ+W3peWOguOAjCcgKyBuICsgJ+OAjeWcqCAnICsgb3JkUmVmcyArCiAgICAgICcg5byg6K6i5Y2V6YeM5Ye6546w6L+H77yM5LiN6IO95Yig6Zmk4oCU4oCU6K6i5Y2V5piv5Y6G5Y+y6LSm55uu77yM6KaB5LiA55u055WZ552A5p+l44CCJzsKICB9CiAgcmV0dXJuIG51bGw7Cn0KCi8qKiDor6Lku7fljZXliKDpmaTvvJrlt7Lovazlh7rorqLljZXnmoTkuI3og73liKDvvIjorqLljZXnmoTmnaXmupDljZXmja7lv4XpobvkuIDnm7TlnKjvvIkgKi8KZXhwb3J0IGZ1bmN0aW9uIGlucXVpcnlEZWxldGVCbG9jayhvcmRlcnMsIGlucXVpcnlJZCkgewogIGNvbnN0IHJlZnMgPSAob3JkZXJzIHx8IFtdKS5maWx0ZXIoKG8pID0+IG8gJiYgby5pbnF1aXJ5RG9jSWQgPT09IGlucXVpcnlJZCk7CiAgaWYgKHJlZnMubGVuZ3RoID4gMCkgewogICAgcmV0dXJuICfov5nlvKDor6Lku7fljZXlt7Lnu4/ovazlh7rorqLljZUgJyArIHJlZnMubWFwKChvKSA9PiBvLm9yZGVyTm8pLmpvaW4oJ+OAgScpICsKICAgICAgJ++8jOaYr+WOhuWPsuiusOW9le+8jOS4jeiDveWIoOmZpO+8iOiuouWNlei/mOimgemdoOWug+afpeadpea6kO+8ieOAguayoeaciei9rOi/h+iuouWNleeahOivouS7t+WNleaJjeWPr+S7peWIoOOAgic7CiAgfQogIHJldHVybiBudWxsOwp9CgovKiAtLS0tLS0tLS0tIOW3peWOgumZhOWKoOS/oeaBr++8iOWMhSAxM++8muiBlOezu+S6ui/lpIfms6jvvIkgLS0tLS0tLS0tLQogKiDlt6XljoLkuLvkvZPku43mmK/lkI3lrZflrZfnrKbkuLLvvJvogZTns7vkurov5aSH5rOo5Y2V54us5a2Y5Zyo5a2Y5qGj55qEIGZhY3RvcnlJbmZvIOmHjO+8mgogKiAgIGZhY3RvcnlJbmZvOiB7IFvlt6XljoLlkI1dOiB7IGNvbnRhY3QsIG5vdGUgfSB9CiAqIOaUueWQjeimgeaKiuadoeebruaQrOi/h+WOu+OAgeWIoOmZpOimgeaKiuadoeebruWOu+aOie+8jOWQpuWImeWkh+azqOS8muS4sue7meWQjOWQjeaWsOWOguaIlgogKiDmsLjov5znlZnlnKjlrZjmoaPph4zjgILnuq/lh73mlbDvvJrkuI3mlLnlhaXlj4LvvIzov5Tlm57mlrDlr7nosaHjgIIKICovCgovKiog5pS55ZCN5ZCM5q2l77ya5oqK5pen5ZCN5p2h55uu5pCs5Yiw5paw5ZCN77yb5pen5ZCN5rKh5pyJ5p2h55uu5pe25Y6f5qC377yI5rWF5ou36LSd77yJ6L+U5ZueICovCmV4cG9ydCBmdW5jdGlvbiBzeW5jRmFjdG9yeUluZm9PblJlbmFtZShmYWN0b3J5SW5mbywgb2xkTmFtZSwgbmV3TmFtZSkgewogIGNvbnN0IGluZm8gPSBmYWN0b3J5SW5mbyB8fCB7fTsKICBjb25zdCBmcm9tID0gdHJpbShvbGROYW1lKTsKICBjb25zdCB0byA9IHRyaW0obmV3TmFtZSk7CiAgaWYgKCFmcm9tIHx8ICF0byB8fCBmcm9tID09PSB0byB8fCAhKGZyb20gaW4gaW5mbykpIHJldHVybiB7IC4uLmluZm8gfTsKICBjb25zdCBuZXh0ID0geyAuLi5pbmZvIH07CiAgbmV4dFt0b10gPSBuZXh0W2Zyb21dOwogIGRlbGV0ZSBuZXh0W2Zyb21dOwogIHJldHVybiBuZXh0Owp9CgovKiog5Yig6Zmk5ZCM5q2l77ya5Y675o6J6K+l5bel5Y6C55qE5p2h55uu77yI5rKh5pyJ5bCx5Y6f5qC35rWF5ou36LSd77yJICovCmV4cG9ydCBmdW5jdGlvbiBzeW5jRmFjdG9yeUluZm9PbkRlbGV0ZShmYWN0b3J5SW5mbywgbmFtZSkgewogIGNvbnN0IGluZm8gPSBmYWN0b3J5SW5mbyB8fCB7fTsKICBjb25zdCBuID0gdHJpbShuYW1lKTsKICBpZiAoIW4gfHwgIShuIGluIGluZm8pKSByZXR1cm4geyAuLi5pbmZvIH07CiAgY29uc3QgbmV4dCA9IHsgLi4uaW5mbyB9OwogIGRlbGV0ZSBuZXh0W25dOwogIHJldHVybiBuZXh0Owp9CgovKiAtLS0tLS0tLS0tIOeuoeeQhumhteivu+aooeWei++8iOaVsOWtl+WFqOmDqOeOsOeul++8jOS4jeWtmOWJr+acrO+8iSAtLS0tLS0tLS0tICovCgovKioKICog5a6i5oi3566h55CG5qih5Z6L77yaW3sgZW50cnk6IHsgbmFtZSwgY29udGFjdCwgbm90ZSB9LAogKiAgIHN0YXRzOiB7IGlucXVpcmllcywgb3JkZXJzLCByZWNlaXZhYmxlLCByZWNlaXZlZCwgdW5wYWlkIH0sCiAqICAgaW5xdWlyaWVzOiBbeyBkb2NJZCwgY3JlYXRlZEF0LCBzb3VyY2VGaWxlTmFtZSwgc3RhdHVzLAogKiAgICAgICAgICAgICAgICAgbm90Ze+8iOWMhSAxM++8muivouS7t+WNleWkh+azqO+8iSB9XSwKICogICBvcmRlcnM6IFvorqLljZXljp/mlofigKZdIH1dCiAqIOWQjeWNlSA9IOazqOWGjOihqCDiiKog5Y2V5o2u5LiK5Ye6546w6L+H55qE5a6i5oi35ZCN77yI5rOo5YaM6KGo5rKh5pyJ55qE57uZ56m65p2h55uu5YWc5bqV77yJ44CCCiAqLwpleHBvcnQgZnVuY3Rpb24gYnVpbGRDdXN0b21lck1vZGVsKHN0YXRlKSB7CiAgY29uc3QgZG9jcyA9IChzdGF0ZSAmJiBzdGF0ZS5kb2NzKSB8fCBbXTsKICBjb25zdCBvcmRlcnMgPSAoc3RhdGUgJiYgc3RhdGUub3JkZXJzKSB8fCBbXTsKICBjb25zdCByZWdpc3RyeSA9IChzdGF0ZSAmJiBzdGF0ZS5jdXN0b21lcnMpIHx8IFtdOwogIGNvbnN0IG92ID0gYnVpbGRPdmVydmlldyhzdGF0ZSB8fCB7fSk7CiAgY29uc3Qgc3RhdHNCeU5hbWUgPSBuZXcgTWFwKG92LmN1c3RvbWVycy5tYXAoKGMpID0+IFtjLm5hbWUsIGNdKSk7CiAgY29uc3QgZW50cnlCeU5hbWUgPSBuZXcgTWFwKCk7CiAgZm9yIChjb25zdCBjIG9mIHJlZ2lzdHJ5KSB7CiAgICBjb25zdCBuID0gdHJpbShjICYmIGMubmFtZSk7CiAgICBpZiAobiAmJiAhZW50cnlCeU5hbWUuaGFzKG4pKSB7CiAgICAgIGVudHJ5QnlOYW1lLnNldChuLCB7IG5hbWU6IG4sIGNvbnRhY3Q6IChjICYmIGMuY29udGFjdCkgfHwgJycsIG5vdGU6IChjICYmIGMubm90ZSkgfHwgJycgfSk7CiAgICB9CiAgfQogIGZvciAoY29uc3QgbiBvZiBzZWVkQ3VzdG9tZXJOYW1lcyhkb2NzLCBvcmRlcnMpKSB7CiAgICBpZiAoIWVudHJ5QnlOYW1lLmhhcyhuKSkgZW50cnlCeU5hbWUuc2V0KG4sIHsgbmFtZTogbiwgY29udGFjdDogJycsIG5vdGU6ICcnIH0pOwogIH0KICByZXR1cm4gWy4uLmVudHJ5QnlOYW1lLnZhbHVlcygpXS5tYXAoKGVudHJ5KSA9PiB7CiAgICBjb25zdCBzID0gc3RhdHNCeU5hbWUuZ2V0KGVudHJ5Lm5hbWUpOwogICAgcmV0dXJuIHsKICAgICAgZW50cnksCiAgICAgIHN0YXRzOiBzCiAgICAgICAgPyB7IGlucXVpcmllczogcy5pbnF1aXJpZXMsIG9yZGVyczogcy5vcmRlcnMsIHJlY2VpdmFibGU6IHMucmVjZWl2YWJsZSwgcmVjZWl2ZWQ6IHMucmVjZWl2ZWQsIHVucGFpZDogcy51bnBhaWQgfQogICAgICAgIDogeyBpbnF1aXJpZXM6IDAsIG9yZGVyczogMCwgcmVjZWl2YWJsZTogMCwgcmVjZWl2ZWQ6IDAsIHVucGFpZDogMCB9LAogICAgICBpbnF1aXJpZXM6IGRvY3MKICAgICAgICAuZmlsdGVyKChkKSA9PiBkICYmIGQua2luZCA9PT0gJ2lucXVpcnknICYmIHRyaW0oZC5jdXN0b21lck5hbWUpID09PSBlbnRyeS5uYW1lKQogICAgICAgIC5tYXAoKGQpID0+ICh7CiAgICAgICAgICBkb2NJZDogZC5kb2NJZCwKICAgICAgICAgIGNyZWF0ZWRBdDogZC5jcmVhdGVkQXQgfHwgbnVsbCwKICAgICAgICAgIHNvdXJjZUZpbGVOYW1lOiAoZC5zb3VyY2UgJiYgZC5zb3VyY2UuZmlsZU5hbWUpIHx8ICcnLAogICAgICAgICAgc3RhdHVzOiBpbnF1aXJ5U3RhdHVzT2YoZCwgb3JkZXJzKSwKICAgICAgICAgIG5vdGU6IGQubm90ZSB8fCAnJywKICAgICAgICB9KSksCiAgICAgIG9yZGVyczogb3JkZXJzLmZpbHRlcigobykgPT4gbyAmJiB0cmltKG8uY3VzdG9tZXJOYW1lKSA9PT0gZW50cnkubmFtZSksCiAgICB9OwogIH0pOwp9CgovKioKICog5bel5Y6C566h55CG5qih5Z6L77yaW3sgbmFtZSwKICogICBzdGF0czogeyBxdW90ZXMsIG9yZGVyTGluZXMsIHBheWFibGUsIHBhaWQsIHVucGFpZCB9LAogKiAgIHF1b3RlRG9jczogW3sgZG9jSWQsIGlucXVpcnlJZCB9XSwKICogICBvcmRlcnM6IFvkuI7ov5nlrrbmnInlhbPnmoTorqLljZXljp/mlofigKZdIH1dCiAqIOWQjeWNlSA9IOW3peWOguazqOWGjOihqCDiiKog5oql5Lu35Y2VL+iuouWNlemHjOWHuueOsOi/h+eahOW3peWOguWQjeOAggogKi8KZXhwb3J0IGZ1bmN0aW9uIGJ1aWxkRmFjdG9yeU1vZGVsKHN0YXRlKSB7CiAgY29uc3QgZG9jcyA9IChzdGF0ZSAmJiBzdGF0ZS5kb2NzKSB8fCBbXTsKICBjb25zdCBvcmRlcnMgPSAoc3RhdGUgJiYgc3RhdGUub3JkZXJzKSB8fCBbXTsKICBjb25zdCBmYWN0b3J5SW5mbyA9IChzdGF0ZSAmJiBzdGF0ZS5mYWN0b3J5SW5mbykgfHwge307CiAgY29uc3Qgb3YgPSBidWlsZE92ZXJ2aWV3KHN0YXRlIHx8IHt9KTsKICBjb25zdCBzdGF0c0J5TmFtZSA9IG5ldyBNYXAob3YuZmFjdG9yaWVzLm1hcCgoZikgPT4gW2YubmFtZSwgZl0pKTsKICBjb25zdCBuYW1lcyA9IFtdOwogIGNvbnN0IHNlZW4gPSBuZXcgU2V0KCk7CiAgY29uc3QgcHVzaCA9IChuKSA9PiB7IGlmIChuICYmICFzZWVuLmhhcyhuKSkgeyBzZWVuLmFkZChuKTsgbmFtZXMucHVzaChuKTsgfSB9OwogIGZvciAoY29uc3QgZiBvZiAoc3RhdGUgJiYgc3RhdGUuZmFjdG9yaWVzKSB8fCBbXSkgcHVzaCh0cmltKGYpKTsKICBmb3IgKGNvbnN0IG5hbWUgb2Ygc3RhdHNCeU5hbWUua2V5cygpKSBwdXNoKG5hbWUpOwogIGZvciAoY29uc3QgbyBvZiBvcmRlcnMpIHsKICAgIGZvciAoY29uc3QgbCBvZiAobyAmJiBvLmxpbmVzKSB8fCBbXSkgcHVzaCh0cmltKGwgJiYgbC5mYWN0b3J5KSk7CiAgICBmb3IgKGNvbnN0IHAgb2YgKG8gJiYgby5mYWN0b3J5UGF5cykgfHwgW10pIHB1c2godHJpbShwICYmIHAuZmFjdG9yeSkpOwogIH0KICByZXR1cm4gbmFtZXMubWFwKChuYW1lKSA9PiB7CiAgICBjb25zdCBzID0gc3RhdHNCeU5hbWUuZ2V0KG5hbWUpOwogICAgY29uc3QgaW5mbyA9IGZhY3RvcnlJbmZvW25hbWVdIHx8IHt9OwogICAgcmV0dXJuIHsKICAgICAgbmFtZSwKICAgICAgaW5mbzogeyBjb250YWN0OiBpbmZvLmNvbnRhY3QgfHwgJycsIG5vdGU6IGluZm8ubm90ZSB8fCAnJyB9LAogICAgICBzdGF0czogcwogICAgICAgID8geyBxdW90ZXM6IHMucXVvdGVzLCBvcmRlckxpbmVzOiBzLm9yZGVyTGluZXMsIHBheWFibGU6IHMucGF5YWJsZSwgcGFpZDogcy5wYWlkLCB1bnBhaWQ6IHMudW5wYWlkIH0KICAgICAgICA6IHsgcXVvdGVzOiAwLCBvcmRlckxpbmVzOiAwLCBwYXlhYmxlOiAwLCBwYWlkOiAwLCB1bnBhaWQ6IDAgfSwKICAgICAgcXVvdGVEb2NzOiBkb2NzCiAgICAgICAgLmZpbHRlcigoZCkgPT4gZCAmJiBkLmtpbmQgPT09ICdxdW90ZScgJiYgdHJpbShkLmZhY3RvcnlOYW1lKSA9PT0gbmFtZSkKICAgICAgICAubWFwKChkKSA9PiAoeyBkb2NJZDogZC5kb2NJZCwgaW5xdWlyeUlkOiBkLmlucXVpcnlJZCB8fCBudWxsIH0pKSwKICAgICAgb3JkZXJzOiBvcmRlcnMuZmlsdGVyKChvKSA9PiBvICYmICgKICAgICAgICAoby5saW5lcyB8fCBbXSkuc29tZSgobCkgPT4gbCAmJiB0cmltKGwuZmFjdG9yeSkgPT09IG5hbWUpIHx8CiAgICAgICAgKG8uZmFjdG9yeVBheXMgfHwgW10pLnNvbWUoKHApID0+IHAgJiYgdHJpbShwLmZhY3RvcnkpID09PSBuYW1lKSkpLAogICAgfTsKICB9KTsKfQoKLyoqIOiuouWNleS4gOihjOaRmOimge+8iOeuoeeQhumhteivpuaDhemHjOWIl+iuouWNleeUqO+8ie+8muWNleWPtyArIOWuouaItyArIOW6lOaUtiArIOeKtuaAgSAqLwpleHBvcnQgZnVuY3Rpb24gb3JkZXJTdW1tYXJ5KG9yZGVyKSB7CiAgY29uc3QgZiA9IG9yZGVyRmFjdHMob3JkZXIpOwogIHJldHVybiB7CiAgICBvcmRlck5vOiBvcmRlci5vcmRlck5vLAogICAgY3VzdG9tZXJOYW1lOiBvcmRlci5jdXN0b21lck5hbWUgfHwgJycsCiAgICByZWNlaXZhYmxlOiBmLnJlY2VpdmFibGUsCiAgICBzdGF0dXNUZXh0OiBmLnN0YXR1c1RleHQsCiAgfTsKfQo=
+// 客户/工厂注册表与多询价单的联动规则（包 11）。
+//
+// 背景：包 10 以前系统只有"一张询价单 + 若干报价单"，客户只活在
+// 询价单的 customerName 里、工厂只活在一串名字里，看不到联动、没有
+// 管理页，导入新单还会把旧单连同报价单一起销毁。包 11 起：
+// · 询价单可以有很多张（历史单留着查）；每张报价单用 inquiryId 记
+//   它属于哪张询价单（克隆/回表时定死），订单早有 inquiryDocId；
+// · 客户有了注册表 customers: [{ name, contact, note }]，随存档走；
+//   身份就是名字字符串本身（与 overview 的同名合并口径一致），
+//   改名 = 注册表 + 全部询价单 + 全部订单一起改，一次到位；
+// · 工厂仍是名字清单（factories），改名同样全域同步：报价单、
+//   定厂快照（rowChoices）、订单行、订单付款记录一起改；
+// · 删除有硬规则：客户名下有询价单或订单、工厂名下有报价单/订单
+//   引用、询价单已转出订单——一律拦下并给一句人话原因，历史不许删。
+// 本文件全部纯函数：入参是存档形状 { docs, orders, customers,
+// factories }（缺字段按空处理），改名/迁移返回新对象、不原地改入参。
+import { orderFacts } from './orders.js';
+import { buildOverview } from './overview.js';
+
+const trim = (s) => (s === null || s === undefined ? '' : String(s).trim());
+
+/** 属于某张询价单的报价单（按文档顺序） */
+export function quotesForInquiry(docs, inquiryId) {
+  return (docs || []).filter((d) => d && d.kind === 'quote' && d.inquiryId === inquiryId);
+}
+
+/** 一张单据所属的询价单（询价单返回自己；报价单按 inquiryId 找） */
+export function inquiryOfDoc(docs, doc) {
+  if (!doc) return null;
+  if (doc.kind === 'inquiry') return doc;
+  return (docs || []).find((d) => d && d.docId === doc.inquiryId) || null;
+}
+
+/** 询价单状态（派生，不存）：转出过订单就是「已转订单」，否则「进行中」 */
+export function inquiryStatusOf(doc, orders) {
+  if (!doc) return '';
+  return (orders || []).some((o) => o && o.inquiryDocId === doc.docId)
+    ? '已转订单'
+    : '进行中';
+}
+
+/** 从现有单据里收集客户名（询价单在前、订单在后，按首次出现排序，去空去重） */
+export function seedCustomerNames(docs, orders) {
+  const seen = new Set();
+  const out = [];
+  const push = (name) => {
+    const n = trim(name);
+    if (n && !seen.has(n)) { seen.add(n); out.push(n); }
+  };
+  for (const d of docs || []) {
+    if (d && d.kind === 'inquiry') push(d.customerName);
+  }
+  for (const o of orders || []) push(o && o.customerName);
+  return out;
+}
+
+/**
+ * 包 11 迁移（幂等，纯函数）：给一份旧存档补齐——
+ * · 报价单缺 inquiryId → 补成（唯一的）那张询价单的 docId
+ *   （包 10 以前全库只有一张询价单，不会认错）；
+ * · customers 注册表缺失/不全 → 用 seedCustomerNames 从单据播种，
+ *   已登记的条目（联系人/备注）原样保留。
+ * 返回 { state, changed }；没动过就原样返回入参引用。
+ */
+export function migrateState(state) {
+  if (!state || !Array.isArray(state.docs)) return { state, changed: false };
+  let changed = false;
+  const firstInquiry = state.docs.find((d) => d && d.kind === 'inquiry');
+  let docs = state.docs;
+  if (firstInquiry) {
+    let touched = false;
+    const next = state.docs.map((d) => {
+      if (d && d.kind === 'quote' && !d.inquiryId) {
+        touched = true;
+        return { ...d, inquiryId: firstInquiry.docId };
+      }
+      return d;
+    });
+    if (touched) { docs = next; changed = true; }
+  }
+  const existing = Array.isArray(state.customers) ? state.customers : null;
+  const known = new Set((existing || []).map((c) => trim(c && c.name)));
+  const missing = seedCustomerNames(docs, state.orders)
+    .filter((n) => !known.has(n))
+    .map((name) => ({ name, contact: '', note: '' }));
+  let customers = existing;
+  if (!existing) {
+    customers = missing;
+    changed = true;
+  } else if (missing.length) {
+    customers = [...existing, ...missing];
+    changed = true;
+  }
+  if (!changed) return { state, changed: false };
+  return { state: { ...state, docs, customers }, changed: true };
+}
+
+/* ---------- 改名（全域同步；冲突/无变化返回 null） ---------- */
+
+/**
+ * 客户改名：注册表条目、每张询价单的 customerName、每张订单的
+ * customerName 一起改。新名已被另一个客户占用（注册表或任一单据
+ * 上出现过）→ 返回 null，什么都不改。
+ */
+export function renameCustomer(state, oldName, newName) {
+  const from = trim(oldName);
+  const to = trim(newName);
+  if (!from || !to || from === to) return null;
+  const docs = (state && state.docs) || [];
+  const orders = (state && state.orders) || [];
+  const customers = (state && state.customers) || [];
+  const taken = customers.some((c) => trim(c && c.name) === to) ||
+    docs.some((d) => d && d.kind === 'inquiry' && trim(d.customerName) === to) ||
+    orders.some((o) => o && trim(o.customerName) === to);
+  if (taken) return null;
+  return {
+    docs: docs.map((d) => (d && d.kind === 'inquiry' && trim(d.customerName) === from
+      ? { ...d, customerName: to }
+      : d)),
+    orders: orders.map((o) => (o && trim(o.customerName) === from
+      ? { ...o, customerName: to }
+      : o)),
+    customers: customers.map((c) => (c && trim(c.name) === from
+      ? { ...c, name: to }
+      : c)),
+  };
+}
+
+/**
+ * 工厂改名：工厂名单、报价单 factoryName、询价单定厂快照
+ * rowChoices[*].factory、订单行 factory、订单付款 factoryPays[*].factory
+ * 一起改。新名已被另一家工厂占用 → 返回 null。
+ */
+export function renameFactory(state, oldName, newName) {
+  const from = trim(oldName);
+  const to = trim(newName);
+  if (!from || !to || from === to) return null;
+  const docs = (state && state.docs) || [];
+  const orders = (state && state.orders) || [];
+  const factories = (state && state.factories) || [];
+  const taken = factories.some((f) => trim(f) === to) ||
+    docs.some((d) => d && d.kind === 'quote' && trim(d.factoryName) === to) ||
+    docs.some((d) => d && d.rowChoices &&
+      Object.values(d.rowChoices).some((c) => c && trim(c.factory) === to)) ||
+    orders.some((o) => o && (
+      (o.lines || []).some((l) => l && trim(l.factory) === to) ||
+      (o.factoryPays || []).some((p) => p && trim(p.factory) === to)));
+  if (taken) return null;
+  return {
+    docs: docs.map((d) => {
+      if (!d) return d;
+      let next = d;
+      if (d.kind === 'quote' && trim(d.factoryName) === from) {
+        next = { ...next, factoryName: to };
+      }
+      if (d.rowChoices) {
+        let touched = false;
+        const rc = {};
+        for (const [lid, c] of Object.entries(d.rowChoices)) {
+          if (c && trim(c.factory) === from) {
+            rc[lid] = { ...c, factory: to };
+            touched = true;
+          } else {
+            rc[lid] = c;
+          }
+        }
+        if (touched) next = { ...next, rowChoices: rc };
+      }
+      return next;
+    }),
+    orders: orders.map((o) => {
+      if (!o) return o;
+      const lines = (o.lines || []).map((l) => (l && trim(l.factory) === from
+        ? { ...l, factory: to }
+        : l));
+      const factoryPays = (o.factoryPays || []).map((p) => (p && trim(p.factory) === from
+        ? { ...p, factory: to }
+        : p));
+      return { ...o, lines, factoryPays };
+    }),
+    factories: factories.map((f) => (trim(f) === from ? to : f)),
+  };
+}
+
+/* ---------- 删除规则（返回 null = 可删；返回字符串 = 拦下的原因） ---------- */
+
+/** 客户删除：名下有询价单或订单就不能删（历史要留着查账） */
+export function customerDeleteBlock(state, name) {
+  const n = trim(name);
+  const docs = (state && state.docs) || [];
+  const orders = (state && state.orders) || [];
+  const inq = docs.filter((d) => d && d.kind === 'inquiry' && trim(d.customerName) === n).length;
+  if (inq > 0) {
+    return '客户「' + n + '」名下还有 ' + inq +
+      ' 张询价单，不能删除——要删请先把那些询价单删掉（没转订单的才删得掉），或把客户名改到别的单据上。';
+  }
+  const ord = orders.filter((o) => o && trim(o.customerName) === n).length;
+  if (ord > 0) {
+    return '客户「' + n + '」名下还有 ' + ord +
+      ' 张订单，不能删除——订单是历史账目，要一直留着查。';
+  }
+  return null;
+}
+
+/** 工厂删除：名下有报价单、定厂记录或订单引用就不能删 */
+export function factoryDeleteBlock(state, name) {
+  const n = trim(name);
+  const docs = (state && state.docs) || [];
+  const orders = (state && state.orders) || [];
+  const quotes = docs.filter((d) => d && d.kind === 'quote' && trim(d.factoryName) === n).length;
+  if (quotes > 0) {
+    return '工厂「' + n + '」名下还有 ' + quotes +
+      ' 张报价单，不能删除——先在表格工作区把那些报价单删掉再说。';
+  }
+  const chosen = docs.reduce((acc, d) => acc + (d && d.rowChoices
+    ? Object.values(d.rowChoices).filter((c) => c && trim(c.factory) === n).length
+    : 0), 0);
+  if (chosen > 0) {
+    return '工厂「' + n + '」还有 ' + chosen +
+      ' 行定厂记录指着它，不能删除——先在比价定厂里改掉那些行的定厂。';
+  }
+  const ordRefs = orders.filter((o) => o && (
+    (o.lines || []).some((l) => l && trim(l.factory) === n) ||
+    (o.factoryPays || []).some((p) => p && trim(p.factory) === n))).length;
+  if (ordRefs > 0) {
+    return '工厂「' + n + '」在 ' + ordRefs +
+      ' 张订单里出现过，不能删除——订单是历史账目，要一直留着查。';
+  }
+  return null;
+}
+
+/** 询价单删除：已转出订单的不能删（订单的来源单据必须一直在） */
+export function inquiryDeleteBlock(orders, inquiryId) {
+  const refs = (orders || []).filter((o) => o && o.inquiryDocId === inquiryId);
+  if (refs.length > 0) {
+    return '这张询价单已经转出订单 ' + refs.map((o) => o.orderNo).join('、') +
+      '，是历史记录，不能删除（订单还要靠它查来源）。没有转过订单的询价单才可以删。';
+  }
+  return null;
+}
+
+/* ---------- 工厂附加信息（包 13：联系人/备注） ----------
+ * 工厂主体仍是名字字符串；联系人/备注单独存在存档的 factoryInfo 里：
+ *   factoryInfo: { [工厂名]: { contact, note } }
+ * 改名要把条目搬过去、删除要把条目去掉，否则备注会串给同名新厂或
+ * 永远留在存档里。纯函数：不改入参，返回新对象。
+ */
+
+/** 改名同步：把旧名条目搬到新名；旧名没有条目时原样（浅拷贝）返回 */
+export function syncFactoryInfoOnRename(factoryInfo, oldName, newName) {
+  const info = factoryInfo || {};
+  const from = trim(oldName);
+  const to = trim(newName);
+  if (!from || !to || from === to || !(from in info)) return { ...info };
+  const next = { ...info };
+  next[to] = next[from];
+  delete next[from];
+  return next;
+}
+
+/** 删除同步：去掉该工厂的条目（没有就原样浅拷贝） */
+export function syncFactoryInfoOnDelete(factoryInfo, name) {
+  const info = factoryInfo || {};
+  const n = trim(name);
+  if (!n || !(n in info)) return { ...info };
+  const next = { ...info };
+  delete next[n];
+  return next;
+}
+
+/* ---------- 管理页读模型（数字全部现算，不存副本） ---------- */
+
+/**
+ * 客户管理模型：[{ entry: { name, contact, note },
+ *   stats: { inquiries, orders, receivable, received, unpaid },
+ *   inquiries: [{ docId, createdAt, sourceFileName, status,
+ *                 note（包 13：询价单备注） }],
+ *   orders: [订单原文…] }]
+ * 名单 = 注册表 ∪ 单据上出现过的客户名（注册表没有的给空条目兜底）。
+ */
+export function buildCustomerModel(state) {
+  const docs = (state && state.docs) || [];
+  const orders = (state && state.orders) || [];
+  const registry = (state && state.customers) || [];
+  const ov = buildOverview(state || {});
+  const statsByName = new Map(ov.customers.map((c) => [c.name, c]));
+  const entryByName = new Map();
+  for (const c of registry) {
+    const n = trim(c && c.name);
+    if (n && !entryByName.has(n)) {
+      entryByName.set(n, { name: n, contact: (c && c.contact) || '', note: (c && c.note) || '' });
+    }
+  }
+  for (const n of seedCustomerNames(docs, orders)) {
+    if (!entryByName.has(n)) entryByName.set(n, { name: n, contact: '', note: '' });
+  }
+  return [...entryByName.values()].map((entry) => {
+    const s = statsByName.get(entry.name);
+    return {
+      entry,
+      stats: s
+        ? { inquiries: s.inquiries, orders: s.orders, receivable: s.receivable, received: s.received, unpaid: s.unpaid }
+        : { inquiries: 0, orders: 0, receivable: 0, received: 0, unpaid: 0 },
+      inquiries: docs
+        .filter((d) => d && d.kind === 'inquiry' && trim(d.customerName) === entry.name)
+        .map((d) => ({
+          docId: d.docId,
+          createdAt: d.createdAt || null,
+          sourceFileName: (d.source && d.source.fileName) || '',
+          status: inquiryStatusOf(d, orders),
+          note: d.note || '',
+        })),
+      orders: orders.filter((o) => o && trim(o.customerName) === entry.name),
+    };
+  });
+}
+
+/**
+ * 工厂管理模型：[{ name,
+ *   stats: { quotes, orderLines, payable, paid, unpaid },
+ *   quoteDocs: [{ docId, inquiryId }],
+ *   orders: [与这家有关的订单原文…] }]
+ * 名单 = 工厂注册表 ∪ 报价单/订单里出现过的工厂名。
+ */
+export function buildFactoryModel(state) {
+  const docs = (state && state.docs) || [];
+  const orders = (state && state.orders) || [];
+  const factoryInfo = (state && state.factoryInfo) || {};
+  const ov = buildOverview(state || {});
+  const statsByName = new Map(ov.factories.map((f) => [f.name, f]));
+  const names = [];
+  const seen = new Set();
+  const push = (n) => { if (n && !seen.has(n)) { seen.add(n); names.push(n); } };
+  for (const f of (state && state.factories) || []) push(trim(f));
+  for (const name of statsByName.keys()) push(name);
+  for (const o of orders) {
+    for (const l of (o && o.lines) || []) push(trim(l && l.factory));
+    for (const p of (o && o.factoryPays) || []) push(trim(p && p.factory));
+  }
+  return names.map((name) => {
+    const s = statsByName.get(name);
+    const info = factoryInfo[name] || {};
+    return {
+      name,
+      info: { contact: info.contact || '', note: info.note || '' },
+      stats: s
+        ? { quotes: s.quotes, orderLines: s.orderLines, payable: s.payable, paid: s.paid, unpaid: s.unpaid }
+        : { quotes: 0, orderLines: 0, payable: 0, paid: 0, unpaid: 0 },
+      quoteDocs: docs
+        .filter((d) => d && d.kind === 'quote' && trim(d.factoryName) === name)
+        .map((d) => ({ docId: d.docId, inquiryId: d.inquiryId || null })),
+      orders: orders.filter((o) => o && (
+        (o.lines || []).some((l) => l && trim(l.factory) === name) ||
+        (o.factoryPays || []).some((p) => p && trim(p.factory) === name))),
+    };
+  });
+}
+
+/** 订单一行摘要（管理页详情里列订单用）：单号 + 客户 + 应收 + 状态 */
+export function orderSummary(order) {
+  const f = orderFacts(order);
+  return {
+    orderNo: order.orderNo,
+    customerName: order.customerName || '',
+    receivable: f.receivable,
+    statusText: f.statusText,
+  };
+}

@@ -1,1 +1,156 @@
-aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JzsKCi8vIOaAu+iniCArIOWuouaIty/lt6XljoLlj7DotKbvvIhTUEVDIOesrOWbm+iKguesrCAxMCDpobnvvInvvJrmlbDlrZflhajpg6jnlLEKLy8gb3ZlcnZpZXcuanMg5LuO5Lia5Yqh5pWw5o2u546w566X5ZCO5Lyg5YWl77yM5pys57uE5Lu25Y+q6LSf6LSj5pGG5Ye65p2l44CCCi8vIOWMhSAxMSDotbflj7DotKbooYzlj6/ngrnvvJrngrnlrqLmiLcv5bel5Y6C6KGM55u05o6l6Lez6L+b5a+55bqU55qE566h55CG6aG16K+m5oOFCi8vIO+8iOWinuWIoOaUueWQjeWcqOeuoeeQhumhteWBmu+8jOi/memHjOS7jeWPqui0n+i0oyLnnIsgKyDot7Mi77yJ44CCCgpmdW5jdGlvbiBtb25leShuKSB7CiAgY29uc3QgdiA9IE51bWJlcihuKSB8fCAwOwogIHJldHVybiB2LnRvRml4ZWQoMik7Cn0KCmNvbnN0IHRoID0gewogIHRleHRBbGlnbjogJ3JpZ2h0JywgcGFkZGluZzogJzhweCAxMnB4JywgYm9yZGVyQm90dG9tOiAnMXB4IHNvbGlkICNkYmUyZWMnLAogIGJhY2tncm91bmQ6ICcjZWRmMWY3JywKICBjb2xvcjogJyM0NTUxNWYnLCBmb250V2VpZ2h0OiA2MDAsIHdoaXRlU3BhY2U6ICdub3dyYXAnLAp9Owpjb25zdCB0aEwgPSB7IC4uLnRoLCB0ZXh0QWxpZ246ICdsZWZ0JyB9Owpjb25zdCB0ZCA9IHsKICB0ZXh0QWxpZ246ICdyaWdodCcsIHBhZGRpbmc6ICc4cHggMTJweCcsIGJvcmRlckJvdHRvbTogJzFweCBzb2xpZCAjZWVmMWY0Jywgd2hpdGVTcGFjZTogJ25vd3JhcCcsCn07CmNvbnN0IHRkTCA9IHsgLi4udGQsIHRleHRBbGlnbjogJ2xlZnQnIH07CmNvbnN0IGNhcmQgPSB7CiAgYm9yZGVyOiAnMXB4IHNvbGlkICNkYmUyZWMnLCBib3JkZXJSYWRpdXM6IDEyLCBwYWRkaW5nOiAnMTRweCAxOHB4JywKICBiYWNrZ3JvdW5kOiAnI2ZmZicsIG1pbldpZHRoOiAxNTAsCn07CmNvbnN0IGtwaU51bSA9IHsgZm9udFNpemU6IDI1LCBmb250V2VpZ2h0OiA3MDAsIG1hcmdpblRvcDogNCwgbGluZUhlaWdodDogMS4xNSB9Owpjb25zdCBrcGlMYWIgPSB7IGNvbG9yOiAnIzdjOGE5ZCcsIGZvbnRTaXplOiAxMi41IH07CgpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBPdmVydmlld1ZpZXcoeyBvdmVydmlldywgb25DbG9zZSwgb25PcGVuQ3VzdG9tZXIsIG9uT3BlbkZhY3RvcnkgfSkgewogIGlmICghb3ZlcnZpZXcpIHJldHVybiBudWxsOwogIGNvbnN0IHsgY291bnRzLCB0b3RhbHMsIGN1c3RvbWVycywgZmFjdG9yaWVzIH0gPSBvdmVydmlldzsKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9Im92ZXJ2aWV3LXZpZXciIHN0eWxlPXt7CiAgICAgIGZsZXg6IDEsIG92ZXJmbG93OiAnYXV0bycsIHBhZGRpbmc6ICcxNnB4IDE4cHgnLAogICAgICBmb250RmFtaWx5OiAnc2Fucy1zZXJpZicsIGZvbnRTaXplOiAxNCwKICAgIH19PgogICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgYWxpZ25JdGVtczogJ2NlbnRlcicsIGdhcDogMTAgfX0+CiAgICAgICAgPGIgY2xhc3NOYW1lPSJzZWMtdGl0bGUiIHN0eWxlPXt7IGZvbnRTaXplOiAxOSB9fT7mgLvop4g8L2I+CiAgICAgICAgPHNwYW4gc3R5bGU9e3sgY29sb3I6ICcjODg4JyB9fT7lhajpg6jmlbDlrZfnlLHljZXmja7njrDnrpfvvIzkuI3lrZjlia/mnKw8L3NwYW4+CiAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9Im92LWNsb3NlIiBvbkNsaWNrPXtvbkNsb3NlfSBzdHlsZT17ewogICAgICAgICAgbWFyZ2luTGVmdDogJ2F1dG8nLCBib3JkZXI6ICcxcHggc29saWQgI2M5ZDJkZScsIGNvbG9yOiAnIzM3NDA0YScsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgICAgICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzVweCAxMnB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgICAgICAgfX0+6L+U5Zue6KGo5qC8PC9idXR0b24+CiAgICAgIDwvZGl2PgoKICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGdhcDogMTIsIGZsZXhXcmFwOiAnd3JhcCcsIG1hcmdpbjogJzE0cHggMCA2cHgnIH19PgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJvdi1jYXJkIiBzdHlsZT17Y2FyZH0+CiAgICAgICAgICA8ZGl2IHN0eWxlPXtrcGlMYWJ9PuivouS7t+WNlSAvIOaKpeS7t+WNlSAvIOiuouWNlTwvZGl2PgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9Im92LWNvdW50cyIgc3R5bGU9e3sgLi4ua3BpTnVtLCBmb250U2l6ZTogMjIgfX0+CiAgICAgICAgICAgIHtjb3VudHMuaW5xdWlyaWVzfSAvIHtjb3VudHMucXVvdGVzfSAvIHtjb3VudHMub3JkZXJzfQogICAgICAgICAgPC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzc05hbWU9Im92LWNhcmQiIHN0eWxlPXtjYXJkfT4KICAgICAgICAgIDxkaXYgc3R5bGU9e2twaUxhYn0+5oC75bqU5pS277yI5a6i5oi35qyg5oiR5Lus77yJPC9kaXY+CiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ib3YtdG90YWwtcmVjZWl2YWJsZSIgc3R5bGU9e2twaU51bX0+e21vbmV5KHRvdGFscy5yZWNlaXZhYmxlKX08L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ib3YtY2FyZCIgc3R5bGU9e2NhcmR9PgogICAgICAgICAgPGRpdiBzdHlsZT17a3BpTGFifT7lt7LmlLY8L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJvdi10b3RhbC1yZWNlaXZlZCIgc3R5bGU9e3sgLi4ua3BpTnVtLCBjb2xvcjogJyMxNTczNDcnIH19Pnttb25leSh0b3RhbHMucmVjZWl2ZWQpfTwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJvdi1jYXJkIiBzdHlsZT17Y2FyZH0+CiAgICAgICAgICA8ZGl2IHN0eWxlPXtrcGlMYWJ9PuacquaUtjwvZGl2PgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9Im92LXRvdGFsLXVucGFpZCIgc3R5bGU9e3sKICAgICAgICAgICAgLi4ua3BpTnVtLCBjb2xvcjogdG90YWxzLnVucGFpZCA+IDAgPyAnI2Q5MmQyMCcgOiAnIzE1NzM0NycsCiAgICAgICAgICB9fT57bW9uZXkodG90YWxzLnVucGFpZCl9PC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzc05hbWU9Im92LWNhcmQiIHN0eWxlPXtjYXJkfT4KICAgICAgICAgIDxkaXYgc3R5bGU9e2twaUxhYn0+5oC75bqU5LuY77yI5oiR5Lus5qyg5bel5Y6C77yJPC9kaXY+CiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ib3YtdG90YWwtcGF5YWJsZSIgc3R5bGU9e2twaU51bX0+e21vbmV5KHRvdGFscy5wYXlhYmxlKX08L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ib3YtY2FyZCIgc3R5bGU9e2NhcmR9PgogICAgICAgICAgPGRpdiBzdHlsZT17a3BpTGFifT7mnKrku5g8L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJvdi10b3RhbC11bnBhaWRwYXkiIHN0eWxlPXt7CiAgICAgICAgICAgIC4uLmtwaU51bSwgY29sb3I6IHRvdGFscy51bnBhaWRQYXkgPiAwID8gJyNkOTJkMjAnIDogJyMxNTczNDcnLAogICAgICAgICAgfX0+e21vbmV5KHRvdGFscy51bnBhaWRQYXkpfTwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJvdi1jYXJkIiBzdHlsZT17Y2FyZH0+CiAgICAgICAgICA8ZGl2IHN0eWxlPXtrcGlMYWJ9PuW+heWPkei0p++8iOihjO+8iTwvZGl2PgogICAgICAgICAgPGRpdiBjbGFzc05hbWU9Im92LXRvdGFsLXBlbmRpbmctc2hpcCIgc3R5bGU9e2twaU51bX0+e3RvdGFscy5wZW5kaW5nU2hpcExpbmVzfTwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KCiAgICAgIDxoMyBjbGFzc05hbWU9InNlYy10aXRsZSIgc3R5bGU9e3sgbWFyZ2luOiAnMjBweCAwIDEwcHgnLCBmb250U2l6ZTogMTYgfX0+CiAgICAgICAg5a6i5oi35Y+w6LSmCiAgICAgICAge29uT3BlbkN1c3RvbWVyICYmIDxzcGFuIHN0eWxlPXt7IGNvbG9yOiAnIzk5OScsIGZvbnRTaXplOiAxMiwgZm9udFdlaWdodDogNDAwIH19Pu+8iOeCueS4gOihjOi/m+WuouaIt+euoeeQhu+8iTwvc3Bhbj59CiAgICAgIDwvaDM+CiAgICAgIHtjdXN0b21lcnMubGVuZ3RoID09PSAwID8gKAogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJvdi1jdXN0b21lcnMtZW1wdHkiIHN0eWxlPXt7IGNvbG9yOiAnIzg4OCcgfX0+CiAgICAgICAgICDov5jmsqHmnInlrqLmiLfvvIjlnKjor6Lku7fljZXkuIrloavlrqLmiLflkI3jgIHmiJbovazlh7rorqLljZXlkI7vvIzov5nph4zoh6rliqjlh7rnjrDvvIkKICAgICAgICA8L2Rpdj4KICAgICAgKSA6ICgKICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ibGVkZ2VyLWNhcmQiPgogICAgICAgIDx0YWJsZSBjbGFzc05hbWU9Im92LWN1c3RvbWVycyIgc3R5bGU9e3sgYm9yZGVyQ29sbGFwc2U6ICdjb2xsYXBzZScsIGJhY2tncm91bmQ6ICcjZmZmJywgd2lkdGg6ICcxMDAlJyB9fT4KICAgICAgICAgIDx0aGVhZD4KICAgICAgICAgICAgPHRyPgogICAgICAgICAgICAgIDx0aCBzdHlsZT17dGhMfT7lrqLmiLc8L3RoPjx0aCBzdHlsZT17dGh9PuivouS7t+WNlTwvdGg+PHRoIHN0eWxlPXt0aH0+6K6i5Y2VPC90aD4KICAgICAgICAgICAgICA8dGggc3R5bGU9e3RofT7lupTmlLY8L3RoPjx0aCBzdHlsZT17dGh9PuW3suaUtjwvdGg+PHRoIHN0eWxlPXt0aH0+5pyq5pS2PC90aD4KICAgICAgICAgICAgPC90cj4KICAgICAgICAgIDwvdGhlYWQ+CiAgICAgICAgICA8dGJvZHk+CiAgICAgICAgICAgIHtjdXN0b21lcnMubWFwKChjKSA9PiAoCiAgICAgICAgICAgICAgPHRyIGtleT17Yy5uYW1lfSBjbGFzc05hbWU9Im92LWN1c3RvbWVyLXJvdyIgZGF0YS1jdXN0b21lcj17Yy5uYW1lfQogICAgICAgICAgICAgICAgb25DbGljaz17b25PcGVuQ3VzdG9tZXIgJiYgYy5uYW1lICE9PSAn77yI5pyq5aGr5a6i5oi35ZCN77yJJwogICAgICAgICAgICAgICAgICA/ICgpID0+IG9uT3BlbkN1c3RvbWVyKGMubmFtZSkgOiB1bmRlZmluZWR9CiAgICAgICAgICAgICAgICBzdHlsZT17b25PcGVuQ3VzdG9tZXIgJiYgYy5uYW1lICE9PSAn77yI5pyq5aGr5a6i5oi35ZCN77yJJyA/IHsgY3Vyc29yOiAncG9pbnRlcicgfSA6IHVuZGVmaW5lZH0+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkTH0+e2MubmFtZX08L3RkPgogICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt0ZH0gY2xhc3NOYW1lPSJvdi1jLWlucSI+e2MuaW5xdWlyaWVzfTwvdGQ+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkfSBjbGFzc05hbWU9Im92LWMtb3JkZXJzIj57Yy5vcmRlcnN9PC90ZD4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGR9IGNsYXNzTmFtZT0ib3YtYy1yZWNlaXZhYmxlIj57bW9uZXkoYy5yZWNlaXZhYmxlKX08L3RkPgogICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt0ZH0gY2xhc3NOYW1lPSJvdi1jLXJlY2VpdmVkIj57bW9uZXkoYy5yZWNlaXZlZCl9PC90ZD4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGR9IGNsYXNzTmFtZT0ib3YtYy11bnBhaWQiPnttb25leShjLnVucGFpZCl9PC90ZD4KICAgICAgICAgICAgICA8L3RyPgogICAgICAgICAgICApKX0KICAgICAgICAgIDwvdGJvZHk+CiAgICAgICAgPC90YWJsZT4KICAgICAgICA8L2Rpdj4KICAgICAgKX0KCiAgICAgIDxoMyBjbGFzc05hbWU9InNlYy10aXRsZSIgc3R5bGU9e3sgbWFyZ2luOiAnMjJweCAwIDEwcHgnLCBmb250U2l6ZTogMTYgfX0+CiAgICAgICAg5bel5Y6C5Y+w6LSmCiAgICAgICAge29uT3BlbkZhY3RvcnkgJiYgPHNwYW4gc3R5bGU9e3sgY29sb3I6ICcjOTk5JywgZm9udFNpemU6IDEyLCBmb250V2VpZ2h0OiA0MDAgfX0+77yI54K55LiA6KGM6L+b5bel5Y6C566h55CG77yJPC9zcGFuPn0KICAgICAgPC9oMz4KICAgICAge2ZhY3Rvcmllcy5sZW5ndGggPT09IDAgPyAoCiAgICAgICAgPGRpdiBjbGFzc05hbWU9Im92LWZhY3Rvcmllcy1lbXB0eSIgc3R5bGU9e3sgY29sb3I6ICcjODg4JyB9fT4KICAgICAgICAgIOi/mOayoeacieW3peWOgu+8iOWcqOaWh+aho+agj+aWsOW7uuW3peWOguOAgeWPkeWHuuaKpeS7t+WNleWQju+8jOi/memHjOiHquWKqOWHuueOsO+8iQogICAgICAgIDwvZGl2PgogICAgICApIDogKAogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJsZWRnZXItY2FyZCI+CiAgICAgICAgPHRhYmxlIGNsYXNzTmFtZT0ib3YtZmFjdG9yaWVzIiBzdHlsZT17eyBib3JkZXJDb2xsYXBzZTogJ2NvbGxhcHNlJywgYmFja2dyb3VuZDogJyNmZmYnLCB3aWR0aDogJzEwMCUnIH19PgogICAgICAgICAgPHRoZWFkPgogICAgICAgICAgICA8dHI+CiAgICAgICAgICAgICAgPHRoIHN0eWxlPXt0aEx9PuW3peWOgjwvdGg+PHRoIHN0eWxlPXt0aH0+5oql5Lu35Y2VPC90aD48dGggc3R5bGU9e3RofT7orqLljZXooYw8L3RoPgogICAgICAgICAgICAgIDx0aCBzdHlsZT17dGh9PuW6lOS7mDwvdGg+PHRoIHN0eWxlPXt0aH0+5bey5LuYPC90aD48dGggc3R5bGU9e3RofT7mnKrku5g8L3RoPgogICAgICAgICAgICA8L3RyPgogICAgICAgICAgPC90aGVhZD4KICAgICAgICAgIDx0Ym9keT4KICAgICAgICAgICAge2ZhY3Rvcmllcy5tYXAoKGYpID0+ICgKICAgICAgICAgICAgICA8dHIga2V5PXtmLm5hbWV9IGNsYXNzTmFtZT0ib3YtZmFjdG9yeS1yb3ciIGRhdGEtZmFjdG9yeT17Zi5uYW1lfQogICAgICAgICAgICAgICAgb25DbGljaz17b25PcGVuRmFjdG9yeSA/ICgpID0+IG9uT3BlbkZhY3RvcnkoZi5uYW1lKSA6IHVuZGVmaW5lZH0KICAgICAgICAgICAgICAgIHN0eWxlPXtvbk9wZW5GYWN0b3J5ID8geyBjdXJzb3I6ICdwb2ludGVyJyB9IDogdW5kZWZpbmVkfT4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGRMfT57Zi5uYW1lfTwvdGQ+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkfSBjbGFzc05hbWU9Im92LWYtcXVvdGVzIj57Zi5xdW90ZXN9PC90ZD4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGR9IGNsYXNzTmFtZT0ib3YtZi1saW5lcyI+e2Yub3JkZXJMaW5lc308L3RkPgogICAgICAgICAgICAgICAgPHRkIHN0eWxlPXt0ZH0gY2xhc3NOYW1lPSJvdi1mLXBheWFibGUiPnttb25leShmLnBheWFibGUpfTwvdGQ+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkfSBjbGFzc05hbWU9Im92LWYtcGFpZCI+e21vbmV5KGYucGFpZCl9PC90ZD4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGR9IGNsYXNzTmFtZT0ib3YtZi11bnBhaWQiPnttb25leShmLnVucGFpZCl9PC90ZD4KICAgICAgICAgICAgICA8L3RyPgogICAgICAgICAgICApKX0KICAgICAgICAgIDwvdGJvZHk+CiAgICAgICAgPC90YWJsZT4KICAgICAgICA8L2Rpdj4KICAgICAgKX0KICAgIDwvZGl2PgogICk7Cn0K
+import React from 'react';
+
+// 总览 + 客户/工厂台账（SPEC 第四节第 10 项）：数字全部由
+// overview.js 从业务数据现算后传入，本组件只负责摆出来。
+// 包 11 起台账行可点：点客户/工厂行直接跳进对应的管理页详情
+// （增删改名在管理页做，这里仍只负责"看 + 跳"）。
+
+function money(n) {
+  const v = Number(n) || 0;
+  return v.toFixed(2);
+}
+
+const th = {
+  textAlign: 'right', padding: '8px 12px', borderBottom: '1px solid #dbe2ec',
+  background: '#edf1f7',
+  color: '#45515f', fontWeight: 600, whiteSpace: 'nowrap',
+};
+const thL = { ...th, textAlign: 'left' };
+const td = {
+  textAlign: 'right', padding: '8px 12px', borderBottom: '1px solid #eef1f4', whiteSpace: 'nowrap',
+};
+const tdL = { ...td, textAlign: 'left' };
+const card = {
+  border: '1px solid #dbe2ec', borderRadius: 12, padding: '14px 18px',
+  background: '#fff', minWidth: 150,
+};
+const kpiNum = { fontSize: 25, fontWeight: 700, marginTop: 4, lineHeight: 1.15 };
+const kpiLab = { color: '#7c8a9d', fontSize: 12.5 };
+
+export default function OverviewView({ overview, onClose, onOpenCustomer, onOpenFactory }) {
+  if (!overview) return null;
+  const { counts, totals, customers, factories } = overview;
+  return (
+    <div className="overview-view" style={{
+      flex: 1, overflow: 'auto', padding: '16px 18px',
+      fontFamily: 'sans-serif', fontSize: 14,
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <b className="sec-title" style={{ fontSize: 19 }}>总览</b>
+        <span style={{ color: '#888' }}>全部数字由单据现算，不存副本</span>
+        <button className="ov-close" onClick={onClose} style={{
+          marginLeft: 'auto', border: '1px solid #c9d2de', color: '#37404a', background: '#fff',
+          borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+        }}>返回表格</button>
+      </div>
+
+      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', margin: '14px 0 6px' }}>
+        <div className="ov-card" style={card}>
+          <div style={kpiLab}>询价单 / 报价单 / 订单</div>
+          <div className="ov-counts" style={{ ...kpiNum, fontSize: 22 }}>
+            {counts.inquiries} / {counts.quotes} / {counts.orders}
+          </div>
+        </div>
+        <div className="ov-card" style={card}>
+          <div style={kpiLab}>总应收（客户欠我们）</div>
+          <div className="ov-total-receivable" style={kpiNum}>{money(totals.receivable)}</div>
+        </div>
+        <div className="ov-card" style={card}>
+          <div style={kpiLab}>已收</div>
+          <div className="ov-total-received" style={{ ...kpiNum, color: '#157347' }}>{money(totals.received)}</div>
+        </div>
+        <div className="ov-card" style={card}>
+          <div style={kpiLab}>未收</div>
+          <div className="ov-total-unpaid" style={{
+            ...kpiNum, color: totals.unpaid > 0 ? '#d92d20' : '#157347',
+          }}>{money(totals.unpaid)}</div>
+        </div>
+        <div className="ov-card" style={card}>
+          <div style={kpiLab}>总应付（我们欠工厂）</div>
+          <div className="ov-total-payable" style={kpiNum}>{money(totals.payable)}</div>
+        </div>
+        <div className="ov-card" style={card}>
+          <div style={kpiLab}>未付</div>
+          <div className="ov-total-unpaidpay" style={{
+            ...kpiNum, color: totals.unpaidPay > 0 ? '#d92d20' : '#157347',
+          }}>{money(totals.unpaidPay)}</div>
+        </div>
+        <div className="ov-card" style={card}>
+          <div style={kpiLab}>待发货（行）</div>
+          <div className="ov-total-pending-ship" style={kpiNum}>{totals.pendingShipLines}</div>
+        </div>
+      </div>
+
+      <h3 className="sec-title" style={{ margin: '20px 0 10px', fontSize: 16 }}>
+        客户台账
+        {onOpenCustomer && <span style={{ color: '#999', fontSize: 12, fontWeight: 400 }}>（点一行进客户管理）</span>}
+      </h3>
+      {customers.length === 0 ? (
+        <div className="ov-customers-empty" style={{ color: '#888' }}>
+          还没有客户（在询价单上填客户名、或转出订单后，这里自动出现）
+        </div>
+      ) : (
+        <div className="ledger-card">
+        <table className="ov-customers" style={{ borderCollapse: 'collapse', background: '#fff', width: '100%' }}>
+          <thead>
+            <tr>
+              <th style={thL}>客户</th><th style={th}>询价单</th><th style={th}>订单</th>
+              <th style={th}>应收</th><th style={th}>已收</th><th style={th}>未收</th>
+            </tr>
+          </thead>
+          <tbody>
+            {customers.map((c) => (
+              <tr key={c.name} className="ov-customer-row" data-customer={c.name}
+                onClick={onOpenCustomer && c.name !== '（未填客户名）'
+                  ? () => onOpenCustomer(c.name) : undefined}
+                style={onOpenCustomer && c.name !== '（未填客户名）' ? { cursor: 'pointer' } : undefined}>
+                <td style={tdL}>{c.name}</td>
+                <td style={td} className="ov-c-inq">{c.inquiries}</td>
+                <td style={td} className="ov-c-orders">{c.orders}</td>
+                <td style={td} className="ov-c-receivable">{money(c.receivable)}</td>
+                <td style={td} className="ov-c-received">{money(c.received)}</td>
+                <td style={td} className="ov-c-unpaid">{money(c.unpaid)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </div>
+      )}
+
+      <h3 className="sec-title" style={{ margin: '22px 0 10px', fontSize: 16 }}>
+        工厂台账
+        {onOpenFactory && <span style={{ color: '#999', fontSize: 12, fontWeight: 400 }}>（点一行进工厂管理）</span>}
+      </h3>
+      {factories.length === 0 ? (
+        <div className="ov-factories-empty" style={{ color: '#888' }}>
+          还没有工厂（在文档栏新建工厂、发出报价单后，这里自动出现）
+        </div>
+      ) : (
+        <div className="ledger-card">
+        <table className="ov-factories" style={{ borderCollapse: 'collapse', background: '#fff', width: '100%' }}>
+          <thead>
+            <tr>
+              <th style={thL}>工厂</th><th style={th}>报价单</th><th style={th}>订单行</th>
+              <th style={th}>应付</th><th style={th}>已付</th><th style={th}>未付</th>
+            </tr>
+          </thead>
+          <tbody>
+            {factories.map((f) => (
+              <tr key={f.name} className="ov-factory-row" data-factory={f.name}
+                onClick={onOpenFactory ? () => onOpenFactory(f.name) : undefined}
+                style={onOpenFactory ? { cursor: 'pointer' } : undefined}>
+                <td style={tdL}>{f.name}</td>
+                <td style={td} className="ov-f-quotes">{f.quotes}</td>
+                <td style={td} className="ov-f-lines">{f.orderLines}</td>
+                <td style={td} className="ov-f-payable">{money(f.payable)}</td>
+                <td style={td} className="ov-f-paid">{money(f.paid)}</td>
+                <td style={td} className="ov-f-unpaid">{money(f.unpaid)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </div>
+      )}
+    </div>
+  );
+}

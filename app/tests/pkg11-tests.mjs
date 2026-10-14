@@ -1,1 +1,267 @@
-Ly8g5YyFIDExIOa1i+ivle+8muWvvOWHuuihjOaemuS4vue7n+S4gOOAgeWuouaIt+azqOWGjOihqOaSreenjS/mlLnlkI3ogZTliqgv5Yig6Zmk6KeE5YiZ44CBCi8vIOW3peWOguaUueWQjeWFqOWfn+WQjOatpeOAgeaKpeS7t+WNlSBpbnF1aXJ5SWQg6L+B56e744CB5aSa6K+i5Lu35Y2V5q+U5Lu36ZqU56a744CCCi8vIOimhueblueUqOaIt+WPjemmiOeahOWbm+S7tuS6i+iDjOWQjueahOehrOinhOWIme+8mgovLyAgwrcg56S65L6L5Y2V77yI5peg6LSm5pys77yJ5LiO55yf5a6e5Y2V77yI5pyJ6LSm5pys77yJ55qE5a+85Ye66KGM5p6a5Li+5b+F6aG75LiA6Ie04oCU4oCUCi8vICAgIOatpOWJjeekuuS+i+WNleaemuS4vuS4uiAwIOihjO+8jCLli77kuobkuZ/lr7zkuI3lh7oi77ybCi8vICDCtyDmlLnlkI3mmK/lhajln5/nmoTvvJrlrqLmiLfmlLnlkI3lkIzmraXor6Lku7fljZUgKyDorqLljZUgKyDms6jlhozooajvvJvlt6XljoLmlLnlkI0KLy8gICAg5ZCM5q2l5oql5Lu35Y2VICsg5a6a5Y6C5b+r54WnICsg6K6i5Y2V6KGMICsg6K6i5Y2V5LuY5qy+ICsg5bel5Y6C5ZCN5Y2V77ybCi8vICDCtyDliKDpmaTmmK/mi6blvpfkvY/nmoTvvJrmnInljoblj7LljZXmja7nmoTkuIDlvovnu5nljp/lm6DvvIzkuI3orrjliKDvvJsKLy8gIMK3IOaXp+WtmOaho++8iOaXoCBpbnF1aXJ5SWTjgIHml6AgY3VzdG9tZXJz77yJ5ZCv5Yqo6L+B56e75ZCO6KGl6b2Q5LiU5bmC562J77ybCi8vICDCtyDkuKTlvKDor6Lku7fljZXnmoTmiqXku7fljZUv5a6a5Y6C5LqS5LiN5Liy5omw77yI5oyJIGlucXVpcnlJZCDpmpTnprvvvInjgIIKaW1wb3J0IGFzc2VydCBmcm9tICdub2RlOmFzc2VydCc7Cgpjb25zdCB7IGlucXVpcnlEYXRhUm93cyB9ID0gYXdhaXQgaW1wb3J0KCcuLi9zcmMvcXVvdGVFeHBvcnQuanMnKTsKY29uc3QgeyBidWlsZENvbXBhcmVSb3dzIH0gPSBhd2FpdCBpbXBvcnQoJy4uL3NyYy9jb21wYXJlLmpzJyk7CmNvbnN0IHsgY3JlYXRlTGVkZ2VyIH0gPSBhd2FpdCBpbXBvcnQoJy4uL3NyYy9sZWRnZXIuanMnKTsKY29uc3QgewogIG1pZ3JhdGVTdGF0ZSwgcXVvdGVzRm9ySW5xdWlyeSwgcmVuYW1lQ3VzdG9tZXIsIHJlbmFtZUZhY3RvcnksCiAgY3VzdG9tZXJEZWxldGVCbG9jaywgZmFjdG9yeURlbGV0ZUJsb2NrLCBpbnF1aXJ5RGVsZXRlQmxvY2ssCiAgc2VlZEN1c3RvbWVyTmFtZXMsIGJ1aWxkQ3VzdG9tZXJNb2RlbCwgYnVpbGRGYWN0b3J5TW9kZWwsCn0gPSBhd2FpdCBpbXBvcnQoJy4uL3NyYy9yZWdpc3RyeS5qcycpOwoKbGV0IHBhc3MgPSAwLCBmYWlsID0gMDsKZnVuY3Rpb24gb2soY29uZCwgbGFiZWwsIGV4dHJhKSB7CiAgaWYgKGNvbmQpIHsgcGFzcysrOyBjb25zb2xlLmxvZygnICBQQVNTICcgKyBsYWJlbCk7IH0KICBlbHNlIHsgZmFpbCsrOyBjb25zb2xlLmxvZygnICBGQUlMICcgKyBsYWJlbCArIChleHRyYSAhPT0gdW5kZWZpbmVkID8gJyDihpIg5a6e6ZmFOiAnICsgSlNPTi5zdHJpbmdpZnkoZXh0cmEpIDogJycpKTsgfQp9CmZ1bmN0aW9uIGVxKGFjdHVhbCwgZXhwZWN0ZWQsIGxhYmVsKSB7CiAgb2soSlNPTi5zdHJpbmdpZnkoYWN0dWFsKSA9PT0gSlNPTi5zdHJpbmdpZnkoZXhwZWN0ZWQpLCBsYWJlbCwgYWN0dWFsKTsKfQoKLyogLS0tLS0tLS0tLSDpgKDooajlsI/lt6XlhbfvvIjop4TojIPmoLzlvI8gc2hlZXTvvIkgLS0tLS0tLS0tLSAqLwpmdW5jdGlvbiBzaGVldE9mKGNlbGxSb3dzLCByb3dUb3RhbCkgewogIGNvbnN0IGNlbGxkYXRhID0gW107CiAgY2VsbFJvd3MuZm9yRWFjaCgocm93LCByKSA9PiByb3cuZm9yRWFjaCgodiwgYykgPT4gewogICAgaWYgKHYgIT09IG51bGwgJiYgdiAhPT0gdW5kZWZpbmVkICYmIHYgIT09ICcnKSBjZWxsZGF0YS5wdXNoKHsgciwgYywgdjogeyB2IH0gfSk7CiAgfSkpOwogIHJldHVybiB7CiAgICBuYW1lOiAnU2hlZXQxJywgcm93OiByb3dUb3RhbCB8fCBjZWxsUm93cy5sZW5ndGgsCiAgICBjb2x1bW46IE1hdGgubWF4KC4uLmNlbGxSb3dzLm1hcCgocikgPT4gci5sZW5ndGgpKSwgY2VsbGRhdGEsIGNvbmZpZzoge30sCiAgfTsKfQpjb25zdCBIRUFERVIgPSBbJ+W6j+WPtycsICflk4HniYwnLCAn5ZOB54mMJywgJ+i9puWeiycsICfkuqflk4EnLCAn5Zu+54mHJywgJ09F56CBJ107CgovKiAtLS0tLS0tLS0tIDEuIOWvvOWHuuihjOaemuS4vu+8muekuuS+i+WNle+8iOaXoOi0puacrO+8ieS4juecn+WunuWNle+8iOaciei0puacrO+8ieS4gOiHtCAtLS0tLS0tLS0tICovCnsKICAvLyDkuI4gbWFpbi5qc3gg55qEIGluaXRpYWxEYXRhIOWQjOW9ou+8mnJvdz0xMuOAgeihqOWktOWcqOesrCAyIOihjO+8iOeJqeeQhiAx77yJ44CB5pWw5o2uIDIg6KGMCiAgY29uc3Qgc2FtcGxlU2hlZXQgPSBzaGVldE9mKFsKICAgIFsn5qyn5Yag5ZiJ6YWN5Lu26YeH6LSt6ZyA5rGCJ10sCiAgICBIRUFERVIsCiAgICBbMSwgJ0pFVE9VUicsICflpYfnkZ7mjbfpgJQnLCAnamV0b3VyIHg5MCBwbHVzJywgJ+aVo+eDreWZqOagvOaghScsIG51bGwsICdGMjA4NDAxMTAwJ10sCiAgICBbMiwgJ0pFVE9VUicsICflpYfnkZ7mjbfpgJQnLCAnamV0b3VyIHg5MCBwbHVzJywgJ+WJjeS/nemZqeadoCcsIG51bGwsICdGMjA4NDAzMTAxJ10sCiAgXSwgMTIpOwogIGNvbnN0IG5vTGVkZ2VyID0gaW5xdWlyeURhdGFSb3dzKHsgZG9jSWQ6ICdzJywga2luZDogJ2lucXVpcnknLCBzaGVldDogc2FtcGxlU2hlZXQsIGxlZGdlcjogbnVsbCB9KTsKICBlcShub0xlZGdlci5sZW5ndGgsIDEwLCAn5p6a5Li+77ya5peg6LSm5pys56S65L6L5Y2V5pWw5Ye6IDEwIOihjO+8iOS4juacgOe7iOaKpeS7t+adoeeahCBkYXRhUm93Q291bnQg5Y+j5b6E5LiA6Ie077yJJyk7CiAgb2sobm9MZWRnZXIuZXZlcnkoKHgpID0+ICEheC5saW5lSWQpLCAn5p6a5Li+77ya5peg6LSm5pys5pe25q+P6KGM6YO95pyJ5YWc5bqVIGxpbmVJZO+8iOS4jeWGjeWFqOaYryBudWxs77yJJyk7CiAgZXEobm9MZWRnZXJbMF0ubGluZUlkLCAnTDMnLCAn5p6a5Li+77ya56ys5LiA5p2h5pWw5o2u6KGM77yI54mp55CG6KGMIDLvvIlsaW5lSWQgPSBMM++8iOW7uui0puWPo+W+hCBMKOihjCsxKe+8iScpOwogIGVxKG5vTGVkZ2VyWzFdLmxpbmVJZCwgJ0w0JywgJ+aemuS4vu+8muesrOS6jOadoeaVsOaNruihjCBsaW5lSWQgPSBMNCcpOwoKICBjb25zdCBsZWRnZXIgPSBjcmVhdGVMZWRnZXIoeyBmaWxlTmFtZTogJ+ekuuS+i+aVsOaNricsIHNoZWV0TmFtZTogJ1NoZWV0MScsIHNoZWV0SW5kZXg6IDAsIHJvd0NvdW50OiAxMiB9KTsKICBjb25zdCB3aXRoTGVkZ2VyID0gaW5xdWlyeURhdGFSb3dzKHsgZG9jSWQ6ICdzJywga2luZDogJ2lucXVpcnknLCBzaGVldDogc2FtcGxlU2hlZXQsIGxlZGdlciB9KTsKICBlcSh3aXRoTGVkZ2VyLm1hcCgoeCkgPT4geC5saW5lSWQpLCBub0xlZGdlci5tYXAoKHgpID0+IHgubGluZUlkKSwKICAgICfmnprkuL7vvJrmnInotKbmnKzkuI7ml6DotKbmnKzlhZzlupXnu5nlh7rnmoQgbGluZUlkIOWujOWFqOS4gOiHtCcpOwogIG9rKHdpdGhMZWRnZXIuZmlsdGVyKCh4KSA9PiB4LmxpbmVJZCkubGVuZ3RoID49IDIsCiAgICAn5p6a5Li+77ya5a+85Ye66Z2i5p2/5oyJIGxpbmVJZCDov4fmu6TlkI7oh7PlsJHliakgMiDooYznnJ/lrp7mlbDmja7vvIjmraTliY3kuLogMO+8iScpOwoKICAvLyDnnJ/lrp7ljZXlvaLnirbvvJozOSDooYzjgIHooajlpLTniannkIbooYwgMe+8iGhlYWRlclJvdyDlrZjmoaPvvInjgIHotKbmnKwgMzkg6KGMCiAgY29uc3QgcmVhbFNoZWV0ID0gc2hlZXRPZihbWyfmoIfpopgnXSwgSEVBREVSLCBbMSwgbnVsbCwgbnVsbCwgbnVsbCwgJ+aVo+eDreWZqOagvOaghScsIG51bGwsICdGMjA4NDAxMTAwJ11dLCAzOSk7CiAgY29uc3QgcmVhbExlZGdlciA9IGNyZWF0ZUxlZGdlcih7IGZpbGVOYW1lOiAn5a6i5oi35Y2VLnhsc3gnLCBzaGVldE5hbWU6ICdTaGVldDEnLCBzaGVldEluZGV4OiAwLCByb3dDb3VudDogMzkgfSk7CiAgY29uc3QgcmVhbFJvd3MgPSBpbnF1aXJ5RGF0YVJvd3MoewogICAgZG9jSWQ6ICdyJywga2luZDogJ2lucXVpcnknLCBzaGVldDogcmVhbFNoZWV0LCBsZWRnZXI6IHJlYWxMZWRnZXIsIGhlYWRlclJvdzogMSwKICB9KTsKICBlcShyZWFsUm93cy5sZW5ndGgsIDM3LCAn5p6a5Li+77ya55yf5a6e5Y2VIDM3IOadoeaVsOaNruihjCcpOwogIGVxKHJlYWxSb3dzWzBdLmxpbmVJZCwgJ0wzJywgJ+aemuS4vu+8muecn+WunuWNleesrOS4gOadoeaVsOaNruihjCBMMycpOwp9CgovKiAtLS0tLS0tLS0tIDIuIOi/geenu++8mnBrZzEwIOW9oueKtuWtmOahoyDihpIg6KGlIGlucXVpcnlJZCArIOaSreenjeWuouaItyAtLS0tLS0tLS0tICovCnsKICBjb25zdCBzaGVldCA9IHNoZWV0T2YoW1sn6ICB5Y2VJ10sIEhFQURFUiwgWzEsIG51bGwsIG51bGwsIG51bGwsICfpm7bku7YnLCBudWxsLCAnT0UxMjMnXV0sIDMpOwogIGNvbnN0IGxlZGdlciA9IGNyZWF0ZUxlZGdlcih7IGZpbGVOYW1lOiAn6ICB5Y2VLnhsc3gnLCBzaGVldE5hbWU6ICdTaGVldDEnLCBzaGVldEluZGV4OiAwLCByb3dDb3VudDogMyB9KTsKICBjb25zdCBwa2cxMEFyY2hpdmUgPSB7CiAgICB2ZXJzaW9uOiAyLCBzYXZlZEF0OiAnMjAyNi0xMC0xMVQwMDowMDowMC4wMDBaJywKICAgIGZhY3RvcmllczogWyfogIHlt6XljoInXSwgYWN0aXZlRG9jSWQ6ICdkb2MtaW5xdWlyeScsIG9yZGVyU2VxOiAxLAogICAgZG9jczogWwogICAgICB7IGRvY0lkOiAnZG9jLWlucXVpcnknLCBraW5kOiAnaW5xdWlyeScsIGZhY3RvcnlOYW1lOiBudWxsLCBjdXN0b21lck5hbWU6ICfogIHlrqLmiLcnLAogICAgICAgIHNoZWV0LCBsZWRnZXIsIHJvd0Nob2ljZXM6IHsgTDM6IHsgZmFjdG9yeTogJ+iAgeW3peWOgicsIHJhd1ByaWNlOiAxMDAgfSB9IH0sCiAgICAgIHsgZG9jSWQ6ICdkb2MtcXVvdGUtMScsIGtpbmQ6ICdxdW90ZScsIGZhY3RvcnlOYW1lOiAn6ICB5bel5Y6CJywgc2hlZXQsIGxlZGdlciB9LAogICAgICAvLyDihpEg5rKh5pyJIGlucXVpcnlJZOOAgeaVtOS4quWtmOaho+ayoeaciSBjdXN0b21lcnMg4oCU4oCUIOWMhSAxMCDnmoTlvaLnirYKICAgIF0sCiAgICBvcmRlcnM6IFt7CiAgICAgIG9yZGVyTm86ICdPUkQyNjEwLTAwMDEnLCBjcmVhdGVkQXQ6ICcyMDI2LTEwLTA1VDEwOjAwOjAwLjAwMFonLAogICAgICBjdXN0b21lck5hbWU6ICfogIHlrqLmiLcnLCBpbnF1aXJ5RG9jSWQ6ICdkb2MtaW5xdWlyeScsCiAgICAgIGxpbmVzOiBbeyBsaW5lSWQ6ICdMMycsIG9lOiAnT0UxMjMnLCBuYW1lOiAn6Zu25Lu2JywgZmFjdG9yeTogJ+iAgeW3peWOgicsCiAgICAgICAgcXR5OiAyLCBjb3N0UmF3OiAxMDAsIGNvc3RUYXhJbmNsdXNpdmU6IHRydWUsIGNvc3RUYXhSYXRlUGN0OiAnJywKICAgICAgICBmaW5hbFByaWNlOiAxNTAsIHNoaXBwZWRRdHk6IDAgfV0sCiAgICAgIHJlY2VpcHRzOiBbXSwgZmFjdG9yeVBheXM6IFtdLCBzaGlwbWVudHM6IFtdLAogICAgfV0sCiAgfTsKICBjb25zdCBzbmFwc2hvdCA9IEpTT04uc3RyaW5naWZ5KHBrZzEwQXJjaGl2ZSk7CiAgY29uc3QgeyBzdGF0ZSwgY2hhbmdlZCB9ID0gbWlncmF0ZVN0YXRlKHBrZzEwQXJjaGl2ZSk7CiAgZXEoY2hhbmdlZCwgdHJ1ZSwgJ+i/geenu++8mnBrZzEwIOWtmOaho+iiq+i/geenuycpOwogIGVxKHN0YXRlLmRvY3NbMV0uaW5xdWlyeUlkLCAnZG9jLWlucXVpcnknLCAn6L+B56e777ya5oql5Lu35Y2V6KGl5LiKIGlucXVpcnlJZCA9IOWUr+S4gOivouS7t+WNlScpOwogIGVxKHN0YXRlLmN1c3RvbWVycywgW3sgbmFtZTogJ+iAgeWuouaItycsIGNvbnRhY3Q6ICcnLCBub3RlOiAnJyB9XSwKICAgICfov4Hnp7vvvJrlrqLmiLfms6jlhozooajku47ljZXmja7mkq3np43vvIjor6Lku7fljZUv6K6i5Y2V5ZCM5ZCN5Y+q5LiA5p2h77yJJyk7CiAgZXEoc3RhdGUub3JkZXJzLCBwa2cxMEFyY2hpdmUub3JkZXJzLCAn6L+B56e777ya6K6i5Y2V5Y6f5qC35LiN5YqoJyk7CiAgZXEoSlNPTi5zdHJpbmdpZnkocGtnMTBBcmNoaXZlKSwgc25hcHNob3QsICfov4Hnp7vvvJrkuI3ljp/lnLDmlLnlhaXlj4InKTsKICBjb25zdCBhZ2FpbiA9IG1pZ3JhdGVTdGF0ZShzdGF0ZSk7CiAgZXEoYWdhaW4uY2hhbmdlZCwgZmFsc2UsICfov4Hnp7vvvJrluYLnrYnvvIjlho3ov4HkuIDmrKHml6Dlj5jljJbvvIknKTsKICBvayhhZ2Fpbi5zdGF0ZSA9PT0gc3RhdGUsICfov4Hnp7vvvJrml6Dlj5jljJbml7bljp/moLfov5Tlm54nKTsKCiAgLy8g5bey5pyJ5rOo5YaM6KGo5p2h55uu77yI5bim6IGU57O75Lq677yJ5pe277ya5L+d55WZ77yM5Y+q6KGl57y65ZCNCiAgY29uc3Qgd2l0aFJlZyA9IHsKICAgIC4uLnBrZzEwQXJjaGl2ZSwKICAgIGN1c3RvbWVyczogW3sgbmFtZTogJ+iAgeWuouaItycsIGNvbnRhY3Q6ICflvKDkuIknLCBub3RlOiAn6ICB5Li76aG+JyB9XSwKICAgIGRvY3M6IFsuLi5wa2cxMEFyY2hpdmUuZG9jcywKICAgICAgeyBkb2NJZDogJ2RvYy1pbnEtMicsIGtpbmQ6ICdpbnF1aXJ5JywgY3VzdG9tZXJOYW1lOiAn5paw5a6i5oi3Jywgc2hlZXQsIGxlZGdlciB9XSwKICB9OwogIGNvbnN0IG0yID0gbWlncmF0ZVN0YXRlKHdpdGhSZWcpOwogIGVxKG0yLnN0YXRlLmN1c3RvbWVycywgWwogICAgeyBuYW1lOiAn6ICB5a6i5oi3JywgY29udGFjdDogJ+W8oOS4iScsIG5vdGU6ICfogIHkuLvpob4nIH0sCiAgICB7IG5hbWU6ICfmlrDlrqLmiLcnLCBjb250YWN0OiAnJywgbm90ZTogJycgfSwKICBdLCAn6L+B56e777ya5bey5pyJ5p2h55uu55qE6IGU57O75Lq6L+Wkh+azqOS/neeVme+8jOWPquihpeayoeeZu+iusOeahOWuouaIt+WQjScpOwogIGVxKHNlZWRDdXN0b21lck5hbWVzKHBrZzEwQXJjaGl2ZS5kb2NzLCBwa2cxMEFyY2hpdmUub3JkZXJzKSwgWyfogIHlrqLmiLcnXSwKICAgICfmkq3np43vvJror6Lku7fljZXkuI7orqLljZXlkIzlkI3lkIjlubYnKTsKfQoKLyogLS0tLS0tLS0tLSAzLiDlrqLmiLfmlLnlkI3vvJrlhajln5/lkIzmraUgKyDlhrLnqoHmi6bmiKogLS0tLS0tLS0tLSAqLwpmdW5jdGlvbiBtZ210Rml4dHVyZSgpIHsKICBjb25zdCBzaGVldCA9IHNoZWV0T2YoW1sndCddLCBIRUFERVIsIFsxLCBudWxsLCBudWxsLCBudWxsLCAn6Zu25Lu2JywgbnVsbCwgJ09FMSddXSwgMyk7CiAgY29uc3QgbGVkZ2VyID0gY3JlYXRlTGVkZ2VyKHsgZmlsZU5hbWU6ICdmLnhsc3gnLCBzaGVldE5hbWU6ICdTaGVldDEnLCBzaGVldEluZGV4OiAwLCByb3dDb3VudDogMyB9KTsKICByZXR1cm4gewogICAgZG9jczogWwogICAgICB7IGRvY0lkOiAnaW5xLWEnLCBraW5kOiAnaW5xdWlyeScsIGN1c3RvbWVyTmFtZTogJ+asp+WGoOWYiScsIHNoZWV0LCBsZWRnZXIsIHJvd0Nob2ljZXM6IHt9IH0sCiAgICAgIHsgZG9jSWQ6ICdpbnEtYicsIGtpbmQ6ICdpbnF1aXJ5JywgY3VzdG9tZXJOYW1lOiAn5Yir55qE5a6i5oi3Jywgc2hlZXQsIGxlZGdlciwgcm93Q2hvaWNlczoge30gfSwKICAgICAgeyBkb2NJZDogJ3EtYScsIGtpbmQ6ICdxdW90ZScsIGZhY3RvcnlOYW1lOiAn55Sy5Y6CJywgaW5xdWlyeUlkOiAnaW5xLWEnLCBzaGVldCwgbGVkZ2VyIH0sCiAgICBdLAogICAgb3JkZXJzOiBbCiAgICAgIHsgb3JkZXJObzogJ09SRC0xJywgY3VzdG9tZXJOYW1lOiAn5qyn5Yag5ZiJJywgaW5xdWlyeURvY0lkOiAnaW5xLWEnLAogICAgICAgIGxpbmVzOiBbeyBsaW5lSWQ6ICdMMycsIGZhY3Rvcnk6ICfnlLLljoInLCBxdHk6IDEsIGNvc3RSYXc6IDEwLCBjb3N0VGF4SW5jbHVzaXZlOiB0cnVlLCBjb3N0VGF4UmF0ZVBjdDogJycsIGZpbmFsUHJpY2U6IDIwLCBzaGlwcGVkUXR5OiAwIH1dLAogICAgICAgIHJlY2VpcHRzOiBbXSwgZmFjdG9yeVBheXM6IFt7IGZhY3Rvcnk6ICfnlLLljoInLCBhbW91bnQ6IDUgfV0sIHNoaXBtZW50czogW10gfSwKICAgICAgeyBvcmRlck5vOiAnT1JELTInLCBjdXN0b21lck5hbWU6ICfliKvnmoTlrqLmiLcnLCBpbnF1aXJ5RG9jSWQ6ICdpbnEtYicsCiAgICAgICAgbGluZXM6IFtdLCByZWNlaXB0czogW10sIGZhY3RvcnlQYXlzOiBbXSwgc2hpcG1lbnRzOiBbXSB9LAogICAgXSwKICAgIGN1c3RvbWVyczogWwogICAgICB7IG5hbWU6ICfmrKflhqDlmIknLCBjb250YWN0OiAn5p2O57uP55CGJywgbm90ZTogJycgfSwKICAgICAgeyBuYW1lOiAn5Yir55qE5a6i5oi3JywgY29udGFjdDogJycsIG5vdGU6ICcnIH0sCiAgICAgIHsgbmFtZTogJ+mXsue9ruWuouaItycsIGNvbnRhY3Q6ICcnLCBub3RlOiAnJyB9LAogICAgXSwKICAgIGZhY3RvcmllczogWyfnlLLljoInLCAn5LmZ5Y6CJ10sCiAgfTsKfQp7CiAgY29uc3Qgc3QgPSBtZ210Rml4dHVyZSgpOwogIGNvbnN0IHJlcyA9IHJlbmFtZUN1c3RvbWVyKHN0LCAn5qyn5Yag5ZiJJywgJ+asp+WGoOWYieaxvemFjScpOwogIG9rKHJlcyAhPT0gbnVsbCwgJ+WuouaIt+aUueWQje+8muaIkOWKn+i/lOWbnuaWsOeKtuaAgScpOwogIGVxKHJlcy5kb2NzLmZpbmQoKGQpID0+IGQuZG9jSWQgPT09ICdpbnEtYScpLmN1c3RvbWVyTmFtZSwgJ+asp+WGoOWYieaxvemFjScsICflrqLmiLfmlLnlkI3vvJror6Lku7fljZXlkIzmraUnKTsKICBlcShyZXMuZG9jcy5maW5kKChkKSA9PiBkLmRvY0lkID09PSAnaW5xLWInKS5jdXN0b21lck5hbWUsICfliKvnmoTlrqLmiLcnLCAn5a6i5oi35pS55ZCN77ya5Yir5Lq655qE6K+i5Lu35Y2V5LiN5YqoJyk7CiAgZXEocmVzLm9yZGVycy5maW5kKChvKSA9PiBvLm9yZGVyTm8gPT09ICdPUkQtMScpLmN1c3RvbWVyTmFtZSwgJ+asp+WGoOWYieaxvemFjScsICflrqLmiLfmlLnlkI3vvJrorqLljZXlkIzmraUnKTsKICBlcShyZXMub3JkZXJzLmZpbmQoKG8pID0+IG8ub3JkZXJObyA9PT0gJ09SRC0yJykuY3VzdG9tZXJOYW1lLCAn5Yir55qE5a6i5oi3JywgJ+WuouaIt+aUueWQje+8muWIq+S6uueahOiuouWNleS4jeWKqCcpOwogIGVxKHJlcy5jdXN0b21lcnMuZmluZCgoYykgPT4gYy5uYW1lID09PSAn5qyn5Yag5ZiJ5rG96YWNJykuY29udGFjdCwgJ+adjue7j+eQhicsICflrqLmiLfmlLnlkI3vvJrms6jlhozooajmnaHnm67mlLnlkI3kuJTogZTns7vkurrkv53nlZknKTsKICBlcShzdC5kb2NzLmZpbmQoKGQpID0+IGQuZG9jSWQgPT09ICdpbnEtYScpLmN1c3RvbWVyTmFtZSwgJ+asp+WGoOWYiScsICflrqLmiLfmlLnlkI3vvJrkuI3ljp/lnLDmlLnlhaXlj4InKTsKICBlcShyZW5hbWVDdXN0b21lcihzdCwgJ+asp+WGoOWYiScsICfliKvnmoTlrqLmiLcnKSwgbnVsbCwgJ+WuouaIt+aUueWQje+8muaWsOWQjeiiq+WIq+eahOWuouaIt+WNoOeUqCDihpIg5ouS57udJyk7CiAgZXEocmVuYW1lQ3VzdG9tZXIoc3QsICfmrKflhqDlmIknLCAn5qyn5Yag5ZiJJyksIG51bGwsICflrqLmiLfmlLnlkI3vvJrmlrDml6flkIzlkI0g4oaSIOaLkue7nScpOwogIGVxKHJlbmFtZUN1c3RvbWVyKHN0LCAn5qyn5Yag5ZiJJywgJyAgJyksIG51bGwsICflrqLmiLfmlLnlkI3vvJrnqbrlkI0g4oaSIOaLkue7nScpOwp9CgovKiAtLS0tLS0tLS0tIDQuIOW3peWOguaUueWQje+8muaKpeS7t+WNlS/lrprljoIv6K6i5Y2V6KGML+S7mOasvi/lkI3ljZXlhajlkIzmraUgLS0tLS0tLS0tLSAqLwp7CiAgY29uc3Qgc3QgPSBtZ210Rml4dHVyZSgpOwogIHN0LmRvY3NbMF0ucm93Q2hvaWNlcyA9IHsgTDM6IHsgZmFjdG9yeTogJ+eUsuWOgicsIHJhd1ByaWNlOiAxMCwgdGF4SW5jbHVzaXZlOiB0cnVlLCB0YXhSYXRlUGN0OiAnJywgcGVyaW9kOiAnJyB9IH07CiAgY29uc3QgcmVzID0gcmVuYW1lRmFjdG9yeShzdCwgJ+eUsuWOgicsICfnlLLljoLmlrDlkI0nKTsKICBvayhyZXMgIT09IG51bGwsICflt6XljoLmlLnlkI3vvJrmiJDlip/ov5Tlm57mlrDnirbmgIEnKTsKICBlcShyZXMuZG9jcy5maW5kKChkKSA9PiBkLmRvY0lkID09PSAncS1hJykuZmFjdG9yeU5hbWUsICfnlLLljoLmlrDlkI0nLCAn5bel5Y6C5pS55ZCN77ya5oql5Lu35Y2V5ZCM5q2lJyk7CiAgZXEocmVzLmRvY3MuZmluZCgoZCkgPT4gZC5kb2NJZCA9PT0gJ2lucS1hJykucm93Q2hvaWNlcy5MMy5mYWN0b3J5LCAn55Sy5Y6C5paw5ZCNJywgJ+W3peWOguaUueWQje+8muWumuWOguW/q+eFp+WQjOatpScpOwogIGVxKHJlcy5vcmRlcnNbMF0ubGluZXNbMF0uZmFjdG9yeSwgJ+eUsuWOguaWsOWQjScsICflt6XljoLmlLnlkI3vvJrorqLljZXooYzlkIzmraUnKTsKICBlcShyZXMub3JkZXJzWzBdLmZhY3RvcnlQYXlzWzBdLmZhY3RvcnksICfnlLLljoLmlrDlkI0nLCAn5bel5Y6C5pS55ZCN77ya6K6i5Y2V5LuY5qy+6K6w5b2V5ZCM5q2lJyk7CiAgZXEocmVzLmZhY3RvcmllcywgWyfnlLLljoLmlrDlkI0nLCAn5LmZ5Y6CJ10sICflt6XljoLmlLnlkI3vvJrlkI3ljZXlkIzmraXkuJTliKvkurrkuI3liqgnKTsKICBlcShyZW5hbWVGYWN0b3J5KHN0LCAn55Sy5Y6CJywgJ+S5meWOgicpLCBudWxsLCAn5bel5Y6C5pS55ZCN77ya5paw5ZCN6KKr5Yir55qE5bel5Y6C5Y2g55SoIOKGkiDmi5Lnu50nKTsKICBlcShyZW5hbWVGYWN0b3J5KHN0LCAn55Sy5Y6CJywgJ+eUsuWOgicpLCBudWxsLCAn5bel5Y6C5pS55ZCN77ya5paw5pen5ZCM5ZCNIOKGkiDmi5Lnu50nKTsKfQoKLyogLS0tLS0tLS0tLSA1LiDliKDpmaTop4TliJkgLS0tLS0tLS0tLSAqLwp7CiAgY29uc3Qgc3QgPSBtZ210Rml4dHVyZSgpOwogIGNvbnN0IGIxID0gY3VzdG9tZXJEZWxldGVCbG9jayhzdCwgJ+asp+WGoOWYiScpOwogIG9rKHR5cGVvZiBiMSA9PT0gJ3N0cmluZycgJiYgYjEuaW5jbHVkZXMoJ+ivouS7t+WNlScpLCAn5a6i5oi35Yig6Zmk77ya5pyJ6K+i5Lu35Y2VIOKGkiDmi6bkuIvkuJTljp/lm6DngrnlkI3or6Lku7fljZUnLCBiMSk7CiAgY29uc3Qgb25seU9yZGVyID0gewogICAgZG9jczogW10sIG9yZGVyczogc3Qub3JkZXJzLCBjdXN0b21lcnM6IHN0LmN1c3RvbWVycywgZmFjdG9yaWVzOiBbXSwKICB9OwogIGNvbnN0IGIyID0gY3VzdG9tZXJEZWxldGVCbG9jayhvbmx5T3JkZXIsICfliKvnmoTlrqLmiLcnKTsKICBvayh0eXBlb2YgYjIgPT09ICdzdHJpbmcnICYmIGIyLmluY2x1ZGVzKCforqLljZUnKSwgJ+WuouaIt+WIoOmZpO+8muWPquacieiuouWNlSDihpIg5oum5LiL5LiU5Y6f5Zug54K55ZCN6K6i5Y2VJywgYjIpOwogIGVxKGN1c3RvbWVyRGVsZXRlQmxvY2soc3QsICfpl7Lnva7lrqLmiLcnKSwgbnVsbCwgJ+WuouaIt+WIoOmZpO+8muaXoOWNleaNriDihpIg5Y+v5YigJyk7CgogIGNvbnN0IGYxID0gZmFjdG9yeURlbGV0ZUJsb2NrKHN0LCAn55Sy5Y6CJyk7CiAgb2sodHlwZW9mIGYxID09PSAnc3RyaW5nJyAmJiBmMS5pbmNsdWRlcygn5oql5Lu35Y2VJyksICflt6XljoLliKDpmaTvvJrmnInmiqXku7fljZUg4oaSIOaLpuS4i+S4lOWOn+WboOeCueWQjeaKpeS7t+WNlScsIGYxKTsKICBjb25zdCBjaG9zZW5Pbmx5ID0gewogICAgZG9jczogW3sgZG9jSWQ6ICdpJywga2luZDogJ2lucXVpcnknLCByb3dDaG9pY2VzOiB7IEwzOiB7IGZhY3Rvcnk6ICfkuJnljoInIH0gfSB9XSwKICAgIG9yZGVyczogW10sIGZhY3RvcmllczogWyfkuJnljoInXSwKICB9OwogIGNvbnN0IGYyID0gZmFjdG9yeURlbGV0ZUJsb2NrKGNob3Nlbk9ubHksICfkuJnljoInKTsKICBvayh0eXBlb2YgZjIgPT09ICdzdHJpbmcnICYmIGYyLmluY2x1ZGVzKCflrprljoInKSwgJ+W3peWOguWIoOmZpO+8muWPquacieWumuWOguiusOW9lSDihpIg5oum5LiL5LiU5Y6f5Zug54K55ZCN5a6a5Y6CJywgZjIpOwogIGVxKGZhY3RvcnlEZWxldGVCbG9jayhzdCwgJ+S5meWOgicpLCBudWxsLCAn5bel5Y6C5Yig6Zmk77ya5peg5Y2V5o2uIOKGkiDlj6/liKAnKTsKCiAgY29uc3QgaTEgPSBpbnF1aXJ5RGVsZXRlQmxvY2soc3Qub3JkZXJzLCAnaW5xLWEnKTsKICBvayh0eXBlb2YgaTEgPT09ICdzdHJpbmcnICYmIGkxLmluY2x1ZGVzKCdPUkQtMScpLCAn6K+i5Lu35Y2V5Yig6Zmk77ya5bey6L2s6K6i5Y2VIOKGkiDmi6bkuIvkuJTljp/lm6DngrnlkI3ljZXlj7cnLCBpMSk7CiAgZXEoaW5xdWlyeURlbGV0ZUJsb2NrKHN0Lm9yZGVycywgJ2lucS14JyksIG51bGwsICfor6Lku7fljZXliKDpmaTvvJrmsqHovazov4forqLljZUg4oaSIOWPr+WIoCcpOwp9CgovKiAtLS0tLS0tLS0tIDYuIOWkmuivouS7t+WNlemalOemu++8muaKpeS7t+WNleaMiSBpbnF1aXJ5SWQg5b2S5bGe77yM5q+U5Lu35Y+q6K+75pys5Y2V55qEIC0tLS0tLS0tLS0gKi8KewogIGNvbnN0IGlucVNoZWV0QSA9IHNoZWV0T2YoW1snQeWNlSddLCBIRUFERVIsCiAgICBbMSwgbnVsbCwgbnVsbCwgbnVsbCwgJ+eUsumbtuS7ticsIG51bGwsICdPRS1BJ11dLCAzKTsKICBjb25zdCBpbnFTaGVldEIgPSBzaGVldE9mKFtbJ0LljZUnXSwgSEVBREVSLAogICAgWzEsIG51bGwsIG51bGwsIG51bGwsICfkuZnpm7bku7YnLCBudWxsLCAnT0UtQiddXSwgMyk7CiAgY29uc3QgcXVvdGVTaGVldCA9IChwcmljZSkgPT4gc2hlZXRPZihbWyflm57ooagnXSwgWy4uLkhFQURFUiwgJ+S7t+agvCddLAogICAgWzEsIG51bGwsIG51bGwsIG51bGwsICd4JywgbnVsbCwgJ09FLVgnLCBwcmljZV1dLCAzKTsKICBjb25zdCBsZWQgPSAoKSA9PiBjcmVhdGVMZWRnZXIoeyBmaWxlTmFtZTogJ2YnLCBzaGVldE5hbWU6ICdTaGVldDEnLCBzaGVldEluZGV4OiAwLCByb3dDb3VudDogMyB9KTsKICBjb25zdCBkb2NzID0gWwogICAgeyBkb2NJZDogJ2lucS1hJywga2luZDogJ2lucXVpcnknLCBzaGVldDogaW5xU2hlZXRBLCBsZWRnZXI6IGxlZCgpLCBoZWFkZXJSb3c6IDEsIHJvd0Nob2ljZXM6IHt9IH0sCiAgICB7IGRvY0lkOiAnaW5xLWInLCBraW5kOiAnaW5xdWlyeScsIHNoZWV0OiBpbnFTaGVldEIsIGxlZGdlcjogbGVkKCksIGhlYWRlclJvdzogMSwgcm93Q2hvaWNlczoge30gfSwKICAgIHsgZG9jSWQ6ICdxLWEnLCBraW5kOiAncXVvdGUnLCBmYWN0b3J5TmFtZTogJ+W3peWOgkEnLCBpbnF1aXJ5SWQ6ICdpbnEtYScsCiAgICAgIHNoZWV0OiBxdW90ZVNoZWV0KDExMSksIGxlZGdlcjogbGVkKCksIGhlYWRlclJvdzogMSwKICAgICAgcHJpY2VNYXJrOiB7IGNvbDogNywgdGF4SW5jbHVzaXZlOiB0cnVlLCB0YXhSYXRlUGN0OiAnJywgcGVyaW9kQ29sOiBudWxsIH0gfSwKICAgIHsgZG9jSWQ6ICdxLWInLCBraW5kOiAncXVvdGUnLCBmYWN0b3J5TmFtZTogJ+W3peWOgkInLCBpbnF1aXJ5SWQ6ICdpbnEtYicsCiAgICAgIHNoZWV0OiBxdW90ZVNoZWV0KDk5OSksIGxlZGdlcjogbGVkKCksIGhlYWRlclJvdzogMSwKICAgICAgcHJpY2VNYXJrOiB7IGNvbDogNywgdGF4SW5jbHVzaXZlOiB0cnVlLCB0YXhSYXRlUGN0OiAnJywgcGVyaW9kQ29sOiBudWxsIH0gfSwKICBdOwogIGVxKHF1b3Rlc0ZvcklucXVpcnkoZG9jcywgJ2lucS1iJykubWFwKChkKSA9PiBkLmRvY0lkKSwgWydxLWInXSwgJ+malOemu++8mmlucS1iIOWPquWQjeS4iyBxLWIg5LiA5byg5oql5Lu35Y2VJyk7CiAgZXEocXVvdGVzRm9ySW5xdWlyeShkb2NzLCAnaW5xLWEnKS5tYXAoKGQpID0+IGQuZG9jSWQpLCBbJ3EtYSddLCAn6ZqU56a777yaaW5xLWEg5Y+q5ZCN5LiLIHEtYSDkuIDlvKDmiqXku7fljZUnKTsKICBjb25zdCBtb2RlbEIgPSBidWlsZENvbXBhcmVSb3dzKHsKICAgIGlucXVpcnk6IGRvY3NbMV0sIHF1b3RlczogcXVvdGVzRm9ySW5xdWlyeShkb2NzLCAnaW5xLWInKSwKICB9KTsKICBlcShtb2RlbEIuZmFjdG9yaWVzLCBbJ+W3peWOgkInXSwgJ+malOemu++8mkIg5Y2V5q+U5Lu35Y+q5Ye6546w5bel5Y6CQicpOwogIGVxKG1vZGVsQi5yb3dzLmxlbmd0aCwgMSwgJ+malOemu++8mkIg5Y2V5q+U5Lu3IDEg6KGMJyk7CiAgZXEobW9kZWxCLnJvd3NbMF0uY2VsbHNbJ+W3peWOgkInXS5yYXcsIDk5OSwgJ+malOemu++8mkIg5Y2V6K+75Yiw55qE5piv5bel5Y6CQueahOS7tyA5OTnvvIzkuI3mmK8gQSDnmoQgMTExJyk7CiAgZXEobW9kZWxCLnJvd3NbMF0ub2UsICdPRS1CJywgJ+malOemu++8mkIg5Y2V6KGM6Lqr5Lu95pivIEIg55qEIE9FJyk7CiAgY29uc3QgbW9kZWxBID0gYnVpbGRDb21wYXJlUm93cyh7CiAgICBpbnF1aXJ5OiBkb2NzWzBdLCBxdW90ZXM6IHF1b3Rlc0ZvcklucXVpcnkoZG9jcywgJ2lucS1hJyksCiAgfSk7CiAgZXEobW9kZWxBLnJvd3NbMF0uY2VsbHNbJ+W3peWOgkEnXS5yYXcsIDExMSwgJ+malOemu++8mkEg5Y2V6K+75Yiw5bel5Y6CQeeahOS7tyAxMTEnKTsKfQoKLyogLS0tLS0tLS0tLSA3LiDnrqHnkIbpobXor7vmqKHlnosgLS0tLS0tLS0tLSAqLwp7CiAgY29uc3Qgc3QgPSBtZ210Rml4dHVyZSgpOwogIGNvbnN0IGNtID0gYnVpbGRDdXN0b21lck1vZGVsKHN0KTsKICBjb25zdCBvdWcgPSBjbS5maW5kKChtKSA9PiBtLmVudHJ5Lm5hbWUgPT09ICfmrKflhqDlmIknKTsKICBlcShvdWcuc3RhdHMsIHsgaW5xdWlyaWVzOiAxLCBvcmRlcnM6IDEsIHJlY2VpdmFibGU6IDIwLCByZWNlaXZlZDogMCwgdW5wYWlkOiAyMCB9LAogICAgJ+WuouaIt+aooeWei++8muasp+WGoOWYiSDor6Lku7cgMSDCtyDorqLljZUgMSDCtyDlupTmlLYgMjDvvIjnjrDnrpfvvIknKTsKICBlcShvdWcuaW5xdWlyaWVzLm1hcCgocSkgPT4gcS5kb2NJZCksIFsnaW5xLWEnXSwgJ+WuouaIt+aooeWei++8muWQjeS4i+ivouS7t+WNlea4heWNlScpOwogIGVxKG91Zy5pbnF1aXJpZXNbMF0uc3RhdHVzLCAn5bey6L2s6K6i5Y2VJywgJ+WuouaIt+aooeWei++8muivouS7t+WNleeKtuaAgea0vueUn++8iOacieiuouWNlSDihpIg5bey6L2s6K6i5Y2V77yJJyk7CiAgZXEob3VnLm9yZGVycy5tYXAoKG8pID0+IG8ub3JkZXJObyksIFsnT1JELTEnXSwgJ+WuouaIt+aooeWei++8muWQjeS4i+iuouWNlea4heWNlScpOwogIGNvbnN0IGlkbGUgPSBjbS5maW5kKChtKSA9PiBtLmVudHJ5Lm5hbWUgPT09ICfpl7Lnva7lrqLmiLcnKTsKICBlcShpZGxlLnN0YXRzLCB7IGlucXVpcmllczogMCwgb3JkZXJzOiAwLCByZWNlaXZhYmxlOiAwLCByZWNlaXZlZDogMCwgdW5wYWlkOiAwIH0sCiAgICAn5a6i5oi35qih5Z6L77ya6Zey572u5a6i5oi35YWoIDAg5Lmf5YiX5Ye65p2lJyk7CgogIGNvbnN0IGZtID0gYnVpbGRGYWN0b3J5TW9kZWwoc3QpOwogIGNvbnN0IGppYSA9IGZtLmZpbmQoKG0pID0+IG0ubmFtZSA9PT0gJ+eUsuWOgicpOwogIGVxKGppYS5zdGF0cy5xdW90ZXMsIDEsICflt6XljoLmqKHlnovvvJrnlLLljoLmiqXku7fljZUgMScpOwogIGVxKGppYS5zdGF0cy5vcmRlckxpbmVzLCAxLCAn5bel5Y6C5qih5Z6L77ya55Sy5Y6C6K6i5Y2V6KGMIDEnKTsKICBlcShqaWEuc3RhdHMucGF5YWJsZSwgMTAsICflt6XljoLmqKHlnovvvJrnlLLljoLlupTku5ggMTDvvIjmiJDmnKzlkKvnqI7lj6PlvoTvvIknKTsKICBlcShqaWEuc3RhdHMucGFpZCwgNSwgJ+W3peWOguaooeWei++8mueUsuWOguW3suS7mCA1Jyk7CiAgZXEoamlhLnF1b3RlRG9jcy5tYXAoKHEpID0+IHEuZG9jSWQpLCBbJ3EtYSddLCAn5bel5Y6C5qih5Z6L77ya5ZCN5LiL5oql5Lu35Y2V5riF5Y2V5bim5b2S5bGeJyk7CiAgZXEoamlhLm9yZGVycy5tYXAoKG8pID0+IG8ub3JkZXJObyksIFsnT1JELTEnXSwgJ+W3peWOguaooeWei++8muebuOWFs+iuouWNlea4heWNlScpOwp9Cgpjb25zb2xlLmxvZygnXG7msYfmgLvvvJpQQVNTICcgKyBwYXNzICsgJyAvIEZBSUwgJyArIGZhaWwpOwpwcm9jZXNzLmV4aXQoZmFpbCA/IDEgOiAwKTsK
+// 包 11 测试：导出行枚举统一、客户注册表播种/改名联动/删除规则、
+// 工厂改名全域同步、报价单 inquiryId 迁移、多询价单比价隔离。
+// 覆盖用户反馈的四件事背后的硬规则：
+//  · 示例单（无账本）与真实单（有账本）的导出行枚举必须一致——
+//    此前示例单枚举为 0 行，"勾了也导不出"；
+//  · 改名是全域的：客户改名同步询价单 + 订单 + 注册表；工厂改名
+//    同步报价单 + 定厂快照 + 订单行 + 订单付款 + 工厂名单；
+//  · 删除是拦得住的：有历史单据的一律给原因，不许删；
+//  · 旧存档（无 inquiryId、无 customers）启动迁移后补齐且幂等；
+//  · 两张询价单的报价单/定厂互不串扰（按 inquiryId 隔离）。
+import assert from 'node:assert';
+
+const { inquiryDataRows } = await import('../src/quoteExport.js');
+const { buildCompareRows } = await import('../src/compare.js');
+const { createLedger } = await import('../src/ledger.js');
+const {
+  migrateState, quotesForInquiry, renameCustomer, renameFactory,
+  customerDeleteBlock, factoryDeleteBlock, inquiryDeleteBlock,
+  seedCustomerNames, buildCustomerModel, buildFactoryModel,
+} = await import('../src/registry.js');
+
+let pass = 0, fail = 0;
+function ok(cond, label, extra) {
+  if (cond) { pass++; console.log('  PASS ' + label); }
+  else { fail++; console.log('  FAIL ' + label + (extra !== undefined ? ' → 实际: ' + JSON.stringify(extra) : '')); }
+}
+function eq(actual, expected, label) {
+  ok(JSON.stringify(actual) === JSON.stringify(expected), label, actual);
+}
+
+/* ---------- 造表小工具（规范格式 sheet） ---------- */
+function sheetOf(cellRows, rowTotal) {
+  const celldata = [];
+  cellRows.forEach((row, r) => row.forEach((v, c) => {
+    if (v !== null && v !== undefined && v !== '') celldata.push({ r, c, v: { v } });
+  }));
+  return {
+    name: 'Sheet1', row: rowTotal || cellRows.length,
+    column: Math.max(...cellRows.map((r) => r.length)), celldata, config: {},
+  };
+}
+const HEADER = ['序号', '品牌', '品牌', '车型', '产品', '图片', 'OE码'];
+
+/* ---------- 1. 导出行枚举：示例单（无账本）与真实单（有账本）一致 ---------- */
+{
+  // 与 main.jsx 的 initialData 同形：row=12、表头在第 2 行（物理 1）、数据 2 行
+  const sampleSheet = sheetOf([
+    ['欧冠嘉配件采购需求'],
+    HEADER,
+    [1, 'JETOUR', '奇瑞捷途', 'jetour x90 plus', '散热器格栅', null, 'F208401100'],
+    [2, 'JETOUR', '奇瑞捷途', 'jetour x90 plus', '前保险杠', null, 'F208403101'],
+  ], 12);
+  const noLedger = inquiryDataRows({ docId: 's', kind: 'inquiry', sheet: sampleSheet, ledger: null });
+  eq(noLedger.length, 10, '枚举：无账本示例单数出 10 行（与最终报价条的 dataRowCount 口径一致）');
+  ok(noLedger.every((x) => !!x.lineId), '枚举：无账本时每行都有兜底 lineId（不再全是 null）');
+  eq(noLedger[0].lineId, 'L3', '枚举：第一条数据行（物理行 2）lineId = L3（建账口径 L(行+1)）');
+  eq(noLedger[1].lineId, 'L4', '枚举：第二条数据行 lineId = L4');
+
+  const ledger = createLedger({ fileName: '示例数据', sheetName: 'Sheet1', sheetIndex: 0, rowCount: 12 });
+  const withLedger = inquiryDataRows({ docId: 's', kind: 'inquiry', sheet: sampleSheet, ledger });
+  eq(withLedger.map((x) => x.lineId), noLedger.map((x) => x.lineId),
+    '枚举：有账本与无账本兜底给出的 lineId 完全一致');
+  ok(withLedger.filter((x) => x.lineId).length >= 2,
+    '枚举：导出面板按 lineId 过滤后至少剩 2 行真实数据（此前为 0）');
+
+  // 真实单形状：39 行、表头物理行 1（headerRow 存档）、账本 39 行
+  const realSheet = sheetOf([['标题'], HEADER, [1, null, null, null, '散热器格栅', null, 'F208401100']], 39);
+  const realLedger = createLedger({ fileName: '客户单.xlsx', sheetName: 'Sheet1', sheetIndex: 0, rowCount: 39 });
+  const realRows = inquiryDataRows({
+    docId: 'r', kind: 'inquiry', sheet: realSheet, ledger: realLedger, headerRow: 1,
+  });
+  eq(realRows.length, 37, '枚举：真实单 37 条数据行');
+  eq(realRows[0].lineId, 'L3', '枚举：真实单第一条数据行 L3');
+}
+
+/* ---------- 2. 迁移：pkg10 形状存档 → 补 inquiryId + 播种客户 ---------- */
+{
+  const sheet = sheetOf([['老单'], HEADER, [1, null, null, null, '零件', null, 'OE123']], 3);
+  const ledger = createLedger({ fileName: '老单.xlsx', sheetName: 'Sheet1', sheetIndex: 0, rowCount: 3 });
+  const pkg10Archive = {
+    version: 2, savedAt: '2026-10-11T00:00:00.000Z',
+    factories: ['老工厂'], activeDocId: 'doc-inquiry', orderSeq: 1,
+    docs: [
+      { docId: 'doc-inquiry', kind: 'inquiry', factoryName: null, customerName: '老客户',
+        sheet, ledger, rowChoices: { L3: { factory: '老工厂', rawPrice: 100 } } },
+      { docId: 'doc-quote-1', kind: 'quote', factoryName: '老工厂', sheet, ledger },
+      // ↑ 没有 inquiryId、整个存档没有 customers —— 包 10 的形状
+    ],
+    orders: [{
+      orderNo: 'ORD2610-0001', createdAt: '2026-10-05T10:00:00.000Z',
+      customerName: '老客户', inquiryDocId: 'doc-inquiry',
+      lines: [{ lineId: 'L3', oe: 'OE123', name: '零件', factory: '老工厂',
+        qty: 2, costRaw: 100, costTaxInclusive: true, costTaxRatePct: '',
+        finalPrice: 150, shippedQty: 0 }],
+      receipts: [], factoryPays: [], shipments: [],
+    }],
+  };
+  const snapshot = JSON.stringify(pkg10Archive);
+  const { state, changed } = migrateState(pkg10Archive);
+  eq(changed, true, '迁移：pkg10 存档被迁移');
+  eq(state.docs[1].inquiryId, 'doc-inquiry', '迁移：报价单补上 inquiryId = 唯一询价单');
+  eq(state.customers, [{ name: '老客户', contact: '', note: '' }],
+    '迁移：客户注册表从单据播种（询价单/订单同名只一条）');
+  eq(state.orders, pkg10Archive.orders, '迁移：订单原样不动');
+  eq(JSON.stringify(pkg10Archive), snapshot, '迁移：不原地改入参');
+  const again = migrateState(state);
+  eq(again.changed, false, '迁移：幂等（再迁一次无变化）');
+  ok(again.state === state, '迁移：无变化时原样返回');
+
+  // 已有注册表条目（带联系人）时：保留，只补缺名
+  const withReg = {
+    ...pkg10Archive,
+    customers: [{ name: '老客户', contact: '张三', note: '老主顾' }],
+    docs: [...pkg10Archive.docs,
+      { docId: 'doc-inq-2', kind: 'inquiry', customerName: '新客户', sheet, ledger }],
+  };
+  const m2 = migrateState(withReg);
+  eq(m2.state.customers, [
+    { name: '老客户', contact: '张三', note: '老主顾' },
+    { name: '新客户', contact: '', note: '' },
+  ], '迁移：已有条目的联系人/备注保留，只补没登记的客户名');
+  eq(seedCustomerNames(pkg10Archive.docs, pkg10Archive.orders), ['老客户'],
+    '播种：询价单与订单同名合并');
+}
+
+/* ---------- 3. 客户改名：全域同步 + 冲突拦截 ---------- */
+function mgmtFixture() {
+  const sheet = sheetOf([['t'], HEADER, [1, null, null, null, '零件', null, 'OE1']], 3);
+  const ledger = createLedger({ fileName: 'f.xlsx', sheetName: 'Sheet1', sheetIndex: 0, rowCount: 3 });
+  return {
+    docs: [
+      { docId: 'inq-a', kind: 'inquiry', customerName: '欧冠嘉', sheet, ledger, rowChoices: {} },
+      { docId: 'inq-b', kind: 'inquiry', customerName: '别的客户', sheet, ledger, rowChoices: {} },
+      { docId: 'q-a', kind: 'quote', factoryName: '甲厂', inquiryId: 'inq-a', sheet, ledger },
+    ],
+    orders: [
+      { orderNo: 'ORD-1', customerName: '欧冠嘉', inquiryDocId: 'inq-a',
+        lines: [{ lineId: 'L3', factory: '甲厂', qty: 1, costRaw: 10, costTaxInclusive: true, costTaxRatePct: '', finalPrice: 20, shippedQty: 0 }],
+        receipts: [], factoryPays: [{ factory: '甲厂', amount: 5 }], shipments: [] },
+      { orderNo: 'ORD-2', customerName: '别的客户', inquiryDocId: 'inq-b',
+        lines: [], receipts: [], factoryPays: [], shipments: [] },
+    ],
+    customers: [
+      { name: '欧冠嘉', contact: '李经理', note: '' },
+      { name: '别的客户', contact: '', note: '' },
+      { name: '闲置客户', contact: '', note: '' },
+    ],
+    factories: ['甲厂', '乙厂'],
+  };
+}
+{
+  const st = mgmtFixture();
+  const res = renameCustomer(st, '欧冠嘉', '欧冠嘉汽配');
+  ok(res !== null, '客户改名：成功返回新状态');
+  eq(res.docs.find((d) => d.docId === 'inq-a').customerName, '欧冠嘉汽配', '客户改名：询价单同步');
+  eq(res.docs.find((d) => d.docId === 'inq-b').customerName, '别的客户', '客户改名：别人的询价单不动');
+  eq(res.orders.find((o) => o.orderNo === 'ORD-1').customerName, '欧冠嘉汽配', '客户改名：订单同步');
+  eq(res.orders.find((o) => o.orderNo === 'ORD-2').customerName, '别的客户', '客户改名：别人的订单不动');
+  eq(res.customers.find((c) => c.name === '欧冠嘉汽配').contact, '李经理', '客户改名：注册表条目改名且联系人保留');
+  eq(st.docs.find((d) => d.docId === 'inq-a').customerName, '欧冠嘉', '客户改名：不原地改入参');
+  eq(renameCustomer(st, '欧冠嘉', '别的客户'), null, '客户改名：新名被别的客户占用 → 拒绝');
+  eq(renameCustomer(st, '欧冠嘉', '欧冠嘉'), null, '客户改名：新旧同名 → 拒绝');
+  eq(renameCustomer(st, '欧冠嘉', '  '), null, '客户改名：空名 → 拒绝');
+}
+
+/* ---------- 4. 工厂改名：报价单/定厂/订单行/付款/名单全同步 ---------- */
+{
+  const st = mgmtFixture();
+  st.docs[0].rowChoices = { L3: { factory: '甲厂', rawPrice: 10, taxInclusive: true, taxRatePct: '', period: '' } };
+  const res = renameFactory(st, '甲厂', '甲厂新名');
+  ok(res !== null, '工厂改名：成功返回新状态');
+  eq(res.docs.find((d) => d.docId === 'q-a').factoryName, '甲厂新名', '工厂改名：报价单同步');
+  eq(res.docs.find((d) => d.docId === 'inq-a').rowChoices.L3.factory, '甲厂新名', '工厂改名：定厂快照同步');
+  eq(res.orders[0].lines[0].factory, '甲厂新名', '工厂改名：订单行同步');
+  eq(res.orders[0].factoryPays[0].factory, '甲厂新名', '工厂改名：订单付款记录同步');
+  eq(res.factories, ['甲厂新名', '乙厂'], '工厂改名：名单同步且别人不动');
+  eq(renameFactory(st, '甲厂', '乙厂'), null, '工厂改名：新名被别的工厂占用 → 拒绝');
+  eq(renameFactory(st, '甲厂', '甲厂'), null, '工厂改名：新旧同名 → 拒绝');
+}
+
+/* ---------- 5. 删除规则 ---------- */
+{
+  const st = mgmtFixture();
+  const b1 = customerDeleteBlock(st, '欧冠嘉');
+  ok(typeof b1 === 'string' && b1.includes('询价单'), '客户删除：有询价单 → 拦下且原因点名询价单', b1);
+  const onlyOrder = {
+    docs: [], orders: st.orders, customers: st.customers, factories: [],
+  };
+  const b2 = customerDeleteBlock(onlyOrder, '别的客户');
+  ok(typeof b2 === 'string' && b2.includes('订单'), '客户删除：只有订单 → 拦下且原因点名订单', b2);
+  eq(customerDeleteBlock(st, '闲置客户'), null, '客户删除：无单据 → 可删');
+
+  const f1 = factoryDeleteBlock(st, '甲厂');
+  ok(typeof f1 === 'string' && f1.includes('报价单'), '工厂删除：有报价单 → 拦下且原因点名报价单', f1);
+  const chosenOnly = {
+    docs: [{ docId: 'i', kind: 'inquiry', rowChoices: { L3: { factory: '丙厂' } } }],
+    orders: [], factories: ['丙厂'],
+  };
+  const f2 = factoryDeleteBlock(chosenOnly, '丙厂');
+  ok(typeof f2 === 'string' && f2.includes('定厂'), '工厂删除：只有定厂记录 → 拦下且原因点名定厂', f2);
+  eq(factoryDeleteBlock(st, '乙厂'), null, '工厂删除：无单据 → 可删');
+
+  const i1 = inquiryDeleteBlock(st.orders, 'inq-a');
+  ok(typeof i1 === 'string' && i1.includes('ORD-1'), '询价单删除：已转订单 → 拦下且原因点名单号', i1);
+  eq(inquiryDeleteBlock(st.orders, 'inq-x'), null, '询价单删除：没转过订单 → 可删');
+}
+
+/* ---------- 6. 多询价单隔离：报价单按 inquiryId 归属，比价只读本单的 ---------- */
+{
+  const inqSheetA = sheetOf([['A单'], HEADER,
+    [1, null, null, null, '甲零件', null, 'OE-A']], 3);
+  const inqSheetB = sheetOf([['B单'], HEADER,
+    [1, null, null, null, '乙零件', null, 'OE-B']], 3);
+  const quoteSheet = (price) => sheetOf([['回表'], [...HEADER, '价格'],
+    [1, null, null, null, 'x', null, 'OE-X', price]], 3);
+  const led = () => createLedger({ fileName: 'f', sheetName: 'Sheet1', sheetIndex: 0, rowCount: 3 });
+  const docs = [
+    { docId: 'inq-a', kind: 'inquiry', sheet: inqSheetA, ledger: led(), headerRow: 1, rowChoices: {} },
+    { docId: 'inq-b', kind: 'inquiry', sheet: inqSheetB, ledger: led(), headerRow: 1, rowChoices: {} },
+    { docId: 'q-a', kind: 'quote', factoryName: '工厂A', inquiryId: 'inq-a',
+      sheet: quoteSheet(111), ledger: led(), headerRow: 1,
+      priceMark: { col: 7, taxInclusive: true, taxRatePct: '', periodCol: null } },
+    { docId: 'q-b', kind: 'quote', factoryName: '工厂B', inquiryId: 'inq-b',
+      sheet: quoteSheet(999), ledger: led(), headerRow: 1,
+      priceMark: { col: 7, taxInclusive: true, taxRatePct: '', periodCol: null } },
+  ];
+  eq(quotesForInquiry(docs, 'inq-b').map((d) => d.docId), ['q-b'], '隔离：inq-b 只名下 q-b 一张报价单');
+  eq(quotesForInquiry(docs, 'inq-a').map((d) => d.docId), ['q-a'], '隔离：inq-a 只名下 q-a 一张报价单');
+  const modelB = buildCompareRows({
+    inquiry: docs[1], quotes: quotesForInquiry(docs, 'inq-b'),
+  });
+  eq(modelB.factories, ['工厂B'], '隔离：B 单比价只出现工厂B');
+  eq(modelB.rows.length, 1, '隔离：B 单比价 1 行');
+  eq(modelB.rows[0].cells['工厂B'].raw, 999, '隔离：B 单读到的是工厂B的价 999，不是 A 的 111');
+  eq(modelB.rows[0].oe, 'OE-B', '隔离：B 单行身份是 B 的 OE');
+  const modelA = buildCompareRows({
+    inquiry: docs[0], quotes: quotesForInquiry(docs, 'inq-a'),
+  });
+  eq(modelA.rows[0].cells['工厂A'].raw, 111, '隔离：A 单读到工厂A的价 111');
+}
+
+/* ---------- 7. 管理页读模型 ---------- */
+{
+  const st = mgmtFixture();
+  const cm = buildCustomerModel(st);
+  const oug = cm.find((m) => m.entry.name === '欧冠嘉');
+  eq(oug.stats, { inquiries: 1, orders: 1, receivable: 20, received: 0, unpaid: 20 },
+    '客户模型：欧冠嘉 询价 1 · 订单 1 · 应收 20（现算）');
+  eq(oug.inquiries.map((q) => q.docId), ['inq-a'], '客户模型：名下询价单清单');
+  eq(oug.inquiries[0].status, '已转订单', '客户模型：询价单状态派生（有订单 → 已转订单）');
+  eq(oug.orders.map((o) => o.orderNo), ['ORD-1'], '客户模型：名下订单清单');
+  const idle = cm.find((m) => m.entry.name === '闲置客户');
+  eq(idle.stats, { inquiries: 0, orders: 0, receivable: 0, received: 0, unpaid: 0 },
+    '客户模型：闲置客户全 0 也列出来');
+
+  const fm = buildFactoryModel(st);
+  const jia = fm.find((m) => m.name === '甲厂');
+  eq(jia.stats.quotes, 1, '工厂模型：甲厂报价单 1');
+  eq(jia.stats.orderLines, 1, '工厂模型：甲厂订单行 1');
+  eq(jia.stats.payable, 10, '工厂模型：甲厂应付 10（成本含税口径）');
+  eq(jia.stats.paid, 5, '工厂模型：甲厂已付 5');
+  eq(jia.quoteDocs.map((q) => q.docId), ['q-a'], '工厂模型：名下报价单清单带归属');
+  eq(jia.orders.map((o) => o.orderNo), ['ORD-1'], '工厂模型：相关订单清单');
+}
+
+console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);
+process.exit(fail ? 1 : 0);

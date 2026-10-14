@@ -1,1 +1,281 @@
-aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JzsKCi8vIOavlOS7t+WumuWOguinhuWbvu+8iFNQRUMg56ys5Zub6IqC56ysIDYg6aG577yJ77ya6K+i5Lu35Y2V55qE5pWw5o2u6KGM6YCQ6KGM6ZO65byA77yMCi8vIOavj+WutuW3peWOguS4gOWIl++8jOagvOWtkOaYr+aMieivpeWutuagh+S7t+WIl+WPo+W+hOaNoueul+WQjueahOWQq+eojuS7t++8iOW9kuS4gOS7t++8ie+8jAovLyDkuIvpnaLlsI/lrZfmmK/lpIfotKflkajmnJ/jgILmr4/ooYzmnIDkvY7nmoTpgqPlrrblj6rmjILkuIDkuKrjgIzmnIDkvY7jgI3mj5DnpLrigJTigJQKLy8g5o+Q56S66ICM5bey77yM5rC46L+c5LiN5pu/55So5oi36YCJ77yI5bqV57q/IDXvvInvvJvngrnmoLzlrZDmiY3nrpflrprljoLvvIzlho3ngrnkuIDmrKEKLy8g5bey5a6a55qE5qC85a2Q5Y+W5raI44CC44CM5pW05Y2V6YO95a6aIFjjgI3jgIzmjInmnIDkvY7ku7fpooTpgInjgI3mmK/nlKjmiLfmmI7noa7ngrnlh7sKLy8g55qE5om56YeP5Yqo5L2c77yM54K55a6M5LuN5Y+v6YCQ6KGM5pS544CCCi8vCi8vIOWMhSAxMyDlvJXlr7zvvJrmsqHmiqXku7fljZUgLyDmsqHmoIfku7fliJfml7bpobXpnaLpobbpg6jnu5nlh7rmmI7noa7or7TmmI4gKyDkuIDplK4KLy8g55u06L6+5oyJ6ZKu77yIZ3VpZGFuY2Ug55Sx5Li756iL5bqP5oyJIGd1aWRhbmNlLmpzIOaOqOWvvOS8oOWFpe+8ie+8jOS4jeWGjeiuqQovLyDnlKjmiLfpnaLlr7nkuIDlvKAi5rKh5pyJ5bel5Y6C5YiX44CB5rKh5Lu35qC8IueahOepuuihqOeMnOWTqumHjOWdj+S6huOAggovLwovLyDljIUgMTQg5LiL5LiA5q2l5p2h77ya5a6a5a6M5Y6C5LmL5ZCO55qE6Lev5Lmf6KaB6aKG4oCU4oCUbmV4dFN0ZXAg55Sx5Li756iL5bqP5oyJCi8vIGd1aWRhbmNlLmpzIOeahCBjb21wYXJlTmV4dFN0ZXBPZiDmjqjlr7zkvKDlhaXvvJrmsqHlrprljoLml7bkuIDooYzmk43kvZwKLy8g5o+Q56S677yb5a6a5LqG5Y6C5oyJIuacgOe7iOaKpeS7t+eUn+aIkOS6huayoSLnu5nlh7rkuLvmjInpkq7vvIjnlJ/miJDmnIDnu4jmiqXku7cgLwovLyDljrvovazorqLljZUgKyDljrvlr7nlrqLlr7zlh7rvvInvvJvov5jmnInooYzkuIDlrrbpg73msqHmiqXku7fml7bmjILkuIDlj6Xpg6jliIbopobnm5YKLy8g6K+05piO44CC5byV5a+85Z2X77yIbm8tcXVvdGVzL3VubWFya2Vk77yJ5Zyo5Zy65pe2IG5leHRTdGVwIOS4uiBudWxs77yM5LiN5Y+g5Yqg44CCCi8vCi8vIOWMhSAxN++8muOAjOeUn+aIkOacgOe7iOaKpeS7t+OAjeaUueS4uuWOn+WcsOeUn+aIkO+8iG9uR2VuZXJhdGVGaW5hbHPvvInigJTigJTkuI3lho0KLy8g5oqK5Lq66YCB5Zue5bel5L2c5Yy644CC5p2h5paH6K6y5riF5a+55a6i5Lu35YaZ5Zue6K+i5Lu35Y2V77yI5a+857uZ5a6i5oi355So77yJ77yb55Sf5oiQCi8vIOaIkOWKn+WQjuadoeaMieWtmOaho+S6i+WunuiHquWKqOe/u+WIsCBjb252ZXJ0IOaAgeOAguWOu+i9rOiuouWNlS/ljrvlr7nlrqLlr7zlh7oKLy8g5LuN5piv6JC95L2N5Yiw5bel5L2c5Yy66Z2i5p2/77yI6Z2i5p2/5pys5p2l5bCx6ZW/5Zyo6K+i5Lu35Y2V5LiK77yJ44CCCmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIENvbXBhcmVWaWV3KHsKICBtb2RlbCwgbWFya3MsIGNob2ljZXMsIG9uQ2hvb3NlLCBvbkJ1bGtBbGwsIG9uQnVsa0xvd2VzdCwKICBndWlkYW5jZSwgb25Hb1NlbmRGYWN0b3J5LCBvbkdvVXBsb2FkUmV0dXJuLCBvbkdvTWFya1F1b3RlLAogIG5leHRTdGVwLCBvbkdlbmVyYXRlRmluYWxzLCBvbkdvQ29udmVydCwgb25Hb0V4cG9ydCwKfSkgewogIGNvbnN0IHsgZmFjdG9yaWVzLCByb3dzIH0gPSBtb2RlbDsKICBjb25zdCBjaG9zZW5Db3VudCA9IHJvd3MuZmlsdGVyKChyKSA9PiBjaG9pY2VzW3IubGluZUlkXSkubGVuZ3RoOwoKICBjb25zdCB0aCA9IHsKICAgIGJvcmRlcjogJzFweCBzb2xpZCAjZGJlMmVjJywgYmFja2dyb3VuZDogJyNlOWVmZjgnLCBwYWRkaW5nOiAnOHB4IDEycHgnLAogICAgdGV4dEFsaWduOiAnbGVmdCcsIGZvbnRXZWlnaHQ6IDYwMCwgd2hpdGVTcGFjZTogJ25vd3JhcCcsIGNvbG9yOiAnIzMzNDQ1YycsCiAgfTsKICBjb25zdCB0ZCA9IHsgYm9yZGVyOiAnMXB4IHNvbGlkICNlMmU4ZjEnLCBwYWRkaW5nOiAnOHB4IDEycHgnLCB2ZXJ0aWNhbEFsaWduOiAndG9wJyB9OwogIGNvbnN0IGd1aWRlQnRuID0gewogICAgYm9yZGVyOiAnMXB4IHNvbGlkICMyZjZiZmYnLCBiYWNrZ3JvdW5kOiAnIzJmNmJmZicsIGNvbG9yOiAnI2ZmZicsCiAgICBib3JkZXJSYWRpdXM6IDgsIHBhZGRpbmc6ICc2cHggMTZweCcsIGN1cnNvcjogJ3BvaW50ZXInLAogIH07CiAgY29uc3QgZ3VpZGVCdG5HaG9zdCA9IHsgLi4uZ3VpZGVCdG4sIGJhY2tncm91bmQ6ICcjZmZmJywgY29sb3I6ICcjMmY2YmZmJyB9OwogIGNvbnN0IGd1aWRlQm94ID0gewogICAgYm9yZGVyOiAnMXB4IHNvbGlkICNlZWQ5YWMnLCBiYWNrZ3JvdW5kOiAnI2ZkZjNlMCcsIGJvcmRlclJhZGl1czogMTIsCiAgICBwYWRkaW5nOiAnMTJweCAxNnB4JywgbWFyZ2luQm90dG9tOiAxMiwKICB9OwogIGNvbnN0IG5leHRCb3ggPSB7CiAgICBib3JkZXI6ICcxcHggc29saWQgI2JmZTNjZCcsIGJhY2tncm91bmQ6ICcjZTVmNWVjJywgYm9yZGVyUmFkaXVzOiAxMiwKICAgIHBhZGRpbmc6ICcxMnB4IDE2cHgnLCBtYXJnaW5Cb3R0b206IDEyLAogIH07CiAgY29uc3QgbmV4dEJ0biA9IHsKICAgIGJvcmRlcjogJzFweCBzb2xpZCAjMWU5ZTU3JywgYmFja2dyb3VuZDogJyMxZTllNTcnLCBjb2xvcjogJyNmZmYnLAogICAgYm9yZGVyUmFkaXVzOiA4LCBwYWRkaW5nOiAnNnB4IDE2cHgnLCBjdXJzb3I6ICdwb2ludGVyJywKICB9OwogIGNvbnN0IG5leHRCdG5HaG9zdCA9IHsgLi4ubmV4dEJ0biwgYmFja2dyb3VuZDogJyNmZmYnLCBjb2xvcjogJyMxZTllNTcnIH07CgogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0iY29tcGFyZS12aWV3IiBzdHlsZT17ewogICAgICBmbGV4OiAxLCBvdmVyZmxvdzogJ2hpZGRlbicsIGRpc3BsYXk6ICdmbGV4JywgZmxleERpcmVjdGlvbjogJ2NvbHVtbicsCiAgICAgIGZvbnRGYW1pbHk6ICdzYW5zLXNlcmlmJywgZm9udFNpemU6IDE0LAogICAgICBtYXJnaW46ICcxNHB4IDE2cHggMTZweCcsIHBhZGRpbmc6ICcxNnB4IDE4cHgnLCBiYWNrZ3JvdW5kOiAnI2ZmZicsCiAgICAgIGJvcmRlcjogJzFweCBzb2xpZCAjZGJlMmVjJywgYm9yZGVyUmFkaXVzOiAxNCwKICAgICAgYm94U2hhZG93OiAnMCAycHggNnB4IHJnYmEoMjMsMzQsNjIsMC4wNSksIDAgMTBweCAyNHB4IHJnYmEoMjMsMzQsNjIsMC4wNiknLAogICAgfX0+CiAgICAgIHtndWlkYW5jZSAmJiBndWlkYW5jZS5zdGF0ZSA9PT0gJ25vLXF1b3RlcycgJiYgKAogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjbXAtZ3VpZGUgY21wLWd1aWRlLW5vLXF1b3RlcyIgc3R5bGU9e2d1aWRlQm94fT4KICAgICAgICAgIDxkaXYgc3R5bGU9e3sgZm9udFNpemU6IDE0IH19PjxiPui/mOayoeacieW3peWOguaKpeS7t+WNle+8jOaJgOS7peayoeS4nOilv+WPr+avlOOAgjwvYj48L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjbXAtZ3VpZGUtc3RlcHMiIHN0eWxlPXt7IGNvbG9yOiAnIzU1NScsIG1hcmdpbjogJzZweCAwIDhweCcgfX0+CiAgICAgICAgICAgIOa1geeoi++8muKRoCDlj5Hnu5nlt6XljoLvvIjmiJbkuIrkvKDlt6XljoLlm57ooajvvIkg4oaSIOKRoSDlnKjmiqXku7fljZXkuIrmoIfku7fliJcg4oaSIOKRoiDlm57mnaXov5nph4zngrnmoLzlrZDlrprljoIKICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGdhcDogOCwgZmxleFdyYXA6ICd3cmFwJyB9fT4KICAgICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImNtcC1ndWlkZS1zZW5kIiBvbkNsaWNrPXtvbkdvU2VuZEZhY3Rvcnl9IHN0eWxlPXtndWlkZUJ0bn0+CiAgICAgICAgICAgICAg5Y+R57uZ5bel5Y6CCiAgICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0iY21wLWd1aWRlLXVwbG9hZCIgb25DbGljaz17b25Hb1VwbG9hZFJldHVybn0gc3R5bGU9e2d1aWRlQnRuR2hvc3R9PgogICAgICAgICAgICAgIOS4iuS8oOW3peWOguWbnuihqAogICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICApfQogICAgICB7Z3VpZGFuY2UgJiYgZ3VpZGFuY2Uuc3RhdGUgPT09ICd1bm1hcmtlZCcgJiYgKAogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjbXAtZ3VpZGUgY21wLWd1aWRlLXVubWFya2VkIiBzdHlsZT17Z3VpZGVCb3h9PgogICAgICAgICAgPGRpdiBzdHlsZT17eyBmb250U2l6ZTogMTQgfX0+CiAgICAgICAgICAgIDxiPuW3suaciSB7Z3VpZGFuY2UucXVvdGVDb3VudH0g5byg5oql5Lu35Y2V77yM6L+Y5rKh5qCH5Lu35YiX77yM5q+U5Lu36K+75LiN5Yiw5Lu35qC844CCPC9iPgogICAgICAgICAgPC9kaXY+CiAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGNvbG9yOiAnIzU1NScsIG1hcmdpbjogJzZweCAwIDhweCcgfX0+CiAgICAgICAgICAgIOagh+S7t+WIl+WwseaYr+WRiuivieezu+e7n+OAjOi/meWutueahOS7t+agvOWcqOaKpeS7t+WNleeahOWTquS4gOWIl+OAgeWQq+S4jeWQq+eojuOAjeKAlOKAlOagh+WlveS5i+WQju+8jOi/memHjOWwseiDveavlOS7t+WumuWOguOAggogICAgICAgICAgPC9kaXY+CiAgICAgICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgZ2FwOiA4LCBmbGV4V3JhcDogJ3dyYXAnIH19PgogICAgICAgICAgICB7Z3VpZGFuY2UudW5tYXJrZWQubWFwKCh1KSA9PiAoCiAgICAgICAgICAgICAgPGJ1dHRvbgogICAgICAgICAgICAgICAga2V5PXt1LmRvY0lkfQogICAgICAgICAgICAgICAgY2xhc3NOYW1lPSJjbXAtZ3VpZGUtbWFyayIKICAgICAgICAgICAgICAgIGRhdGEtZmFjdG9yeT17dS5mYWN0b3J5TmFtZX0KICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uR29NYXJrUXVvdGUodS5kb2NJZCl9CiAgICAgICAgICAgICAgICBzdHlsZT17Z3VpZGVCdG59CiAgICAgICAgICAgICAgPuWOu+e7meOAjnt1LmZhY3RvcnlOYW1lfeOAj+agh+S7tzwvYnV0dG9uPgogICAgICAgICAgICApKX0KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICApfQogICAgICB7Z3VpZGFuY2UgJiYgZ3VpZGFuY2Uuc3RhdGUgPT09ICdwYXJ0aWFsJyAmJiAoCiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNtcC1ndWlkZSBjbXAtZ3VpZGUtcGFydGlhbCIgc3R5bGU9e3sKICAgICAgICAgIC4uLmd1aWRlQm94LCBwYWRkaW5nOiAnNnB4IDEycHgnLCBkaXNwbGF5OiAnZmxleCcsIGdhcDogOCwKICAgICAgICAgIGFsaWduSXRlbXM6ICdjZW50ZXInLCBmbGV4V3JhcDogJ3dyYXAnLAogICAgICAgIH19PgogICAgICAgICAgPHNwYW4+CiAgICAgICAgICAgIHtndWlkYW5jZS51bm1hcmtlZC5tYXAoKHUpID0+ICfjgI4nICsgdS5mYWN0b3J5TmFtZSArICfjgI8nKS5qb2luKCfjgIEnKX0KICAgICAgICAgICAg6L+Y5rKh5qCH5Lu35YiX77yM6L+ZIHtndWlkYW5jZS51bm1hcmtlZC5sZW5ndGh9IOWutueahOS7t+agvOaaguaXtuavlOS4jeS6hu+8mgogICAgICAgICAgPC9zcGFuPgogICAgICAgICAge2d1aWRhbmNlLnVubWFya2VkLm1hcCgodSkgPT4gKAogICAgICAgICAgICA8YnV0dG9uCiAgICAgICAgICAgICAga2V5PXt1LmRvY0lkfQogICAgICAgICAgICAgIGNsYXNzTmFtZT0iY21wLWd1aWRlLW1hcmsiCiAgICAgICAgICAgICAgZGF0YS1mYWN0b3J5PXt1LmZhY3RvcnlOYW1lfQogICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uR29NYXJrUXVvdGUodS5kb2NJZCl9CiAgICAgICAgICAgICAgc3R5bGU9e3sgLi4uZ3VpZGVCdG5HaG9zdCwgcGFkZGluZzogJzRweCAxMnB4JyB9fQogICAgICAgICAgICA+5Y6757uZ44COe3UuZmFjdG9yeU5hbWV944CP5qCH5Lu3PC9idXR0b24+CiAgICAgICAgICApKX0KICAgICAgICA8L2Rpdj4KICAgICAgKX0KICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGFsaWduSXRlbXM6ICdjZW50ZXInLCBnYXA6IDgsIGZsZXhXcmFwOiAnd3JhcCcsIG1hcmdpbkJvdHRvbTogMTAgfX0+CiAgICAgICAgPGIgY2xhc3NOYW1lPSJzZWMtdGl0bGUiIHN0eWxlPXt7IGZvbnRTaXplOiAxNyB9fT7mr5Tku7flrprljoI8L2I+CiAgICAgICAge2ZhY3Rvcmllcy5tYXAoKGYpID0+ICgKICAgICAgICAgIDxidXR0b24KICAgICAgICAgICAga2V5PXtmfQogICAgICAgICAgICBjbGFzc05hbWU9ImNtcC1idWxrLWFsbCIKICAgICAgICAgICAgZGF0YS1mYWN0b3J5PXtmfQogICAgICAgICAgICBkaXNhYmxlZD17IW1hcmtzW2ZdfQogICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvbkJ1bGtBbGwoZil9CiAgICAgICAgICAgIHRpdGxlPXttYXJrc1tmXSA/ICcnIDogJ+i/meWutui/mOayoeagh+iusOaKpeS7t+WIl++8jOWumuS4jeS6hid9CiAgICAgICAgICAgIHN0eWxlPXt7CiAgICAgICAgICAgICAgYm9yZGVyOiAnMXB4IHNvbGlkICMxZTllNTcnLCBjb2xvcjogbWFya3NbZl0gPyAnIzFlOWU1NycgOiAnI2FhYScsCiAgICAgICAgICAgICAgYmFja2dyb3VuZDogJyNmZmYnLCBib3JkZXJSYWRpdXM6IDgsIHBhZGRpbmc6ICc1cHggMTJweCcsCiAgICAgICAgICAgICAgY3Vyc29yOiBtYXJrc1tmXSA/ICdwb2ludGVyJyA6ICdub3QtYWxsb3dlZCcsCiAgICAgICAgICAgIH19CiAgICAgICAgICA+5pW05Y2V6YO95a6aIHtmfTwvYnV0dG9uPgogICAgICAgICkpfQogICAgICAgIDxidXR0b24KICAgICAgICAgIGNsYXNzTmFtZT0iY21wLWJ1bGstbG93ZXN0IgogICAgICAgICAgb25DbGljaz17b25CdWxrTG93ZXN0fQogICAgICAgICAgc3R5bGU9e3sKICAgICAgICAgICAgYm9yZGVyOiAnMXB4IHNvbGlkICMyZjZiZmYnLCBjb2xvcjogJyMyZjZiZmYnLCBiYWNrZ3JvdW5kOiAnI2ZmZicsCiAgICAgICAgICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzVweCAxMnB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgICAgICAgICB9fQogICAgICAgID7mjInmnIDkvY7ku7fpooTpgIk8L2J1dHRvbj4KICAgICAgICA8c3BhbiBjbGFzc05hbWU9ImNtcC1zdW1tYXJ5IiBzdHlsZT17eyBjb2xvcjogJyM0NDQnIH19PgogICAgICAgICAg5bey5a6a5Y6CIHtjaG9zZW5Db3VudH0gLyDlhbEge3Jvd3MubGVuZ3RofSDooYwKICAgICAgICA8L3NwYW4+CiAgICAgICAgPHNwYW4gc3R5bGU9e3sgY29sb3I6ICcjOTk5JyB9fT4KICAgICAgICAgIOS7t+agvOW3suaMieWQhOWutuWPo+W+hOe7n+S4gOaNoueul+aIkOWQq+eojuS7t+WGjeavlO+8m+eCueagvOWtkOWumuWOgu+8jOWGjeeCueS4gOasoeWPlua2iAogICAgICAgIDwvc3Bhbj4KICAgICAgPC9kaXY+CiAgICAgIHtuZXh0U3RlcCAmJiBuZXh0U3RlcC5raW5kID09PSAnaGludCcgJiYgKAogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjbXAtbmV4dC1oaW50IiBzdHlsZT17eyBjb2xvcjogJyM2NjYnLCBtYXJnaW5Cb3R0b206IDggfX0+CiAgICAgICAgICDngrnku7vmhI/ku7fmoLzmoLzlrZDlrprljoLvvJvmlbTljZXpg73nu5nkuIDlrrblsLHngrnkuIrmlrnjgI7mlbTljZXpg73lrpogWOOAj+OAggogICAgICAgIDwvZGl2PgogICAgICApfQogICAgICB7bmV4dFN0ZXAgJiYgbmV4dFN0ZXAua2luZCAhPT0gJ2hpbnQnICYmICgKICAgICAgICA8ZGl2IGNsYXNzTmFtZT17J2NtcC1uZXh0IGNtcC1uZXh0LScgKyBuZXh0U3RlcC5raW5kfSBzdHlsZT17bmV4dEJveH0+CiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY21wLW5leHQtdGV4dCIgc3R5bGU9e3sgZm9udFNpemU6IDE0IH19PgogICAgICAgICAgICB7bmV4dFN0ZXAua2luZCA9PT0gJ2dlbmVyYXRlJyAmJiAoCiAgICAgICAgICAgICAgPD7lt7LlrprljoIgPGI+e25leHRTdGVwLmNob3NlbkNvdW50fTwvYj4g6KGM44CC54K544COPGI+55Sf5oiQ5pyA57uI5oql5Lu3PC9iPuOAj+aKiuWvueWuouS7t+WGmeWbnuivouS7t+WNle+8iOWvvOe7meWuouaIt+eUqO+8ie+8jOeUn+aIkOWujOWwseiDvei9rOiuouWNleaIluWvueWuouWvvOWHuuOAgjwvPgogICAgICAgICAgICApfQogICAgICAgICAgICB7bmV4dFN0ZXAua2luZCA9PT0gJ2NvbnZlcnQnICYmICgKICAgICAgICAgICAgICA8PuacgOe7iOaKpeS7t+W3sue7j+eUn+aIkO+8jOW3suWumuWOgiA8Yj57bmV4dFN0ZXAuY2hvc2VuQ291bnR9PC9iPiDooYzjgILkuIvkuIDmraXvvJo8Yj7ovazorqLljZU8L2I+77yb5Lmf5Y+v5Lul5YWI5a+55a6i5a+85Ye677yM5Y+R57uZ5a6i5oi356Gu6K6k44CCPC8+CiAgICAgICAgICAgICl9CiAgICAgICAgICAgIHtuZXh0U3RlcC5raW5kID09PSAnY29udmVydC1hbGwnICYmICgKICAgICAgICAgICAgICA8PuacieaKpeS7t+eahOihjOmDveWumuWlveWOguS6hu+8jOacgOe7iOaKpeS7t+S5n+eUn+aIkOWlveS6huOAguS4i+S4gOatpe+8mjxiPui9rOiuouWNlTwvYj7jgII8Lz4KICAgICAgICAgICAgKX0KICAgICAgICAgIDwvZGl2PgogICAgICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGdhcDogOCwgZmxleFdyYXA6ICd3cmFwJywgbWFyZ2luVG9wOiA4IH19PgogICAgICAgICAgICB7bmV4dFN0ZXAua2luZCA9PT0gJ2dlbmVyYXRlJyAmJiAoCiAgICAgICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImNtcC1uZXh0LWdvLWdlbmVyYXRlIiBvbkNsaWNrPXtvbkdlbmVyYXRlRmluYWxzfSBzdHlsZT17bmV4dEJ0bn0+CiAgICAgICAgICAgICAgICDnlJ/miJDmnIDnu4jmiqXku7cKICAgICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgICAgKX0KICAgICAgICAgICAge25leHRTdGVwLmtpbmQgIT09ICdnZW5lcmF0ZScgJiYgKAogICAgICAgICAgICAgIDw+CiAgICAgICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0iY21wLW5leHQtZ28tY29udmVydCIgb25DbGljaz17b25Hb0NvbnZlcnR9IHN0eWxlPXtuZXh0QnRufT4KICAgICAgICAgICAgICAgICAg5Y676L2s6K6i5Y2VCiAgICAgICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJjbXAtbmV4dC1nby1leHBvcnQiIG9uQ2xpY2s9e29uR29FeHBvcnR9IHN0eWxlPXtuZXh0QnRuR2hvc3R9PgogICAgICAgICAgICAgICAgICDljrvlr7nlrqLlr7zlh7oKICAgICAgICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgICAgICAgIDwvPgogICAgICAgICAgICApfQogICAgICAgICAgPC9kaXY+CiAgICAgICAgICB7bmV4dFN0ZXAudW5xdW90ZWRDb3VudCA+IDAgJiYgKAogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iY21wLW5leHQtdW5xdW90ZWQiIHN0eWxlPXt7IGNvbG9yOiAnIzY2NicsIG1hcmdpblRvcDogOCB9fT4KICAgICAgICAgICAgICDlhbbkvZkge25leHRTdGVwLnVucXVvdGVkQ291bnR9IOihjOi/mOayoeacieS7u+S9leW3peWOguaKpeS7t++8jOWFiOeVmeepuuOAgeS4jeW9seWTjeW3suWumuWOgueahOihjOW+gOS4i+i1sO+8m+WQjumdouacieaKpeS7t+WGjeWbnuadpeihpeWumuOAggogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICl9CiAgICAgICAgPC9kaXY+CiAgICAgICl9CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJjbXAtc2Nyb2xsIiBzdHlsZT17eyBmbGV4OiAxLCBvdmVyZmxvdzogJ2F1dG8nLCBtaW5IZWlnaHQ6IDAgfX0+CiAgICAgIDx0YWJsZSBjbGFzc05hbWU9ImNvbXBhcmUtdGFibGUiIHN0eWxlPXt7IGJvcmRlckNvbGxhcHNlOiAnY29sbGFwc2UnLCBtaW5XaWR0aDogNzIwLCB3aWR0aDogJzEwMCUnIH19PgogICAgICAgIDx0aGVhZD4KICAgICAgICAgIDx0cj4KICAgICAgICAgICAgPHRoIHN0eWxlPXt0aH0+5bqP5Y+3PC90aD4KICAgICAgICAgICAgPHRoIHN0eWxlPXt0aH0+T0XnoIE8L3RoPgogICAgICAgICAgICA8dGggc3R5bGU9e3RofT7kuqflk4E8L3RoPgogICAgICAgICAgICB7ZmFjdG9yaWVzLm1hcCgoZikgPT4gKAogICAgICAgICAgICAgIDx0aCBrZXk9e2Z9IHN0eWxlPXt0aH0+CiAgICAgICAgICAgICAgICB7Zn0KICAgICAgICAgICAgICAgIHshbWFya3NbZl0gJiYgKAogICAgICAgICAgICAgICAgICA8c3BhbiBzdHlsZT17eyBjb2xvcjogJyNkOTJkMjAnLCBmb250V2VpZ2h0OiA0MDAgfX0+77yI5pyq5qCH6K6w5oql5Lu35YiX77yJPC9zcGFuPgogICAgICAgICAgICAgICAgKX0KICAgICAgICAgICAgICA8L3RoPgogICAgICAgICAgICApKX0KICAgICAgICAgIDwvdHI+CiAgICAgICAgPC90aGVhZD4KICAgICAgICA8dGJvZHk+CiAgICAgICAgICB7cm93cy5tYXAoKHJvdykgPT4gewogICAgICAgICAgICBjb25zdCBjaG9zZW4gPSBjaG9pY2VzW3Jvdy5saW5lSWRdOwogICAgICAgICAgICByZXR1cm4gKAogICAgICAgICAgICAgIDx0ciBrZXk9e3Jvdy5saW5lSWR9IGNsYXNzTmFtZT0iY21wLXJvdyIgZGF0YS1saW5lLWlkPXtyb3cubGluZUlkfT4KICAgICAgICAgICAgICAgIDx0ZCBzdHlsZT17dGR9Pntyb3cuc2VxfTwvdGQ+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkfT57cm93Lm9lfTwvdGQ+CiAgICAgICAgICAgICAgICA8dGQgc3R5bGU9e3RkfT57cm93LnByb2R1Y3R9PC90ZD4KICAgICAgICAgICAgICAgIHtmYWN0b3JpZXMubWFwKChmKSA9PiB7CiAgICAgICAgICAgICAgICAgIGNvbnN0IGNlbGwgPSByb3cuY2VsbHNbZl07CiAgICAgICAgICAgICAgICAgIGNvbnN0IGlzQ2hvc2VuID0gISEoY2hvc2VuICYmIGNob3Nlbi5mYWN0b3J5ID09PSBmKTsKICAgICAgICAgICAgICAgICAgY29uc3QgaXNMb3dlc3QgPSBjZWxsLnByaWNlZCAmJiByb3cubG93ZXN0RmFjdG9yaWVzLmluY2x1ZGVzKGYpOwogICAgICAgICAgICAgICAgICByZXR1cm4gKAogICAgICAgICAgICAgICAgICAgIDx0ZAogICAgICAgICAgICAgICAgICAgICAga2V5PXtmfQogICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPSJjbXAtY2VsbCIKICAgICAgICAgICAgICAgICAgICAgIGRhdGEtZmFjdG9yeT17Zn0KICAgICAgICAgICAgICAgICAgICAgIGRhdGEtcHJpY2VkPXtjZWxsLnByaWNlZCA/ICcxJyA6ICcwJ30KICAgICAgICAgICAgICAgICAgICAgIGRhdGEtY2hvc2VuPXtpc0Nob3NlbiA/ICcxJyA6ICcwJ30KICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uQ2hvb3NlKHJvdywgY2VsbCl9CiAgICAgICAgICAgICAgICAgICAgICB0aXRsZT17Y2VsbC5wcmljZWQgPyAn54K56L+Z6YeM5a6a6L+Z5a6277yI5YaN54K55LiA5qyh5Y+W5raI77yJJyA6ICfov5nlrrbov5nkuIDooYzmsqHmiqXku7cnfQogICAgICAgICAgICAgICAgICAgICAgc3R5bGU9e3sKICAgICAgICAgICAgICAgICAgICAgICAgLi4udGQsCiAgICAgICAgICAgICAgICAgICAgICAgIGN1cnNvcjogY2VsbC5wcmljZWQgPyAncG9pbnRlcicgOiAnZGVmYXVsdCcsCiAgICAgICAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQ6IGlzQ2hvc2VuID8gJyNkY2YyZTMnIDogdW5kZWZpbmVkLAogICAgICAgICAgICAgICAgICAgICAgICBib3hTaGFkb3c6IGlzQ2hvc2VuID8gJ2luc2V0IDAgMCAwIDJweCAjMWU5ZTU3JyA6IHVuZGVmaW5lZCwKICAgICAgICAgICAgICAgICAgICAgIH19CiAgICAgICAgICAgICAgICAgICAgPgogICAgICAgICAgICAgICAgICAgICAge2NlbGwucHJpY2VkID8gKAogICAgICAgICAgICAgICAgICAgICAgICA8PgogICAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0iY21wLXByaWNlIiBzdHlsZT17eyBmb250V2VpZ2h0OiBpc0Nob3NlbiA/IDcwMCA6IDQwMCB9fT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIHtjZWxsLm5vcm1hbGl6ZWQudG9GaXhlZCgyKX0KICAgICAgICAgICAgICAgICAgICAgICAgICA8L3NwYW4+CiAgICAgICAgICAgICAgICAgICAgICAgICAge2lzTG93ZXN0ICYmICgKICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0iY21wLWxvd2VzdCIgc3R5bGU9e3sKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luTGVmdDogNiwgYmFja2dyb3VuZDogJyNmZGVlZDAnLCBjb2xvcjogJyM5NjY2MGEnLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBib3JkZXJSYWRpdXM6IDk5OSwgcGFkZGluZzogJzFweCA4cHgnLCBmb250U2l6ZTogMTEsIGZvbnRXZWlnaHQ6IDYwMCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH19PuacgOS9jjwvc3Bhbj4KICAgICAgICAgICAgICAgICAgICAgICAgICApfQogICAgICAgICAgICAgICAgICAgICAgICAgIHtjZWxsLnBlcmlvZCAhPT0gJycgJiYgKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImNtcC1wZXJpb2QiIHN0eWxlPXt7IGNvbG9yOiAnIzg4OCcsIGZvbnRTaXplOiAxMiB9fT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg5ZGo5pyf77yae2NlbGwucGVyaW9kfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICAgICAgICAgICAgKX0KICAgICAgICAgICAgICAgICAgICAgICAgICB7IWNlbGwudGF4SW5jbHVzaXZlICYmICgKICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgc3R5bGU9e3sgY29sb3I6ICcjYWFhJywgZm9udFNpemU6IDExIH19PgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICDljp/ku7fvvIjkuI3lkKvnqI7vvIl7Y2VsbC5yYXd9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICAgICAgICAgICApfQogICAgICAgICAgICAgICAgICAgICAgICA8Lz4KICAgICAgICAgICAgICAgICAgICAgICkgOiAoCiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIHN0eWxlPXt7IGNvbG9yOiAnI2JiYicgfX0+4oCUPC9zcGFuPgogICAgICAgICAgICAgICAgICAgICAgKX0KICAgICAgICAgICAgICAgICAgICA8L3RkPgogICAgICAgICAgICAgICAgICApOwogICAgICAgICAgICAgICAgfSl9CiAgICAgICAgICAgICAgPC90cj4KICAgICAgICAgICAgKTsKICAgICAgICAgIH0pfQogICAgICAgIDwvdGJvZHk+CiAgICAgIDwvdGFibGU+CiAgICAgIHtyb3dzLmxlbmd0aCA9PT0gMCAmJiAoCiAgICAgICAgPGRpdiBzdHlsZT17eyBjb2xvcjogJyM4ODgnLCBwYWRkaW5nOiAxMiB9fT4KICAgICAgICAgIOivouS7t+WNlei/mOayoeacieaVsOaNruihjOKAlOKAlOWFiOWvvOWFpeWuouaIt+WOn+ihqO+8jOWGjeS4iuS8oOWQhOWutuWbnuihqOOAgeagh+WlveS7t+WIl++8jOi/memHjOWwseiDveavlOS7t+WumuWOguOAggogICAgICAgIDwvZGl2PgogICAgICApfQogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICk7Cn0K
+import React from 'react';
+
+// 比价定厂视图（SPEC 第四节第 6 项）：询价单的数据行逐行铺开，
+// 每家工厂一列，格子是按该家标价列口径换算后的含税价（归一价），
+// 下面小字是备货周期。每行最低的那家只挂一个「最低」提示——
+// 提示而已，永远不替用户选（底线 5）；点格子才算定厂，再点一次
+// 已定的格子取消。「整单都定 X」「按最低价预选」是用户明确点击
+// 的批量动作，点完仍可逐行改。
+//
+// 包 13 引导：没报价单 / 没标价列时页面顶部给出明确说明 + 一键
+// 直达按钮（guidance 由主程序按 guidance.js 推导传入），不再让
+// 用户面对一张"没有工厂列、没价格"的空表猜哪里坏了。
+//
+// 包 14 下一步条：定完厂之后的路也要领——nextStep 由主程序按
+// guidance.js 的 compareNextStepOf 推导传入：没定厂时一行操作
+// 提示；定了厂按"最终报价生成了没"给出主按钮（生成最终报价 /
+// 去转订单 + 去对客导出）；还有行一家都没报价时挂一句部分覆盖
+// 说明。引导块（no-quotes/unmarked）在场时 nextStep 为 null，不叠加。
+//
+// 包 17：「生成最终报价」改为原地生成（onGenerateFinals）——不再
+// 把人送回工作区。条文讲清对客价写回询价单（导给客户用）；生成
+// 成功后条按存档事实自动翻到 convert 态。去转订单/去对客导出
+// 仍是落位到工作区面板（面板本来就长在询价单上）。
+export default function CompareView({
+  model, marks, choices, onChoose, onBulkAll, onBulkLowest,
+  guidance, onGoSendFactory, onGoUploadReturn, onGoMarkQuote,
+  nextStep, onGenerateFinals, onGoConvert, onGoExport,
+}) {
+  const { factories, rows } = model;
+  const chosenCount = rows.filter((r) => choices[r.lineId]).length;
+
+  const th = {
+    border: '1px solid #dbe2ec', background: '#e9eff8', padding: '8px 12px',
+    textAlign: 'left', fontWeight: 600, whiteSpace: 'nowrap', color: '#33445c',
+  };
+  const td = { border: '1px solid #e2e8f1', padding: '8px 12px', verticalAlign: 'top' };
+  const guideBtn = {
+    border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
+    borderRadius: 8, padding: '6px 16px', cursor: 'pointer',
+  };
+  const guideBtnGhost = { ...guideBtn, background: '#fff', color: '#2f6bff' };
+  const guideBox = {
+    border: '1px solid #eed9ac', background: '#fdf3e0', borderRadius: 12,
+    padding: '12px 16px', marginBottom: 12,
+  };
+  const nextBox = {
+    border: '1px solid #bfe3cd', background: '#e5f5ec', borderRadius: 12,
+    padding: '12px 16px', marginBottom: 12,
+  };
+  const nextBtn = {
+    border: '1px solid #1e9e57', background: '#1e9e57', color: '#fff',
+    borderRadius: 8, padding: '6px 16px', cursor: 'pointer',
+  };
+  const nextBtnGhost = { ...nextBtn, background: '#fff', color: '#1e9e57' };
+
+  return (
+    <div className="compare-view" style={{
+      flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column',
+      fontFamily: 'sans-serif', fontSize: 14,
+      margin: '14px 16px 16px', padding: '16px 18px', background: '#fff',
+      border: '1px solid #dbe2ec', borderRadius: 14,
+      boxShadow: '0 2px 6px rgba(23,34,62,0.05), 0 10px 24px rgba(23,34,62,0.06)',
+    }}>
+      {guidance && guidance.state === 'no-quotes' && (
+        <div className="cmp-guide cmp-guide-no-quotes" style={guideBox}>
+          <div style={{ fontSize: 14 }}><b>还没有工厂报价单，所以没东西可比。</b></div>
+          <div className="cmp-guide-steps" style={{ color: '#555', margin: '6px 0 8px' }}>
+            流程：① 发给工厂（或上传工厂回表） → ② 在报价单上标价列 → ③ 回来这里点格子定厂
+          </div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <button className="cmp-guide-send" onClick={onGoSendFactory} style={guideBtn}>
+              发给工厂
+            </button>
+            <button className="cmp-guide-upload" onClick={onGoUploadReturn} style={guideBtnGhost}>
+              上传工厂回表
+            </button>
+          </div>
+        </div>
+      )}
+      {guidance && guidance.state === 'unmarked' && (
+        <div className="cmp-guide cmp-guide-unmarked" style={guideBox}>
+          <div style={{ fontSize: 14 }}>
+            <b>已有 {guidance.quoteCount} 张报价单，还没标价列，比价读不到价格。</b>
+          </div>
+          <div style={{ color: '#555', margin: '6px 0 8px' }}>
+            标价列就是告诉系统「这家的价格在报价单的哪一列、含不含税」——标好之后，这里就能比价定厂。
+          </div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {guidance.unmarked.map((u) => (
+              <button
+                key={u.docId}
+                className="cmp-guide-mark"
+                data-factory={u.factoryName}
+                onClick={() => onGoMarkQuote(u.docId)}
+                style={guideBtn}
+              >去给『{u.factoryName}』标价</button>
+            ))}
+          </div>
+        </div>
+      )}
+      {guidance && guidance.state === 'partial' && (
+        <div className="cmp-guide cmp-guide-partial" style={{
+          ...guideBox, padding: '6px 12px', display: 'flex', gap: 8,
+          alignItems: 'center', flexWrap: 'wrap',
+        }}>
+          <span>
+            {guidance.unmarked.map((u) => '『' + u.factoryName + '』').join('、')}
+            还没标价列，这 {guidance.unmarked.length} 家的价格暂时比不了：
+          </span>
+          {guidance.unmarked.map((u) => (
+            <button
+              key={u.docId}
+              className="cmp-guide-mark"
+              data-factory={u.factoryName}
+              onClick={() => onGoMarkQuote(u.docId)}
+              style={{ ...guideBtnGhost, padding: '4px 12px' }}
+            >去给『{u.factoryName}』标价</button>
+          ))}
+        </div>
+      )}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 10 }}>
+        <b className="sec-title" style={{ fontSize: 17 }}>比价定厂</b>
+        {factories.map((f) => (
+          <button
+            key={f}
+            className="cmp-bulk-all"
+            data-factory={f}
+            disabled={!marks[f]}
+            onClick={() => onBulkAll(f)}
+            title={marks[f] ? '' : '这家还没标记报价列，定不了'}
+            style={{
+              border: '1px solid #1e9e57', color: marks[f] ? '#1e9e57' : '#aaa',
+              background: '#fff', borderRadius: 8, padding: '5px 12px',
+              cursor: marks[f] ? 'pointer' : 'not-allowed',
+            }}
+          >整单都定 {f}</button>
+        ))}
+        <button
+          className="cmp-bulk-lowest"
+          onClick={onBulkLowest}
+          style={{
+            border: '1px solid #2f6bff', color: '#2f6bff', background: '#fff',
+            borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+          }}
+        >按最低价预选</button>
+        <span className="cmp-summary" style={{ color: '#444' }}>
+          已定厂 {chosenCount} / 共 {rows.length} 行
+        </span>
+        <span style={{ color: '#999' }}>
+          价格已按各家口径统一换算成含税价再比；点格子定厂，再点一次取消
+        </span>
+      </div>
+      {nextStep && nextStep.kind === 'hint' && (
+        <div className="cmp-next-hint" style={{ color: '#666', marginBottom: 8 }}>
+          点任意价格格子定厂；整单都给一家就点上方『整单都定 X』。
+        </div>
+      )}
+      {nextStep && nextStep.kind !== 'hint' && (
+        <div className={'cmp-next cmp-next-' + nextStep.kind} style={nextBox}>
+          <div className="cmp-next-text" style={{ fontSize: 14 }}>
+            {nextStep.kind === 'generate' && (
+              <>已定厂 <b>{nextStep.chosenCount}</b> 行。点『<b>生成最终报价</b>』把对客价写回询价单（导给客户用），生成完就能转订单或对客导出。</>
+            )}
+            {nextStep.kind === 'convert' && (
+              <>最终报价已经生成，已定厂 <b>{nextStep.chosenCount}</b> 行。下一步：<b>转订单</b>；也可以先对客导出，发给客户确认。</>
+            )}
+            {nextStep.kind === 'convert-all' && (
+              <>有报价的行都定好厂了，最终报价也生成好了。下一步：<b>转订单</b>。</>
+            )}
+          </div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 8 }}>
+            {nextStep.kind === 'generate' && (
+              <button className="cmp-next-go-generate" onClick={onGenerateFinals} style={nextBtn}>
+                生成最终报价
+              </button>
+            )}
+            {nextStep.kind !== 'generate' && (
+              <>
+                <button className="cmp-next-go-convert" onClick={onGoConvert} style={nextBtn}>
+                  去转订单
+                </button>
+                <button className="cmp-next-go-export" onClick={onGoExport} style={nextBtnGhost}>
+                  去对客导出
+                </button>
+              </>
+            )}
+          </div>
+          {nextStep.unquotedCount > 0 && (
+            <div className="cmp-next-unquoted" style={{ color: '#666', marginTop: 8 }}>
+              其余 {nextStep.unquotedCount} 行还没有任何工厂报价，先留空、不影响已定厂的行往下走；后面有报价再回来补定。
+            </div>
+          )}
+        </div>
+      )}
+      <div className="cmp-scroll" style={{ flex: 1, overflow: 'auto', minHeight: 0 }}>
+      <table className="compare-table" style={{ borderCollapse: 'collapse', minWidth: 720, width: '100%' }}>
+        <thead>
+          <tr>
+            <th style={th}>序号</th>
+            <th style={th}>OE码</th>
+            <th style={th}>产品</th>
+            {factories.map((f) => (
+              <th key={f} style={th}>
+                {f}
+                {!marks[f] && (
+                  <span style={{ color: '#d92d20', fontWeight: 400 }}>（未标记报价列）</span>
+                )}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => {
+            const chosen = choices[row.lineId];
+            return (
+              <tr key={row.lineId} className="cmp-row" data-line-id={row.lineId}>
+                <td style={td}>{row.seq}</td>
+                <td style={td}>{row.oe}</td>
+                <td style={td}>{row.product}</td>
+                {factories.map((f) => {
+                  const cell = row.cells[f];
+                  const isChosen = !!(chosen && chosen.factory === f);
+                  const isLowest = cell.priced && row.lowestFactories.includes(f);
+                  return (
+                    <td
+                      key={f}
+                      className="cmp-cell"
+                      data-factory={f}
+                      data-priced={cell.priced ? '1' : '0'}
+                      data-chosen={isChosen ? '1' : '0'}
+                      onClick={() => onChoose(row, cell)}
+                      title={cell.priced ? '点这里定这家（再点一次取消）' : '这家这一行没报价'}
+                      style={{
+                        ...td,
+                        cursor: cell.priced ? 'pointer' : 'default',
+                        background: isChosen ? '#dcf2e3' : undefined,
+                        boxShadow: isChosen ? 'inset 0 0 0 2px #1e9e57' : undefined,
+                      }}
+                    >
+                      {cell.priced ? (
+                        <>
+                          <span className="cmp-price" style={{ fontWeight: isChosen ? 700 : 400 }}>
+                            {cell.normalized.toFixed(2)}
+                          </span>
+                          {isLowest && (
+                            <span className="cmp-lowest" style={{
+                              marginLeft: 6, background: '#fdeed0', color: '#96660a',
+                              borderRadius: 999, padding: '1px 8px', fontSize: 11, fontWeight: 600,
+                            }}>最低</span>
+                          )}
+                          {cell.period !== '' && (
+                            <div className="cmp-period" style={{ color: '#888', fontSize: 12 }}>
+                              周期：{cell.period}
+                            </div>
+                          )}
+                          {!cell.taxInclusive && (
+                            <div style={{ color: '#aaa', fontSize: 11 }}>
+                              原价（不含税）{cell.raw}
+                            </div>
+                          )}
+                        </>
+                      ) : (
+                        <span style={{ color: '#bbb' }}>—</span>
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      {rows.length === 0 && (
+        <div style={{ color: '#888', padding: 12 }}>
+          询价单还没有数据行——先导入客户原表，再上传各家回表、标好价列，这里就能比价定厂。
+        </div>
+      )}
+      </div>
+    </div>
+  );
+}

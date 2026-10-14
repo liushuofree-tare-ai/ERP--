@@ -1,1 +1,92 @@
-Ly8g6Kej5p6Q57uT5p6cIOKGkiBGb3J0dW5lU2hlZXQg5pWw5o2u5qih5Z6L44CCCi8vIOWbvueJh+mUmuWumuaWueW8j++8iOW3suaguOWvuSBGb3J0dW5lU2hlZXQg5rqQ56CB6YeMIGluc2VydEltYWdlIOeahOeul+azle+8ie+8mgovLyBJbWFnZSA9IHsgaWQsIHNyYywgbGVmdCwgdG9wLCB3aWR0aCwgaGVpZ2h0IH3vvIxsZWZ0L3RvcCDmmK/nm7jlr7nljZXlhYPmoLwKLy8g5Yy65Z+f5Y6f54K577yIQTEg5bem5LiK6KeS77yJ55qE5YOP57Sg5YGP56e74oCU4oCU5Y2z6ZSa54K55qC85LmL5YmN5omA5pyJ5YiX5a69L+ihjOmrmOS5i+WSjOOAggovLyBXUFMg5Y2V5YWD5qC85Zu+5oyJIFdQUyDnmoTlkYjnjrDmlrnlvI/otLTmu6HplJrngrnmoLzvvJvmta7liqjlm77mjInljp/plJrngrnkuI7lsLrlr7jmkYbjgIIKCmV4cG9ydCBmdW5jdGlvbiBzaGVldFRvRm9ydHVuZShwYXJzZWQsIHNoZWV0SW5kZXggPSAwKSB7CiAgY29uc3Qgd2lkdGhPZiA9IChjKSA9PgogICAgcGFyc2VkLmNvbHVtbldpZHRoc1B4W2NdICE9IG51bGwgPyBwYXJzZWQuY29sdW1uV2lkdGhzUHhbY10gOiBwYXJzZWQuZGVmYXVsdENvbFdpZHRoUHg7CiAgY29uc3QgaGVpZ2h0T2YgPSAocikgPT4KICAgIHBhcnNlZC5yb3dIZWlnaHRzUHhbcl0gIT0gbnVsbCA/IHBhcnNlZC5yb3dIZWlnaHRzUHhbcl0gOiBwYXJzZWQuZGVmYXVsdFJvd0hlaWdodFB4OwoKICAvLyDliY3nvIDlkozvvJpsZWZ0T2YoYykgPSDnrKwgYyDliJflt6bovrnnvJjnmoQgeO+8m3RvcE9mKHIpID0g56ysIHIg6KGM5LiK6L6557yY55qEIHkKICBjb25zdCBtYXhDID0gTWF0aC5tYXgocGFyc2VkLmNvbENvdW50LCAuLi5wYXJzZWQuaW1hZ2VzLm1hcCgoaSkgPT4gKGkuZW5kQ29sID8/IGkuY29sKSArIDEpLCAwKTsKICBjb25zdCBtYXhSID0gTWF0aC5tYXgocGFyc2VkLnJvd0NvdW50LCAuLi5wYXJzZWQuaW1hZ2VzLm1hcCgoaSkgPT4gKGkuZW5kUm93ID8/IGkucm93KSArIDEpLCAwKTsKICBjb25zdCBjb2xQcmVmaXggPSBbMF07CiAgZm9yIChsZXQgYyA9IDA7IGMgPCBtYXhDOyBjKyspIGNvbFByZWZpeC5wdXNoKGNvbFByZWZpeFtjXSArIHdpZHRoT2YoYykpOwogIGNvbnN0IHJvd1ByZWZpeCA9IFswXTsKICBmb3IgKGxldCByID0gMDsgciA8IG1heFI7IHIrKykgcm93UHJlZml4LnB1c2gocm93UHJlZml4W3JdICsgaGVpZ2h0T2YocikpOwogIGNvbnN0IGxlZnRPZiA9IChjKSA9PiBjb2xQcmVmaXhbY10gPz8gY29sUHJlZml4W2NvbFByZWZpeC5sZW5ndGggLSAxXTsKICBjb25zdCB0b3BPZiA9IChyKSA9PiByb3dQcmVmaXhbcl0gPz8gcm93UHJlZml4W3Jvd1ByZWZpeC5sZW5ndGggLSAxXTsKCiAgY29uc3QgY2VsbGRhdGEgPSBbXTsKICBmb3IgKGNvbnN0IGNlbGwgb2YgcGFyc2VkLmNlbGxzKSB7CiAgICBjb25zdCB2ID0ge307CiAgICBpZiAoY2VsbC52YWx1ZSAhPT0gbnVsbCAmJiBjZWxsLnZhbHVlICE9PSB1bmRlZmluZWQpIHsKICAgICAgdi52ID0gY2VsbC52YWx1ZTsKICAgICAgdi5tID0gU3RyaW5nKGNlbGwudmFsdWUpOwogICAgfQogICAgaWYgKGNlbGwuZm9ybXVsYSkgdi5mID0gJz0nICsgY2VsbC5mb3JtdWxhOwogICAgY2VsbGRhdGEucHVzaCh7IHI6IGNlbGwuciwgYzogY2VsbC5jLCB2IH0pOwogIH0KCiAgY29uc3QgbWVyZ2UgPSB7fTsKICBmb3IgKGNvbnN0IG0gb2YgcGFyc2VkLm1lcmdlcykgewogICAgbWVyZ2VbbS5yICsgJ18nICsgbS5jXSA9IHsgcjogbS5yLCBjOiBtLmMsIHJzOiBtLnJzLCBjczogbS5jcyB9OwogIH0KICBjb25zdCBjb2x1bW5sZW4gPSB7fTsKICBmb3IgKGNvbnN0IFtjLCBweF0gb2YgT2JqZWN0LmVudHJpZXMocGFyc2VkLmNvbHVtbldpZHRoc1B4KSkgY29sdW1ubGVuW2NdID0gcHg7CiAgY29uc3Qgcm93bGVuID0ge307CiAgZm9yIChjb25zdCBbciwgcHhdIG9mIE9iamVjdC5lbnRyaWVzKHBhcnNlZC5yb3dIZWlnaHRzUHgpKSByb3dsZW5bcl0gPSBweDsKCiAgY29uc3QgaW1hZ2VzID0gcGFyc2VkLmltYWdlcy5tYXAoKGltZywgaSkgPT4gewogICAgY29uc3QgYmFzZSA9IHsKICAgICAgaWQ6ICdpbWctJyArIHNoZWV0SW5kZXggKyAnLScgKyBpLAogICAgICBzcmM6IGltZy5kYXRhVXJsLAogICAgICBhbmNob3JSb3c6IGltZy5yb3csCiAgICAgIGFuY2hvckNvbDogaW1nLmNvbCwKICAgICAga2luZDogaW1nLmtpbmQsCiAgICAgIC8vIOaWh+S7tuS7k+W6k+W8leeUqO+8iOWvvOWFpea1geeoi+WcqOino+aekOWQjuaMieWtl+iKguWGheWuueeul+WHuuW5tuWbnuWhq+WIsCBwYXJzZWQg5Zu+54mH5LiK77yJ77yaCiAgICAgIC8vIOaBouWkjeaXtuaMiSBmaWxlSWQg5Y67IEluZGV4ZWREQiDlj5blrZfoioLph43mlrDngrnkuq4gc3Jj77ybYnl0ZVNpemUg5piv5a2X6IqC5pWw44CCCiAgICAgIGZpbGVJZDogaW1nLmZpbGVJZCB8fCBudWxsLAogICAgICBieXRlU2l6ZTogaW1nLmJ5dGVTaXplIHx8IDAsCiAgICB9OwogICAgaWYgKGltZy5raW5kID09PSAnY2VsbCcpIHsKICAgICAgLy8g5Y2V5YWD5qC85Zu+77ya6LS05ruh6ZSa54K55qC877yI5LiOIFdQUyDlkYjnjrDkuIDoh7TvvIkKICAgICAgcmV0dXJuIHsKICAgICAgICAuLi5iYXNlLAogICAgICAgIGxlZnQ6IGxlZnRPZihpbWcuY29sKSwKICAgICAgICB0b3A6IHRvcE9mKGltZy5yb3cpLAogICAgICAgIHdpZHRoOiBNYXRoLm1heCgxLCB3aWR0aE9mKGltZy5jb2wpKSwKICAgICAgICBoZWlnaHQ6IE1hdGgubWF4KDEsIGhlaWdodE9mKGltZy5yb3cpKSwKICAgICAgfTsKICAgIH0KICAgIC8vIOa1ruWKqOWbvu+8muWOn+mUmueCuSArIOWBj+enu++8m+aciee7iOeCuemUmueCueWImeaMiei1t+iuq+WHoOS9leeul+WwuuWvuO+8jOWQpuWImeeUqOiHqueEtuWwuuWvuAogICAgY29uc3QgbGVmdCA9IGxlZnRPZihpbWcuY29sKSArIChpbWcub2Zmc2V0WFB4IHx8IDApOwogICAgY29uc3QgdG9wID0gdG9wT2YoaW1nLnJvdykgKyAoaW1nLm9mZnNldFlQeCB8fCAwKTsKICAgIGxldCB3aWR0aCA9IGltZy5uYXR1cmFsV2lkdGhQeCB8fCAwOwogICAgbGV0IGhlaWdodCA9IGltZy5uYXR1cmFsSGVpZ2h0UHggfHwgMDsKICAgIGlmIChpbWcuZW5kQ29sICE9IG51bGwpIHdpZHRoID0gbGVmdE9mKGltZy5lbmRDb2wpICsgKGltZy5lbmRPZmZzZXRYUHggfHwgMCkgLSBsZWZ0OwogICAgaWYgKGltZy5lbmRSb3cgIT0gbnVsbCkgaGVpZ2h0ID0gdG9wT2YoaW1nLmVuZFJvdykgKyAoaW1nLmVuZE9mZnNldFlQeCB8fCAwKSAtIHRvcDsKICAgIHJldHVybiB7CiAgICAgIC4uLmJhc2UsCiAgICAgIGxlZnQsCiAgICAgIHRvcCwKICAgICAgd2lkdGg6IE1hdGgubWF4KDEsIHdpZHRoIHx8IHdpZHRoT2YoaW1nLmNvbCkpLAogICAgICBoZWlnaHQ6IE1hdGgubWF4KDEsIGhlaWdodCB8fCBoZWlnaHRPZihpbWcucm93KSksCiAgICB9OwogIH0pOwoKICByZXR1cm4gewogICAgbmFtZTogcGFyc2VkLm5hbWUsCiAgICBpZDogJ3NoZWV0LScgKyBzaGVldEluZGV4LAogICAgcm93OiBNYXRoLm1heChwYXJzZWQucm93Q291bnQsIDEpLAogICAgY29sdW1uOiBNYXRoLm1heChwYXJzZWQuY29sQ291bnQsIDEpLAogICAgY2VsbGRhdGEsCiAgICBjb25maWc6IHsgbWVyZ2UsIGNvbHVtbmxlbiwgcm93bGVuIH0sCiAgICBpbWFnZXMsCiAgICBkZWZhdWx0Q29sV2lkdGg6IHBhcnNlZC5kZWZhdWx0Q29sV2lkdGhQeCwKICAgIGRlZmF1bHRSb3dIZWlnaHQ6IHBhcnNlZC5kZWZhdWx0Um93SGVpZ2h0UHgsCiAgfTsKfQo=
+// 解析结果 → FortuneSheet 数据模型。
+// 图片锚定方式（已核对 FortuneSheet 源码里 insertImage 的算法）：
+// Image = { id, src, left, top, width, height }，left/top 是相对单元格
+// 区域原点（A1 左上角）的像素偏移——即锚点格之前所有列宽/行高之和。
+// WPS 单元格图按 WPS 的呈现方式贴满锚点格；浮动图按原锚点与尺寸摆。
+
+export function sheetToFortune(parsed, sheetIndex = 0) {
+  const widthOf = (c) =>
+    parsed.columnWidthsPx[c] != null ? parsed.columnWidthsPx[c] : parsed.defaultColWidthPx;
+  const heightOf = (r) =>
+    parsed.rowHeightsPx[r] != null ? parsed.rowHeightsPx[r] : parsed.defaultRowHeightPx;
+
+  // 前缀和：leftOf(c) = 第 c 列左边缘的 x；topOf(r) = 第 r 行上边缘的 y
+  const maxC = Math.max(parsed.colCount, ...parsed.images.map((i) => (i.endCol ?? i.col) + 1), 0);
+  const maxR = Math.max(parsed.rowCount, ...parsed.images.map((i) => (i.endRow ?? i.row) + 1), 0);
+  const colPrefix = [0];
+  for (let c = 0; c < maxC; c++) colPrefix.push(colPrefix[c] + widthOf(c));
+  const rowPrefix = [0];
+  for (let r = 0; r < maxR; r++) rowPrefix.push(rowPrefix[r] + heightOf(r));
+  const leftOf = (c) => colPrefix[c] ?? colPrefix[colPrefix.length - 1];
+  const topOf = (r) => rowPrefix[r] ?? rowPrefix[rowPrefix.length - 1];
+
+  const celldata = [];
+  for (const cell of parsed.cells) {
+    const v = {};
+    if (cell.value !== null && cell.value !== undefined) {
+      v.v = cell.value;
+      v.m = String(cell.value);
+    }
+    if (cell.formula) v.f = '=' + cell.formula;
+    celldata.push({ r: cell.r, c: cell.c, v });
+  }
+
+  const merge = {};
+  for (const m of parsed.merges) {
+    merge[m.r + '_' + m.c] = { r: m.r, c: m.c, rs: m.rs, cs: m.cs };
+  }
+  const columnlen = {};
+  for (const [c, px] of Object.entries(parsed.columnWidthsPx)) columnlen[c] = px;
+  const rowlen = {};
+  for (const [r, px] of Object.entries(parsed.rowHeightsPx)) rowlen[r] = px;
+
+  const images = parsed.images.map((img, i) => {
+    const base = {
+      id: 'img-' + sheetIndex + '-' + i,
+      src: img.dataUrl,
+      anchorRow: img.row,
+      anchorCol: img.col,
+      kind: img.kind,
+      // 文件仓库引用（导入流程在解析后按字节内容算出并回填到 parsed 图片上）：
+      // 恢复时按 fileId 去 IndexedDB 取字节重新点亮 src；byteSize 是字节数。
+      fileId: img.fileId || null,
+      byteSize: img.byteSize || 0,
+    };
+    if (img.kind === 'cell') {
+      // 单元格图：贴满锚点格（与 WPS 呈现一致）
+      return {
+        ...base,
+        left: leftOf(img.col),
+        top: topOf(img.row),
+        width: Math.max(1, widthOf(img.col)),
+        height: Math.max(1, heightOf(img.row)),
+      };
+    }
+    // 浮动图：原锚点 + 偏移；有终点锚点则按起讫几何算尺寸，否则用自然尺寸
+    const left = leftOf(img.col) + (img.offsetXPx || 0);
+    const top = topOf(img.row) + (img.offsetYPx || 0);
+    let width = img.naturalWidthPx || 0;
+    let height = img.naturalHeightPx || 0;
+    if (img.endCol != null) width = leftOf(img.endCol) + (img.endOffsetXPx || 0) - left;
+    if (img.endRow != null) height = topOf(img.endRow) + (img.endOffsetYPx || 0) - top;
+    return {
+      ...base,
+      left,
+      top,
+      width: Math.max(1, width || widthOf(img.col)),
+      height: Math.max(1, height || heightOf(img.row)),
+    };
+  });
+
+  return {
+    name: parsed.name,
+    id: 'sheet-' + sheetIndex,
+    row: Math.max(parsed.rowCount, 1),
+    column: Math.max(parsed.colCount, 1),
+    celldata,
+    config: { merge, columnlen, rowlen },
+    images,
+    defaultColWidth: parsed.defaultColWidthPx,
+    defaultRowHeight: parsed.defaultRowHeightPx,
+  };
+}

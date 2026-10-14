@@ -1,1 +1,228 @@
-Ly8g5Zu+54mH5a+56b2Q77yI5YyFIDEw77yJ77ya57uE5Lu277yIRm9ydHVuZVNoZWV077yJ5LiO6KeE6IyD5pWw5o2u5LmL6Ze055qE5Zu+54mH5ZKM6Kej44CCCi8vCi8vIOWunua1i+S6i+Wunu+8iOWMhSAxMCDlpI3njrDvvIznnJ/lrp7mlofku7YgKyDlrr3lsY8gMjU2MO+8ie+8mgovLyAgMS4g55So5oi355So5bel5YW35qCP5o+S5YWl5Zu+54mH5pe277yM57uE5Lu25Y+R5Ye655qE5Zue5aOw6YeM5paw5Zu+5bim6Ieq54S25bC65a+4Ci8vICAgICDvvIjlpoIgNzY4w5cxMDI077yJ77yMbGVmdC90b3Ag5piv5b2T5pe25rS75Yqo5qC855qE5bem5LiK6KeS4oCU4oCU5Zu+5pivIua1riLlnKgKLy8gICAgIOihqOagvOS4iueahO+8jOS4jeWcqOagvOWtkOmHjOOAguW/hemhu+eUseaIkeS7rOaMiea0u+WKqOagvOaKiuWug+i0tOi/m+agvOWtkO+8iGZpdO+8ieOAggovLyAgMi4g55So5oi35Zyo57uE5Lu26YeM5Yig5Zu+77yI54K56YCJICsgRGVsZXRl77yJ77yM5Yig6Zmk5piv5ZCm5Y+N5pig5Yiw5Zue5aOw6YeM5Y+W5YazCi8vICAgICDkuo7lvZPml7bnmoTplK7nm5jnhKbngrnot6/lvoTvvIzkuI3lj6/pnaDvvJvogIzlnKjop4TojIPmlbDmja7lrozmiJDlr7npvZDkv53lrZjkuYvliY3vvIwKLy8gICAgIOS7u+S9leS4gOasoemHjeaMgu+8iOeul+S7ty/liqDliJcv5YiH5paH5qGj77yJ6YO95Lya5oqK5Yig5o6J55qE5Zu+5oyJ6KeE6IyD5pWw5o2u55S7Ci8vICAgICDlm57mnaXvvIjlpI3mtLvvvInigJTigJTnlKjmiLfnmoTljp/lp4vlj43ppojmraPmmK/ov5nkuIDluZXjgILllK/kuIDlp4vnu4jlj6/kv6HnmoTmmK8KLy8gICAgIOeUu+mdouacrOi6q++8iERPTSDph4znmoTlm77moYbmuIXljZXvvInjgILmiYDku6XvvJoKLy8gICAgICAgLSDlm57lo7Dot6/lvoTvvIhvbkNoYW5nZe+8ie+8muWPquWinuS4jeWIoOKAlOKAlOaWsOWbvui0tOagvOeZu+iusO+8jOiAgeWbvuWQiOW5tgovLyAgICAgICAgIOWHoOS9le+8iOaLluWKqC/nvKnmlL7pnaDlroPokL3nm5jvvInvvJvlm57lo7DnvLrluK3msLjkuI3op6Por7vkuLrliKDpmaTjgIIKLy8gICAgICAgLSDnlLvpnaLot6/lvoTvvIjlhrvnu5PmiZPljbDliY3vvJrkv53lrZgv5YiH5paH5qGjL+WIh+inhuWbvi/nqIvluo/ljJbmlLnooajvvInvvJoKLy8gICAgICAgICDku6XnlLvpnaLlm77moYbkuLrlh4blgZrlop7liKDigJTigJTnlLvpnaLph4zmsqHmnInnmoTlm77vvIzop4TojIPmlbDmja7ph4zliKDmjonjgIIKLy8gIDMuIOe7hOS7tuWbnuWjsOS8muS/neeVmeaIkeS7rOe7meWvvOWFpeWbvumZhOWKoOeahOWtl+aute+8iGZpbGVJZC9raW5kL+mUmueCue+8ie+8jAovLyAgICAg5L2G5ZCI5bm25pe25LuN5Lul6KeE6IyD5L6n5Li65YeG5YWc5bqV77yM6Ziy57uE5Lu25oqK5byV55So5byE5Lii44CCCi8vCi8vIOacrOaWh+S7tuWFqOmDqOaYr+e6r+WHveaVsO+8iOeUu+mdoua4heWNleeUseiwg+eUqOaWueS7jiBET00g6K+75aW95Lyg5YWl77yJ77yM5Y+v5Y2V5rWL44CCCgpjb25zdCBGQUxMQkFDS19DT0xfVyA9IDczOyAgIC8vIOS4jiBGb3J0dW5lU2hlZXQg6buY6K6k5YiX5a695LiA6Ie077yI5peg5Yeg5L2V5L+h5oGv5pe25YWc5bqV77yJCmNvbnN0IEZBTExCQUNLX1JPV19IID0gMTk7ICAgLy8g5LiOIEZvcnR1bmVTaGVldCDpu5jorqTooYzpq5jkuIDoh7QKY29uc3QgTk9fQ0VMTF9GSVRfVyA9IDEwMjsgICAvLyDlrprkvY3kuI3liLDmtLvliqjmoLzml7bnmoTlsIHpobblrr3luqbvvIjnuqbnrYnkuo7nnJ/lrp7ooajnmoTlm77niYfliJflrr3vvIkKCi8qKiDooajmoLzlh6DkvZXvvJrliJflrr0v6KGM6auY5LiO5YmN57yA5ZKM77yI5LiOIHhsc3gvdG9Gb3J0dW5lU2hlZXQuanMg5ZCM5LiA566X5rOV77yJICovCmV4cG9ydCBmdW5jdGlvbiBzaGVldEdlb21ldHJ5KHNoZWV0KSB7CiAgY29uc3QgY2ZnID0gKHNoZWV0ICYmIHNoZWV0LmNvbmZpZykgfHwge307CiAgY29uc3QgY29sdW1ubGVuID0gY2ZnLmNvbHVtbmxlbiB8fCB7fTsKICBjb25zdCByb3dsZW4gPSBjZmcucm93bGVuIHx8IHt9OwogIGNvbnN0IGRlZlcgPSBzaGVldCAmJiBzaGVldC5kZWZhdWx0Q29sV2lkdGggIT0gbnVsbCA/IHNoZWV0LmRlZmF1bHRDb2xXaWR0aCA6IEZBTExCQUNLX0NPTF9XOwogIGNvbnN0IGRlZkggPSBzaGVldCAmJiBzaGVldC5kZWZhdWx0Um93SGVpZ2h0ICE9IG51bGwgPyBzaGVldC5kZWZhdWx0Um93SGVpZ2h0IDogRkFMTEJBQ0tfUk9XX0g7CiAgY29uc3Qgd2lkdGhPZiA9IChjKSA9PiB7CiAgICBjb25zdCB2ID0gY29sdW1ubGVuW2NdICE9IG51bGwgPyBjb2x1bW5sZW5bY10gOiBjb2x1bW5sZW5bU3RyaW5nKGMpXTsKICAgIHJldHVybiB2ICE9IG51bGwgPyB2IDogZGVmVzsKICB9OwogIGNvbnN0IGhlaWdodE9mID0gKHIpID0+IHsKICAgIGNvbnN0IHYgPSByb3dsZW5bcl0gIT0gbnVsbCA/IHJvd2xlbltyXSA6IHJvd2xlbltTdHJpbmcocildOwogICAgcmV0dXJuIHYgIT0gbnVsbCA/IHYgOiBkZWZIOwogIH07CiAgY29uc3QgbGVmdE9mID0gKGMpID0+IHsKICAgIGxldCB4ID0gMDsKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgYzsgaSsrKSB4ICs9IHdpZHRoT2YoaSk7CiAgICByZXR1cm4geDsKICB9OwogIGNvbnN0IHRvcE9mID0gKHIpID0+IHsKICAgIGxldCB5ID0gMDsKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgcjsgaSsrKSB5ICs9IGhlaWdodE9mKGkpOwogICAgcmV0dXJuIHk7CiAgfTsKICByZXR1cm4geyB3aWR0aE9mLCBoZWlnaHRPZiwgbGVmdE9mLCB0b3BPZiB9Owp9CgovKioKICog55Sx5YOP57Sg54K55Y+N5o6o5omA5Zyo5qC877ya5Y+W5bem5LiK6KeS5LiN6LaF6L+H6K+l54K555qE5pyA6Z2g5ZCO5LiA6KGML+S4gOWIlwogKiDvvIjmj5LlhaXlm57lo7DnmoQgbGVmdC90b3Ag5q2j5aW95piv5rS75Yqo5qC85bem5LiK6KeS77yM5a655beuIDFweO+8ieOAggogKiByb3dDb3VudC9jb2xDb3VudCDlhrPlrprkuIrpmZDvvJvnu5nkuI3lh7rvvIjlnZDmoIfkuLrotJ/nrYnvvInov5Tlm54gbnVsbOOAggogKi8KZXhwb3J0IGZ1bmN0aW9uIGNlbGxBdFBvaW50KGdlbywgbGVmdCwgdG9wLCByb3dDb3VudCwgY29sQ291bnQpIHsKICBpZiAoIWdlbyB8fCAhTnVtYmVyLmlzRmluaXRlKGxlZnQpIHx8ICFOdW1iZXIuaXNGaW5pdGUodG9wKSB8fCBsZWZ0IDwgMCB8fCB0b3AgPCAwKSByZXR1cm4gbnVsbDsKICBsZXQgYyA9IDA7CiAgY29uc3QgbWF4QyA9IE1hdGgubWF4KDEsIGNvbENvdW50IHx8IDEpOwogIHdoaWxlIChjICsgMSA8IG1heEMgJiYgZ2VvLmxlZnRPZihjICsgMSkgPD0gbGVmdCArIDEpIGMgKz0gMTsKICBpZiAoZ2VvLmxlZnRPZihjKSA+IGxlZnQgKyAxKSByZXR1cm4gbnVsbDsKICBsZXQgciA9IDA7CiAgY29uc3QgbWF4UiA9IE1hdGgubWF4KDEsIHJvd0NvdW50IHx8IDEpOwogIHdoaWxlIChyICsgMSA8IG1heFIgJiYgZ2VvLnRvcE9mKHIgKyAxKSA8PSB0b3AgKyAxKSByICs9IDE7CiAgaWYgKGdlby50b3BPZihyKSA+IHRvcCArIDEpIHJldHVybiBudWxsOwogIHJldHVybiB7IHIsIGMgfTsKfQoKLyoqIOaKiuS4gOW8oOWbvui0tOi/m+aMh+WumuagvO+8muWHoOS9lSA9IOagvOeahOefqeW9ou+8jGtpbmQ9Y2VsbO+8jOmUmueCuSA9IOivpeagvCAqLwpleHBvcnQgZnVuY3Rpb24gZml0SW1hZ2VUb0NlbGwoc2hlZXQsIGltZywgciwgYykgewogIGNvbnN0IGdlbyA9IHNoZWV0R2VvbWV0cnkoc2hlZXQpOwogIHJldHVybiB7CiAgICAuLi5pbWcsCiAgICBsZWZ0OiBnZW8ubGVmdE9mKGMpLAogICAgdG9wOiBnZW8udG9wT2YociksCiAgICB3aWR0aDogTWF0aC5tYXgoMSwgZ2VvLndpZHRoT2YoYykpLAogICAgaGVpZ2h0OiBNYXRoLm1heCgxLCBnZW8uaGVpZ2h0T2YocikpLAogICAgYW5jaG9yUm93OiByLAogICAgYW5jaG9yQ29sOiBjLAogICAga2luZDogJ2NlbGwnLAogIH07Cn0KCi8qKgogKiDlrprkvY3kuI3liLDmoLzlrZDml7bnmoTlhZzlupXotLTms5XvvJrlrr3lsIHpobYgTk9fQ0VMTF9GSVRfV+OAgemrmOaMieWOn+avlOS+i++8jAogKiDplJrliLDnrKzkuIDmoLzigJTigJTmsLjov5zkuI3orrjku6Xoh6rnhLblsLrlr7jlh7rnjrDjgIIKICovCmV4cG9ydCBmdW5jdGlvbiBjYXBJbWFnZVNpemUoc2hlZXQsIGltZykgewogIGNvbnN0IG93ID0gaW1nLm9yaWdpbldpZHRoIHx8IGltZy53aWR0aCB8fCAwOwogIGNvbnN0IG9oID0gaW1nLm9yaWdpbkhlaWdodCB8fCBpbWcuaGVpZ2h0IHx8IDA7CiAgY29uc3Qgd2lkdGggPSBOT19DRUxMX0ZJVF9XOwogIGNvbnN0IGhlaWdodCA9IG93ID4gMCAmJiBvaCA+IDAKICAgID8gTWF0aC5tYXgoMSwgTWF0aC5yb3VuZCgod2lkdGggKiBvaCkgLyBvdykpCiAgICA6IE5PX0NFTExfRklUX1c7CiAgcmV0dXJuIHsKICAgIC4uLmltZywKICAgIGxlZnQ6IDAsIHRvcDogMCwgd2lkdGgsIGhlaWdodCwKICAgIGFuY2hvclJvdzogMCwgYW5jaG9yQ29sOiAwLCBraW5kOiAnY2VsbCcsCiAgfTsKfQoKLyoqIOaWsOWbvueZu+iusO+8mui0tOi/m+Wug+WHuueOsOS9jee9ruaJgOWcqOeahOagvO+8m+WumuS9jeS4jeWIsOWwseWwgemhtuWFnOW6lSAqLwpmdW5jdGlvbiBhZG9wdE5ld0ltYWdlKHNoZWV0LCBpbWcpIHsKICBjb25zdCBnZW8gPSBzaGVldEdlb21ldHJ5KHNoZWV0KTsKICBjb25zdCBjZWxsID0gY2VsbEF0UG9pbnQoZ2VvLCBpbWcubGVmdCwgaW1nLnRvcCwgc2hlZXQgJiYgc2hlZXQucm93LCBzaGVldCAmJiBzaGVldC5jb2x1bW4pOwogIGNvbnN0IGZpdHRlZCA9IGNlbGwKICAgID8gZml0SW1hZ2VUb0NlbGwoc2hlZXQsIGltZywgY2VsbC5yLCBjZWxsLmMpCiAgICA6IGNhcEltYWdlU2l6ZShzaGVldCwgaW1nKTsKICByZXR1cm4geyAuLi5maXR0ZWQsIGZpbGVJZDogaW1nLmZpbGVJZCB8fCBudWxsLCBieXRlU2l6ZTogaW1nLmJ5dGVTaXplIHx8IDAsIHVzZXJJbnNlcnRlZDogdHJ1ZSB9Owp9CgovKiog5bey55+l5Zu+55qE5ZCI5bm277ya5Yeg5L2VLyBzcmMg5ZCs57uE5Lu255qE77yb5byV55So5LiO5Y+j5b6E5a2X5q615Lul6KeE6IyD5L6n5YWc5bqV5LiN5LiiICovCmZ1bmN0aW9uIG1lcmdlS25vd25JbWFnZShwcmV2LCBlY2hvLCBwcm90ZWN0ZWRJZHMpIHsKICBjb25zdCBtZXJnZWQgPSB7IC4uLnByZXYsIC4uLmVjaG8gfTsKICAvLyDnu4Tku7bkvqfmsqHmnInnmoTlrZfmrrXkuI3orrjmiorop4TojIPkvqflhrLmjokKICBpZiAoZWNoby5maWxlSWQgPT0gbnVsbCkgbWVyZ2VkLmZpbGVJZCA9IHByZXYuZmlsZUlkIHx8IG51bGw7CiAgaWYgKGVjaG8uYnl0ZVNpemUgPT0gbnVsbCkgbWVyZ2VkLmJ5dGVTaXplID0gcHJldi5ieXRlU2l6ZSB8fCAwOwogIGlmIChlY2hvLmtpbmQgPT0gbnVsbCkgbWVyZ2VkLmtpbmQgPSBwcmV2LmtpbmQ7CiAgaWYgKGVjaG8uYW5jaG9yUm93ID09IG51bGwpIG1lcmdlZC5hbmNob3JSb3cgPSBwcmV2LmFuY2hvclJvdzsKICBpZiAoZWNoby5hbmNob3JDb2wgPT0gbnVsbCkgbWVyZ2VkLmFuY2hvckNvbCA9IHByZXYuYW5jaG9yQ29sOwogIGlmICghZWNoby5zcmMgJiYgcHJldi5zcmMpIG1lcmdlZC5zcmMgPSBwcmV2LnNyYzsKICAvLyDliJrotLTmoLznmoTmlrDlm77lnKjph43mjILokL3lnLDliY3vvIzlh6DkvZXku6Xop4TojIPkvqfkuLrlh4bvvIjpmLLnu4Tku7bnmoTmu57lkI7lm57lo7DmiorotLTmoLzlhrLmjonvvIkKICBpZiAocHJvdGVjdGVkSWRzICYmIHByb3RlY3RlZElkcy5oYXMocHJldi5pZCkpIHsKICAgIG1lcmdlZC5sZWZ0ID0gcHJldi5sZWZ0OwogICAgbWVyZ2VkLnRvcCA9IHByZXYudG9wOwogICAgbWVyZ2VkLndpZHRoID0gcHJldi53aWR0aDsKICAgIG1lcmdlZC5oZWlnaHQgPSBwcmV2LmhlaWdodDsKICB9CiAgcmV0dXJuIG1lcmdlZDsKfQoKZnVuY3Rpb24gc2FtZUltYWdlKGEsIGIpIHsKICByZXR1cm4gYSA9PT0gYiB8fCAoYSAmJiBiICYmCiAgICBhLmlkID09PSBiLmlkICYmIGEuc3JjID09PSBiLnNyYyAmJgogICAgYS5sZWZ0ID09PSBiLmxlZnQgJiYgYS50b3AgPT09IGIudG9wICYmCiAgICBhLndpZHRoID09PSBiLndpZHRoICYmIGEuaGVpZ2h0ID09PSBiLmhlaWdodCAmJgogICAgKGEuZmlsZUlkIHx8IG51bGwpID09PSAoYi5maWxlSWQgfHwgbnVsbCkgJiYKICAgIChhLmtpbmQgfHwgbnVsbCkgPT09IChiLmtpbmQgfHwgbnVsbCkgJiYKICAgIChhLmFuY2hvclJvdyA/PyBudWxsKSA9PT0gKGIuYW5jaG9yUm93ID8/IG51bGwpICYmCiAgICAoYS5hbmNob3JDb2wgPz8gbnVsbCkgPT09IChiLmFuY2hvckNvbCA/PyBudWxsKSk7Cn0KCi8qKgogKiDlm57lo7Dlr7npvZDvvIjlj6rlop7kuI3liKDvvInvvJpjb21wb25lbnRJbWFnZXMg5piv5Zue5aOw6YeM55qE5Zu+54mH5riF5Y2V44CCCiAqIOi/lOWbniB7IGltYWdlcywgYWRkZWQsIGNoYW5nZWQgfe+8m2FkZGVkIOaYr+aWsOeZu+iusOeahOWbvu+8iOiwg+eUqOaWuei0n+i0owogKiDmiorlrZfoioLlrZjov5vmlofku7bku5PlupPlubblm57loasgZmlsZUlk77yJ44CC5Zue5aOw5LiN5piv5pWw57uEIOKGkiDljp/moLfov5Tlm57jgIIKICovCmV4cG9ydCBmdW5jdGlvbiByZWNvbmNpbGVFY2hvSW1hZ2VzKGNhbm9uaWNhbEltYWdlcywgZWNob0ltYWdlcywgc2hlZXQsIHByb3RlY3RlZElkcykgewogIGNvbnN0IGNhbm9uaWNhbCA9IGNhbm9uaWNhbEltYWdlcyB8fCBbXTsKICBpZiAoIUFycmF5LmlzQXJyYXkoZWNob0ltYWdlcykpIHJldHVybiB7IGltYWdlczogY2Fub25pY2FsLCBhZGRlZDogW10sIGNoYW5nZWQ6IGZhbHNlIH07CiAgY29uc3QgYnlJZCA9IG5ldyBNYXAoY2Fub25pY2FsLm1hcCgoaW1nKSA9PiBbaW1nLmlkLCBpbWddKSk7CiAgY29uc3Qgc2VlbiA9IG5ldyBTZXQoKTsKICBjb25zdCBhZGRlZCA9IFtdOwogIGNvbnN0IG91dCA9IFtdOwogIGZvciAoY29uc3QgZWltZyBvZiBlY2hvSW1hZ2VzKSB7CiAgICBpZiAoIWVpbWcgfHwgZWltZy5pZCA9PSBudWxsKSBjb250aW51ZTsKICAgIHNlZW4uYWRkKGVpbWcuaWQpOwogICAgY29uc3QgcHJldiA9IGJ5SWQuZ2V0KGVpbWcuaWQpOwogICAgaWYgKHByZXYpIHsKICAgICAgb3V0LnB1c2gobWVyZ2VLbm93bkltYWdlKHByZXYsIGVpbWcsIHByb3RlY3RlZElkcykpOwogICAgfSBlbHNlIHsKICAgICAgY29uc3QgZml0dGVkID0gYWRvcHROZXdJbWFnZShzaGVldCwgZWltZyk7CiAgICAgIGFkZGVkLnB1c2goZml0dGVkKTsKICAgICAgb3V0LnB1c2goZml0dGVkKTsKICAgIH0KICB9CiAgLy8g5Zue5aOw6YeM5rKh5Ye6546w55qE6KeE6IyD5Zu+5LiA5b6L5L+d55WZ77yI5Yig6Zmk5LiN6Z2g5Zue5aOw5Yik5a6a77yM6KeB5paH5Lu25aS077yJCiAgZm9yIChjb25zdCBpbWcgb2YgY2Fub25pY2FsKSB7CiAgICBpZiAoIXNlZW4uaGFzKGltZy5pZCkpIG91dC5wdXNoKGltZyk7CiAgfQogIGNvbnN0IGNoYW5nZWQgPSBhZGRlZC5sZW5ndGggPiAwIHx8CiAgICBvdXQubGVuZ3RoICE9PSBjYW5vbmljYWwubGVuZ3RoIHx8CiAgICBvdXQuc29tZSgoaW1nLCBpKSA9PiAhc2FtZUltYWdlKGltZywgY2Fub25pY2FsW2ldKSkgfHwKICAgIGNhbm9uaWNhbC5zb21lKChpbWcsIGkpID0+ICFzYW1lSW1hZ2UoaW1nLCBvdXRbaV0pKTsKICByZXR1cm4geyBpbWFnZXM6IG91dCwgYWRkZWQsIGNoYW5nZWQgfTsKfQoKLyoqCiAqIOeUu+mdouWvuem9kO+8iOWinuWIoOmDveeul+aVsO+8ie+8mmRvbUltYWdlcyDmmK/nlLvpnaLkuIrnnJ/lrp7lrZjlnKjnmoTlm77moYbmuIXljZUKICogW3sgaWQsIGxlZnQsIHRvcCwgd2lkdGgsIGhlaWdodCwgc3JjPyB9Xe+8iOWHoOS9leW3suaNoueul+WbnuaVsOaNruWdkOagh++8ieOAggogKiBkb21JbWFnZXMgPT09IG51bGwg6KGo56S66KGo5qC85rKh5oyC6L2977yI5Zyo55yL5Yir55qE6KeG5Zu+77yJ4oCU4oCU5LiN5Yqo6KeE6IyD5pWw5o2u44CCCiAqIG9wdHMucHJvdGVjdFVuaWRlbnRpZmllZEFjdGl2Ze+8mueUu+mdouS4iuaciSLmtLvliqjlm74i5qGG5L2G6K6k5LiN5Ye65piv5ZOq5byg5pe277yMCiAqIOS8oCB0cnVlIOihqOekuui/measoeWPquabtOaWsOWHoOS9leOAgeS4jeWIoOS7u+S9leWbvu+8iOWugeWPr+eVmeedgO+8jOS4jeWPr+ivr+WIoO+8ieOAggogKiDov5Tlm54geyBpbWFnZXMsIGFkZGVkLCByZW1vdmVkSWRzLCBjaGFuZ2VkIH3jgIIKICovCmV4cG9ydCBmdW5jdGlvbiByZWNvbmNpbGVEb21JbWFnZXMoY2Fub25pY2FsSW1hZ2VzLCBkb21JbWFnZXMsIHNoZWV0LCBvcHRzID0ge30pIHsKICBjb25zdCBjYW5vbmljYWwgPSBjYW5vbmljYWxJbWFnZXMgfHwgW107CiAgaWYgKCFBcnJheS5pc0FycmF5KGRvbUltYWdlcykpIHJldHVybiB7IGltYWdlczogY2Fub25pY2FsLCBhZGRlZDogW10sIHJlbW92ZWRJZHM6IFtdLCBjaGFuZ2VkOiBmYWxzZSB9OwogIGNvbnN0IGJ5SWQgPSBuZXcgTWFwKGNhbm9uaWNhbC5tYXAoKGltZykgPT4gW2ltZy5pZCwgaW1nXSkpOwogIGNvbnN0IHNlZW4gPSBuZXcgU2V0KCk7CiAgY29uc3QgYWRkZWQgPSBbXTsKICBjb25zdCBvdXQgPSBbXTsKICBmb3IgKGNvbnN0IGRpbWcgb2YgZG9tSW1hZ2VzKSB7CiAgICBpZiAoIWRpbWcgfHwgZGltZy5pZCA9PSBudWxsKSBjb250aW51ZTsKICAgIHNlZW4uYWRkKGRpbWcuaWQpOwogICAgY29uc3QgcHJldiA9IGJ5SWQuZ2V0KGRpbWcuaWQpOwogICAgaWYgKHByZXYpIHsKICAgICAgY29uc3QgcHJvdGVjdCA9IG9wdHMucHJvdGVjdGVkSWRzICYmIG9wdHMucHJvdGVjdGVkSWRzLmhhcyhwcmV2LmlkKTsKICAgICAgb3V0LnB1c2gocHJvdGVjdCA/IHByZXYgOiB7CiAgICAgICAgLi4ucHJldiwKICAgICAgICBsZWZ0OiBkaW1nLmxlZnQsIHRvcDogZGltZy50b3AsIHdpZHRoOiBkaW1nLndpZHRoLCBoZWlnaHQ6IGRpbWcuaGVpZ2h0LAogICAgICAgIHNyYzogcHJldi5zcmMgfHwgZGltZy5zcmMgfHwgJycsCiAgICAgIH0pOwogICAgfSBlbHNlIHsKICAgICAgLy8g55S76Z2i5LiK5pyJ44CB6KeE6IyD6YeM5rKh5pyJ77yI5p6B5bCR77ya5Zue5aOw5ryP5o6J55qE5o+S5YWl77yJ4oCU4oCU54Wn55S76Z2i55m76K6w5bm26LS05qC8CiAgICAgIGNvbnN0IGZpdHRlZCA9IGFkb3B0TmV3SW1hZ2Uoc2hlZXQsIHsgLi4uZGltZywgc3JjOiBkaW1nLnNyYyB8fCAnJyB9KTsKICAgICAgYWRkZWQucHVzaChmaXR0ZWQpOwogICAgICBvdXQucHVzaChmaXR0ZWQpOwogICAgfQogIH0KICBjb25zdCByZW1vdmVkSWRzID0gW107CiAgZm9yIChjb25zdCBpbWcgb2YgY2Fub25pY2FsKSB7CiAgICBpZiAoIXNlZW4uaGFzKGltZy5pZCkpIHsKICAgICAgaWYgKG9wdHMucHJvdGVjdFVuaWRlbnRpZmllZEFjdGl2ZSkgewogICAgICAgIG91dC5wdXNoKGltZyk7IC8vIOiupOS4jeWHuueahOa0u+WKqOWbvuWcqOWcuu+8mui/measoeS4jeWIoOS7u+S9lSLnvLrluK0i55qE5Zu+CiAgICAgIH0gZWxzZSB7CiAgICAgICAgcmVtb3ZlZElkcy5wdXNoKGltZy5pZCk7CiAgICAgIH0KICAgIH0KICB9CiAgY29uc3QgY2hhbmdlZCA9IGFkZGVkLmxlbmd0aCA+IDAgfHwgcmVtb3ZlZElkcy5sZW5ndGggPiAwIHx8CiAgICBvdXQubGVuZ3RoICE9PSBjYW5vbmljYWwubGVuZ3RoIHx8CiAgICBvdXQuc29tZSgoaW1nLCBpKSA9PiAhc2FtZUltYWdlKGltZywgY2Fub25pY2FsW2ldKSkgfHwKICAgIGNhbm9uaWNhbC5zb21lKChpbWcsIGkpID0+ICFzYW1lSW1hZ2UoaW1nLCBvdXRbaV0pKTsKICByZXR1cm4geyBpbWFnZXM6IG91dCwgYWRkZWQsIHJlbW92ZWRJZHMsIGNoYW5nZWQgfTsKfQo=
+// 图片对齐（包 10）：组件（FortuneSheet）与规范数据之间的图片和解。
+//
+// 实测事实（包 10 复现，真实文件 + 宽屏 2560）：
+//  1. 用户用工具栏插入图片时，组件发出的回声里新图带自然尺寸
+//     （如 768×1024），left/top 是当时活动格的左上角——图是"浮"在
+//     表格上的，不在格子里。必须由我们按活动格把它贴进格子（fit）。
+//  2. 用户在组件里删图（点选 + Delete），删除是否反映到回声里取决
+//     于当时的键盘焦点路径，不可靠；而在规范数据完成对齐保存之前，
+//     任何一次重挂（算价/加列/切文档）都会把删掉的图按规范数据画
+//     回来（复活）——用户的原始反馈正是这一幕。唯一始终可信的是
+//     画面本身（DOM 里的图框清单）。所以：
+//       - 回声路径（onChange）：只增不删——新图贴格登记，老图合并
+//         几何（拖动/缩放靠它落盘）；回声缺席永不解读为删除。
+//       - 画面路径（冻结打印前：保存/切文档/切视图/程序化改表）：
+//         以画面图框为准做增删——画面里没有的图，规范数据里删掉。
+//  3. 组件回声会保留我们给导入图附加的字段（fileId/kind/锚点），
+//     但合并时仍以规范侧为准兜底，防组件把引用弄丢。
+//
+// 本文件全部是纯函数（画面清单由调用方从 DOM 读好传入），可单测。
+
+const FALLBACK_COL_W = 73;   // 与 FortuneSheet 默认列宽一致（无几何信息时兜底）
+const FALLBACK_ROW_H = 19;   // 与 FortuneSheet 默认行高一致
+const NO_CELL_FIT_W = 102;   // 定位不到活动格时的封顶宽度（约等于真实表的图片列宽）
+
+/** 表格几何：列宽/行高与前缀和（与 xlsx/toFortuneSheet.js 同一算法） */
+export function sheetGeometry(sheet) {
+  const cfg = (sheet && sheet.config) || {};
+  const columnlen = cfg.columnlen || {};
+  const rowlen = cfg.rowlen || {};
+  const defW = sheet && sheet.defaultColWidth != null ? sheet.defaultColWidth : FALLBACK_COL_W;
+  const defH = sheet && sheet.defaultRowHeight != null ? sheet.defaultRowHeight : FALLBACK_ROW_H;
+  const widthOf = (c) => {
+    const v = columnlen[c] != null ? columnlen[c] : columnlen[String(c)];
+    return v != null ? v : defW;
+  };
+  const heightOf = (r) => {
+    const v = rowlen[r] != null ? rowlen[r] : rowlen[String(r)];
+    return v != null ? v : defH;
+  };
+  const leftOf = (c) => {
+    let x = 0;
+    for (let i = 0; i < c; i++) x += widthOf(i);
+    return x;
+  };
+  const topOf = (r) => {
+    let y = 0;
+    for (let i = 0; i < r; i++) y += heightOf(i);
+    return y;
+  };
+  return { widthOf, heightOf, leftOf, topOf };
+}
+
+/**
+ * 由像素点反推所在格：取左上角不超过该点的最靠后一行/一列
+ * （插入回声的 left/top 正好是活动格左上角，容差 1px）。
+ * rowCount/colCount 决定上限；给不出（坐标为负等）返回 null。
+ */
+export function cellAtPoint(geo, left, top, rowCount, colCount) {
+  if (!geo || !Number.isFinite(left) || !Number.isFinite(top) || left < 0 || top < 0) return null;
+  let c = 0;
+  const maxC = Math.max(1, colCount || 1);
+  while (c + 1 < maxC && geo.leftOf(c + 1) <= left + 1) c += 1;
+  if (geo.leftOf(c) > left + 1) return null;
+  let r = 0;
+  const maxR = Math.max(1, rowCount || 1);
+  while (r + 1 < maxR && geo.topOf(r + 1) <= top + 1) r += 1;
+  if (geo.topOf(r) > top + 1) return null;
+  return { r, c };
+}
+
+/** 把一张图贴进指定格：几何 = 格的矩形，kind=cell，锚点 = 该格 */
+export function fitImageToCell(sheet, img, r, c) {
+  const geo = sheetGeometry(sheet);
+  return {
+    ...img,
+    left: geo.leftOf(c),
+    top: geo.topOf(r),
+    width: Math.max(1, geo.widthOf(c)),
+    height: Math.max(1, geo.heightOf(r)),
+    anchorRow: r,
+    anchorCol: c,
+    kind: 'cell',
+  };
+}
+
+/**
+ * 定位不到格子时的兜底贴法：宽封顶 NO_CELL_FIT_W、高按原比例，
+ * 锚到第一格——永远不许以自然尺寸出现。
+ */
+export function capImageSize(sheet, img) {
+  const ow = img.originWidth || img.width || 0;
+  const oh = img.originHeight || img.height || 0;
+  const width = NO_CELL_FIT_W;
+  const height = ow > 0 && oh > 0
+    ? Math.max(1, Math.round((width * oh) / ow))
+    : NO_CELL_FIT_W;
+  return {
+    ...img,
+    left: 0, top: 0, width, height,
+    anchorRow: 0, anchorCol: 0, kind: 'cell',
+  };
+}
+
+/** 新图登记：贴进它出现位置所在的格；定位不到就封顶兜底 */
+function adoptNewImage(sheet, img) {
+  const geo = sheetGeometry(sheet);
+  const cell = cellAtPoint(geo, img.left, img.top, sheet && sheet.row, sheet && sheet.column);
+  const fitted = cell
+    ? fitImageToCell(sheet, img, cell.r, cell.c)
+    : capImageSize(sheet, img);
+  return { ...fitted, fileId: img.fileId || null, byteSize: img.byteSize || 0, userInserted: true };
+}
+
+/** 已知图的合并：几何/ src 听组件的；引用与口径字段以规范侧兜底不丢 */
+function mergeKnownImage(prev, echo, protectedIds) {
+  const merged = { ...prev, ...echo };
+  // 组件侧没有的字段不许把规范侧冲掉
+  if (echo.fileId == null) merged.fileId = prev.fileId || null;
+  if (echo.byteSize == null) merged.byteSize = prev.byteSize || 0;
+  if (echo.kind == null) merged.kind = prev.kind;
+  if (echo.anchorRow == null) merged.anchorRow = prev.anchorRow;
+  if (echo.anchorCol == null) merged.anchorCol = prev.anchorCol;
+  if (!echo.src && prev.src) merged.src = prev.src;
+  // 刚贴格的新图在重挂落地前，几何以规范侧为准（防组件的滞后回声把贴格冲掉）
+  if (protectedIds && protectedIds.has(prev.id)) {
+    merged.left = prev.left;
+    merged.top = prev.top;
+    merged.width = prev.width;
+    merged.height = prev.height;
+  }
+  return merged;
+}
+
+function sameImage(a, b) {
+  return a === b || (a && b &&
+    a.id === b.id && a.src === b.src &&
+    a.left === b.left && a.top === b.top &&
+    a.width === b.width && a.height === b.height &&
+    (a.fileId || null) === (b.fileId || null) &&
+    (a.kind || null) === (b.kind || null) &&
+    (a.anchorRow ?? null) === (b.anchorRow ?? null) &&
+    (a.anchorCol ?? null) === (b.anchorCol ?? null));
+}
+
+/**
+ * 回声对齐（只增不删）：componentImages 是回声里的图片清单。
+ * 返回 { images, added, changed }；added 是新登记的图（调用方负责
+ * 把字节存进文件仓库并回填 fileId）。回声不是数组 → 原样返回。
+ */
+export function reconcileEchoImages(canonicalImages, echoImages, sheet, protectedIds) {
+  const canonical = canonicalImages || [];
+  if (!Array.isArray(echoImages)) return { images: canonical, added: [], changed: false };
+  const byId = new Map(canonical.map((img) => [img.id, img]));
+  const seen = new Set();
+  const added = [];
+  const out = [];
+  for (const eimg of echoImages) {
+    if (!eimg || eimg.id == null) continue;
+    seen.add(eimg.id);
+    const prev = byId.get(eimg.id);
+    if (prev) {
+      out.push(mergeKnownImage(prev, eimg, protectedIds));
+    } else {
+      const fitted = adoptNewImage(sheet, eimg);
+      added.push(fitted);
+      out.push(fitted);
+    }
+  }
+  // 回声里没出现的规范图一律保留（删除不靠回声判定，见文件头）
+  for (const img of canonical) {
+    if (!seen.has(img.id)) out.push(img);
+  }
+  const changed = added.length > 0 ||
+    out.length !== canonical.length ||
+    out.some((img, i) => !sameImage(img, canonical[i])) ||
+    canonical.some((img, i) => !sameImage(img, out[i]));
+  return { images: out, added, changed };
+}
+
+/**
+ * 画面对齐（增删都算数）：domImages 是画面上真实存在的图框清单
+ * [{ id, left, top, width, height, src? }]（几何已换算回数据坐标）。
+ * domImages === null 表示表格没挂载（在看别的视图）——不动规范数据。
+ * opts.protectUnidentifiedActive：画面上有"活动图"框但认不出是哪张时，
+ * 传 true 表示这次只更新几何、不删任何图（宁可留着，不可误删）。
+ * 返回 { images, added, removedIds, changed }。
+ */
+export function reconcileDomImages(canonicalImages, domImages, sheet, opts = {}) {
+  const canonical = canonicalImages || [];
+  if (!Array.isArray(domImages)) return { images: canonical, added: [], removedIds: [], changed: false };
+  const byId = new Map(canonical.map((img) => [img.id, img]));
+  const seen = new Set();
+  const added = [];
+  const out = [];
+  for (const dimg of domImages) {
+    if (!dimg || dimg.id == null) continue;
+    seen.add(dimg.id);
+    const prev = byId.get(dimg.id);
+    if (prev) {
+      const protect = opts.protectedIds && opts.protectedIds.has(prev.id);
+      out.push(protect ? prev : {
+        ...prev,
+        left: dimg.left, top: dimg.top, width: dimg.width, height: dimg.height,
+        src: prev.src || dimg.src || '',
+      });
+    } else {
+      // 画面上有、规范里没有（极少：回声漏掉的插入）——照画面登记并贴格
+      const fitted = adoptNewImage(sheet, { ...dimg, src: dimg.src || '' });
+      added.push(fitted);
+      out.push(fitted);
+    }
+  }
+  const removedIds = [];
+  for (const img of canonical) {
+    if (!seen.has(img.id)) {
+      if (opts.protectUnidentifiedActive) {
+        out.push(img); // 认不出的活动图在场：这次不删任何"缺席"的图
+      } else {
+        removedIds.push(img.id);
+      }
+    }
+  }
+  const changed = added.length > 0 || removedIds.length > 0 ||
+    out.length !== canonical.length ||
+    out.some((img, i) => !sameImage(img, canonical[i])) ||
+    canonical.some((img, i) => !sameImage(img, out[i]));
+  return { images: out, added, removedIds, changed };
+}

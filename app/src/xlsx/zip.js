@@ -1,1 +1,70 @@
-Ly8gemlwIOWxgu+8mueUqOaIkOeGn+W6kyBmZmxhdGUg6K+75YaZIHhsc3jvvIjlsLHmmK8gemlw77yJ44CC5paH5Lu25bGC55qE5LiA5YiH5L+d55yf5pON5L2cCi8vIOmDveW7uueri+WcqCLljp/moLfmi7/liLDmr4/kuKogcGFydCDnmoTlrZfoioIi5LmL5LiK77yM5LiN57uP6L+H5Lu75L2V5Lya6YeN5o6S5YaF5a6555qE5qih5Z6L44CCCmltcG9ydCB7IHVuemlwU3luYywgemlwU3luYyB9IGZyb20gJ2ZmbGF0ZSc7CgovKiog5omT5byA5LiA5LiqIHhsc3gg4oaSIE1hcDxwYXJ06Lev5b6ELCBVaW50OEFycmF5Pu+8iOebruW9lemhuei3s+i/h++8iSAqLwpleHBvcnQgZnVuY3Rpb24gb3BlblppcChpbnB1dCkgewogIGNvbnN0IGJ5dGVzID0gaW5wdXQgaW5zdGFuY2VvZiBVaW50OEFycmF5ID8gaW5wdXQgOiBuZXcgVWludDhBcnJheShpbnB1dCk7CiAgY29uc3QgcmF3ID0gdW56aXBTeW5jKGJ5dGVzKTsKICBjb25zdCBwYXJ0cyA9IG5ldyBNYXAoKTsKICBmb3IgKGNvbnN0IG5hbWUgb2YgT2JqZWN0LmtleXMocmF3KSkgewogICAgaWYgKG5hbWUuZW5kc1dpdGgoJy8nKSkgY29udGludWU7CiAgICBwYXJ0cy5zZXQobmFtZSwgcmF3W25hbWVdKTsKICB9CiAgcmV0dXJuIHBhcnRzOwp9CgovKiog5oqKIE1hcDxwYXJ06Lev5b6ELCBVaW50OEFycmF5PiDmiZPlm54gemlwIOWtl+iKgu+8iOWGmei3r+W+hOmihOeVme+8jOacrOWMheaaguacqueUqO+8iSAqLwpleHBvcnQgZnVuY3Rpb24gd3JpdGVaaXAocGFydHMpIHsKICBjb25zdCBvYmogPSB7fTsKICBmb3IgKGNvbnN0IFtuYW1lLCBieXRlc10gb2YgcGFydHMpIG9ialtuYW1lXSA9IGJ5dGVzOwogIHJldHVybiB6aXBTeW5jKG9iaik7Cn0KCmNvbnN0IGRlY29kZXIgPSB0eXBlb2YgVGV4dERlY29kZXIgIT09ICd1bmRlZmluZWQnID8gbmV3IFRleHREZWNvZGVyKCd1dGYtOCcpIDogbnVsbDsKCmV4cG9ydCBmdW5jdGlvbiBwYXJ0VGV4dChwYXJ0cywgcGF0aCkgewogIGNvbnN0IGIgPSBwYXJ0cy5nZXQocGF0aCk7CiAgaWYgKCFiKSByZXR1cm4gbnVsbDsKICBpZiAoZGVjb2RlcikgcmV0dXJuIGRlY29kZXIuZGVjb2RlKGIpOwogIC8vIOaegeaXp+eOr+Wig+WFnOW6le+8iOato+W4uOS4jeS8mui1sOWIsO+8iQogIGxldCBzID0gJyc7CiAgZm9yIChsZXQgaSA9IDA7IGkgPCBiLmxlbmd0aDsgaSsrKSBzICs9IFN0cmluZy5mcm9tQ2hhckNvZGUoYltpXSk7CiAgcmV0dXJuIGRlY29kZVVSSUNvbXBvbmVudChlc2NhcGUocykpOwp9CgpleHBvcnQgZnVuY3Rpb24gcGFydEJ5dGVzKHBhcnRzLCBwYXRoKSB7CiAgcmV0dXJuIHBhcnRzLmdldChwYXRoKSB8fCBudWxsOwp9Cgpjb25zdCBNSU1FX0JZX0VYVCA9IHsKICBwbmc6ICdpbWFnZS9wbmcnLAogIGpwZzogJ2ltYWdlL2pwZWcnLAogIGpwZWc6ICdpbWFnZS9qcGVnJywKICBnaWY6ICdpbWFnZS9naWYnLAogIGJtcDogJ2ltYWdlL2JtcCcsCiAgd2VicDogJ2ltYWdlL3dlYnAnLAogIHN2ZzogJ2ltYWdlL3N2Zyt4bWwnLAogIHRpZjogJ2ltYWdlL3RpZmYnLAogIHRpZmY6ICdpbWFnZS90aWZmJywKICBlbWY6ICdpbWFnZS94LWVtZicsCiAgd21mOiAnaW1hZ2UveC13bWYnLAp9OwoKZXhwb3J0IGZ1bmN0aW9uIG1pbWVPZihwYXRoKSB7CiAgY29uc3QgZXh0ID0gKHBhdGguc3BsaXQoJy4nKS5wb3AoKSB8fCAnJykudG9Mb3dlckNhc2UoKTsKICByZXR1cm4gTUlNRV9CWV9FWFRbZXh0XSB8fCAnYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFtJzsKfQoKLyoqIOWtl+iKgiDihpIgZGF0YSBVUkzvvIjmtY/op4jlmagvTm9kZSDlj4zlrp7njrDvvJvlpKflm77liIblnZfpgb/lhY3niIbmoIjvvIkgKi8KZXhwb3J0IGZ1bmN0aW9uIGJ5dGVzVG9EYXRhVXJsKGJ5dGVzLCBtaW1lKSB7CiAgaWYgKHR5cGVvZiBCdWZmZXIgIT09ICd1bmRlZmluZWQnKSB7CiAgICByZXR1cm4gJ2RhdGE6JyArIG1pbWUgKyAnO2Jhc2U2NCwnICsgQnVmZmVyLmZyb20oYnl0ZXMpLnRvU3RyaW5nKCdiYXNlNjQnKTsKICB9CiAgbGV0IGJpbiA9ICcnOwogIGNvbnN0IENIVU5LID0gMHg4MDAwOwogIGZvciAobGV0IGkgPSAwOyBpIDwgYnl0ZXMubGVuZ3RoOyBpICs9IENIVU5LKSB7CiAgICBiaW4gKz0gU3RyaW5nLmZyb21DaGFyQ29kZS5hcHBseShudWxsLCBieXRlcy5zdWJhcnJheShpLCBpICsgQ0hVTkspKTsKICB9CiAgcmV0dXJuICdkYXRhOicgKyBtaW1lICsgJztiYXNlNjQsJyArIGJ0b2EoYmluKTsKfQo=
+// zip 层：用成熟库 fflate 读写 xlsx（就是 zip）。文件层的一切保真操作
+// 都建立在"原样拿到每个 part 的字节"之上，不经过任何会重排内容的模型。
+import { unzipSync, zipSync } from 'fflate';
+
+/** 打开一个 xlsx → Map<part路径, Uint8Array>（目录项跳过） */
+export function openZip(input) {
+  const bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
+  const raw = unzipSync(bytes);
+  const parts = new Map();
+  for (const name of Object.keys(raw)) {
+    if (name.endsWith('/')) continue;
+    parts.set(name, raw[name]);
+  }
+  return parts;
+}
+
+/** 把 Map<part路径, Uint8Array> 打回 zip 字节（写路径预留，本包暂未用） */
+export function writeZip(parts) {
+  const obj = {};
+  for (const [name, bytes] of parts) obj[name] = bytes;
+  return zipSync(obj);
+}
+
+const decoder = typeof TextDecoder !== 'undefined' ? new TextDecoder('utf-8') : null;
+
+export function partText(parts, path) {
+  const b = parts.get(path);
+  if (!b) return null;
+  if (decoder) return decoder.decode(b);
+  // 极旧环境兜底（正常不会走到）
+  let s = '';
+  for (let i = 0; i < b.length; i++) s += String.fromCharCode(b[i]);
+  return decodeURIComponent(escape(s));
+}
+
+export function partBytes(parts, path) {
+  return parts.get(path) || null;
+}
+
+const MIME_BY_EXT = {
+  png: 'image/png',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  gif: 'image/gif',
+  bmp: 'image/bmp',
+  webp: 'image/webp',
+  svg: 'image/svg+xml',
+  tif: 'image/tiff',
+  tiff: 'image/tiff',
+  emf: 'image/x-emf',
+  wmf: 'image/x-wmf',
+};
+
+export function mimeOf(path) {
+  const ext = (path.split('.').pop() || '').toLowerCase();
+  return MIME_BY_EXT[ext] || 'application/octet-stream';
+}
+
+/** 字节 → data URL（浏览器/Node 双实现；大图分块避免爆栈） */
+export function bytesToDataUrl(bytes, mime) {
+  if (typeof Buffer !== 'undefined') {
+    return 'data:' + mime + ';base64,' + Buffer.from(bytes).toString('base64');
+  }
+  let bin = '';
+  const CHUNK = 0x8000;
+  for (let i = 0; i < bytes.length; i += CHUNK) {
+    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CHUNK));
+  }
+  return 'data:' + mime + ';base64,' + btoa(bin);
+}

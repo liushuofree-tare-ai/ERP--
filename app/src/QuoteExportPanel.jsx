@@ -1,1 +1,153 @@
-aW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnOwoKLy8g5a+55a6i5oql5Lu35a+85Ye66Z2i5p2/77yIU1BFQyDnrKzlm5voioLnrKwgNyDpobnvvInvvJrlj6rlnKjnnIvor6Lku7fljZXml7bmiZPlvIDjgIIKLy8g6YCJ6KGM77ya6buY6K6k57uZIuW3suacieacgOe7iOS7tyLnmoTooYzmiZPli77vvIjlhYjmiqXlt7Lnoa7orqTnmoTpg6jliIbvvInvvIzmsqHku7fnmoTooYwKLy8g5Lmf5Zyo5YiX77yM55So5oi35Y+v5Lul5Yu+5LiK4oCU4oCU5a6D5Lus55qE5Lu35qC85Lya5L+d5oyB56m655m977yM57ud5LiN55SoIDAg5YaS5YWF44CCCi8vIOmAieWIl++8mum7mOiupOWOn+ihqOWIlyArIOacgOe7iOaKpeS7t++8m+W3peS9nOWIl+S4juOAjOmUgOWUruS7t+OAjeWIl+m7mOiupOS4jeWLvgovLyDvvIjopoHkuI3opoHnu5nlrqLmiLfnnIvvvIznlLHnlKjmiLfoh6rlt7Hli77vvInjgILkuKTnp43niYjlvI/lkITkuIDlr7nmjInpkq7vvIjkuIvovb0gLwovLyDlj5HpgIHliLDlvq7kv6HigKbvvInvvIzlrZfoioLnlLHniLbnu4Tku7bmjInov5nph4znmoTpgInmi6nnjrDnrpfigJTigJTpnaLmnb/mnKzouqvkuI3norAKLy8g5Lu75L2V5oql5Lu35Y2V5pWw5o2u77yM5bel5Y6C5Lu35LiO5bel5Y6C5ZCN5LuO57uT5p6E5LiK5bCx6L+b5LiN5LqG5a+85Ye677yI5bqV57q/IDLvvInjgIIKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gUXVvdGVFeHBvcnRQYW5lbCh7CiAgcm93cywgY29scywgZGVmYXVsdFJvd0lkcywgZGVmYXVsdENvbEtleXMsCiAgY2FuU2hhcmVGaWxlcywgb25FeHBvcnQsIG9uQ2xvc2UsCn0pIHsKICBjb25zdCBbcm93U2VsLCBzZXRSb3dTZWxdID0gdXNlU3RhdGUoKCkgPT4gbmV3IFNldChkZWZhdWx0Um93SWRzKSk7CiAgY29uc3QgW2NvbFNlbCwgc2V0Q29sU2VsXSA9IHVzZVN0YXRlKCgpID0+IG5ldyBTZXQoZGVmYXVsdENvbEtleXMpKTsKCiAgY29uc3QgdG9nZ2xlSW4gPSAoc2V0dGVyKSA9PiAoa2V5LCBvbikgPT4gewogICAgc2V0dGVyKChwcmV2KSA9PiB7CiAgICAgIGNvbnN0IG5leHQgPSBuZXcgU2V0KHByZXYpOwogICAgICBpZiAob24pIG5leHQuYWRkKGtleSk7IGVsc2UgbmV4dC5kZWxldGUoa2V5KTsKICAgICAgcmV0dXJuIG5leHQ7CiAgICB9KTsKICB9OwogIGNvbnN0IHRvZ2dsZVJvdyA9IHRvZ2dsZUluKHNldFJvd1NlbCk7CiAgY29uc3QgdG9nZ2xlQ29sID0gdG9nZ2xlSW4oc2V0Q29sU2VsKTsKCiAgY29uc3QgZGxCdG4gPSB7CiAgICBib3JkZXI6ICcxcHggc29saWQgIzJmNmJmZicsIGJhY2tncm91bmQ6ICcjMmY2YmZmJywgY29sb3I6ICcjZmZmJywKICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzVweCAxNHB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgfTsKICBjb25zdCBzaGFyZUJ0biA9IHsKICAgIGJvcmRlcjogJzFweCBzb2xpZCAjMDdjMTYwJywgYmFja2dyb3VuZDogJyMwN2MxNjAnLCBjb2xvcjogJyNmZmYnLAogICAgYm9yZGVyUmFkaXVzOiA4LCBwYWRkaW5nOiAnNXB4IDE0cHgnLCBjdXJzb3I6ICdwb2ludGVyJywKICB9OwogIGNvbnN0IGNoayA9IHsgZGlzcGxheTogJ2lubGluZS1mbGV4JywgYWxpZ25JdGVtczogJ2NlbnRlcicsIGdhcDogNCwgbWFyZ2luUmlnaHQ6IDEyLCB3aGl0ZVNwYWNlOiAnbm93cmFwJyB9OwoKICAvLyDngrnkuIvovb0v5YiG5Lqr5YmN5YWI6Ieq5qOA77ya5rKh6KGM44CB5rKh5Yu+6KGM44CB5rKh5Yu+5YiX5piv5LiJ56eN5LiN5ZCM55qE5oOF5Ya177yMCiAgLy8g5ZCE6K+05ZCE55qE6K+d5bm257uZ5Ye65LiL5LiA5q2l77yI5YyFIDEx77ya5q2k5YmN57uf5LiA5LiA5Y+lIuivt+iHs+WwkeWLvumAieS4gOihjCLvvIwKICAvLyDnpLrkvovljZXkuIrooYzmuIXljZXkuLrnqbrml7bnhafnnYDlgZrkuZ/lr7zkuI3lh7rvvIznlKjmiLfml6Dku47kuIvmiYvvvInjgIIKICBjb25zdCBmaXJlID0gKGtpbmQsIG1vZGUpID0+IHsKICAgIGlmIChyb3dzLmxlbmd0aCA9PT0gMCkgewogICAgICB3aW5kb3cuYWxlcnQoJ+i/meW8oOivouS7t+WNlei/mOayoeacieaVsOaNruihjO+8jOayoeazleWvvOWHuuKAlOKAlOWFiOWvvOWFpeWuouaIt+WOn+ihqO+8jOaIluWFiOWcqOihqOagvOmHjOWhq+S4iuaVsOaNru+8jOWGjeadpeWvvOWHuicpOwogICAgICByZXR1cm47CiAgICB9CiAgICBpZiAocm93U2VsLnNpemUgPT09IDApIHsKICAgICAgd2luZG93LmFsZXJ0KCfkuIDooYzpg73ov5jmsqHli77pgInigJTigJTor7flnKjkuIrpnaLli77pgInopoHlr7zlh7rnmoTooYzvvIjngrnjgIzlhajpgInjgI3lj6/ku6XkuIDmrKHlhajpgInlpb3vvInvvIzlho3ngrnkuIvovb0nKTsKICAgICAgcmV0dXJuOwogICAgfQogICAgaWYgKGNvbFNlbC5zaXplID09PSAwKSB7CiAgICAgIHdpbmRvdy5hbGVydCgn5LiA5YiX6YO96L+Y5rKh5Yu+6YCJ4oCU4oCU6K+36Iez5bCR5Yu+6YCJ5LiA5YiX77yI5q+U5aaC44CM5pyA57uI5oql5Lu344CN6YKj5YiX77yJ77yM5YaN54K55LiL6L29Jyk7CiAgICAgIHJldHVybjsKICAgIH0KICAgIG9uRXhwb3J0KGtpbmQsIG1vZGUsIHsgbGluZUlkczogcm93U2VsLCBjb2xLZXlzOiBjb2xTZWwgfSk7CiAgfTsKCiAgcmV0dXJuICgKICAgIDxkaXYgY2xhc3NOYW1lPSJleHBvcnQtcGFuZWwiIHN0eWxlPXt7CiAgICAgIG1hcmdpbjogJzEwcHggMTRweCAwJywgcGFkZGluZzogJzEycHggMTRweCcsIGZvbnRGYW1pbHk6ICdzYW5zLXNlcmlmJywgZm9udFNpemU6IDE0LAogICAgICBib3JkZXI6ICcxcHggc29saWQgI2RiZTJlYycsIGJvcmRlckxlZnQ6ICc0cHggc29saWQgIzFlOWU1NycsIGJvcmRlclJhZGl1czogMTIsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgICAgYm94U2hhZG93OiAnMCAxcHggM3B4IHJnYmEoMjMsMzQsNjIsMC4wNSknLAogICAgICBtYXhIZWlnaHQ6ICc0NnZoJywgb3ZlcmZsb3c6ICdhdXRvJywKICAgIH19PgogICAgICA8ZGl2IHN0eWxlPXt7IGRpc3BsYXk6ICdmbGV4JywgYWxpZ25JdGVtczogJ2NlbnRlcicsIGdhcDogOCwgZmxleFdyYXA6ICd3cmFwJyB9fT4KICAgICAgICA8YiBzdHlsZT17eyBjb2xvcjogJyMxNTczNDcnIH19PuWvueWuouaKpeS7t+WvvOWHujwvYj4KICAgICAgICA8c3BhbiBzdHlsZT17eyBjb2xvcjogJyM2NjYnIH19PgogICAgICAgICAg5a+85Ye65Y+q5ZCr6K+i5Lu35Y2V5LiO5pyA57uI5oql5Lu377yM57ud5LiN5YyF5ZCr5bel5Y6C5Lu35qC85ZKM5bel5Y6C5ZCNCiAgICAgICAgPC9zcGFuPgogICAgICAgIDxzcGFuIHN0eWxlPXt7IG1hcmdpbkxlZnQ6ICdhdXRvJyB9fSAvPgogICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJleHBvcnQtY2xvc2UiIG9uQ2xpY2s9e29uQ2xvc2V9IHN0eWxlPXt7CiAgICAgICAgICBib3JkZXI6ICcxcHggc29saWQgIzg4OCcsIGNvbG9yOiAnIzQ0NCcsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgICAgICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzNweCAxMHB4JywgY3Vyc29yOiAncG9pbnRlcicsCiAgICAgICAgfX0+5YWz6ZetPC9idXR0b24+CiAgICAgIDwvZGl2PgoKICAgICAgPGRpdiBzdHlsZT17eyBtYXJnaW5Ub3A6IDggfX0+CiAgICAgICAgPHNwYW4gc3R5bGU9e3sgY29sb3I6ICcjNDQ0JyB9fT7lr7zlh7rlk6rkupvooYzvvIjlt7LpgIkge3Jvd1NlbC5zaXplfSAvIHtyb3dzLmxlbmd0aH3vvInvvJo8L3NwYW4+CiAgICAgICAgPHNwYW4gc3R5bGU9e3sgbWFyZ2luTGVmdDogOCB9fT4KICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJleHAtcm93cy1hbGwiIG9uQ2xpY2s9eygpID0+IHNldFJvd1NlbChuZXcgU2V0KHJvd3MubWFwKChyKSA9PiByLmxpbmVJZCkpKX0gc3R5bGU9e3sgYm9yZGVyOiAnbm9uZScsIGJhY2tncm91bmQ6ICdub25lJywgY29sb3I6ICcjMmY2YmZmJywgY3Vyc29yOiAncG9pbnRlcicsIHBhZGRpbmc6IDAgfX0+5YWo6YCJPC9idXR0b24+CiAgICAgICAgICB7JyDCtyAnfQogICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImV4cC1yb3dzLW5vbmUiIG9uQ2xpY2s9eygpID0+IHNldFJvd1NlbChuZXcgU2V0KCkpfSBzdHlsZT17eyBib3JkZXI6ICdub25lJywgYmFja2dyb3VuZDogJ25vbmUnLCBjb2xvcjogJyMyZjZiZmYnLCBjdXJzb3I6ICdwb2ludGVyJywgcGFkZGluZzogMCB9fT7lhajkuI3pgIk8L2J1dHRvbj4KICAgICAgICA8L3NwYW4+CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImV4cC1yb3dzIiBzdHlsZT17ewogICAgICAgICAgbWFyZ2luVG9wOiA0LCBtYXhIZWlnaHQ6IDE2OCwgb3ZlcmZsb3c6ICdhdXRvJywKICAgICAgICAgIGJvcmRlcjogJzFweCBzb2xpZCAjZDVkYmUzJywgYm9yZGVyUmFkaXVzOiA4LCBiYWNrZ3JvdW5kOiAnI2ZmZicsIHBhZGRpbmc6ICc0cHggOHB4JywKICAgICAgICB9fT4KICAgICAgICAgIHtyb3dzLm1hcCgocikgPT4gKAogICAgICAgICAgICA8bGFiZWwga2V5PXtyLmxpbmVJZH0gY2xhc3NOYW1lPSJleHAtcm93IiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGdhcDogNiwgYWxpZ25JdGVtczogJ2NlbnRlcicsIHBhZGRpbmc6ICcycHggMCcgfX0+CiAgICAgICAgICAgICAgPGlucHV0CiAgICAgICAgICAgICAgICB0eXBlPSJjaGVja2JveCIKICAgICAgICAgICAgICAgIGNsYXNzTmFtZT0iZXhwLXJvdy1jaGVjayIKICAgICAgICAgICAgICAgIGRhdGEtbGluZS1pZD17ci5saW5lSWR9CiAgICAgICAgICAgICAgICBjaGVja2VkPXtyb3dTZWwuaGFzKHIubGluZUlkKX0KICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gdG9nZ2xlUm93KHIubGluZUlkLCBlLnRhcmdldC5jaGVja2VkKX0KICAgICAgICAgICAgICAvPgogICAgICAgICAgICAgIDxzcGFuIHN0eWxlPXt7IG1pbldpZHRoOiAzNiwgY29sb3I6ICcjODg4JyB9fT57ci5zZXEgfHwgJyd9PC9zcGFuPgogICAgICAgICAgICAgIDxzcGFuIHN0eWxlPXt7IG1pbldpZHRoOiAxMzAgfX0+e3Iub2UgfHwgJyd9PC9zcGFuPgogICAgICAgICAgICAgIDxzcGFuIHN0eWxlPXt7IGZsZXg6IDEgfX0+e3IucHJvZHVjdCB8fCAnJ308L3NwYW4+CiAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJleHAtcm93LXByaWNlIiBzdHlsZT17eyBjb2xvcjogci5maW5hbFByaWNlICE9PSBudWxsICYmIHIuZmluYWxQcmljZSAhPT0gdW5kZWZpbmVkID8gJyMxZTllNTcnIDogJyNiYmInIH19PgogICAgICAgICAgICAgICAge3IuZmluYWxQcmljZSAhPT0gbnVsbCAmJiByLmZpbmFsUHJpY2UgIT09IHVuZGVmaW5lZAogICAgICAgICAgICAgICAgICA/ICfmnIDnu4jku7cgJyArIHIuZmluYWxQcmljZS50b0ZpeGVkKDIpCiAgICAgICAgICAgICAgICAgIDogJ+acquWumuS7t++8iOWvvOWHuueVmeepuu+8iSd9CiAgICAgICAgICAgICAgPC9zcGFuPgogICAgICAgICAgICA8L2xhYmVsPgogICAgICAgICAgKSl9CiAgICAgICAgICB7cm93cy5sZW5ndGggPT09IDAgJiYgPGRpdiBzdHlsZT17eyBjb2xvcjogJyM4ODgnLCBwYWRkaW5nOiA2IH19PuivouS7t+WNlei/mOayoeacieaVsOaNruihjOKAlOKAlOWFiOWvvOWFpeWuouaIt+WOn+ihqO+8jOaIluWFiOWcqOihqOagvOmHjOWhq+S4iuaVsOaNru+8jOi/memHjOWwseS8muWIl+WHuuWPr+WvvOWHuueahOihjDwvZGl2Pn0KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CgogICAgICA8ZGl2IHN0eWxlPXt7IG1hcmdpblRvcDogOCwgZGlzcGxheTogJ2ZsZXgnLCBhbGlnbkl0ZW1zOiAnY2VudGVyJywgZmxleFdyYXA6ICd3cmFwJyB9fT4KICAgICAgICA8c3BhbiBzdHlsZT17eyBjb2xvcjogJyM0NDQnLCBtYXJnaW5SaWdodDogOCB9fT7lr7zlh7rlk6rkupvliJfvvJo8L3NwYW4+CiAgICAgICAge2NvbHMubWFwKChjKSA9PiAoCiAgICAgICAgICA8bGFiZWwga2V5PXtjLmtleX0gc3R5bGU9e2Noa30+CiAgICAgICAgICAgIDxpbnB1dAogICAgICAgICAgICAgIHR5cGU9ImNoZWNrYm94IgogICAgICAgICAgICAgIGNsYXNzTmFtZT0iZXhwLWNvbC1jaGVjayIKICAgICAgICAgICAgICBkYXRhLWNvbC1rZXk9e2Mua2V5fQogICAgICAgICAgICAgIGNoZWNrZWQ9e2NvbFNlbC5oYXMoYy5rZXkpfQogICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gdG9nZ2xlQ29sKGMua2V5LCBlLnRhcmdldC5jaGVja2VkKX0KICAgICAgICAgICAgLz4KICAgICAgICAgICAge2MubGFiZWx9CiAgICAgICAgICAgIHtjLmZpbmFsID8gPHNwYW4gc3R5bGU9e3sgY29sb3I6ICcjMWU5ZTU3JyB9fT7vvIjnu5nlrqLmiLfnmoTku7cgwrcg5oyJ5a6a5Y6C5bel5Y6C5Lu3566X77yJPC9zcGFuPiA6IG51bGx9CiAgICAgICAgICAgIHtjLmlzU2FsZXMgPyA8c3BhbiBzdHlsZT17eyBjb2xvcjogJyM5OTknIH19Pu+8iOWumuS7t+adoeaMieaIkOacrOS7t+WIl+eul++8iTwvc3Bhbj4gOiBudWxsfQogICAgICAgICAgICB7Yy5pc1dvcmsgPyA8c3BhbiBzdHlsZT17eyBjb2xvcjogJyM5OTknIH19Pu+8iOW3peS9nOWIl++8iTwvc3Bhbj4gOiBudWxsfQogICAgICAgICAgPC9sYWJlbD4KICAgICAgICApKX0KICAgICAgPC9kaXY+CgogICAgICA8ZGl2IHN0eWxlPXt7IG1hcmdpblRvcDogMTAsIGRpc3BsYXk6ICdmbGV4JywgZ2FwOiAxNCwgZmxleFdyYXA6ICd3cmFwJywgYWxpZ25JdGVtczogJ2NlbnRlcicgfX0+CiAgICAgICAgPHNwYW4gc3R5bGU9e3sgZGlzcGxheTogJ2lubGluZS1mbGV4JywgZ2FwOiA2LCBhbGlnbkl0ZW1zOiAnY2VudGVyJyB9fT4KICAgICAgICAgIDxiPuaZrumAmueJiDwvYj4KICAgICAgICAgIDxzcGFuIHN0eWxlPXt7IGNvbG9yOiAnIzg4OCcgfX0+5Y+q5ZCr6YCJ5Lit55qE6KGM5ZKM5YiXPC9zcGFuPgogICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImV4cC1wbGFpbi1kb3dubG9hZCIgb25DbGljaz17KCkgPT4gZmlyZSgncGxhaW4nLCAnZG93bmxvYWQnKX0gc3R5bGU9e2RsQnRufT7kuIvovb08L2J1dHRvbj4KICAgICAgICAgIHtjYW5TaGFyZUZpbGVzICYmICgKICAgICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9ImV4cC1wbGFpbi1zaGFyZSIgb25DbGljaz17KCkgPT4gZmlyZSgncGxhaW4nLCAnc2hhcmUnKX0gc3R5bGU9e3NoYXJlQnRufT7lj5HpgIHliLDlvq7kv6HigKY8L2J1dHRvbj4KICAgICAgICAgICl9CiAgICAgICAgPC9zcGFuPgogICAgICAgIDxzcGFuIHN0eWxlPXt7IGRpc3BsYXk6ICdpbmxpbmUtZmxleCcsIGdhcDogNiwgYWxpZ25JdGVtczogJ2NlbnRlcicgfX0+CiAgICAgICAgICA8Yj7luKblm77niYg8L2I+CiAgICAgICAgICA8c3BhbiBzdHlsZT17eyBjb2xvcjogJyM4ODgnIH19PuWuouaIt+WOn+ihqOWbnuWGmSArIOacgOe7iOaKpeS7t+WIl++8iOW4puWOn+agvOW8j+S4juWbvueJh++8iTwvc3Bhbj4KICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSJleHAtcGljLWRvd25sb2FkIiBvbkNsaWNrPXsoKSA9PiBmaXJlKCdwaWN0dXJlZCcsICdkb3dubG9hZCcpfSBzdHlsZT17ZGxCdG59PuS4i+i9vTwvYnV0dG9uPgogICAgICAgICAge2NhblNoYXJlRmlsZXMgJiYgKAogICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0iZXhwLXBpYy1zaGFyZSIgb25DbGljaz17KCkgPT4gZmlyZSgncGljdHVyZWQnLCAnc2hhcmUnKX0gc3R5bGU9e3NoYXJlQnRufT7lj5HpgIHliLDlvq7kv6HigKY8L2J1dHRvbj4KICAgICAgICAgICl9CiAgICAgICAgPC9zcGFuPgogICAgICAgIHshY2FuU2hhcmVGaWxlcyAmJiAoCiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9ImV4cC1zaGFyZS1oaW50IiBzdHlsZT17eyBjb2xvcjogJyM5OTknIH19PgogICAgICAgICAgICDmraTmtY/op4jlmajkuI3mlK/mjIHnm7TmjqXliIbkuqvvvIzor7fnlKjkuIvovb3lkI7mi5bov5vlvq7kv6EKICAgICAgICAgIDwvc3Bhbj4KICAgICAgICApfQogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICk7Cn0K
+import React, { useState } from 'react';
+
+// 对客报价导出面板（SPEC 第四节第 7 项）：只在看询价单时打开。
+// 选行：默认给"已有最终价"的行打勾（先报已确认的部分），没价的行
+// 也在列，用户可以勾上——它们的价格会保持空白，绝不用 0 冒充。
+// 选列：默认原表列 + 最终报价；工作列与「销售价」列默认不勾
+// （要不要给客户看，由用户自己勾）。两种版式各一对按钮（下载 /
+// 发送到微信…），字节由父组件按这里的选择现算——面板本身不碰
+// 任何报价单数据，工厂价与工厂名从结构上就进不了导出（底线 2）。
+export default function QuoteExportPanel({
+  rows, cols, defaultRowIds, defaultColKeys,
+  canShareFiles, onExport, onClose,
+}) {
+  const [rowSel, setRowSel] = useState(() => new Set(defaultRowIds));
+  const [colSel, setColSel] = useState(() => new Set(defaultColKeys));
+
+  const toggleIn = (setter) => (key, on) => {
+    setter((prev) => {
+      const next = new Set(prev);
+      if (on) next.add(key); else next.delete(key);
+      return next;
+    });
+  };
+  const toggleRow = toggleIn(setRowSel);
+  const toggleCol = toggleIn(setColSel);
+
+  const dlBtn = {
+    border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
+    borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
+  };
+  const shareBtn = {
+    border: '1px solid #07c160', background: '#07c160', color: '#fff',
+    borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
+  };
+  const chk = { display: 'inline-flex', alignItems: 'center', gap: 4, marginRight: 12, whiteSpace: 'nowrap' };
+
+  // 点下载/分享前先自检：没行、没勾行、没勾列是三种不同的情况，
+  // 各说各的话并给出下一步（包 11：此前统一一句"请至少勾选一行"，
+  // 示例单上行清单为空时照着做也导不出，用户无从下手）。
+  const fire = (kind, mode) => {
+    if (rows.length === 0) {
+      window.alert('这张询价单还没有数据行，没法导出——先导入客户原表，或先在表格里填上数据，再来导出');
+      return;
+    }
+    if (rowSel.size === 0) {
+      window.alert('一行都还没勾选——请在上面勾选要导出的行（点「全选」可以一次全选好），再点下载');
+      return;
+    }
+    if (colSel.size === 0) {
+      window.alert('一列都还没勾选——请至少勾选一列（比如「最终报价」那列），再点下载');
+      return;
+    }
+    onExport(kind, mode, { lineIds: rowSel, colKeys: colSel });
+  };
+
+  return (
+    <div className="export-panel" style={{
+      margin: '10px 14px 0', padding: '12px 14px', fontFamily: 'sans-serif', fontSize: 14,
+      border: '1px solid #dbe2ec', borderLeft: '4px solid #1e9e57', borderRadius: 12, background: '#fff',
+      boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
+      maxHeight: '46vh', overflow: 'auto',
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+        <b style={{ color: '#157347' }}>对客报价导出</b>
+        <span style={{ color: '#666' }}>
+          导出只含询价单与最终报价，绝不包含工厂价格和工厂名
+        </span>
+        <span style={{ marginLeft: 'auto' }} />
+        <button className="export-close" onClick={onClose} style={{
+          border: '1px solid #888', color: '#444', background: '#fff',
+          borderRadius: 8, padding: '3px 10px', cursor: 'pointer',
+        }}>关闭</button>
+      </div>
+
+      <div style={{ marginTop: 8 }}>
+        <span style={{ color: '#444' }}>导出哪些行（已选 {rowSel.size} / {rows.length}）：</span>
+        <span style={{ marginLeft: 8 }}>
+          <button className="exp-rows-all" onClick={() => setRowSel(new Set(rows.map((r) => r.lineId)))} style={{ border: 'none', background: 'none', color: '#2f6bff', cursor: 'pointer', padding: 0 }}>全选</button>
+          {' · '}
+          <button className="exp-rows-none" onClick={() => setRowSel(new Set())} style={{ border: 'none', background: 'none', color: '#2f6bff', cursor: 'pointer', padding: 0 }}>全不选</button>
+        </span>
+        <div className="exp-rows" style={{
+          marginTop: 4, maxHeight: 168, overflow: 'auto',
+          border: '1px solid #d5dbe3', borderRadius: 8, background: '#fff', padding: '4px 8px',
+        }}>
+          {rows.map((r) => (
+            <label key={r.lineId} className="exp-row" style={{ display: 'flex', gap: 6, alignItems: 'center', padding: '2px 0' }}>
+              <input
+                type="checkbox"
+                className="exp-row-check"
+                data-line-id={r.lineId}
+                checked={rowSel.has(r.lineId)}
+                onChange={(e) => toggleRow(r.lineId, e.target.checked)}
+              />
+              <span style={{ minWidth: 36, color: '#888' }}>{r.seq || ''}</span>
+              <span style={{ minWidth: 130 }}>{r.oe || ''}</span>
+              <span style={{ flex: 1 }}>{r.product || ''}</span>
+              <span className="exp-row-price" style={{ color: r.finalPrice !== null && r.finalPrice !== undefined ? '#1e9e57' : '#bbb' }}>
+                {r.finalPrice !== null && r.finalPrice !== undefined
+                  ? '最终价 ' + r.finalPrice.toFixed(2)
+                  : '未定价（导出留空）'}
+              </span>
+            </label>
+          ))}
+          {rows.length === 0 && <div style={{ color: '#888', padding: 6 }}>询价单还没有数据行——先导入客户原表，或先在表格里填上数据，这里就会列出可导出的行</div>}
+        </div>
+      </div>
+
+      <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+        <span style={{ color: '#444', marginRight: 8 }}>导出哪些列：</span>
+        {cols.map((c) => (
+          <label key={c.key} style={chk}>
+            <input
+              type="checkbox"
+              className="exp-col-check"
+              data-col-key={c.key}
+              checked={colSel.has(c.key)}
+              onChange={(e) => toggleCol(c.key, e.target.checked)}
+            />
+            {c.label}
+            {c.final ? <span style={{ color: '#1e9e57' }}>（给客户的价 · 按定厂工厂价算）</span> : null}
+            {c.isSales ? <span style={{ color: '#999' }}>（定价条按成本价列算）</span> : null}
+            {c.isWork ? <span style={{ color: '#999' }}>（工作列）</span> : null}
+          </label>
+        ))}
+      </div>
+
+      <div style={{ marginTop: 10, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+        <span style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}>
+          <b>普通版</b>
+          <span style={{ color: '#888' }}>只含选中的行和列</span>
+          <button className="exp-plain-download" onClick={() => fire('plain', 'download')} style={dlBtn}>下载</button>
+          {canShareFiles && (
+            <button className="exp-plain-share" onClick={() => fire('plain', 'share')} style={shareBtn}>发送到微信…</button>
+          )}
+        </span>
+        <span style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}>
+          <b>带图版</b>
+          <span style={{ color: '#888' }}>客户原表回写 + 最终报价列（带原格式与图片）</span>
+          <button className="exp-pic-download" onClick={() => fire('pictured', 'download')} style={dlBtn}>下载</button>
+          {canShareFiles && (
+            <button className="exp-pic-share" onClick={() => fire('pictured', 'share')} style={shareBtn}>发送到微信…</button>
+          )}
+        </span>
+        {!canShareFiles && (
+          <span className="exp-share-hint" style={{ color: '#999' }}>
+            此浏览器不支持直接分享，请用下载后拖进微信
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}

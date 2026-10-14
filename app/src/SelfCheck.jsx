@@ -1,1 +1,161 @@
-aW1wb3J0IFJlYWN0LCB7IHVzZUVmZmVjdCwgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7CmltcG9ydCB7IEFQUF9WRVJTSU9OIH0gZnJvbSAnLi92ZXJzaW9uLmpzJzsKaW1wb3J0IHsgREJfS0VZLCBzYXZlZEluZm8gfSBmcm9tICcuL3N0b3JlLmpzJzsKaW1wb3J0IHsgRklMRV9EQl9OQU1FLCBpZGJTZWxmVGVzdCwgZmlsZVN0YXRzIH0gZnJvbSAnLi9maWxlZGIuanMnOwoKLy8g546v5aKD6Ieq5qOA77yIU1BFQyDnrKzlm5voioLnrKwgMTMg6aG577yJ77ya5Zyo55So5oi36Ieq5bex55qE5rWP6KeI5Zmo6YeM546w5Zy66aqM6K+B4oCU4oCUCi8vIOeJiOacrOWvueS4jeWvueOAgeaVsOaNruWtmOS4jeWtmOW+l+S9j+OAgeWbvueJh+S7k+W6k+mAmuS4jemAmuOAgeepuumXtOi/mOWJqeWkmuWwkeOAgQovLyDlt7Lkv53lrZjnmoTlt6XkvZzlnKjkuI3lnKjjgIHmtY/op4jlmajogq/kuI3ogq/plb/mnJ/kv53nlZnmlbDmja7vvIjml6Dnl5XmqKHlvI/lhbPnqpfljbPmuIXvvInjgIIKLy8g5q+P6aG557uZ5Ye6IOKchS/inYwg5LiO5Lq66K+d6K+05piO77yM5bm26IO95LiA6ZSu5aSN5Yi25oiQ57qv5paH5pys5Y+R57uZ5byA5Y+R6ICF5a6a5L2N44CCCgpjb25zdCBMU19QUk9CRV9LRVkgPSAnX19xaXBlaV9zZWxmY2hlY2tfXyc7CgpmdW5jdGlvbiBmbXRNQihieXRlcykgewogIGlmIChieXRlcyA9PSBudWxsIHx8IE51bWJlci5pc05hTihieXRlcykpIHJldHVybiAn5pyq55+lJzsKICByZXR1cm4gKGJ5dGVzIC8gMTAyNCAvIDEwMjQpLnRvRml4ZWQoMSkgKyAnIE1CJzsKfQpmdW5jdGlvbiBmbXRLQihieXRlcykgewogIGlmIChieXRlcyA9PSBudWxsKSByZXR1cm4gJ+acquefpSc7CiAgcmV0dXJuIE1hdGgubWF4KDEsIE1hdGgucm91bmQoYnl0ZXMgLyAxMDI0KSkgKyAnIEtCJzsKfQpmdW5jdGlvbiBmbXRUaW1lKGlzbykgewogIGlmICghaXNvKSByZXR1cm4gJ+acquefpeaXtumXtCc7CiAgY29uc3QgZCA9IG5ldyBEYXRlKGlzbyk7CiAgcmV0dXJuIE51bWJlci5pc05hTihkLmdldFRpbWUoKSkgPyBpc28gOiBkLnRvTG9jYWxlU3RyaW5nKCd6aC1DTicsIHsgaG91cjEyOiBmYWxzZSB9KTsKfQoKYXN5bmMgZnVuY3Rpb24gcnVuQ2hlY2tzKCkgewogIGNvbnN0IHJvd3MgPSBbXTsKICAvLyAxLiDniYjmnKwKICByb3dzLnB1c2goeyBvazogdHJ1ZSwgbGFiZWw6ICflupTnlKjniYjmnKwnLCBkZXRhaWw6IEFQUF9WRVJTSU9OIH0pOwogIC8vIDIuIGxvY2FsU3RvcmFnZSDor7vlhpnlvoDov5TvvIjooajmoLzmlbDmja7lsLHlrZjov5nph4zvvIkKICB0cnkgewogICAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oTFNfUFJPQkVfS0VZLCAnb2sxMjMnKTsKICAgIGNvbnN0IHYgPSBsb2NhbFN0b3JhZ2UuZ2V0SXRlbShMU19QUk9CRV9LRVkpOwogICAgbG9jYWxTdG9yYWdlLnJlbW92ZUl0ZW0oTFNfUFJPQkVfS0VZKTsKICAgIHJvd3MucHVzaCh2ID09PSAnb2sxMjMnCiAgICAgID8geyBvazogdHJ1ZSwgbGFiZWw6ICfmnKzlnLDlrZjlgqjvvIjlrZjooajmoLzmlbDmja7vvIknLCBkZXRhaWw6ICfor7vlhpnmraPluLgnIH0KICAgICAgOiB7IG9rOiBmYWxzZSwgbGFiZWw6ICfmnKzlnLDlrZjlgqjvvIjlrZjooajmoLzmlbDmja7vvIknLCBkZXRhaWw6ICfor7vlm57nmoTlhoXlrrnlr7nkuI3kuIrvvIzmlbDmja7lj6/og73lrZjkuI3kvY8nIH0pOwogIH0gY2F0Y2ggKGUpIHsKICAgIHJvd3MucHVzaCh7IG9rOiBmYWxzZSwgbGFiZWw6ICfmnKzlnLDlrZjlgqjvvIjlrZjooajmoLzmlbDmja7vvIknLCBkZXRhaWw6ICfor7vlhpnlpLHotKXvvJonICsgKGUgJiYgZS5tZXNzYWdlIHx8IGUpICsgJ++8iOaXoOeXleaIlumakOengeiuvue9ruWPr+iDveemgeeUqOS6huWtmOWCqO+8iScgfSk7CiAgfQogIC8vIDMuIEluZGV4ZWREQiDmlofku7bku5PlupPlvoDov5TvvIjotbAgZmlsZWRiIOeahOecn+WunuS7k+W6k++8jOS4jeaYr+WPpuW8gOeahOa1i+ivleW6k++8iQogIGNvbnN0IGlkYiA9IGF3YWl0IGlkYlNlbGZUZXN0KCk7CiAgcm93cy5wdXNoKHsgb2s6IGlkYi5vaywgbGFiZWw6ICflm77niYfku5PlupPvvIhJbmRleGVkRELvvIknLCBkZXRhaWw6IGlkYi5kZXRhaWwgfSk7CiAgLy8gM2IuIOS7k+W6k+mHjOWunumZheWtmOedgOeahOaWh+S7tu+8iOWOn+aWh+S7tiArIOWbvueJh++8iQogIHRyeSB7CiAgICBjb25zdCBzdCA9IGF3YWl0IGZpbGVTdGF0cygpOwogICAgcm93cy5wdXNoKHN0LnRvdGFsQ291bnQgPiAwCiAgICAgID8gewogICAgICAgICAgb2s6IHRydWUsIGxhYmVsOiAn5paH5Lu25LuT5bqT6YeM55qE5paH5Lu2JywKICAgICAgICAgIGRldGFpbDogJ+WOn+aWh+S7tiAnICsgc3Qub3JpZ2luYWxDb3VudCArICcg5Liq77yIJyArIGZtdEtCKHN0Lm9yaWdpbmFsQnl0ZXMpICsgJ++8icK3IOWbvueJhyAnICsKICAgICAgICAgICAgc3QuaW1hZ2VDb3VudCArICcg5byg77yIJyArIGZtdEtCKHN0LmltYWdlQnl0ZXMpICsgJ++8ie+8jOmDveWcqOS7k+W6kyAnICsgRklMRV9EQl9OQU1FICsgJyDph4zvvIzlhbPpobXph43lvIDkuZ/lnKgnLAogICAgICAgIH0KICAgICAgOiB7CiAgICAgICAgICBvazogZmFsc2UsIGxhYmVsOiAn5paH5Lu25LuT5bqT6YeM55qE5paH5Lu2JywKICAgICAgICAgIGRldGFpbDogJ+aaguaXoO+8iOWvvOWFpeihqOagvOWQju+8jOWOn+aWh+S7tuWSjOWbvueJh+S8muWtmOi/m+S7k+W6kyAnICsgRklMRV9EQl9OQU1FICsgJ++8jOWFs+mhtemHjeW8gOS5n+WcqO+8iScsCiAgICAgICAgfSk7CiAgfSBjYXRjaCAoZSkgewogICAgcm93cy5wdXNoKHsgb2s6IGZhbHNlLCBsYWJlbDogJ+aWh+S7tuS7k+W6k+mHjOeahOaWh+S7ticsIGRldGFpbDogJ+e7n+iuoeWksei0pe+8micgKyAoZSAmJiBlLm1lc3NhZ2UgfHwgZSkgfSk7CiAgfQogIC8vIDQuIOWtmOWCqOeUqOmHjy/phY3pop3kvLDnrpcKICBpZiAobmF2aWdhdG9yLnN0b3JhZ2UgJiYgbmF2aWdhdG9yLnN0b3JhZ2UuZXN0aW1hdGUpIHsKICAgIHRyeSB7CiAgICAgIGNvbnN0IGVzdCA9IGF3YWl0IG5hdmlnYXRvci5zdG9yYWdlLmVzdGltYXRlKCk7CiAgICAgIHJvd3MucHVzaCh7CiAgICAgICAgb2s6IHRydWUsIGxhYmVsOiAn5a2Y5YKo56m66Ze0JywKICAgICAgICBkZXRhaWw6ICflt7LnlKjnuqYgJyArIGZtdE1CKGVzdC51c2FnZSkgKyAn77yM5rWP6KeI5Zmo57uZ5pys6aG16Z2i55qE5LiK6ZmQ57qmICcgKyBmbXRNQihlc3QucXVvdGEpLAogICAgICB9KTsKICAgIH0gY2F0Y2ggKGUpIHsKICAgICAgcm93cy5wdXNoKHsgb2s6IGZhbHNlLCBsYWJlbDogJ+WtmOWCqOepuumXtCcsIGRldGFpbDogJ+S8sOeul+Wksei0pe+8micgKyAoZSAmJiBlLm1lc3NhZ2UgfHwgZSkgfSk7CiAgICB9CiAgfSBlbHNlIHsKICAgIHJvd3MucHVzaCh7IG9rOiBmYWxzZSwgbGFiZWw6ICflrZjlgqjnqbrpl7QnLCBkZXRhaWw6ICfmtY/op4jlmajmnKrmj5DkvpvnlKjph4/kvLDnrpcnIH0pOwogIH0KICAvLyA1LiDlt7Lkv53lrZjnmoTlt6XkvZwKICBjb25zdCBpbmZvID0gc2F2ZWRJbmZvKCk7CiAgcm93cy5wdXNoKGluZm8uZXhpc3RzCiAgICA/IHsKICAgICAgICBvazogdHJ1ZSwgbGFiZWw6ICflt7Lkv53lrZjnmoTlt6XkvZwnLAogICAgICAgIGRldGFpbDogJ+acieS4gOS7ve+8iCcgKyBEQl9LRVkgKyAn77yM57qmICcgKyBmbXRLQihpbmZvLmJ5dGVzKSArICfvvIzkv53lrZjkuo4gJyArIGZtdFRpbWUoaW5mby5zYXZlZEF0KSArICfvvIknICsKICAgICAgICAgIChpbmZvLmltYWdlc1BlcnNpc3RlZCA9PT0gZmFsc2UgPyAn77yb5rOo5oSP77ya6YKj5qyh56m66Ze05LiN6Laz77yM5Zu+54mH5rKh5a2Y6L+b5Y67JyA6ICcnKSwKICAgICAgfQogICAgOiB7IG9rOiBmYWxzZSwgbGFiZWw6ICflt7Lkv53lrZjnmoTlt6XkvZwnLCBkZXRhaWw6ICfmmoLml6Dkv53lrZjorrDlvZXvvIjlr7zlhaXooajmoLzlubbnvJbovpHlkI7kvJroh6rliqjkv53lrZjvvIknIH0pOwogIC8vIDYuIOaMgeS5heWtmOWCqO+8iOaXoOeXleaooeW8j+eahOWFs+mUruWdke+8iQogIGlmIChuYXZpZ2F0b3Iuc3RvcmFnZSAmJiBuYXZpZ2F0b3Iuc3RvcmFnZS5wZXJzaXN0ZWQpIHsKICAgIHRyeSB7CiAgICAgIGNvbnN0IHAgPSBhd2FpdCBuYXZpZ2F0b3Iuc3RvcmFnZS5wZXJzaXN0ZWQoKTsKICAgICAgcm93cy5wdXNoKHAKICAgICAgICA/IHsgb2s6IHRydWUsIGxhYmVsOiAn5pWw5o2u6ZW/5pyf5L+d55WZJywgZGV0YWlsOiAn5rWP6KeI5Zmo5bey5om/6K+66ZW/5pyf5L+d55WZ5pys6aG16Z2i5pWw5o2uJyB9CiAgICAgICAgOiB7CiAgICAgICAgICAgIG9rOiBmYWxzZSwgbGFiZWw6ICfmlbDmja7plb/mnJ/kv53nlZknLAogICAgICAgICAgICBkZXRhaWw6ICfmtY/op4jlmajmnKrmib/or7rplb/mnJ/kv53nlZnigJTigJTlpoLmnpzkvaDlvIDnmoTmmK/ml6Dnl5XmqKHlvI/vvIzlhbPmjonnqpflj6PmlbDmja7lsLHkvJrmuIXpm7bvvIzor7fmlLnnlKjmma7pgJrnqpflj6PlubLmtLsnLAogICAgICAgICAgfSk7CiAgICB9IGNhdGNoIChlKSB7CiAgICAgIHJvd3MucHVzaCh7IG9rOiBmYWxzZSwgbGFiZWw6ICfmlbDmja7plb/mnJ/kv53nlZknLCBkZXRhaWw6ICfmn6Xor6LlpLHotKXvvJonICsgKGUgJiYgZS5tZXNzYWdlIHx8IGUpIH0pOwogICAgfQogIH0gZWxzZSB7CiAgICByb3dzLnB1c2goeyBvazogZmFsc2UsIGxhYmVsOiAn5pWw5o2u6ZW/5pyf5L+d55WZJywgZGV0YWlsOiAn5rWP6KeI5Zmo5pyq5o+Q5L6b5q2k5p+l6K+iJyB9KTsKICB9CiAgcmV0dXJuIHJvd3M7Cn0KCmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIFNlbGZDaGVjayh7IG9uQ2xvc2UgfSkgewogIGNvbnN0IFtyb3dzLCBzZXRSb3dzXSA9IHVzZVN0YXRlKG51bGwpOwogIGNvbnN0IFtjb3B5VGlwLCBzZXRDb3B5VGlwXSA9IHVzZVN0YXRlKCcnKTsKCiAgdXNlRWZmZWN0KCgpID0+IHsKICAgIGxldCBhbGl2ZSA9IHRydWU7CiAgICBydW5DaGVja3MoKS50aGVuKChyKSA9PiB7IGlmIChhbGl2ZSkgc2V0Um93cyhyKTsgfSkuY2F0Y2goKCkgPT4geyBpZiAoYWxpdmUpIHNldFJvd3MoW10pOyB9KTsKICAgIHJldHVybiAoKSA9PiB7IGFsaXZlID0gZmFsc2U7IH07CiAgfSwgW10pOwoKICBmdW5jdGlvbiBjb3B5UmVwb3J0KCkgewogICAgaWYgKCFyb3dzKSByZXR1cm47CiAgICBjb25zdCB0ZXh0ID0KICAgICAgJ+axvemFjSBFUlAg546v5aKD6Ieq5qOAIMK3IOeJiOacrCAnICsgQVBQX1ZFUlNJT04gKyAnIMK3ICcgKwogICAgICBuZXcgRGF0ZSgpLnRvTG9jYWxlU3RyaW5nKCd6aC1DTicsIHsgaG91cjEyOiBmYWxzZSB9KSArICdcbicgKwogICAgICByb3dzLm1hcCgocikgPT4gKHIub2sgPyAn4pyFICcgOiAn4p2MICcpICsgci5sYWJlbCArICfvvJonICsgci5kZXRhaWwpLmpvaW4oJ1xuJyk7CiAgICBjb25zdCBkb25lID0gKCkgPT4gc2V0Q29weVRpcCgn5bey5aSN5Yi277yM5oqK57uT5p6c57KY6LS05Y+R57uZ5byA5Y+R6ICF5bCx6KGMJyk7CiAgICBpZiAobmF2aWdhdG9yLmNsaXBib2FyZCAmJiBuYXZpZ2F0b3IuY2xpcGJvYXJkLndyaXRlVGV4dCkgewogICAgICBuYXZpZ2F0b3IuY2xpcGJvYXJkLndyaXRlVGV4dCh0ZXh0KS50aGVuKGRvbmUsICgpID0+IGZhbGxiYWNrKCkpOwogICAgfSBlbHNlIHsgZmFsbGJhY2soKTsgfQogICAgZnVuY3Rpb24gZmFsbGJhY2soKSB7CiAgICAgIGNvbnN0IHRhID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgndGV4dGFyZWEnKTsKICAgICAgdGEudmFsdWUgPSB0ZXh0OwogICAgICB0YS5zdHlsZS5wb3NpdGlvbiA9ICdmaXhlZCc7IHRhLnN0eWxlLm9wYWNpdHkgPSAnMCc7CiAgICAgIGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQodGEpOwogICAgICB0YS5zZWxlY3QoKTsKICAgICAgdHJ5IHsgZG9jdW1lbnQuZXhlY0NvbW1hbmQoJ2NvcHknKTsgfSBjYXRjaCAoZSkgeyAvKiDlv73nlaUgKi8gfQogICAgICBkb2N1bWVudC5ib2R5LnJlbW92ZUNoaWxkKHRhKTsKICAgICAgZG9uZSgpOwogICAgfQogIH0KCiAgcmV0dXJuICgKICAgIDxkaXYgaWQ9InNlbGYtY2hlY2stcGFuZWwiIHN0eWxlPXt7CiAgICAgIG1hcmdpbjogJzE0cHggMTZweCcsIGJvcmRlcjogJzFweCBzb2xpZCAjZGJlMmVjJywgYm9yZGVyUmFkaXVzOiAxMiwKICAgICAgYmFja2dyb3VuZDogJyNmZmYnLCBwYWRkaW5nOiAnMTZweCAyMHB4JywKICAgICAgYm94U2hhZG93OiAnMCAycHggNnB4IHJnYmEoMjMsMzQsNjIsMC4wNSksIDAgMTBweCAyNHB4IHJnYmEoMjMsMzQsNjIsMC4wNiknLAogICAgICBmb250RmFtaWx5OiAnc2Fucy1zZXJpZicsIGZvbnRTaXplOiAxNCwgbGluZUhlaWdodDogMS45CiAgICB9fT4KICAgICAgPGRpdiBzdHlsZT17eyBkaXNwbGF5OiAnZmxleCcsIGFsaWduSXRlbXM6ICdjZW50ZXInLCBnYXA6IDEwIH19PgogICAgICAgIDxiIGNsYXNzTmFtZT0ic2VjLXRpdGxlIiBzdHlsZT17eyBmb250U2l6ZTogMTcgfX0+546v5aKD6Ieq5qOAPC9iPgogICAgICAgIDxzcGFuIHN0eWxlPXt7IGNvbG9yOiAnIzY2NicgfX0+5Zyo5L2g6L+Z5Y+w55S16ISR44CB6L+Z5Liq5rWP6KeI5Zmo6YeM77yM57O757uf6IO95LiN6IO95a2Y5L2P5pWw5o2u44CB5a2Y5L2P5Zu+54mHPC9zcGFuPgogICAgICAgIDxidXR0b24gb25DbGljaz17Y29weVJlcG9ydH0gc3R5bGU9e3sKICAgICAgICAgIGJvcmRlcjogJzFweCBzb2xpZCAjMmY2YmZmJywgY29sb3I6ICcjMmY2YmZmJywgYmFja2dyb3VuZDogJyNmZmYnLAogICAgICAgICAgYm9yZGVyUmFkaXVzOiA4LCBwYWRkaW5nOiAnNHB4IDEycHgnLCBjdXJzb3I6ICdwb2ludGVyJwogICAgICAgIH19PuWkjeWItuiHquajgOe7k+aenDwvYnV0dG9uPgogICAgICAgIHtjb3B5VGlwICYmIDxzcGFuIHN0eWxlPXt7IGNvbG9yOiAnIzFlOWU1NycgfX0+e2NvcHlUaXB9PC9zcGFuPn0KICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9e29uQ2xvc2V9IHN0eWxlPXt7CiAgICAgICAgICBib3JkZXI6ICcxcHggc29saWQgI2M5ZDJkZScsIGNvbG9yOiAnIzM3NDA0YScsIGJhY2tncm91bmQ6ICcjZmZmJywKICAgICAgICAgIGJvcmRlclJhZGl1czogOCwgcGFkZGluZzogJzRweCAxMnB4JywgY3Vyc29yOiAncG9pbnRlcicsIG1hcmdpbkxlZnQ6ICdhdXRvJwogICAgICAgIH19PuWFs+mXrTwvYnV0dG9uPgogICAgICA8L2Rpdj4KICAgICAge3Jvd3MgPT09IG51bGwgJiYgPGRpdiBzdHlsZT17eyBjb2xvcjogJyM4ODgnIH19Puato+WcqOajgOafpeKApjwvZGl2Pn0KICAgICAge3Jvd3MgIT09IG51bGwgJiYgcm93cy5tYXAoKHIsIGkpID0+ICgKICAgICAgICA8ZGl2IGtleT17aX0+e3Iub2sgPyAn4pyFJyA6ICfinYwnfSB7ci5sYWJlbH3vvJp7ci5kZXRhaWx9PC9kaXY+CiAgICAgICkpfQogICAgPC9kaXY+CiAgKTsKfQo=
+import React, { useEffect, useState } from 'react';
+import { APP_VERSION } from './version.js';
+import { DB_KEY, savedInfo } from './store.js';
+import { FILE_DB_NAME, idbSelfTest, fileStats } from './filedb.js';
+
+// 环境自检（SPEC 第四节第 13 项）：在用户自己的浏览器里现场验证——
+// 版本对不对、数据存不存得住、图片仓库通不通、空间还剩多少、
+// 已保存的工作在不在、浏览器肯不肯长期保留数据（无痕模式关窗即清）。
+// 每项给出 ✅/❌ 与人话说明，并能一键复制成纯文本发给开发者定位。
+
+const LS_PROBE_KEY = '__qipei_selfcheck__';
+
+function fmtMB(bytes) {
+  if (bytes == null || Number.isNaN(bytes)) return '未知';
+  return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+}
+function fmtKB(bytes) {
+  if (bytes == null) return '未知';
+  return Math.max(1, Math.round(bytes / 1024)) + ' KB';
+}
+function fmtTime(iso) {
+  if (!iso) return '未知时间';
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? iso : d.toLocaleString('zh-CN', { hour12: false });
+}
+
+async function runChecks() {
+  const rows = [];
+  // 1. 版本
+  rows.push({ ok: true, label: '应用版本', detail: APP_VERSION });
+  // 2. localStorage 读写往返（表格数据就存这里）
+  try {
+    localStorage.setItem(LS_PROBE_KEY, 'ok123');
+    const v = localStorage.getItem(LS_PROBE_KEY);
+    localStorage.removeItem(LS_PROBE_KEY);
+    rows.push(v === 'ok123'
+      ? { ok: true, label: '本地存储（存表格数据）', detail: '读写正常' }
+      : { ok: false, label: '本地存储（存表格数据）', detail: '读回的内容对不上，数据可能存不住' });
+  } catch (e) {
+    rows.push({ ok: false, label: '本地存储（存表格数据）', detail: '读写失败：' + (e && e.message || e) + '（无痕或隐私设置可能禁用了存储）' });
+  }
+  // 3. IndexedDB 文件仓库往返（走 filedb 的真实仓库，不是另开的测试库）
+  const idb = await idbSelfTest();
+  rows.push({ ok: idb.ok, label: '图片仓库（IndexedDB）', detail: idb.detail });
+  // 3b. 仓库里实际存着的文件（原文件 + 图片）
+  try {
+    const st = await fileStats();
+    rows.push(st.totalCount > 0
+      ? {
+          ok: true, label: '文件仓库里的文件',
+          detail: '原文件 ' + st.originalCount + ' 个（' + fmtKB(st.originalBytes) + '）· 图片 ' +
+            st.imageCount + ' 张（' + fmtKB(st.imageBytes) + '），都在仓库 ' + FILE_DB_NAME + ' 里，关页重开也在',
+        }
+      : {
+          ok: false, label: '文件仓库里的文件',
+          detail: '暂无（导入表格后，原文件和图片会存进仓库 ' + FILE_DB_NAME + '，关页重开也在）',
+        });
+  } catch (e) {
+    rows.push({ ok: false, label: '文件仓库里的文件', detail: '统计失败：' + (e && e.message || e) });
+  }
+  // 4. 存储用量/配额估算
+  if (navigator.storage && navigator.storage.estimate) {
+    try {
+      const est = await navigator.storage.estimate();
+      rows.push({
+        ok: true, label: '存储空间',
+        detail: '已用约 ' + fmtMB(est.usage) + '，浏览器给本页面的上限约 ' + fmtMB(est.quota),
+      });
+    } catch (e) {
+      rows.push({ ok: false, label: '存储空间', detail: '估算失败：' + (e && e.message || e) });
+    }
+  } else {
+    rows.push({ ok: false, label: '存储空间', detail: '浏览器未提供用量估算' });
+  }
+  // 5. 已保存的工作
+  const info = savedInfo();
+  rows.push(info.exists
+    ? {
+        ok: true, label: '已保存的工作',
+        detail: '有一份（' + DB_KEY + '，约 ' + fmtKB(info.bytes) + '，保存于 ' + fmtTime(info.savedAt) + '）' +
+          (info.imagesPersisted === false ? '；注意：那次空间不足，图片没存进去' : ''),
+      }
+    : { ok: false, label: '已保存的工作', detail: '暂无保存记录（导入表格并编辑后会自动保存）' });
+  // 6. 持久存储（无痕模式的关键坑）
+  if (navigator.storage && navigator.storage.persisted) {
+    try {
+      const p = await navigator.storage.persisted();
+      rows.push(p
+        ? { ok: true, label: '数据长期保留', detail: '浏览器已承诺长期保留本页面数据' }
+        : {
+            ok: false, label: '数据长期保留',
+            detail: '浏览器未承诺长期保留——如果你开的是无痕模式，关掉窗口数据就会清零，请改用普通窗口干活',
+          });
+    } catch (e) {
+      rows.push({ ok: false, label: '数据长期保留', detail: '查询失败：' + (e && e.message || e) });
+    }
+  } else {
+    rows.push({ ok: false, label: '数据长期保留', detail: '浏览器未提供此查询' });
+  }
+  return rows;
+}
+
+export default function SelfCheck({ onClose }) {
+  const [rows, setRows] = useState(null);
+  const [copyTip, setCopyTip] = useState('');
+
+  useEffect(() => {
+    let alive = true;
+    runChecks().then((r) => { if (alive) setRows(r); }).catch(() => { if (alive) setRows([]); });
+    return () => { alive = false; };
+  }, []);
+
+  function copyReport() {
+    if (!rows) return;
+    const text =
+      '汽配 ERP 环境自检 · 版本 ' + APP_VERSION + ' · ' +
+      new Date().toLocaleString('zh-CN', { hour12: false }) + '\n' +
+      rows.map((r) => (r.ok ? '✅ ' : '❌ ') + r.label + '：' + r.detail).join('\n');
+    const done = () => setCopyTip('已复制，把结果粘贴发给开发者就行');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, () => fallback());
+    } else { fallback(); }
+    function fallback() {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) { /* 忽略 */ }
+      document.body.removeChild(ta);
+      done();
+    }
+  }
+
+  return (
+    <div id="self-check-panel" style={{
+      margin: '14px 16px', border: '1px solid #dbe2ec', borderRadius: 12,
+      background: '#fff', padding: '16px 20px',
+      boxShadow: '0 2px 6px rgba(23,34,62,0.05), 0 10px 24px rgba(23,34,62,0.06)',
+      fontFamily: 'sans-serif', fontSize: 14, lineHeight: 1.9
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <b className="sec-title" style={{ fontSize: 17 }}>环境自检</b>
+        <span style={{ color: '#666' }}>在你这台电脑、这个浏览器里，系统能不能存住数据、存住图片</span>
+        <button onClick={copyReport} style={{
+          border: '1px solid #2f6bff', color: '#2f6bff', background: '#fff',
+          borderRadius: 8, padding: '4px 12px', cursor: 'pointer'
+        }}>复制自检结果</button>
+        {copyTip && <span style={{ color: '#1e9e57' }}>{copyTip}</span>}
+        <button onClick={onClose} style={{
+          border: '1px solid #c9d2de', color: '#37404a', background: '#fff',
+          borderRadius: 8, padding: '4px 12px', cursor: 'pointer', marginLeft: 'auto'
+        }}>关闭</button>
+      </div>
+      {rows === null && <div style={{ color: '#888' }}>正在检查…</div>}
+      {rows !== null && rows.map((r, i) => (
+        <div key={i}>{r.ok ? '✅' : '❌'} {r.label}：{r.detail}</div>
+      ))}
+    </div>
+  );
+}

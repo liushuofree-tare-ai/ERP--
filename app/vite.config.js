@@ -1,1 +1,10 @@
-aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAndml0ZSc7CmltcG9ydCByZWFjdCBmcm9tICdAdml0ZWpzL3BsdWdpbi1yZWFjdCc7CmltcG9ydCB7IHZpdGVTaW5nbGVGaWxlIH0gZnJvbSAndml0ZS1wbHVnaW4tc2luZ2xlZmlsZSc7CgovLyDmnoTlu7rmiJDljZXkuKogSFRNTO+8mueUqOaIt+WPjOWHu+WNs+WPr+aJk+W8gO+8jOS4jemcgOimgeacjeWKoeWZqO+8iOayv+eUqOaXp+mhueebrueahOaJk+W8gOaWueW8j++8iQpleHBvcnQgZGVmYXVsdCBkZWZpbmVDb25maWcoewogIHBsdWdpbnM6IFtyZWFjdCgpLCB2aXRlU2luZ2xlRmlsZSgpXSwKICBiYXNlOiAnLi8nLAogIGJ1aWxkOiB7IGFzc2V0c0lubGluZUxpbWl0OiAxMDAwMDAwMDAsIGNodW5rU2l6ZVdhcm5pbmdMaW1pdDogMTAwMDAwIH0KfSk7Cg==
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { viteSingleFile } from 'vite-plugin-singlefile';
+
+// 构建成单个 HTML：用户双击即可打开，不需要服务器（沿用旧项目的打开方式）
+export default defineConfig({
+  plugins: [react(), viteSingleFile()],
+  base: './',
+  build: { assetsInlineLimit: 100000000, chunkSizeWarningLimit: 100000 }
+});

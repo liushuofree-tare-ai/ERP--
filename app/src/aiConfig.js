@@ -1,1 +1,40 @@
-Ly8gQUkg5YiG5p6Q55qE5o6l5Y+j6YWN572u77yIU1BFQyDnrKzlm5voioLnrKwgMTEg6aG577yJ77ya5Y+q5a2Y5rWP6KeI5Zmo6YeM5LiA5Liq54us56uL55qECi8vIGxvY2FsU3RvcmFnZSDplK4gcWlwZWlfdjJfYWnvvIznu53kuI3ov5vkuJrliqHlrZjmoaPvvIhxaXBlaV92Ml9kYl92Me+8ie+8jAovLyDlm6DmraTkuZ/nu53kuI3ov5vku7vkvZXlpIfku73igJTigJTlpIfku73mlofku7bph4zmsqHmnInpkqXljJnvvIzmgaLlpI3lkI7pnIDopoHph43loavjgIIKLy8g6L+Z5piv5Yi75oSP55qE77ya6ZKl5YyZ5piv55So5oi36Ieq5bex55qE5Yet5o2u77yM5LiN6Lef552A5Lia5Yqh5pWw5o2u5Yiw5aSE6LeR44CCCgpleHBvcnQgY29uc3QgQUlfQ0ZHX0tFWSA9ICdxaXBlaV92Ml9haSc7CgpleHBvcnQgY29uc3QgREVGQVVMVF9BSV9DRkcgPSB7CiAgYmFzZVVybDogJ2h0dHBzOi8vYXBpLmFudC1saW5nLmNvbS92MScsCiAgYXBpS2V5OiAnJywKICBtb2RlbDogJ0xpbmctMy4xLWZsYXNoJywKfTsKCi8qKiDor7vphY3nva7vvIjmsqHlrZjov4cv5o2f5Z2P5pe257uZ6buY6K6k5YC877yJ77yb6L+U5ZueIHsgYmFzZVVybCwgYXBpS2V5LCBtb2RlbCB9ICovCmV4cG9ydCBmdW5jdGlvbiBsb2FkQWlDb25maWcoKSB7CiAgdHJ5IHsKICAgIGNvbnN0IHJhdyA9IGxvY2FsU3RvcmFnZS5nZXRJdGVtKEFJX0NGR19LRVkpOwogICAgaWYgKCFyYXcpIHJldHVybiB7IC4uLkRFRkFVTFRfQUlfQ0ZHIH07CiAgICBjb25zdCBvYmogPSBKU09OLnBhcnNlKHJhdyk7CiAgICBpZiAoIW9iaiB8fCB0eXBlb2Ygb2JqICE9PSAnb2JqZWN0JykgcmV0dXJuIHsgLi4uREVGQVVMVF9BSV9DRkcgfTsKICAgIHJldHVybiB7CiAgICAgIGJhc2VVcmw6IHR5cGVvZiBvYmouYmFzZVVybCA9PT0gJ3N0cmluZycgJiYgb2JqLmJhc2VVcmwudHJpbSgpID8gb2JqLmJhc2VVcmwgOiBERUZBVUxUX0FJX0NGRy5iYXNlVXJsLAogICAgICBhcGlLZXk6IHR5cGVvZiBvYmouYXBpS2V5ID09PSAnc3RyaW5nJyA/IG9iai5hcGlLZXkgOiAnJywKICAgICAgbW9kZWw6IHR5cGVvZiBvYmoubW9kZWwgPT09ICdzdHJpbmcnICYmIG9iai5tb2RlbC50cmltKCkgPyBvYmoubW9kZWwgOiBERUZBVUxUX0FJX0NGRy5tb2RlbCwKICAgIH07CiAgfSBjYXRjaCAoZSkgewogICAgcmV0dXJuIHsgLi4uREVGQVVMVF9BSV9DRkcgfTsKICB9Cn0KCi8qKiDlrZjphY3nva7vvJrlj6rlhpkgcWlwZWlfdjJfYWkg6L+Z5LiA5Liq6ZSu77yM5LiN56Kw5Lia5Yqh5a2Y5qGjICovCmV4cG9ydCBmdW5jdGlvbiBzYXZlQWlDb25maWcoY2ZnKSB7CiAgY29uc3QgY2xlYW4gPSB7CiAgICBiYXNlVXJsOiBTdHJpbmcoKGNmZyAmJiBjZmcuYmFzZVVybCkgfHwgJycpLnRyaW0oKSB8fCBERUZBVUxUX0FJX0NGRy5iYXNlVXJsLAogICAgYXBpS2V5OiBTdHJpbmcoKGNmZyAmJiBjZmcuYXBpS2V5KSB8fCAnJyksCiAgICBtb2RlbDogU3RyaW5nKChjZmcgJiYgY2ZnLm1vZGVsKSB8fCAnJykudHJpbSgpIHx8IERFRkFVTFRfQUlfQ0ZHLm1vZGVsLAogIH07CiAgdHJ5IHsgbG9jYWxTdG9yYWdlLnNldEl0ZW0oQUlfQ0ZHX0tFWSwgSlNPTi5zdHJpbmdpZnkoY2xlYW4pKTsgfSBjYXRjaCAoZSkgeyAvKiDlrZjkuI3kuIvkuI3mjKHnlKggKi8gfQogIHJldHVybiBjbGVhbjsKfQo=
+// AI 分析的接口配置（SPEC 第四节第 11 项）：只存浏览器里一个独立的
+// localStorage 键 qipei_v2_ai，绝不进业务存档（qipei_v2_db_v1），
+// 因此也绝不进任何备份——备份文件里没有钥匙，恢复后需要重填。
+// 这是刻意的：钥匙是用户自己的凭据，不跟着业务数据到处跑。
+
+export const AI_CFG_KEY = 'qipei_v2_ai';
+
+export const DEFAULT_AI_CFG = {
+  baseUrl: 'https://api.ant-ling.com/v1',
+  apiKey: '',
+  model: 'Ling-3.1-flash',
+};
+
+/** 读配置（没存过/损坏时给默认值）；返回 { baseUrl, apiKey, model } */
+export function loadAiConfig() {
+  try {
+    const raw = localStorage.getItem(AI_CFG_KEY);
+    if (!raw) return { ...DEFAULT_AI_CFG };
+    const obj = JSON.parse(raw);
+    if (!obj || typeof obj !== 'object') return { ...DEFAULT_AI_CFG };
+    return {
+      baseUrl: typeof obj.baseUrl === 'string' && obj.baseUrl.trim() ? obj.baseUrl : DEFAULT_AI_CFG.baseUrl,
+      apiKey: typeof obj.apiKey === 'string' ? obj.apiKey : '',
+      model: typeof obj.model === 'string' && obj.model.trim() ? obj.model : DEFAULT_AI_CFG.model,
+    };
+  } catch (e) {
+    return { ...DEFAULT_AI_CFG };
+  }
+}
+
+/** 存配置：只写 qipei_v2_ai 这一个键，不碰业务存档 */
+export function saveAiConfig(cfg) {
+  const clean = {
+    baseUrl: String((cfg && cfg.baseUrl) || '').trim() || DEFAULT_AI_CFG.baseUrl,
+    apiKey: String((cfg && cfg.apiKey) || ''),
+    model: String((cfg && cfg.model) || '').trim() || DEFAULT_AI_CFG.model,
+  };
+  try { localStorage.setItem(AI_CFG_KEY, JSON.stringify(clean)); } catch (e) { /* 存不下不挡用 */ }
+  return clean;
+}

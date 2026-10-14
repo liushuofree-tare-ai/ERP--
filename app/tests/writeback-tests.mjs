@@ -1,1 +1,96 @@
-Ly8g5YaZ6Lev5b6E5Zue5b2S5rWL6K+V77yI5YyFIDXvvInvvJrlnKjnnJ/lrp7lrqLmiLfljZXkuIrlsLHlnLDlm57lhpnigJTigJTmlLnkuIDkuKrljp/ku7bmoLzjgIEKLy8g6L+95Yqg5LiA5YiX5bel5L2c5YiX4oCU4oCU5YaN55So6K+75Y+W5bGC6Kej5p6Q5LiL6L295Lu277yM5pat6KiA77ya5pS55Yqo5Zyo44CB5paw5aKe5YiX5Zyo44CBCi8vIDI0IOW8oOWbvueJh+WcqOOAgeWQiOW5tiBBMTpHMSDlnKjjgIHnu7Tluqbplb/lpKfjgIHooqvliKDnqbrnmoTmoLznnJ/nmoTmuIXmjonjgIHlhazlvI/moLwKLy8g77yIRElTUElNRyDlm77niYfmoLzvvInliIbmr6vmnKrliqjvvJvlj6bmtYvml6Dljp/ku7bml7bnmoTmnIDlsI/nlJ/miJDlm57or7vjgIIKLy8g5Y6f5paH5Lu25Y+q6K+777yM5rWL6K+V5YWI5aSN5Yi25Yiw5Li05pe255uu5b2V5YaN6K+75Ymv5pys44CCCi8vCi8vIOi/kOihjO+8mm5wbSB0ZXN077yITm9kZSDnmoQgRE9NUGFyc2VyL1hNTFNlcmlhbGl6ZXIg55SxIEB4bWxkb20veG1sZG9tCi8vIOaPkOS+m++8jOW/hemhu+WcqCBpbXBvcnQg5Lia5Yqh5qih5Z2X5LmL5YmN5rOo5YWl5YWo5bGA77yM5omA5Lul55So5Yqo5oCBIGltcG9ydOOAgu+8iQppbXBvcnQgeyBET01QYXJzZXIsIFhNTFNlcmlhbGl6ZXIgfSBmcm9tICdAeG1sZG9tL3htbGRvbSc7Cmdsb2JhbFRoaXMuRE9NUGFyc2VyID0gRE9NUGFyc2VyOwpnbG9iYWxUaGlzLlhNTFNlcmlhbGl6ZXIgPSBYTUxTZXJpYWxpemVyOwoKaW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnOwppbXBvcnQgb3MgZnJvbSAnbm9kZTpvcyc7CmltcG9ydCBwYXRoIGZyb20gJ25vZGU6cGF0aCc7Cgpjb25zdCB7IHJlYWRXb3JrYm9vaywgcGFyc2VTaGVldCB9ID0gYXdhaXQgaW1wb3J0KCcuLi9zcmMveGxzeC93b3JrYm9vay5qcycpOwpjb25zdCB7IHNoZWV0VG9Gb3J0dW5lIH0gPSBhd2FpdCBpbXBvcnQoJy4uL3NyYy94bHN4L3RvRm9ydHVuZVNoZWV0LmpzJyk7CmNvbnN0IHsgYnVpbGRRdW90ZVhsc3gsIGJ1aWxkTWluaW1hbFhsc3ggfSA9IGF3YWl0IGltcG9ydCgnLi4vc3JjL3hsc3gvd3JpdGViYWNrLmpzJyk7CmNvbnN0IHsgc2V0Q2VsbFZhbHVlLCBhcHBlbmRDb2x1bW4gfSA9IGF3YWl0IGltcG9ydCgnLi4vc3JjL3NoZWV0T3BzLmpzJyk7Cgpjb25zdCBTUkNfQ1VTVCA9ICcvaG9tZS9oYXRjaC93b3Jrc3BhY2UvdXNlci9maWxlcy9fX18yXzBkaWIueGxzeCc7CgpsZXQgcGFzcyA9IDAsIGZhaWwgPSAwOwpmdW5jdGlvbiBvayhjb25kLCBsYWJlbCwgZXh0cmEpIHsKICBpZiAoY29uZCkgeyBwYXNzKys7IGNvbnNvbGUubG9nKCcgIFBBU1MgJyArIGxhYmVsKTsgfQogIGVsc2UgeyBmYWlsKys7IGNvbnNvbGUubG9nKCcgIEZBSUwgJyArIGxhYmVsICsgKGV4dHJhICE9PSB1bmRlZmluZWQgPyAnIOKGkiDlrp7pmYU6ICcgKyBKU09OLnN0cmluZ2lmeShleHRyYSkgOiAnJykpOyB9Cn0KZnVuY3Rpb24gZXEoYWN0dWFsLCBleHBlY3RlZCwgbGFiZWwpIHsKICBvayhKU09OLnN0cmluZ2lmeShhY3R1YWwpID09PSBKU09OLnN0cmluZ2lmeShleHBlY3RlZCksIGxhYmVsLCBhY3R1YWwpOwp9CmZ1bmN0aW9uIGxvYWRDb3B5KHNyY1BhdGgpIHsKICBjb25zdCBkaXIgPSBmcy5ta2R0ZW1wU3luYyhwYXRoLmpvaW4ob3MudG1wZGlyKCksICdxaXBlaS1wa2c1LScpKTsKICBjb25zdCBjb3B5ID0gcGF0aC5qb2luKGRpciwgcGF0aC5iYXNlbmFtZShzcmNQYXRoKSk7CiAgZnMuY29weUZpbGVTeW5jKHNyY1BhdGgsIGNvcHkpOwogIGNvbnN0IGJ1ZiA9IGZzLnJlYWRGaWxlU3luYyhjb3B5KTsKICByZXR1cm4gbmV3IFVpbnQ4QXJyYXkoYnVmLmJ1ZmZlciwgYnVmLmJ5dGVPZmZzZXQsIGJ1Zi5ieXRlTGVuZ3RoKTsKfQpmdW5jdGlvbiBjZWxsVmFsKHBhcnNlZCwgciwgYykgewogIGNvbnN0IGNlbGwgPSBwYXJzZWQuY2VsbHMuZmluZCgoeCkgPT4geC5yID09PSByICYmIHguYyA9PT0gYyk7CiAgcmV0dXJuIGNlbGwgPyBjZWxsLnZhbHVlIDogdW5kZWZpbmVkOwp9CgovKiA9PT09PT09PT09PT09PT09PSDlsLHlnLDlm57lhpnvvJrmlLnlgLwgKyDliqDliJcgKyDmuIXlgLwgPT09PT09PT09PT09PT09PT0gKi8KY29uc29sZS5sb2coJz09IOWbnuWGmeWuouaIt+WNle+8iOWJr+acrO+8iScpOwpjb25zdCBvcmlnQnl0ZXMgPSBsb2FkQ29weShTUkNfQ1VTVCk7CmNvbnN0IHdiID0gcmVhZFdvcmtib29rKG9yaWdCeXRlcyk7CmNvbnN0IHBhcnNlZCA9IHBhcnNlU2hlZXQod2IsICdTaGVldDEnKTsKbGV0IGZvcnR1bmUgPSBzaGVldFRvRm9ydHVuZShwYXJzZWQsIDApOwoKLy8g5qih5ouf55So5oi357yW6L6R77ya56ysIDMg6KGM5Lqn5ZOB5qC85pS55oiQ44CM5pWj54Ot5Zmo5qC85qCF5pS544CN77yb56ysIDMg6KGMIE9FIOagvOWIoOepuu+8mwovLyDlj7Pkvqfov73liqDlt6XkvZzliJfjgIzkuK3mloflkI3jgI3vvIznrKwgMyDooYzloavjgIzmoLzmoIXjgI0KZm9ydHVuZSA9IHNldENlbGxWYWx1ZShmb3J0dW5lLCAyLCA0LCB7IHY6ICfmlaPng63lmajmoLzmoIXmlLknLCBtOiAn5pWj54Ot5Zmo5qC85qCF5pS5JyB9KTsKZm9ydHVuZSA9IHNldENlbGxWYWx1ZShmb3J0dW5lLCAyLCA2LCBudWxsKTsKY29uc3QgYWRkZWQgPSBhcHBlbmRDb2x1bW4oZm9ydHVuZSwgMSwgJ+S4reaWh+WQjScpOwpmb3J0dW5lID0gYWRkZWQuc2hlZXQ7CmVxKGFkZGVkLmNvbCwgNywgJ+W3peS9nOWIl+i/veWKoOWcqOesrCA4IOWIl++8iOW6j+WPtyA377yJJyk7CmZvcnR1bmUgPSBzZXRDZWxsVmFsdWUoZm9ydHVuZSwgMiwgNywgeyB2OiAn5qC85qCFJywgbTogJ+agvOaghScgfSk7Ci8vIOWGjeaUueS4gOS4quaVsOWtl+agvO+8muesrCAzIOihjOW6j+WPtyAxIOKGkiA5Oe+8iOmqjOaVsOWtl+WbnuWGme+8iQpmb3J0dW5lID0gc2V0Q2VsbFZhbHVlKGZvcnR1bmUsIDIsIDAsIHsgdjogOTksIG06ICc5OScgfSk7Cgpjb25zdCBvdXRCeXRlcyA9IGJ1aWxkUXVvdGVYbHN4KHsgb3JpZ2luYWxCeXRlczogb3JpZ0J5dGVzLCBzaGVldE5hbWU6ICdTaGVldDEnLCBzaGVldDogZm9ydHVuZSB9KTsKb2sob3V0Qnl0ZXMubGVuZ3RoID4gMCwgJ+eUn+aIkOS6huS4i+i9veS7tuWtl+iKgicsIG91dEJ5dGVzLmxlbmd0aCk7Cgpjb25zdCB3YjIgPSByZWFkV29ya2Jvb2sob3V0Qnl0ZXMpOwpjb25zdCBvdXQgPSBwYXJzZVNoZWV0KHdiMiwgJ1NoZWV0MScpOwplcShjZWxsVmFsKG91dCwgMiwgNCksICfmlaPng63lmajmoLzmoIXmlLknLCAn5pS56L+H55qE5Lqn5ZOB5qC8ID0g5pWj54Ot5Zmo5qC85qCF5pS5Jyk7CmVxKGNlbGxWYWwob3V0LCAxLCA3KSwgJ+S4reaWh+WQjScsICfmlrDlop7liJfooajlpLQgPSDkuK3mloflkI0nKTsKZXEoY2VsbFZhbChvdXQsIDIsIDcpLCAn5qC85qCFJywgJ+aWsOWinuWIl+esrCAzIOihjOWAvCA9IOagvOaghScpOwplcShjZWxsVmFsKG91dCwgMiwgMCksIDk5LCAn5pWw5a2X5qC85Zue5YaZID0gOTnvvIjkuJTmmK/mlbDlrZfkuI3mmK/mlofmnKzvvIknKTsKZXEoY2VsbFZhbChvdXQsIDIsIDYpLCB1bmRlZmluZWQsICfliKDnqbrnmoQgT0Ug5qC855yf55qE56m65LqGJyk7CmVxKG91dC5pbWFnZXMubGVuZ3RoLCAyNCwgJ+S4i+i9veS7tuWbvueJh+S7jeaYryAyNCDlvKAnKTsKb2sob3V0Lm1lcmdlcy5zb21lKChtKSA9PiBtLnIgPT09IDAgJiYgbS5jID09PSAwICYmIG0ucnMgPT09IDEgJiYgbS5jcyA9PT0gNyksCiAgJ+WQiOW5tiBBMTpHMSDov5jlnKgnLCBvdXQubWVyZ2VzKTsKZXEob3V0LmNvbENvdW50LCA4LCAn5LiL6L295Lu25YiX5pWwID0gOO+8iOe7tOW6pumaj+W3peS9nOWIl+mVv+Wkp++8iScpOwplcShvdXQucm93Q291bnQsIDM5LCAn5LiL6L295Lu26KGM5pWwID0gMzknKTsKZXEoY2VsbFZhbChvdXQsIDAsIDApLCAn5qyn5Yag5ZiJ6YWN5Lu26YeH6LSt6ZyA5rGCJywgJ+ayoeWKqOi/h+eahOagh+mimOagvOWOn+agtycpOwplcShjZWxsVmFsKG91dCwgMiwgMSksICdKRVRPVVInLCAn5rKh5Yqo6L+H55qE5ZOB54mM5qC85Y6f5qC3Jyk7Cm9rKCFvdXQuY2VsbHMuc29tZSgoYykgPT4gdHlwZW9mIGMudmFsdWUgPT09ICdzdHJpbmcnICYmIGMudmFsdWUuaW5jbHVkZXMoJ0RJU1BJTUcnKSksCiAgJ0RJU1BJTUcg5YWs5byP5LuN5pyq6KKr5b2T5YC85pi+56S677yI5Zu+54mH6ZSa54K55qC85L+d5oqk55Sf5pWI77yJJyk7CgovKiA9PT09PT09PT09PT09PT09PSDml6Dljp/ku7bvvJrmnIDlsI/nlJ/miJDlm57or7sgPT09PT09PT09PT09PT09PT0gKi8KY29uc29sZS5sb2coJz09IOacgOWwj+eUn+aIkO+8iOaXoOWOn+S7tumZjee6p++8iScpOwpjb25zdCBtaW5CeXRlcyA9IGJ1aWxkTWluaW1hbFhsc3goJ1NoZWV0MScsIGZvcnR1bmUpOwpjb25zdCB3YjMgPSByZWFkV29ya2Jvb2sobWluQnl0ZXMpOwpjb25zdCBtaW5PdXQgPSBwYXJzZVNoZWV0KHdiMywgJ1NoZWV0MScpOwplcShjZWxsVmFsKG1pbk91dCwgMiwgNCksICfmlaPng63lmajmoLzmoIXmlLknLCAn5pyA5bCP55Sf5oiQ77ya5pS56L+H55qE5YC85ZyoJyk7CmVxKGNlbGxWYWwobWluT3V0LCAxLCA3KSwgJ+S4reaWh+WQjScsICfmnIDlsI/nlJ/miJDvvJrmlrDlop7liJfooajlpLTlnKgnKTsKZXEoY2VsbFZhbChtaW5PdXQsIDIsIDApLCA5OSwgJ+acgOWwj+eUn+aIkO+8muaVsOWtl+WcqCcpOwpvayhtaW5PdXQubWVyZ2VzLnNvbWUoKG0pID0+IG0uciA9PT0gMCAmJiBtLmMgPT09IDAgJiYgbS5ycyA9PT0gMSAmJiBtLmNzID09PSA3KSwKICAn5pyA5bCP55Sf5oiQ77ya5ZCI5bm2IEExOkcxIOWcqCcsIG1pbk91dC5tZXJnZXMpOwoKY29uc29sZS5sb2coJ1xu5rGH5oC777yaUEFTUyAnICsgcGFzcyArICcgLyBGQUlMICcgKyBmYWlsKTsKcHJvY2Vzcy5leGl0KGZhaWwgPyAxIDogMCk7Cg==
+// 写路径回归测试（包 5）：在真实客户单上就地回写——改一个原件格、
+// 追加一列工作列——再用读取层解析下载件，断言：改动在、新增列在、
+// 24 张图片在、合并 A1:G1 在、维度长大、被删空的格真的清掉、公式格
+// （DISPIMG 图片格）分毫未动；另测无原件时的最小生成回读。
+// 原文件只读，测试先复制到临时目录再读副本。
+//
+// 运行：npm test（Node 的 DOMParser/XMLSerializer 由 @xmldom/xmldom
+// 提供，必须在 import 业务模块之前注入全局，所以用动态 import。）
+import { DOMParser, XMLSerializer } from '@xmldom/xmldom';
+globalThis.DOMParser = DOMParser;
+globalThis.XMLSerializer = XMLSerializer;
+
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const { readWorkbook, parseSheet } = await import('../src/xlsx/workbook.js');
+const { sheetToFortune } = await import('../src/xlsx/toFortuneSheet.js');
+const { buildQuoteXlsx, buildMinimalXlsx } = await import('../src/xlsx/writeback.js');
+const { setCellValue, appendColumn } = await import('../src/sheetOps.js');
+
+const FIXTURES = process.env.QIPEI_FIXTURES_DIR || path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
+const SRC_CUST = path.join(FIXTURES, '___2_0dib.xlsx');
+
+let pass = 0, fail = 0;
+function ok(cond, label, extra) {
+  if (cond) { pass++; console.log('  PASS ' + label); }
+  else { fail++; console.log('  FAIL ' + label + (extra !== undefined ? ' → 实际: ' + JSON.stringify(extra) : '')); }
+}
+function eq(actual, expected, label) {
+  ok(JSON.stringify(actual) === JSON.stringify(expected), label, actual);
+}
+function loadCopy(srcPath) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'qipei-pkg5-'));
+  const copy = path.join(dir, path.basename(srcPath));
+  fs.copyFileSync(srcPath, copy);
+  const buf = fs.readFileSync(copy);
+  return new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);
+}
+function cellVal(parsed, r, c) {
+  const cell = parsed.cells.find((x) => x.r === r && x.c === c);
+  return cell ? cell.value : undefined;
+}
+
+/* ================= 就地回写：改值 + 加列 + 清值 ================= */
+console.log('== 回写客户单（副本）');
+const origBytes = loadCopy(SRC_CUST);
+const wb = readWorkbook(origBytes);
+const parsed = parseSheet(wb, 'Sheet1');
+let fortune = sheetToFortune(parsed, 0);
+
+// 模拟用户编辑：第 3 行产品格改成「散热器格栅改」；第 3 行 OE 格删空；
+// 右侧追加工作列「中文名」，第 3 行填「格栅」
+fortune = setCellValue(fortune, 2, 4, { v: '散热器格栅改', m: '散热器格栅改' });
+fortune = setCellValue(fortune, 2, 6, null);
+const added = appendColumn(fortune, 1, '中文名');
+fortune = added.sheet;
+eq(added.col, 7, '工作列追加在第 8 列（序号 7）');
+fortune = setCellValue(fortune, 2, 7, { v: '格栅', m: '格栅' });
+// 再改一个数字格：第 3 行序号 1 → 99（验数字回写）
+fortune = setCellValue(fortune, 2, 0, { v: 99, m: '99' });
+
+const outBytes = buildQuoteXlsx({ originalBytes: origBytes, sheetName: 'Sheet1', sheet: fortune });
+ok(outBytes.length > 0, '生成了下载件字节', outBytes.length);
+
+const wb2 = readWorkbook(outBytes);
+const out = parseSheet(wb2, 'Sheet1');
+eq(cellVal(out, 2, 4), '散热器格栅改', '改过的产品格 = 散热器格栅改');
+eq(cellVal(out, 1, 7), '中文名', '新增列表头 = 中文名');
+eq(cellVal(out, 2, 7), '格栅', '新增列第 3 行值 = 格栅');
+eq(cellVal(out, 2, 0), 99, '数字格回写 = 99（且是数字不是文本）');
+eq(cellVal(out, 2, 6), undefined, '删空的 OE 格真的空了');
+eq(out.images.length, 24, '下载件图片仍是 24 张');
+ok(out.merges.some((m) => m.r === 0 && m.c === 0 && m.rs === 1 && m.cs === 7),
+  '合并 A1:G1 还在', out.merges);
+eq(out.colCount, 8, '下载件列数 = 8（维度随工作列长大）');
+eq(out.rowCount, 39, '下载件行数 = 39');
+eq(cellVal(out, 0, 0), '欧冠嘉配件采购需求', '没动过的标题格原样');
+eq(cellVal(out, 2, 1), 'JETOUR', '没动过的品牌格原样');
+ok(!out.cells.some((c) => typeof c.value === 'string' && c.value.includes('DISPIMG')),
+  'DISPIMG 公式仍未被当值显示（图片锚点格保护生效）');
+
+/* ================= 无原件：最小生成回读 ================= */
+console.log('== 最小生成（无原件降级）');
+const minBytes = buildMinimalXlsx('Sheet1', fortune);
+const wb3 = readWorkbook(minBytes);
+const minOut = parseSheet(wb3, 'Sheet1');
+eq(cellVal(minOut, 2, 4), '散热器格栅改', '最小生成：改过的值在');
+eq(cellVal(minOut, 1, 7), '中文名', '最小生成：新增列表头在');
+eq(cellVal(minOut, 2, 0), 99, '最小生成：数字在');
+ok(minOut.merges.some((m) => m.r === 0 && m.c === 0 && m.rs === 1 && m.cs === 7),
+  '最小生成：合并 A1:G1 在', minOut.merges);
+
+console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);
+process.exit(fail ? 1 : 0);

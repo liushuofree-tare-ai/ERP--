@@ -1,1 +1,136 @@
-Ly8gQUkg5pWw5o2u5pGY6KaB77yIU1BFQyDnrKzlm5voioLnrKwgMTEg6aG577yJ77ya5oqK5YWo5bqT5Lia5Yqh5pWw5o2u5rGH5oC75oiQ5LiA5Lu957qv5paH5pys77yMCi8vIOaPkOmXruaXtumaj+mXrumimOS4gOi1t+WPkee7meeUqOaIt+mFjee9rueahCBBSSDmjqXlj6PjgILmkZjopoHmmK8gQUkg6IO955yL5Yiw55qE5LiA5YiH4oCU4oCUCi8vIOWug+WPquivu+i/meS7veaRmOimge+8jOawuOS4jeaOpeinpuWtmOaho+acrOS9k++8jOabtOawuOS4jeWbnuWGme+8iFNQRUMg56ys5LqM6IqC5bqV57q/IDTvvInjgIIKLy8g57qv5Ye95pWw77ya6L6T5YWl5a2Y5qGj5b2i54q2IHsgZG9jcywgZmFjdG9yaWVzLCBvcmRlcnN9IOS4jiBub3fvvIjlj6/ms6jlhaXkvr/kuo4KLy8g5rWL6K+V77yJ77yM6L6T5Ye65paH5pys44CC5oC76ZW/5bCB6aG257qmIDI0MDAwIOWtl++8jOi2heS6huWcqOihjOi+ueeVjOaIquaWreW5tuazqOaYjuOAggppbXBvcnQgeyBvcmRlckZhY3RzfSBmcm9tICcuL29yZGVycy5qcyc7CmltcG9ydCB7IGJ1aWxkT3ZlcnZpZXd9IGZyb20gJy4vb3ZlcnZpZXcuanMnOwppbXBvcnQgeyByb3VuZDJ9IGZyb20gJy4vcHJpY2luZy5qcyc7CgpleHBvcnQgY29uc3QgRElHRVNUX0NBUCA9IDI0MDAwOwoKZnVuY3Rpb24gbW9uZXkobikgewpjb25zdCB2ID0gcm91bmQyKE51bWJlcihuKSB8fCAwKTsKcmV0dXJuIHYudG9GaXhlZCgyKTsKfQpmdW5jdGlvbiBmbXREYXRlKGlzbykgewppZiAoIWlzbykgcmV0dXJuICfmnKrnn6Xml6XmnJ8nOwpjb25zdCBkID0gbmV3IERhdGUoaXNvKTsKcmV0dXJuIE51bWJlci5pc05hTihkLmdldFRpbWUoKSk/ICfmnKrnn6Xml6XmnJ8nOiBkLnRvTG9jYWxlRGF0ZVN0cmluZygnemgtQ04nKTsKfQpmdW5jdGlvbiBhZ2VEYXlzKGlzbywgbm93KSB7CmlmICghaXNvKSByZXR1cm4gbnVsbDsKY29uc3QgdCA9IG5ldyBEYXRlKGlzbykuZ2V0VGltZSgpOwppZiAoTnVtYmVyLmlzTmFOKHQpKSByZXR1cm4gbnVsbDsKcmV0dXJuIE1hdGgubWF4KDAsIE1hdGguZmxvb3IoKG5vdy5nZXRUaW1lKCkgLSB0KSAvIDg2NDAwMDAwKSk7Cn0KCi8qKgoqIOeUn+aIkOaRmOimgeaWh+acrOOAgnN0YXRlOiB7IGRvY3MsIGZhY3Rvcmllcywgb3JkZXJzfe+8m29wdHMubm93OiBEYXRl44CCCiog5YaF5a6577ya5oC76KeI5pWw5a2X44CB5a6i5oi35qyg5qy+44CB5bel5Y6C5bqU5LuY44CB6K6i5Y2V5riF5Y2V77yI5bim5Y2V6b6E77yJ44CB6K+i5Lu3L+aKpeS7twoqIOaDheWGteOAgeiuouWNleihjOmHjOWHuueOsOacgOWkmueahCBPRS/phY3ku7bjgILotoXplb/ml7bmjInooYzmiKrmlq3lubbliqDms6jjgIIKKi8KZXhwb3J0IGZ1bmN0aW9uIGJ1aWxkQWlEaWdlc3Qoc3RhdGUsIG9wdHMgPSB7fSkgewpjb25zdCBub3cgPSBvcHRzLm5vdyBpbnN0YW5jZW9mIERhdGU/IG9wdHMubm93OiBuZXcgRGF0ZSgpOwpjb25zdCBkb2NzID0gKHN0YXRlICYmIHN0YXRlLmRvY3MpIHx8IFtdOwpjb25zdCBvcmRlcnMgPSAoc3RhdGUgJiYgc3RhdGUub3JkZXJzKSB8fCBbXTsKY29uc3Qgb3YgPSBidWlsZE92ZXJ2aWV3KHN0YXRlKTsKY29uc3QgTCA9IFtdOwoKTC5wdXNoKCfmsb3phY3lpJbotLggRVJQIMK3IOeUn+aIkOS6jiAnICsgbm93LnRvTG9jYWxlU3RyaW5nKCd6aC1DTicsIHsgaG91cjEyOiBmYWxzZX0pKTsKTC5wdXNoKCfph5Hpop3ljZXkvY3vvJrlhYPjgILlupTmlLY95a6i5oi35qyg5oiR5Lus55qE77yM5bqU5LuYPeaIkeS7rOasoOW3peWOgueahO+8m+acquaUti/mnKrku5jlj6/kuLrotJ/mlbDvvIjooajnpLrlr7nmlrnlpJrku5gv5oiR5Lus5aSa5LuY77yM57uP5o+Q6YaS56Gu6K6k6L+H55qE6LaF6aKd77yJ44CCJyk7CkwucHVzaCgnJyk7CkwucHVzaCgnPT0g5oC76KeIID09Jyk7CkwucHVzaCgn6K+i5Lu35Y2VICcgKyBvdi5jb3VudHMuaW5xdWlyaWVzICsgJyDlvKAgwrcg5oql5Lu35Y2VICcgKyBvdi5jb3VudHMucXVvdGVzICsKJyDlvKAgwrcg6K6i5Y2VICcgKyBvdi5jb3VudHMub3JkZXJzICsgJyDljZUnKTsKTC5wdXNoKCfmgLvlupTmlLYgJyArIG1vbmV5KG92LnRvdGFscy5yZWNlaXZhYmxlKSArICcgwrcg5bey5pS2ICcgKyBtb25leShvdi50b3RhbHMucmVjZWl2ZWQpICsKJyDCtyDmnKrmlLYgJyArIG1vbmV5KG92LnRvdGFscy51bnBhaWQpKTsKTC5wdXNoKCfmgLvlupTku5ggJyArIG1vbmV5KG92LnRvdGFscy5wYXlhYmxlKSArICcgwrcg5bey5LuYICcgKyBtb25leShvdi50b3RhbHMucGFpZCkgKwonIMK3IOacquS7mCAnICsgbW9uZXkob3YudG90YWxzLnVucGFpZFBheSkpOwpMLnB1c2goJ+W+heWPkei0pyAnICsgb3YudG90YWxzLnBlbmRpbmdTaGlwTGluZXMgKyAnIOihjO+8iOi/mOayoeWPkeWujOiuouWNleihjO+8iScpOwpMLnB1c2goJycpOwoKTC5wdXNoKCc9PSDlrqLmiLfmrKDmrL7vvIjmnKrmlLblpJrogIXlnKjliY3vvIk9PScpOwppZiAob3YuY3VzdG9tZXJzLmxlbmd0aCA9PT0gMCkgTC5wdXNoKCfvvIjmmoLml6DlrqLmiLforrDlvZXvvIknKTsKZm9yIChjb25zdCBjIG9mIG92LmN1c3RvbWVycykgewpMLnB1c2goJ+WuouaIt+OAjCcgKyBjLm5hbWUgKyAn44CN77ya6K+i5Lu35Y2VICcgKyBjLmlucXVpcmllcyArICcg5bygIMK3IOiuouWNlSAnICsgYy5vcmRlcnMgKwonIOWNlSDCtyDlupTmlLYgJyArIG1vbmV5KGMucmVjZWl2YWJsZSkgKyAnIMK3IOW3suaUtiAnICsgbW9uZXkoYy5yZWNlaXZlZCkgKwonIMK3IOacquaUtiAnICsgbW9uZXkoYy51bnBhaWQpKTsKfQpMLnB1c2goJycpOwoKTC5wdXNoKCc9PSDlt6XljoLlupTku5jvvIjmnKrku5jlpJrogIXlnKjliY3vvIk9PScpOwppZiAob3YuZmFjdG9yaWVzLmxlbmd0aCA9PT0gMCkgTC5wdXNoKCfvvIjmmoLml6Dlt6XljoLorrDlvZXvvIknKTsKZm9yIChjb25zdCBmIG9mIG92LmZhY3RvcmllcykgewpMLnB1c2goJ+W3peWOguOAjCcgKyBmLm5hbWUgKyAn44CN77ya5oql5Lu35Y2VICcgKyBmLnF1b3RlcyArICcg5bygIMK3IOiuouWNleihjCAnICsgZi5vcmRlckxpbmVzICsKJyDooYwgwrcg5bqU5LuYICcgKyBtb25leShmLnBheWFibGUpICsgJyDCtyDlt7Lku5ggJyArIG1vbmV5KGYucGFpZCkgKwonIMK3IOacquS7mCAnICsgbW9uZXkoZi51bnBhaWQpKTsKfQpMLnB1c2goJycpOwoKTC5wdXNoKCc9PSDorqLljZXmuIXljZXvvIjmlrDogIXlnKjliY3vvIk9PScpOwppZiAob3JkZXJzLmxlbmd0aCA9PT0gMCkgTC5wdXNoKCfvvIjmmoLml6DorqLljZXvvIknKTsKY29uc3Qgc29ydGVkID0gWy4uLm9yZGVyc10uc29ydCgoYSwgYikgPT4KU3RyaW5nKGIuY3JlYXRlZEF0IHx8ICcnKS5sb2NhbGVDb21wYXJlKFN0cmluZyhhLmNyZWF0ZWRBdCB8fCAnJykpKTsKZm9yIChjb25zdCBvIG9mIHNvcnRlZCkgewpjb25zdCBmID0gb3JkZXJGYWN0cyhvKTsKY29uc3QgYWdlID0gYWdlRGF5cyhvLmNyZWF0ZWRBdCwgbm93KTsKTC5wdXNoKCforqLljZUgJyArIG8ub3JkZXJObyArICcgwrcg5a6i5oi344CMJyArIChvLmN1c3RvbWVyTmFtZSB8fCAn5pyq5aGrJykgKyAn44CNwrcgJyArCmZtdERhdGUoby5jcmVhdGVkQXQpICsgKGFnZSA9PT0gbnVsbD8gJyc6ICfvvIjot53ku4ogJyArIGFnZSArICcg5aSp77yJJykgKwonIMK3ICcgKyAoby5saW5lcyB8fCBbXSkubGVuZ3RoICsgJyDooYwgwrcg5bqU5pS2ICcgKyBtb25leShmLnJlY2VpdmFibGUpICsKJyDCtyDlt7LmlLYgJyArIG1vbmV5KGYucmVjZWl2ZWQpICsgJyDCtyDmnKrmlLYgJyArIG1vbmV5KGYudW5wYWlkKSArCicgwrcg5bqU5LuYICcgKyBtb25leShmLnBheWFibGUpICsgJyDCtyDnirbmgIEgJyArIGYuc3RhdHVzVGV4dCArCicgwrcg5Y+R6LSnICcgKyBmLnNoaXBTdGF0dXMgKyAn77yI5bey5Y+RICcgKyBmLnNoaXBwZWRRdHkgKyAnLycgKyBmLnRvdGFsUXR5ICsgJyDku7bvvIknKTsKfQpMLnB1c2goJycpOwoKTC5wdXNoKCc9PSDor6Lku7fkuI7miqXku7fmg4XlhrUgPT0nKTsKY29uc3QgaW5xdWlyaWVzID0gZG9jcy5maWx0ZXIoKGQpID0+IGQgJiYgZC5raW5kID09PSAnaW5xdWlyeScpOwpjb25zdCBxdW90ZXMgPSBkb2NzLmZpbHRlcigoZCkgPT4gZCAmJiBkLmtpbmQgPT09ICdxdW90ZScpOwppZiAoaW5xdWlyaWVzLmxlbmd0aCA9PT0gMCAmJiBxdW90ZXMubGVuZ3RoID09PSAwKSBMLnB1c2goJ++8iOaaguaXoOivouS7t+WNlS/miqXku7fljZXvvIknKTsKZm9yIChjb25zdCBkIG9mIGlucXVpcmllcykgewpjb25zdCByb3dzID0gZC5sZWRnZXIgJiYgQXJyYXkuaXNBcnJheShkLmxlZGdlci5yb3dzKT8gZC5sZWRnZXIucm93cy5sZW5ndGg6IDA7CmNvbnN0IGNob3NlbiA9IGQucm93Q2hvaWNlcz8gT2JqZWN0LmtleXMoZC5yb3dDaG9pY2VzKS5sZW5ndGg6IDA7CkwucHVzaCgn6K+i5Lu35Y2V77yI5a6i5oi344CMJyArICgoZC5jdXN0b21lck5hbWUgfHwgJycpLnRyaW0oKSB8fCAn5pyq5aGrJykgKyAn44CN77yJ77ya5p2l5rqQICcgKwooKGQuc291cmNlICYmIGQuc291cmNlLmZpbGVOYW1lKSB8fCAn56S65L6LL+aJi+W3pScpICsgJyDCtyAnICsgcm93cyArICcg6KGMIMK3IOW3suWumuWOgiAnICsgY2hvc2VuICsgJyDooYwnKTsKfQpmb3IgKGNvbnN0IGQgb2YgcXVvdGVzKSB7CkwucHVzaCgn5oql5Lu35Y2V77yI5bel5Y6C44CMJyArIChkLmZhY3RvcnlOYW1lIHx8ICcnKSArICfjgI3vvInvvJonICsKKGQucHJpY2VNYXJrPyAn5bey5qCH5Lu35YiX77yI56ysICcgKyAoZC5wcmljZU1hcmsuY29sICsgMSkgKyAnIOWIl++8jCcgKwooZC5wcmljZU1hcmsudGF4SW5jbHVzaXZlPyAn5ZCr56iOJzogJ+S4jeWQq+eojicpICsgJ++8iSc6ICflsJrmnKrmoIfku7fliJcnKSk7Cn0KTC5wdXNoKCcnKTsKCkwucHVzaCgnPT0g6K6i5Y2V6YeM5Ye6546w5pyA5aSa55qE6YWN5Lu2ID09Jyk7CmNvbnN0IGZyZXEgPSBuZXcgTWFwKCk7CmZvciAoY29uc3QgbyBvZiBvcmRlcnMpIHsKZm9yIChjb25zdCBsaW5lIG9mIG8ubGluZXMgfHwgW10pIHsKY29uc3Qgb2UgPSAobGluZS5vZSB8fCAnJykudHJpbSgpOwpjb25zdCBrZXkgPSBvZSB8fCAoJ++8iOaXoE9F77yJJyArIChsaW5lLm5hbWUgfHwgJycpKTsKaWYgKCFmcmVxLmhhcyhrZXkpKSB7CmZyZXEuc2V0KGtleSwgeyBvZSwgbmFtZTogbGluZS5uYW1lIHx8ICcnLCBjb3VudDogMCwgcXR5OiAwLCBmYWN0b3JpZXM6IG5ldyBTZXQoKX0pOwp9CmNvbnN0IGUgPSBmcmVxLmdldChrZXkpOwplLmNvdW50ICs9IDE7CmUucXR5ICs9IE51bWJlcihsaW5lLnF0eSkgfHwgMDsKaWYgKGxpbmUuZmFjdG9yeSkgZS5mYWN0b3JpZXMuYWRkKGxpbmUuZmFjdG9yeSk7Cn0KfQppZiAoZnJlcS5zaXplID09PSAwKSBMLnB1c2goJ++8iOaaguaXoOiuouWNleihjO+8iScpOwpjb25zdCB0b3AgPSBbLi4uZnJlcS52YWx1ZXMoKV0uc29ydCgoYSwgYikgPT4gYi5jb3VudCAtIGEuY291bnQgfHwgYi5xdHkgLSBhLnF0eSkuc2xpY2UoMCwgMTUpOwpmb3IgKGNvbnN0IGUgb2YgdG9wKSB7CkwucHVzaCgoZS5vZT8gJ09FICcgKyBlLm9lOiAn6YWN5Lu2JykgKyAn44CMJyArIGUubmFtZSArICfjgI3vvJrlh7rnjrDlnKggJyArIGUuY291bnQgKwonIOS4quiuouWNleihjCDCtyDlkIjorqEgJyArIGUucXR5ICsgJyDku7Ygwrcg5L6b6LSn5bel5Y6CICcgKwooWy4uLmUuZmFjdG9yaWVzXS5qb2luKCfjgIEnKSB8fCAn5pyq6K6wJykpOwp9CgpsZXQgdGV4dCA9IEwuam9pbignXG4nKTsKaWYgKHRleHQubGVuZ3RoID4gRElHRVNUX0NBUCkgewovLyDlnKjooYzovrnnlYzmiKrmlq3vvIzlroHlj6/lsJHnu5nkuZ/kuI3og73nu5nljYrooYzlgYfmlbDlrZcKbGV0IGN1dCA9IHRleHQuc2xpY2UoMCwgRElHRVNUX0NBUCk7CmNvbnN0IG5sID0gY3V0Lmxhc3RJbmRleE9mKCdcbicpOwppZiAobmwgPiAwKSBjdXQgPSBjdXQuc2xpY2UoMCwgbmwpOwp0ZXh0ID0gY3V0ICsgJ1xu77yI5rOo77ya5pWw5o2u6L6D5aSa77yM5pGY6KaB5bey5oiq5pat77yM5ZCO6Z2i55qE5YaF5a655rKh5pyJ5Y+R57uZIEFJ77yb6ZyA6KaB57uG6IqC5pe26K+357yp5bCP6Zeu6aKY6IyD5Zu044CC77yJJzsKfQpyZXR1cm4gdGV4dDsKfQo=
+// AI 数据摘要（SPEC 第四节第 11 项）：把全库业务数据汇总成一份纯文本，
+// 提问时随问题一起发给用户配置的 AI 接口。摘要是 AI 能看到的一切——
+// 它只读这份摘要，永不接触存档本体，更永不回写（SPEC 第二节底线 4）。
+// 纯函数：输入存档形状 { docs, factories, orders} 与 now（可注入便于
+// 测试），输出文本。总长封顶约 24000 字，超了在行边界截断并注明。
+import { orderFacts} from './orders.js';
+import { buildOverview} from './overview.js';
+import { round2} from './pricing.js';
+
+export const DIGEST_CAP = 24000;
+
+function money(n) {
+const v = round2(Number(n) || 0);
+return v.toFixed(2);
+}
+function fmtDate(iso) {
+if (!iso) return '未知日期';
+const d = new Date(iso);
+return Number.isNaN(d.getTime())? '未知日期': d.toLocaleDateString('zh-CN');
+}
+function ageDays(iso, now) {
+if (!iso) return null;
+const t = new Date(iso).getTime();
+if (Number.isNaN(t)) return null;
+return Math.max(0, Math.floor((now.getTime() - t) / 86400000));
+}
+
+/**
+* 生成摘要文本。state: { docs, factories, orders}；opts.now: Date。
+* 内容：总览数字、客户欠款、工厂应付、订单清单（带单龄）、询价/报价
+* 情况、订单行里出现最多的 OE/配件。超长时按行截断并加注。
+*/
+export function buildAiDigest(state, opts = {}) {
+const now = opts.now instanceof Date? opts.now: new Date();
+const docs = (state && state.docs) || [];
+const orders = (state && state.orders) || [];
+const ov = buildOverview(state);
+const L = [];
+
+L.push('汽配外贸 ERP · 生成于 ' + now.toLocaleString('zh-CN', { hour12: false}));
+L.push('金额单位：元。应收=客户欠我们的，应付=我们欠工厂的；未收/未付可为负数（表示对方多付/我们多付，经提醒确认过的超额）。');
+L.push('');
+L.push('== 总览 ==');
+L.push('询价单 ' + ov.counts.inquiries + ' 张 · 报价单 ' + ov.counts.quotes +
+' 张 · 订单 ' + ov.counts.orders + ' 单');
+L.push('总应收 ' + money(ov.totals.receivable) + ' · 已收 ' + money(ov.totals.received) +
+' · 未收 ' + money(ov.totals.unpaid));
+L.push('总应付 ' + money(ov.totals.payable) + ' · 已付 ' + money(ov.totals.paid) +
+' · 未付 ' + money(ov.totals.unpaidPay));
+L.push('待发货 ' + ov.totals.pendingShipLines + ' 行（还没发完订单行）');
+L.push('');
+
+L.push('== 客户欠款（未收多者在前）==');
+if (ov.customers.length === 0) L.push('（暂无客户记录）');
+for (const c of ov.customers) {
+L.push('客户「' + c.name + '」：询价单 ' + c.inquiries + ' 张 · 订单 ' + c.orders +
+' 单 · 应收 ' + money(c.receivable) + ' · 已收 ' + money(c.received) +
+' · 未收 ' + money(c.unpaid));
+}
+L.push('');
+
+L.push('== 工厂应付（未付多者在前）==');
+if (ov.factories.length === 0) L.push('（暂无工厂记录）');
+for (const f of ov.factories) {
+L.push('工厂「' + f.name + '」：报价单 ' + f.quotes + ' 张 · 订单行 ' + f.orderLines +
+' 行 · 应付 ' + money(f.payable) + ' · 已付 ' + money(f.paid) +
+' · 未付 ' + money(f.unpaid));
+}
+L.push('');
+
+L.push('== 订单清单（新者在前）==');
+if (orders.length === 0) L.push('（暂无订单）');
+const sorted = [...orders].sort((a, b) =>
+String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+for (const o of sorted) {
+const f = orderFacts(o);
+const age = ageDays(o.createdAt, now);
+L.push('订单 ' + o.orderNo + ' · 客户「' + (o.customerName || '未填') + '」· ' +
+fmtDate(o.createdAt) + (age === null? '': '（距今 ' + age + ' 天）') +
+' · ' + (o.lines || []).length + ' 行 · 应收 ' + money(f.receivable) +
+' · 已收 ' + money(f.received) + ' · 未收 ' + money(f.unpaid) +
+' · 应付 ' + money(f.payable) + ' · 状态 ' + f.statusText +
+' · 发货 ' + f.shipStatus + '（已发 ' + f.shippedQty + '/' + f.totalQty + ' 件）');
+}
+L.push('');
+
+L.push('== 询价与报价情况 ==');
+const inquiries = docs.filter((d) => d && d.kind === 'inquiry');
+const quotes = docs.filter((d) => d && d.kind === 'quote');
+if (inquiries.length === 0 && quotes.length === 0) L.push('（暂无询价单/报价单）');
+for (const d of inquiries) {
+const rows = d.ledger && Array.isArray(d.ledger.rows)? d.ledger.rows.length: 0;
+const chosen = d.rowChoices? Object.keys(d.rowChoices).length: 0;
+L.push('询价单（客户「' + ((d.customerName || '').trim() || '未填') + '」）：来源 ' +
+((d.source && d.source.fileName) || '示例/手工') + ' · ' + rows + ' 行 · 已定厂 ' + chosen + ' 行');
+}
+for (const d of quotes) {
+L.push('报价单（工厂「' + (d.factoryName || '') + '」）：' +
+(d.priceMark? '已标价列（第 ' + (d.priceMark.col + 1) + ' 列，' +
+(d.priceMark.taxInclusive? '含税': '不含税') + '）': '尚未标价列'));
+}
+L.push('');
+
+L.push('== 订单里出现最多的配件 ==');
+const freq = new Map();
+for (const o of orders) {
+for (const line of o.lines || []) {
+const oe = (line.oe || '').trim();
+const key = oe || ('（无OE）' + (line.name || ''));
+if (!freq.has(key)) {
+freq.set(key, { oe, name: line.name || '', count: 0, qty: 0, factories: new Set()});
+}
+const e = freq.get(key);
+e.count += 1;
+e.qty += Number(line.qty) || 0;
+if (line.factory) e.factories.add(line.factory);
+}
+}
+if (freq.size === 0) L.push('（暂无订单行）');
+const top = [...freq.values()].sort((a, b) => b.count - a.count || b.qty - a.qty).slice(0, 15);
+for (const e of top) {
+L.push((e.oe? 'OE ' + e.oe: '配件') + '「' + e.name + '」：出现在 ' + e.count +
+' 个订单行 · 合计 ' + e.qty + ' 件 · 供货工厂 ' +
+([...e.factories].join('、') || '未记'));
+}
+
+let text = L.join('\n');
+if (text.length > DIGEST_CAP) {
+// 在行边界截断，宁可少给也不能给半行假数字
+let cut = text.slice(0, DIGEST_CAP);
+const nl = cut.lastIndexOf('\n');
+if (nl > 0) cut = cut.slice(0, nl);
+text = cut + '\n（注：数据较多，摘要已截断，后面的内容没有发给 AI；需要细节时请缩小问题范围。）';
+}
+return text;
+}

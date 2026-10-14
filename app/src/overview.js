@@ -1,1 +1,115 @@
-Ly8g5oC76KeI5LiO5Y+w6LSm55qE5rGH5oC777yIU1BFQyDnrKzlm5voioLnrKwgMTAg6aG577yJ77ya5YWo6YOo5pWw5a2X55Sx5Lia5Yqh5pWw5o2u546w566X77yMCi8vIOS4jeiQveS7u+S9leWGl+S9meaxh+aAu+Wtl+auteKAlOKAlOivouS7t+WNlS/miqXku7fljZUv6K6i5Y2V55qE5LqL5a6e5Y+Y5LqG77yM6L+Z6YeM6Ieq5Yqo6Lef552A5a+544CCCi8vIOe6r+WHveaVsOOAgeaXoOWJr+S9nOeUqO+8jOi+k+WFpeWtmOaho+W9oueKtiB7IGRvY3MsIGZhY3Rvcmllcywgb3JkZXJzIH3vvJoKLy8gwrcg5a6i5oi357u05bqm77ya6K+i5Lu35Y2V5LiK55qE5a6i5oi35ZCN77yIY3VzdG9tZXJOYW1l77yJ5LiO6K6i5Y2V5LiK55qE5a6i5oi35ZCN5ZCM5ZCN5ZCI5bm277ybCi8vICAg6K+i5Lu35Y2V5pWw5oyJ5paH5qGj5pWw6K6h77yM6K6i5Y2V5pWwL+W6lOaUti/lt7LmlLYv5pyq5pS25oyJ6K6i5Y2V546w566X77yIb3JkZXJzLmpz77yJ44CCCi8vIMK3IOW3peWOgue7tOW6pu+8muW3peWOguWQjeWNlSArIOaKpeS7t+WNle+8iOaMiSBmYWN0b3J5TmFtZSDmlbDvvIkrIOiuouWNleihjO+8iOaMieihjOmHjOeahAovLyAgIOW3peWOguiBmuWQiOW6lOS7mC/lt7Lku5gv5pyq5LuY77yJ77yb5Y+q5Zyo5ZCN5Y2V6YeM44CB6L+Y5rKh5Y2V5o2u55qE5bel5Y6C5Lmf5YiX5Ye65p2l77yI5YWoIDDvvInjgIIKLy8gwrcg5oC76KeI5aS077ya5Y2V5o2u6K6h5pWw44CB5YWo5bqT5bqU5pS2L+W3suaUti/mnKrmlLbjgIHlupTku5gv5bey5LuYL+acquS7mOOAgeW+heWPkei0p+ihjOaVsAovLyAgIO+8iOaJgOacieiuouWNlemHjCBzaGlwcGVkUXR5IDwgcXR5IOeahOihjOaVsO+8ieOAggppbXBvcnQgeyBvcmRlckZhY3RzIH0gZnJvbSAnLi9vcmRlcnMuanMnOwppbXBvcnQgeyByb3VuZDIgfSBmcm9tICcuL3ByaWNpbmcuanMnOwoKY29uc3QgVU5OQU1FRCA9ICfvvIjmnKrloavlrqLmiLflkI3vvIknOwoKZnVuY3Rpb24gZW1wdHlDdXN0b21lcihuYW1lKSB7CiAgcmV0dXJuIHsgbmFtZSwgaW5xdWlyaWVzOiAwLCBvcmRlcnM6IDAsIHJlY2VpdmFibGU6IDAsIHJlY2VpdmVkOiAwLCB1bnBhaWQ6IDAgfTsKfQpmdW5jdGlvbiBlbXB0eUZhY3RvcnkobmFtZSkgewogIHJldHVybiB7IG5hbWUsIHF1b3RlczogMCwgb3JkZXJMaW5lczogMCwgcGF5YWJsZTogMCwgcGFpZDogMCwgdW5wYWlkOiAwIH07Cn0KCi8qKgogKiDmsYfmgLvkuIDku73mgLvop4jmqKHlnovvvJoKICogewogKiAgIGNvdW50czogeyBpbnF1aXJpZXMsIHF1b3Rlcywgb3JkZXJzIH0sCiAqICAgdG90YWxzOiB7IHJlY2VpdmFibGUsIHJlY2VpdmVkLCB1bnBhaWQsIHBheWFibGUsIHBhaWQsIHVucGFpZFBheSwgcGVuZGluZ1NoaXBMaW5lcyB9LAogKiAgIGN1c3RvbWVyczogW3sgbmFtZSwgaW5xdWlyaWVzLCBvcmRlcnMsIHJlY2VpdmFibGUsIHJlY2VpdmVkLCB1bnBhaWQgfV3vvIjmnKrmlLblpJrogIXlnKjliY3vvIksCiAqICAgZmFjdG9yaWVzOiBbeyBuYW1lLCBxdW90ZXMsIG9yZGVyTGluZXMsIHBheWFibGUsIHBhaWQsIHVucGFpZCB9Xe+8iOacquS7mOWkmuiAheWcqOWJje+8iQogKiB9CiAqLwpleHBvcnQgZnVuY3Rpb24gYnVpbGRPdmVydmlldyhzdGF0ZSkgewogIGNvbnN0IGRvY3MgPSAoc3RhdGUgJiYgc3RhdGUuZG9jcykgfHwgW107CiAgY29uc3Qgb3JkZXJzID0gKHN0YXRlICYmIHN0YXRlLm9yZGVycykgfHwgW107CiAgY29uc3QgcmVnaXN0cnkgPSAoc3RhdGUgJiYgc3RhdGUuZmFjdG9yaWVzKSB8fCBbXTsKCiAgY29uc3QgaW5xdWlyaWVzID0gZG9jcy5maWx0ZXIoKGQpID0+IGQgJiYgZC5raW5kID09PSAnaW5xdWlyeScpOwogIGNvbnN0IHF1b3RlcyA9IGRvY3MuZmlsdGVyKChkKSA9PiBkICYmIGQua2luZCA9PT0gJ3F1b3RlJyk7CgogIC8qIC0tLS0g5a6i5oi3IC0tLS0gKi8KICBjb25zdCBjdXN0TWFwID0gbmV3IE1hcCgpOwogIGNvbnN0IGN1c3QgPSAobmFtZSkgPT4gewogICAgaWYgKCFjdXN0TWFwLmhhcyhuYW1lKSkgY3VzdE1hcC5zZXQobmFtZSwgZW1wdHlDdXN0b21lcihuYW1lKSk7CiAgICByZXR1cm4gY3VzdE1hcC5nZXQobmFtZSk7CiAgfTsKICBmb3IgKGNvbnN0IGQgb2YgaW5xdWlyaWVzKSB7CiAgICBjb25zdCBuYW1lID0gKGQuY3VzdG9tZXJOYW1lIHx8ICcnKS50cmltKCk7CiAgICBpZiAobmFtZSkgY3VzdChuYW1lKS5pbnF1aXJpZXMgKz0gMTsKICB9CgogIC8qIC0tLS0g5bel5Y6CIC0tLS0gKi8KICBjb25zdCBmYWNNYXAgPSBuZXcgTWFwKCk7CiAgY29uc3QgZmFjID0gKG5hbWUpID0+IHsKICAgIGlmICghZmFjTWFwLmhhcyhuYW1lKSkgZmFjTWFwLnNldChuYW1lLCBlbXB0eUZhY3RvcnkobmFtZSkpOwogICAgcmV0dXJuIGZhY01hcC5nZXQobmFtZSk7CiAgfTsKICBmb3IgKGNvbnN0IG5hbWUgb2YgcmVnaXN0cnkpIHsKICAgIGNvbnN0IG4gPSAobmFtZSB8fCAnJykudHJpbSgpOwogICAgaWYgKG4pIGZhYyhuKTsKICB9CiAgZm9yIChjb25zdCBxIG9mIHF1b3RlcykgewogICAgY29uc3QgbiA9IChxLmZhY3RvcnlOYW1lIHx8ICcnKS50cmltKCk7CiAgICBpZiAobikgZmFjKG4pLnF1b3RlcyArPSAxOwogIH0KCiAgLyogLS0tLSDorqLljZXvvIjpkrHkuI7lvoXlj5HotKfpg73ku47orqLljZXnjrDnrpfvvIkgLS0tLSAqLwogIGNvbnN0IHRvdGFscyA9IHsKICAgIHJlY2VpdmFibGU6IDAsIHJlY2VpdmVkOiAwLCB1bnBhaWQ6IDAsCiAgICBwYXlhYmxlOiAwLCBwYWlkOiAwLCB1bnBhaWRQYXk6IDAsCiAgICBwZW5kaW5nU2hpcExpbmVzOiAwLAogIH07CiAgZm9yIChjb25zdCBvcmRlciBvZiBvcmRlcnMpIHsKICAgIGNvbnN0IGYgPSBvcmRlckZhY3RzKG9yZGVyKTsKICAgIHRvdGFscy5yZWNlaXZhYmxlID0gcm91bmQyKHRvdGFscy5yZWNlaXZhYmxlICsgZi5yZWNlaXZhYmxlKTsKICAgIHRvdGFscy5yZWNlaXZlZCA9IHJvdW5kMih0b3RhbHMucmVjZWl2ZWQgKyBmLnJlY2VpdmVkKTsKICAgIHRvdGFscy5wYXlhYmxlID0gcm91bmQyKHRvdGFscy5wYXlhYmxlICsgZi5wYXlhYmxlKTsKICAgIHRvdGFscy5wYWlkID0gcm91bmQyKHRvdGFscy5wYWlkICsgZi5wYWlkKTsKICAgIGZvciAoY29uc3QgbGluZSBvZiBvcmRlci5saW5lcyB8fCBbXSkgewogICAgICBpZiAoKE51bWJlcihsaW5lLnNoaXBwZWRRdHkpIHx8IDApIDwgKE51bWJlcihsaW5lLnF0eSkgfHwgMCkpIHsKICAgICAgICB0b3RhbHMucGVuZGluZ1NoaXBMaW5lcyArPSAxOwogICAgICB9CiAgICAgIGNvbnN0IGZuYW1lID0gKGxpbmUuZmFjdG9yeSB8fCAnJykudHJpbSgpOwogICAgICBpZiAoZm5hbWUpIGZhYyhmbmFtZSkub3JkZXJMaW5lcyArPSAxOwogICAgfQogICAgY29uc3QgY25hbWUgPSAoKG9yZGVyLmN1c3RvbWVyTmFtZSB8fCAnJykudHJpbSgpKSB8fCBVTk5BTUVEOwogICAgY29uc3QgYyA9IGN1c3QoY25hbWUpOwogICAgYy5vcmRlcnMgKz0gMTsKICAgIGMucmVjZWl2YWJsZSA9IHJvdW5kMihjLnJlY2VpdmFibGUgKyBmLnJlY2VpdmFibGUpOwogICAgYy5yZWNlaXZlZCA9IHJvdW5kMihjLnJlY2VpdmVkICsgZi5yZWNlaXZlZCk7CiAgICBmb3IgKGNvbnN0IGcgb2YgZi5mYWN0b3JpZXMpIHsKICAgICAgY29uc3QgZm5hbWUgPSAoZy5mYWN0b3J5IHx8ICcnKS50cmltKCk7CiAgICAgIGlmICghZm5hbWUpIGNvbnRpbnVlOwogICAgICBjb25zdCByb3cgPSBmYWMoZm5hbWUpOwogICAgICByb3cucGF5YWJsZSA9IHJvdW5kMihyb3cucGF5YWJsZSArIGcucGF5YWJsZSk7CiAgICAgIHJvdy5wYWlkID0gcm91bmQyKHJvdy5wYWlkICsgZy5wYWlkKTsKICAgIH0KICB9CiAgdG90YWxzLnVucGFpZCA9IHJvdW5kMih0b3RhbHMucmVjZWl2YWJsZSAtIHRvdGFscy5yZWNlaXZlZCk7CiAgdG90YWxzLnVucGFpZFBheSA9IHJvdW5kMih0b3RhbHMucGF5YWJsZSAtIHRvdGFscy5wYWlkKTsKCiAgY29uc3QgY3VzdG9tZXJzID0gWy4uLmN1c3RNYXAudmFsdWVzKCldLm1hcCgoYykgPT4gKHsKICAgIC4uLmMsIHVucGFpZDogcm91bmQyKGMucmVjZWl2YWJsZSAtIGMucmVjZWl2ZWQpLAogIH0pKTsKICBjdXN0b21lcnMuc29ydCgoYSwgYikgPT4gKGIudW5wYWlkIC0gYS51bnBhaWQpIHx8IGEubmFtZS5sb2NhbGVDb21wYXJlKGIubmFtZSwgJ3poLUNOJykpOwogIGNvbnN0IGZhY3RvcmllcyA9IFsuLi5mYWNNYXAudmFsdWVzKCldLm1hcCgoZykgPT4gKHsKICAgIC4uLmcsIHVucGFpZDogcm91bmQyKGcucGF5YWJsZSAtIGcucGFpZCksCiAgfSkpOwogIGZhY3Rvcmllcy5zb3J0KChhLCBiKSA9PiAoYi51bnBhaWQgLSBhLnVucGFpZCkgfHwgYS5uYW1lLmxvY2FsZUNvbXBhcmUoYi5uYW1lLCAnemgtQ04nKSk7CgogIHJldHVybiB7CiAgICBjb3VudHM6IHsgaW5xdWlyaWVzOiBpbnF1aXJpZXMubGVuZ3RoLCBxdW90ZXM6IHF1b3Rlcy5sZW5ndGgsIG9yZGVyczogb3JkZXJzLmxlbmd0aCB9LAogICAgdG90YWxzLAogICAgY3VzdG9tZXJzLAogICAgZmFjdG9yaWVzLAogIH07Cn0K
+// 总览与台账的汇总（SPEC 第四节第 10 项）：全部数字由业务数据现算，
+// 不落任何冗余汇总字段——询价单/报价单/订单的事实变了，这里自动跟着对。
+// 纯函数、无副作用，输入存档形状 { docs, factories, orders }：
+// · 客户维度：询价单上的客户名（customerName）与订单上的客户名同名合并；
+//   询价单数按文档数计，订单数/应收/已收/未收按订单现算（orders.js）。
+// · 工厂维度：工厂名单 + 报价单（按 factoryName 数）+ 订单行（按行里的
+//   工厂聚合应付/已付/未付）；只在名单里、还没单据的工厂也列出来（全 0）。
+// · 总览头：单据计数、全库应收/已收/未收、应付/已付/未付、待发货行数
+//   （所有订单里 shippedQty < qty 的行数）。
+import { orderFacts } from './orders.js';
+import { round2 } from './pricing.js';
+
+const UNNAMED = '（未填客户名）';
+
+function emptyCustomer(name) {
+  return { name, inquiries: 0, orders: 0, receivable: 0, received: 0, unpaid: 0 };
+}
+function emptyFactory(name) {
+  return { name, quotes: 0, orderLines: 0, payable: 0, paid: 0, unpaid: 0 };
+}
+
+/**
+ * 汇总一份总览模型：
+ * {
+ *   counts: { inquiries, quotes, orders },
+ *   totals: { receivable, received, unpaid, payable, paid, unpaidPay, pendingShipLines },
+ *   customers: [{ name, inquiries, orders, receivable, received, unpaid }]（未收多者在前）,
+ *   factories: [{ name, quotes, orderLines, payable, paid, unpaid }]（未付多者在前）
+ * }
+ */
+export function buildOverview(state) {
+  const docs = (state && state.docs) || [];
+  const orders = (state && state.orders) || [];
+  const registry = (state && state.factories) || [];
+
+  const inquiries = docs.filter((d) => d && d.kind === 'inquiry');
+  const quotes = docs.filter((d) => d && d.kind === 'quote');
+
+  /* ---- 客户 ---- */
+  const custMap = new Map();
+  const cust = (name) => {
+    if (!custMap.has(name)) custMap.set(name, emptyCustomer(name));
+    return custMap.get(name);
+  };
+  for (const d of inquiries) {
+    const name = (d.customerName || '').trim();
+    if (name) cust(name).inquiries += 1;
+  }
+
+  /* ---- 工厂 ---- */
+  const facMap = new Map();
+  const fac = (name) => {
+    if (!facMap.has(name)) facMap.set(name, emptyFactory(name));
+    return facMap.get(name);
+  };
+  for (const name of registry) {
+    const n = (name || '').trim();
+    if (n) fac(n);
+  }
+  for (const q of quotes) {
+    const n = (q.factoryName || '').trim();
+    if (n) fac(n).quotes += 1;
+  }
+
+  /* ---- 订单（钱与待发货都从订单现算） ---- */
+  const totals = {
+    receivable: 0, received: 0, unpaid: 0,
+    payable: 0, paid: 0, unpaidPay: 0,
+    pendingShipLines: 0,
+  };
+  for (const order of orders) {
+    const f = orderFacts(order);
+    totals.receivable = round2(totals.receivable + f.receivable);
+    totals.received = round2(totals.received + f.received);
+    totals.payable = round2(totals.payable + f.payable);
+    totals.paid = round2(totals.paid + f.paid);
+    for (const line of order.lines || []) {
+      if ((Number(line.shippedQty) || 0) < (Number(line.qty) || 0)) {
+        totals.pendingShipLines += 1;
+      }
+      const fname = (line.factory || '').trim();
+      if (fname) fac(fname).orderLines += 1;
+    }
+    const cname = ((order.customerName || '').trim()) || UNNAMED;
+    const c = cust(cname);
+    c.orders += 1;
+    c.receivable = round2(c.receivable + f.receivable);
+    c.received = round2(c.received + f.received);
+    for (const g of f.factories) {
+      const fname = (g.factory || '').trim();
+      if (!fname) continue;
+      const row = fac(fname);
+      row.payable = round2(row.payable + g.payable);
+      row.paid = round2(row.paid + g.paid);
+    }
+  }
+  totals.unpaid = round2(totals.receivable - totals.received);
+  totals.unpaidPay = round2(totals.payable - totals.paid);
+
+  const customers = [...custMap.values()].map((c) => ({
+    ...c, unpaid: round2(c.receivable - c.received),
+  }));
+  customers.sort((a, b) => (b.unpaid - a.unpaid) || a.name.localeCompare(b.name, 'zh-CN'));
+  const factories = [...facMap.values()].map((g) => ({
+    ...g, unpaid: round2(g.payable - g.paid),
+  }));
+  factories.sort((a, b) => (b.unpaid - a.unpaid) || a.name.localeCompare(b.name, 'zh-CN'));
+
+  return {
+    counts: { inquiries: inquiries.length, quotes: quotes.length, orders: orders.length },
+    totals,
+    customers,
+    factories,
+  };
+}

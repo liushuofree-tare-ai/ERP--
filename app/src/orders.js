@@ -1,1 +1,183 @@
-Ly8g6K6i5Y2V55qE6ZKx5LiO54q25oCB77yIU1BFQyDnrKzlm5voioLnrKwgOOOAgTkg6aG5ICsg56ys5LqU6IqC6YeR6aKd5Y+j5b6E77yJ44CCCi8vIOe6r+WHveaVsOOAgeaXoOWJr+S9nOeUqO+8muiuouWNleS4iuWPquWtmCLkuovlrp4i77yI6KGM44CB5pS25qy+6K6w5b2V44CB5bel5Y6C5LuY5qy+6K6w5b2V44CBCi8vIOW3suWPkeaVsOmHj++8ie+8jOS4gOWIh+axh+aAu+S4jueKtuaAgemDveeUsei/memHjOeOsOeul+KAlOKAlOeKtuaAgeawuOS4jeiQveW6k+WtmOS4gOS7vei/h+aXtgovLyDnmoTlia/mnKzvvIhicmllZiDlj6PlvoTvvJpzdGF0dXMgZGVyaXZlZCwgbmV2ZXIgc3RvcmVkIHN0YWxl77yJ44CCCi8vCi8vIOmSseeahOWPo+W+hO+8mgovLyDCtyDlupTmlLbvvIjlrqLmiLfmrKDmiJHku6znmoTvvIk9IM6jIOacgOe7iOaKpeS7t++8iOmUgOWUruS7t++8icOXIOaVsOmHj++8jOmAkOihjOWbm+iIjeS6lOWFpQovLyAgIOWIsOWIhuWGjeWQiOiuoe+8mwovLyDCtyDlupTku5jvvIjmiJHku6zmrKDlt6XljoLnmoTvvIk9IM6jIOWQq+eojuaIkOacrCDDlyDmlbDph4/jgILlt6XljoLmiJDmnKznmoTlj6PlvoTku6XlrprljoIKLy8gICDlv6vnhafkuLrlh4bvvJrlv6vnhafor7TlkKvnqI7vvIzmiJDmnKzljp/lgLzlsLHmmK/lkKvnqI7pop3vvJvlv6vnhafor7TkuI3lkKvnqI7vvIzlupTku5gKLy8gICDnmoTmmK/ooaXkuIrnqI7ngrnnmoTlkKvnqI7pop3igJTigJTmiJDmnKwgw5fvvIgxICsg5b+r54Wn56iO54K577yJ44CC6YCQ6KGM5YWI5oqK5Y2V5Lu2Ci8vICAg5ZCr56iO5oiQ5pys5Zub6IiN5LqU5YWl5Yiw5YiG77yM5YaNIMOXIOaVsOmHj+OAgemAkOihjOWIsOWIhuOAgeWGjeWQiOiuoeOAggovLyDCtyDlt7LmlLYv5bey5LuY5piv6K6w5b2V5rGC5ZKM77yb5pyq5pS2L+acquS7mCA9IOW6lOaUti/lupTku5gg4oiSIOW3suaUti/lt7Lku5jjgIIKLy8gICDmraPluLjot6/lvoTkuIvkuI3kvJrkuLrotJ/vvJvlj6rmnInnlKjmiLflnKgi6LaF6aKd5o+Q6YaSIuW8ueeql+mHjOaYjuehruehruiupOi/h+eahAovLyAgIOi2hemineiusOW9leaJjeS8muiuqeWug+WPmOi0n++8iOaPkOmGkumAu+i+keWcqCBVSSDlsYLvvIzov5nph4zlj6rnrpfkuovlrp7vvInjgIIKLy8gwrcg6K6i5Y2V5a6M5oiQIOKHlCDlt7LmlLYg4omlIOW6lOaUtiDkuJQg5q+P5LiA6KGM5bey5Y+RIOKJpSDmlbDph4/jgIIKaW1wb3J0IHsgcm91bmQyLCBwYXJzZUNvc3RWYWx1ZSB9IGZyb20gJy4vcHJpY2luZy5qcyc7CgovKiog6K6i5Y2V5Y+377ya5YmN57yAIE9SRCArIFlZTU0gKyA0IOS9jea1geawtO+8iOWmgiBPUkQyNjEwLTAwMDHvvInvvIzmtYHmsLTlj6rlop7kuI3lh48gKi8KZXhwb3J0IGZ1bmN0aW9uIGZvcm1hdE9yZGVyTm8oZGF0ZSwgc2VxKSB7CiAgY29uc3QgZCA9IGRhdGUgaW5zdGFuY2VvZiBEYXRlID8gZGF0ZSA6IG5ldyBEYXRlKGRhdGUpOwogIGNvbnN0IHl5ID0gU3RyaW5nKGQuZ2V0RnVsbFllYXIoKSkuc2xpY2UoMik7CiAgY29uc3QgbW0gPSBTdHJpbmcoZC5nZXRNb250aCgpICsgMSkucGFkU3RhcnQoMiwgJzAnKTsKICByZXR1cm4gJ09SRCcgKyB5eSArIG1tICsgJy0nICsgU3RyaW5nKE1hdGgubWF4KDEsIHNlcSB8fCAxKSkucGFkU3RhcnQoNCwgJzAnKTsKfQoKLyoqIOS4gOihjOeahOWNleS7tuWQq+eojuaIkOacrO+8iOasoOW3peWOgueahOWPo+W+hO+8ie+8muWQq+eojuWOn+agt++8m+S4jeWQq+eojuihpeeojueCuSAqLwpleHBvcnQgZnVuY3Rpb24gbGluZVVuaXRDb3N0V2l0aFRheChsaW5lKSB7CiAgY29uc3QgcmF3ID0gcGFyc2VDb3N0VmFsdWUobGluZSAmJiBsaW5lLmNvc3RSYXcpOwogIGlmIChyYXcgPT09IG51bGwpIHJldHVybiBudWxsOwogIGlmIChsaW5lLmNvc3RUYXhJbmNsdXNpdmUpIHJldHVybiByb3VuZDIocmF3KTsKICBjb25zdCByYXRlVGV4dCA9IFN0cmluZyhsaW5lLmNvc3RUYXhSYXRlUGN0ID8/ICcnKS50cmltKCk7CiAgY29uc3QgcmF0ZSA9IHJhdGVUZXh0ID09PSAnJyA/IDAgOiBOdW1iZXIocmF0ZVRleHQpOwogIHJldHVybiByb3VuZDIocmF3ICogKDEgKyAoTnVtYmVyLmlzRmluaXRlKHJhdGUpID8gcmF0ZSA6IDApIC8gMTAwKSk7Cn0KCi8qKiDkuIDooYzlupTmlLYgPSDmnIDnu4jmiqXku7cgw5cg5pWw6YeP77yI5Yiw5YiG77yJ77yb5Lu3L+mHj+S4jeWPr+eUqOi/lOWbniBudWxs77yI5oyJIDAg6K6h5YWl5bm25qCH5rOo77yJICovCmV4cG9ydCBmdW5jdGlvbiBsaW5lUmVjZWl2YWJsZShsaW5lKSB7CiAgY29uc3QgcHJpY2UgPSBwYXJzZUNvc3RWYWx1ZShsaW5lICYmIGxpbmUuZmluYWxQcmljZSk7CiAgY29uc3QgcXR5ID0gTnVtYmVyKGxpbmUgJiYgbGluZS5xdHkpOwogIGlmIChwcmljZSA9PT0gbnVsbCB8fCAhTnVtYmVyLmlzRmluaXRlKHF0eSkpIHJldHVybiBudWxsOwogIHJldHVybiByb3VuZDIocHJpY2UgKiBxdHkpOwp9CgovKiog5LiA6KGM5bqU5LuYID0g5Y2V5Lu25ZCr56iO5oiQ5pysIMOXIOaVsOmHj++8iOWIsOWIhu+8ie+8m+aIkOacrOS4jeWPr+eUqOi/lOWbniBudWxsICovCmV4cG9ydCBmdW5jdGlvbiBsaW5lUGF5YWJsZShsaW5lKSB7CiAgY29uc3QgdW5pdCA9IGxpbmVVbml0Q29zdFdpdGhUYXgobGluZSk7CiAgY29uc3QgcXR5ID0gTnVtYmVyKGxpbmUgJiYgbGluZS5xdHkpOwogIGlmICh1bml0ID09PSBudWxsIHx8ICFOdW1iZXIuaXNGaW5pdGUocXR5KSkgcmV0dXJuIG51bGw7CiAgcmV0dXJuIHJvdW5kMih1bml0ICogcXR5KTsKfQoKZnVuY3Rpb24gc3VtQW1vdW50cyhyZWNvcmRzKSB7CiAgbGV0IHMgPSAwOwogIGZvciAoY29uc3QgciBvZiByZWNvcmRzIHx8IFtdKSB7CiAgICBjb25zdCBuID0gTnVtYmVyKHIgJiYgci5hbW91bnQpOwogICAgaWYgKE51bWJlci5pc0Zpbml0ZShuKSkgcyArPSBuOwogIH0KICByZXR1cm4gcm91bmQyKHMpOwp9CgovKioKICog6K6i5Y2V55qE5YWo6YOo5rS+55Sf5LqL5a6e77yI5YiX6KGo5LiO6K+m5oOF5YWx55So6L+Z5LiA5Lu977yM5Y+j5b6E5LiN5Lya5pyJ56ys5LqM5aWX77yJ77yaCiAqIHsKICogICByZWNlaXZhYmxlLCByZWNlaXZlZCwgdW5wYWlkLAogKiAgIHBheWFibGUsIHBhaWQsIHVucGFpZFBheSwKICogICBmYWN0b3JpZXM6IFt7IGZhY3RvcnksIHBheWFibGUsIHBhaWQsIHVucGFpZCB9Xe+8iOaMieihjOmHjOWHuueOsOeahOW3peWOgumhuuW6j++8iSwKICogICB0b3RhbFF0eSwgc2hpcHBlZFF0eSwgc2hpcFN0YXR1czogJ+acquWPkei0pyd8J+mDqOWIhuWPkei0pyd8J+W3suWPkeWujCcsCiAqICAgY29tcGxldGUsIHN0YXR1c1RleHQ6ICflt7LlrozmiJAnfCfov5vooYzkuK0nCiAqIH0KICovCmV4cG9ydCBmdW5jdGlvbiBvcmRlckZhY3RzKG9yZGVyKSB7CiAgY29uc3QgbGluZXMgPSAob3JkZXIgJiYgb3JkZXIubGluZXMpIHx8IFtdOwogIGxldCByZWNlaXZhYmxlID0gMDsKICBjb25zdCBmYWN0b3J5T3JkZXIgPSBbXTsKICBjb25zdCBieUZhY3RvcnkgPSBuZXcgTWFwKCk7CiAgbGV0IHRvdGFsUXR5ID0gMDsKICBsZXQgc2hpcHBlZFF0eSA9IDA7CiAgbGV0IGFsbFNoaXBwZWQgPSB0cnVlOwogIGZvciAoY29uc3QgbGluZSBvZiBsaW5lcykgewogICAgY29uc3QgcmVjID0gbGluZVJlY2VpdmFibGUobGluZSk7CiAgICBpZiAocmVjICE9PSBudWxsKSByZWNlaXZhYmxlICs9IHJlYzsKICAgIGNvbnN0IGZhY3RvcnkgPSBsaW5lLmZhY3RvcnkgfHwgJyc7CiAgICBpZiAoIWJ5RmFjdG9yeS5oYXMoZmFjdG9yeSkpIHsKICAgICAgYnlGYWN0b3J5LnNldChmYWN0b3J5LCB7IGZhY3RvcnksIHBheWFibGU6IDAsIHBhaWQ6IDAsIHVucGFpZDogMCB9KTsKICAgICAgZmFjdG9yeU9yZGVyLnB1c2goZmFjdG9yeSk7CiAgICB9CiAgICBjb25zdCBwYXkgPSBsaW5lUGF5YWJsZShsaW5lKTsKICAgIGlmIChwYXkgIT09IG51bGwpIGJ5RmFjdG9yeS5nZXQoZmFjdG9yeSkucGF5YWJsZSA9IHJvdW5kMihieUZhY3RvcnkuZ2V0KGZhY3RvcnkpLnBheWFibGUgKyBwYXkpOwogICAgY29uc3QgcXR5ID0gTnVtYmVyKGxpbmUucXR5KSB8fCAwOwogICAgY29uc3Qgc2hpcHBlZCA9IE51bWJlcihsaW5lLnNoaXBwZWRRdHkpIHx8IDA7CiAgICB0b3RhbFF0eSArPSBxdHk7CiAgICBzaGlwcGVkUXR5ICs9IHNoaXBwZWQ7CiAgICBpZiAoc2hpcHBlZCA8IHF0eSkgYWxsU2hpcHBlZCA9IGZhbHNlOwogIH0KICByZWNlaXZhYmxlID0gcm91bmQyKHJlY2VpdmFibGUpOwogIGNvbnN0IHJlY2VpdmVkID0gc3VtQW1vdW50cyhvcmRlciAmJiBvcmRlci5yZWNlaXB0cyk7CiAgbGV0IHBheWFibGUgPSAwOwogIGxldCBwYWlkID0gMDsKICBmb3IgKGNvbnN0IGYgb2YgZmFjdG9yeU9yZGVyKSB7CiAgICBjb25zdCBnID0gYnlGYWN0b3J5LmdldChmKTsKICAgIGcucGF5YWJsZSA9IHJvdW5kMihnLnBheWFibGUpOwogICAgZy5wYWlkID0gc3VtQW1vdW50cygoKG9yZGVyICYmIG9yZGVyLmZhY3RvcnlQYXlzKSB8fCBbXSkuZmlsdGVyKChwKSA9PiAocC5mYWN0b3J5IHx8ICcnKSA9PT0gZikpOwogICAgZy51bnBhaWQgPSByb3VuZDIoZy5wYXlhYmxlIC0gZy5wYWlkKTsKICAgIHBheWFibGUgPSByb3VuZDIocGF5YWJsZSArIGcucGF5YWJsZSk7CiAgICBwYWlkID0gcm91bmQyKHBhaWQgKyBnLnBhaWQpOwogIH0KICBjb25zdCBzaGlwU3RhdHVzID0gc2hpcHBlZFF0eSA8PSAwID8gJ+acquWPkei0pycgOiAoYWxsU2hpcHBlZCA/ICflt7Llj5HlrownIDogJ+mDqOWIhuWPkei0pycpOwogIGNvbnN0IGNvbXBsZXRlID0gcmVjZWl2ZWQgPj0gcmVjZWl2YWJsZSAmJiBhbGxTaGlwcGVkOwogIHJldHVybiB7CiAgICByZWNlaXZhYmxlLAogICAgcmVjZWl2ZWQsCiAgICB1bnBhaWQ6IHJvdW5kMihyZWNlaXZhYmxlIC0gcmVjZWl2ZWQpLAogICAgcGF5YWJsZSwKICAgIHBhaWQsCiAgICB1bnBhaWRQYXk6IHJvdW5kMihwYXlhYmxlIC0gcGFpZCksCiAgICBmYWN0b3JpZXM6IGZhY3RvcnlPcmRlci5tYXAoKGYpID0+IGJ5RmFjdG9yeS5nZXQoZikpLAogICAgdG90YWxRdHksCiAgICBzaGlwcGVkUXR5LAogICAgc2hpcFN0YXR1cywKICAgIGNvbXBsZXRlLAogICAgc3RhdHVzVGV4dDogY29tcGxldGUgPyAn5bey5a6M5oiQJyA6ICfov5vooYzkuK0nLAogIH07Cn0KCi8qKgogKiDotoXpop3mo4DmtYvvvIhTUEVDIOesrOWbm+iKguesrCA5IOmhuSLotoXkuoblv4Xpobvmj5DphpIi77yJ77yaCiAqIGtpbmQ9J3JlY2VpcHQnIOaXtueci+aVtOWNleW6lOaUtu+8m2tpbmQ9J2ZhY3RvcnlQYXknIOaXtueci+ivpeWOguW6lOS7mOOAggogKiDov5Tlm54geyBvdmVyLCBvdmVyQnksIHJlbWFpbmluZyB977yacmVtYWluaW5nIOaYr+iusOi/meeslOS5i+WJjeeahOS9memine+8mwogKiBvdmVyPXRydWUg6KGo56S66K6w5a6M5Lya6LaF5Ye677yMb3ZlckJ5IOaYr+S8mui2heWHuueahOmHkemineOAguaYr+WQpuaUvuihjOeUsQogKiBVSSDlsYLlvLnnqpfpl67nlKjmiLfvvIzov5nph4zlj6rnu5nkuovlrp7jgIIKICovCmV4cG9ydCBmdW5jdGlvbiBjaGVja092ZXJBbW91bnQob3JkZXIsIGtpbmQsIGFtb3VudCwgZmFjdG9yeSkgewogIGNvbnN0IGZhY3RzID0gb3JkZXJGYWN0cyhvcmRlcik7CiAgY29uc3QgbiA9IE51bWJlcihhbW91bnQpOwogIGNvbnN0IGFtdCA9IE51bWJlci5pc0Zpbml0ZShuKSA/IG4gOiAwOwogIGlmIChraW5kID09PSAncmVjZWlwdCcpIHsKICAgIGNvbnN0IGFmdGVyID0gcm91bmQyKGZhY3RzLnJlY2VpdmVkICsgYW10KTsKICAgIHJldHVybiB7CiAgICAgIG92ZXI6IGFmdGVyID4gZmFjdHMucmVjZWl2YWJsZSwKICAgICAgb3ZlckJ5OiByb3VuZDIoTWF0aC5tYXgoMCwgYWZ0ZXIgLSBmYWN0cy5yZWNlaXZhYmxlKSksCiAgICAgIHJlbWFpbmluZzogZmFjdHMudW5wYWlkLAogICAgfTsKICB9CiAgY29uc3QgZyA9IGZhY3RzLmZhY3Rvcmllcy5maW5kKCh4KSA9PiB4LmZhY3RvcnkgPT09IChmYWN0b3J5IHx8ICcnKSkgfHwKICAgIHsgcGF5YWJsZTogMCwgcGFpZDogMCwgdW5wYWlkOiAwIH07CiAgY29uc3QgYWZ0ZXIgPSByb3VuZDIoZy5wYWlkICsgYW10KTsKICByZXR1cm4gewogICAgb3ZlcjogYWZ0ZXIgPiBnLnBheWFibGUsCiAgICBvdmVyQnk6IHJvdW5kMihNYXRoLm1heCgwLCBhZnRlciAtIGcucGF5YWJsZSkpLAogICAgcmVtYWluaW5nOiBnLnVucGFpZCwKICB9Owp9CgovKiog5LiA6KGM6L+Y6IO95Y+R5aSa5bCR77yI5Y+R6LSn56Gs5qCh6aqM55So77yJ77ya5pWw6YePIOKIkiDlt7Llj5HvvIzkuIvpmZAgMCAqLwpleHBvcnQgZnVuY3Rpb24gbGluZVJlbWFpbmluZ1RvU2hpcChsaW5lKSB7CiAgY29uc3QgcXR5ID0gTnVtYmVyKGxpbmUgJiYgbGluZS5xdHkpIHx8IDA7CiAgY29uc3Qgc2hpcHBlZCA9IE51bWJlcihsaW5lICYmIGxpbmUuc2hpcHBlZFF0eSkgfHwgMDsKICByZXR1cm4gTWF0aC5tYXgoMCwgcXR5IC0gc2hpcHBlZCk7Cn0KCi8qKiDlj5HotKfmlbDph4/mmK/lkKblkIjms5XvvJrmraPmlbDkuJTkuI3otoXov4flvoXlj5Hph4/jgILov5Tlm54geyBvaywgcmVtYWluaW5nIH0gKi8KZXhwb3J0IGZ1bmN0aW9uIHZhbGlkYXRlU2hpcFF0eShsaW5lLCBxdHkpIHsKICBjb25zdCByZW1haW5pbmcgPSBsaW5lUmVtYWluaW5nVG9TaGlwKGxpbmUpOwogIGNvbnN0IG4gPSBOdW1iZXIocXR5KTsKICByZXR1cm4geyBvazogTnVtYmVyLmlzRmluaXRlKG4pICYmIG4gPiAwICYmIG4gPD0gcmVtYWluaW5nLCByZW1haW5pbmcgfTsKfQoKLyoqCiAqIOafkOW8oOivouS7t+WNleW3sui9rOiuouWNleeahOihjO+8mk1hcDxsaW5lSWQsIG9yZGVyTm8+44CCCiAqIOi9rOiuouWNlemdouadv+aNruatpOaKiuW3sui9rOeahOihjOagh+WHuuadpeW5tuemgemAie+8iOmHjeWkjei9rOWNleaLpuaIqueahOaVsOaNruS+neaNru+8ie+8mwogKiDlj6rorqQgaW5xdWlyeURvY0lkIOWMuemFjeeahOiuouWNle+8jOWIq+WNleeahOihjOS4jeS6kuebuOW5suaJsOOAggogKi8KZXhwb3J0IGZ1bmN0aW9uIGNvbnZlcnRlZExpbmVJZHMob3JkZXJzLCBpbnF1aXJ5RG9jSWQpIHsKICBjb25zdCBvdXQgPSBuZXcgTWFwKCk7CiAgZm9yIChjb25zdCBvIG9mIG9yZGVycyB8fCBbXSkgewogICAgaWYgKCFvIHx8IG8uaW5xdWlyeURvY0lkICE9PSBpbnF1aXJ5RG9jSWQpIGNvbnRpbnVlOwogICAgZm9yIChjb25zdCBsaW5lIG9mIG8ubGluZXMgfHwgW10pIHsKICAgICAgaWYgKGxpbmUgJiYgbGluZS5saW5lSWQgJiYgIW91dC5oYXMobGluZS5saW5lSWQpKSBvdXQuc2V0KGxpbmUubGluZUlkLCBvLm9yZGVyTm8pOwogICAgfQogIH0KICByZXR1cm4gb3V0Owp9Cg==
+// 订单的钱与状态（SPEC 第四节第 8、9 项 + 第五节金额口径）。
+// 纯函数、无副作用：订单上只存"事实"（行、收款记录、工厂付款记录、
+// 已发数量），一切汇总与状态都由这里现算——状态永不落库存一份过时
+// 的副本（brief 口径：status derived, never stored stale）。
+//
+// 钱的口径：
+// · 应收（客户欠我们的）= Σ 最终报价（销售价）× 数量，逐行四舍五入
+//   到分再合计；
+// · 应付（我们欠工厂的）= Σ 含税成本 × 数量。工厂成本的口径以定厂
+//   快照为准：快照说含税，成本原值就是含税额；快照说不含税，应付
+//   的是补上税点的含税额——成本 ×（1 + 快照税点）。逐行先把单件
+//   含税成本四舍五入到分，再 × 数量、逐行到分、再合计。
+// · 已收/已付是记录求和；未收/未付 = 应收/应付 − 已收/已付。
+//   正常路径下不会为负；只有用户在"超额提醒"弹窗里明确确认过的
+//   超额记录才会让它变负（提醒逻辑在 UI 层，这里只算事实）。
+// · 订单完成 ⇔ 已收 ≥ 应收 且 每一行已发 ≥ 数量。
+import { round2, parseCostValue } from './pricing.js';
+
+/** 订单号：前缀 ORD + YYMM + 4 位流水（如 ORD2610-0001），流水只增不减 */
+export function formatOrderNo(date, seq) {
+  const d = date instanceof Date ? date : new Date(date);
+  const yy = String(d.getFullYear()).slice(2);
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  return 'ORD' + yy + mm + '-' + String(Math.max(1, seq || 1)).padStart(4, '0');
+}
+
+/** 一行的单件含税成本（欠工厂的口径）：含税原样；不含税补税点 */
+export function lineUnitCostWithTax(line) {
+  const raw = parseCostValue(line && line.costRaw);
+  if (raw === null) return null;
+  if (line.costTaxInclusive) return round2(raw);
+  const rateText = String(line.costTaxRatePct ?? '').trim();
+  const rate = rateText === '' ? 0 : Number(rateText);
+  return round2(raw * (1 + (Number.isFinite(rate) ? rate : 0) / 100));
+}
+
+/** 一行应收 = 最终报价 × 数量（到分）；价/量不可用返回 null（按 0 计入并标注） */
+export function lineReceivable(line) {
+  const price = parseCostValue(line && line.finalPrice);
+  const qty = Number(line && line.qty);
+  if (price === null || !Number.isFinite(qty)) return null;
+  return round2(price * qty);
+}
+
+/** 一行应付 = 单件含税成本 × 数量（到分）；成本不可用返回 null */
+export function linePayable(line) {
+  const unit = lineUnitCostWithTax(line);
+  const qty = Number(line && line.qty);
+  if (unit === null || !Number.isFinite(qty)) return null;
+  return round2(unit * qty);
+}
+
+function sumAmounts(records) {
+  let s = 0;
+  for (const r of records || []) {
+    const n = Number(r && r.amount);
+    if (Number.isFinite(n)) s += n;
+  }
+  return round2(s);
+}
+
+/**
+ * 订单的全部派生事实（列表与详情共用这一份，口径不会有第二套）：
+ * {
+ *   receivable, received, unpaid,
+ *   payable, paid, unpaidPay,
+ *   factories: [{ factory, payable, paid, unpaid }]（按行里出现的工厂顺序）,
+ *   totalQty, shippedQty, shipStatus: '未发货'|'部分发货'|'已发完',
+ *   complete, statusText: '已完成'|'进行中'
+ * }
+ */
+export function orderFacts(order) {
+  const lines = (order && order.lines) || [];
+  let receivable = 0;
+  const factoryOrder = [];
+  const byFactory = new Map();
+  let totalQty = 0;
+  let shippedQty = 0;
+  let allShipped = true;
+  for (const line of lines) {
+    const rec = lineReceivable(line);
+    if (rec !== null) receivable += rec;
+    const factory = line.factory || '';
+    if (!byFactory.has(factory)) {
+      byFactory.set(factory, { factory, payable: 0, paid: 0, unpaid: 0 });
+      factoryOrder.push(factory);
+    }
+    const pay = linePayable(line);
+    if (pay !== null) byFactory.get(factory).payable = round2(byFactory.get(factory).payable + pay);
+    const qty = Number(line.qty) || 0;
+    const shipped = Number(line.shippedQty) || 0;
+    totalQty += qty;
+    shippedQty += shipped;
+    if (shipped < qty) allShipped = false;
+  }
+  receivable = round2(receivable);
+  const received = sumAmounts(order && order.receipts);
+  let payable = 0;
+  let paid = 0;
+  for (const f of factoryOrder) {
+    const g = byFactory.get(f);
+    g.payable = round2(g.payable);
+    g.paid = sumAmounts(((order && order.factoryPays) || []).filter((p) => (p.factory || '') === f));
+    g.unpaid = round2(g.payable - g.paid);
+    payable = round2(payable + g.payable);
+    paid = round2(paid + g.paid);
+  }
+  const shipStatus = shippedQty <= 0 ? '未发货' : (allShipped ? '已发完' : '部分发货');
+  const complete = received >= receivable && allShipped;
+  return {
+    receivable,
+    received,
+    unpaid: round2(receivable - received),
+    payable,
+    paid,
+    unpaidPay: round2(payable - paid),
+    factories: factoryOrder.map((f) => byFactory.get(f)),
+    totalQty,
+    shippedQty,
+    shipStatus,
+    complete,
+    statusText: complete ? '已完成' : '进行中',
+  };
+}
+
+/**
+ * 超额检测（SPEC 第四节第 9 项"超了必须提醒"）：
+ * kind='receipt' 时看整单应收；kind='factoryPay' 时看该厂应付。
+ * 返回 { over, overBy, remaining }：remaining 是记这笔之前的余额；
+ * over=true 表示记完会超出，overBy 是会超出的金额。是否放行由
+ * UI 层弹窗问用户，这里只给事实。
+ */
+export function checkOverAmount(order, kind, amount, factory) {
+  const facts = orderFacts(order);
+  const n = Number(amount);
+  const amt = Number.isFinite(n) ? n : 0;
+  if (kind === 'receipt') {
+    const after = round2(facts.received + amt);
+    return {
+      over: after > facts.receivable,
+      overBy: round2(Math.max(0, after - facts.receivable)),
+      remaining: facts.unpaid,
+    };
+  }
+  const g = facts.factories.find((x) => x.factory === (factory || '')) ||
+    { payable: 0, paid: 0, unpaid: 0 };
+  const after = round2(g.paid + amt);
+  return {
+    over: after > g.payable,
+    overBy: round2(Math.max(0, after - g.payable)),
+    remaining: g.unpaid,
+  };
+}
+
+/** 一行还能发多少（发货硬校验用）：数量 − 已发，下限 0 */
+export function lineRemainingToShip(line) {
+  const qty = Number(line && line.qty) || 0;
+  const shipped = Number(line && line.shippedQty) || 0;
+  return Math.max(0, qty - shipped);
+}
+
+/** 发货数量是否合法：正数且不超过待发量。返回 { ok, remaining } */
+export function validateShipQty(line, qty) {
+  const remaining = lineRemainingToShip(line);
+  const n = Number(qty);
+  return { ok: Number.isFinite(n) && n > 0 && n <= remaining, remaining };
+}
+
+/**
+ * 某张询价单已转订单的行：Map<lineId, orderNo>。
+ * 转订单面板据此把已转的行标出来并禁选（重复转单拦截的数据依据）；
+ * 只认 inquiryDocId 匹配的订单，别单的行不互相干扰。
+ */
+export function convertedLineIds(orders, inquiryDocId) {
+  const out = new Map();
+  for (const o of orders || []) {
+    if (!o || o.inquiryDocId !== inquiryDocId) continue;
+    for (const line of o.lines || []) {
+      if (line && line.lineId && !out.has(line.lineId)) out.set(line.lineId, o.orderNo);
+    }
+  }
+  return out;
+}

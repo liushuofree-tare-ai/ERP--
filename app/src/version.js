@@ -1,1 +1,3 @@
-Ly8g5YWo5bqU55So5ZSv5LiA55qE54mI5pys5p2l5rqQ77ya5Lu75L2V5Zyw5pa55pi+56S654mI5pys5Y+36YO95LuO6L+Z6YeM5Y+W77yMCi8vIOadnOe7neaXp+mhueebriLlpJrlpITmiYvlt6XlkIzmraXniYjmnKzlj7flr7zoh7TmlrDml6fmt7fnlKgi55qE5LqL5pWF44CCCmV4cG9ydCBjb25zdCBBUFBfVkVSU0lPTiA9ICd2Mi1wa2cxNyc7Cg==
+// 全应用唯一的版本来源：任何地方显示版本号都从这里取，
+// 杜绝旧项目"多处手工同步版本号导致新旧混用"的事故。
+export const APP_VERSION = 'v2-pkg17';
