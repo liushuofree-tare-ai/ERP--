@@ -222,5 +222,98 @@ const state = {
   eq(junk.ok, false, '备份校验：不是 zip → 拒绝');
 }
 
+/* ---------- M5：恢复走"先写后清"，写失败时当前数据一根汗毛不动 ---------- */
+{
+  // filedb 走真实代码路径需要 IndexedDB：装一个内存桩（Node 无此全局）。
+  // 注意 filedb.openDb 会缓存 dbPromise——桩必须在首次调用前装好。
+  const mem = new Map();
+  let failPut = false;
+  const reqOf = (fn) => {
+    const req = { result: undefined, onsuccess: null, onerror: null };
+    Promise.resolve().then(() => {
+      try { req.result = fn(); if (req.onsuccess) req.onsuccess(); }
+      catch (e) { if (req.onerror) req.onerror(e); }
+    });
+    return req;
+  };
+  const fakeDb = {
+    transaction() {
+      const tx = { oncomplete: null, onerror: null, onabort: null, _ops: null, objectStore() { return storeApiWithOps(tx); } };
+      Promise.resolve().then(() => {
+        try { for (const op of (tx._ops || [])) op(); Promise.resolve().then(() => { if (tx.oncomplete) tx.oncomplete(); }); }
+        catch (e) { if (tx.onerror) tx.onerror(e); }
+      });
+      return tx;
+    },
+  };
+  function storeApiWithOps(tx) {
+    const ops = [];
+    tx._ops = ops;
+    return {
+      put(rec) { ops.push(() => { if (failPut) throw new Error('模拟配额不足'); mem.set(rec.id, rec); }); },
+      get(id) { return reqOf(() => mem.get(id) || null); },
+      delete(id) { ops.push(() => { mem.delete(id); }); },
+      clear() { ops.push(() => { mem.clear(); }); },
+      getAll() { return reqOf(() => [...mem.values()]); },
+    };
+  }
+  globalThis.window = globalThis;
+  globalThis.indexedDB = {
+    open() {
+      const req = { onupgradeneeded: null, onsuccess: null, onerror: null, onblocked: null, result: null };
+      Promise.resolve().then(() => {
+        if (req.onupgradeneeded) req.onupgradeneeded();
+        req.result = fakeDb;
+        if (req.onsuccess) req.onsuccess();
+      });
+      return req;
+    },
+  };
+
+  const { applyBackup, buildBackupZip: bbz, parseAndValidateBackup: pav } =
+    await import('../src/backup.js');
+  const { putFile } = await import('../src/filedb.js');
+
+  // 当前现场：仓库里有一张旧图 img-old + 存档指向它
+  const currentArchive = JSON.stringify({ version: 2, docs: [], current: true });
+  localStorage.setItem(DB_KEY, currentArchive);
+  await putFile({ id: 'img-old', kind: 'image', bytes: enc.encode('OLD-IMAGE'), mime: 'image/png' });
+
+  // 备份：原件 + 图片（不含 img-old）
+  const backupArchive = JSON.stringify({ version: 2, docs: state.docs, orders: [order1], factories: ['回表工厂'] });
+  const backupOrig = enc.encode('ORIGINAL-BYTES-客户原表');
+  const backupImg = new Uint8Array([1, 2, 3, 4, 5, 250, 251]);
+  const backup = await bbz({
+    version: 'v2-m5', exportedAt: '2026-10-12T09:00:00.000Z', archiveJson: backupArchive,
+    records: [
+      { id: 'orig-aaa', kind: 'original', name: '客户单.xlsx', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', bytes: backupOrig },
+      { id: 'img-bbb', kind: 'image', name: '', mime: 'image/png', bytes: backupImg },
+    ],
+  });
+  const validated = await pav(backup.bytes);
+  eq(validated.ok, true, 'M5 前置：备份校验通过');
+
+  // ① 写入失败（模拟配额不足）：恢复中止，当前数据原样
+  failPut = true;
+  const failed = await applyBackup(validated);
+  eq(failed.ok, false, 'M5 ①：写入失败 → 恢复中止');
+  ok((failed.error || '').includes('写入文件'), 'M5 ①：报错点名写入失败', failed.error);
+  eq(localStorage.getItem(DB_KEY), currentArchive, 'M5 ①：当前存档一字未动（先写后清，不先清后写）');
+  ok(mem.has('img-old'), 'M5 ①：仓库里的旧文件原样（没有任何东西被清掉）');
+  failPut = false;
+
+  // ② 全部写成功后：存档换新 + 孤儿文件（备份没有的 img-old）被清掉
+  const applied = await applyBackup(validated);
+  eq(applied.ok, true, 'M5 ②：恢复成功');
+  eq(applied.restoredFiles, 2, 'M5 ②：写入 2 个文件');
+  eq(localStorage.getItem(DB_KEY), backupArchive, 'M5 ②：存档换成备份原文');
+  ok(mem.has('orig-aaa') && mem.has('img-bbb'), 'M5 ②：备份里的文件都在');
+  ok(!mem.has('img-old'), 'M5 ②：孤儿文件已清（备份没有的不留）');
+
+  // ③ 幂等：再恢复一次结果一致
+  const again = await applyBackup(validated);
+  eq(again.ok, true, 'M5 ③：重复恢复仍成功（同 id 覆盖写幂等）');
+}
+
 console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);
 process.exit(fail ? 1 : 0);

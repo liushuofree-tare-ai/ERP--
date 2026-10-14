@@ -165,8 +165,42 @@ const INIT_ROW_CHOICES = (INIT_INQUIRY_DOC && INIT_INQUIRY_DOC.rowChoices) || {}
  * 不含组件往返时会增删的装饰字段。指纹没变 = 没发生真实编辑，doSave
  * 直接跳过：不重写存档、不把状态行从"已恢复上次的工作"误翻成"已自动保存"。
  */
+// FortuneSheet 把样式**内联在单元格对象上**（不是引用样式表）：
+// 字号 fs、字色 fc、加粗 bl、斜体 it、下划线 un、删除线 cl、字型 ff、
+// 水平/垂直对齐 ht/vt、换行 tb、旋转 rt、背景 bg、格式 ct、边框等。
+// 指纹只需覆盖这些"改了就该落盘"的字段，逐格摘成定长数组比整对象
+// JSON 稳（避免组件往返塞进来的装饰字段造成假变更）。
+const CELL_STYLE_KEYS = ['bl', 'it', 'ff', 'fs', 'fc', 'ht', 'vt', 'tb', 'cl', 'un', 'tr', 'bg', 'lo', 'rt'];
+function cellStyleOf(cell) {
+  if (!cell) return null;
+  const out = [];
+  let any = false;
+  for (const k of CELL_STYLE_KEYS) {
+    const v = cell[k];
+    if (v === undefined || v === null) { out.push(null); continue; }
+    any = true;
+    out.push(typeof v === 'number' ? Math.round(v * 1000) / 1000 : v);
+  }
+  if (cell.ct && (cell.ct.fa || cell.ct.t)) { any = true; out.push(cell.ct.fa || '', cell.ct.t || ''); }
+  else out.push(null, null);
+  return any ? out : null;
+}
+
 function sheetKeyOf(sh) {
   if (!sh) return null;
+  const cfg = sh.config || {};
+  // 合并单元格：按位置排序后取几何（对象键顺序不稳，必须先排再比）
+  const merge = Object.values(cfg.merge || {})
+    .map((m) => [m.r, m.c, m.rs, m.cs])
+    .sort((a, b) => (a[0] - b[0]) || (a[1] - b[1]));
+  // 列宽/行高：像素几何，改了就得落盘（BUG M1：旧指纹不含格式，
+  // 纯格式编辑（合并/拉宽列/加高行）永远不触发保存，关页即丢）
+  const columnlen = Object.entries(cfg.columnlen || {})
+    .map(([k, v]) => [Number(k), Math.round(v)]).sort((a, b) => a[0] - b[0]);
+  const rowlen = Object.entries(cfg.rowlen || {})
+    .map(([k, v]) => [Number(k), Math.round(v)]).sort((a, b) => a[0] - b[0]);
+  const rowhidden = Object.keys(cfg.rowhidden || {}).map(Number).sort((a, b) => a - b);
+  const colhidden = Object.keys(cfg.colhidden || {}).map(Number).sort((a, b) => a - b);
   return {
     name: sh.name, row: sh.row, column: sh.column,
     cells: (sh.celldata || []).map((cd) => [
@@ -174,7 +208,12 @@ function sheetKeyOf(sh) {
       cd.v ? (cd.v.v ?? null) : null,
       cd.v ? (cd.v.m ?? null) : null,
       cd.v ? (cd.v.f ?? null) : null,
+      // 内联样式也进指纹：改字号/颜色/边框同属真实编辑
+      cellStyleOf(cd.v),
     ]),
+    merge, columnlen, rowlen, rowhidden, colhidden,
+    // 边框改动（工具栏画框）也要落盘：按数量+摘要，避免整对象抖动
+    borderInfo: (cfg.borderInfo || []).length,
     // 包 10：图片几何也进指纹——只拖动/缩放一张图（无改格）也是真实编辑，得落盘
     images: (sh.images || []).map((img) => [
       img.id, img.fileId || '',
@@ -220,6 +259,39 @@ function workKeyOf(w) {
   }
 }
 
+/**
+ * 「最近一次编辑」的人话描述：比对上/下两份工作现场，报出实际动了哪一格
+ * （或图片/合并/行列几何变化）。纯展示用途，不参与任何业务判断。
+ * 每轮回声都跑，但只在真的找出差异时才更新，避免无谓重渲染。
+ */
+export function describeEdit(prevSheet, nextSheet) {
+  if (!prevSheet || !nextSheet) return '';
+  const prevCells = new Map();
+  for (const cd of prevSheet.celldata || []) prevCells.set(cd.r + ',' + cd.c, cd.v);
+  for (const cd of nextSheet.celldata || []) {
+    const before = prevCells.get(cd.r + ',' + cd.c);
+    const a = before ? (before.v ?? before.m ?? null) : null;
+    const b = cd.v ? (cd.v.v ?? cd.v.m ?? null) : null;
+    if (String(a ?? '') !== String(b ?? '')) {
+      const shown = b === null || b === undefined ? '（清空）' : String(b);
+      const short = shown.length > 24 ? shown.slice(0, 24) + '…' : shown;
+      return '第 ' + (cd.r + 1) + ' 行第 ' + (cd.c + 1) + ' 列 = ' + short;
+    }
+    prevCells.delete(cd.r + ',' + cd.c);
+  }
+  for (const [key] of prevCells) {
+    const [r, c] = key.split(',').map(Number);
+    return '第 ' + (r + 1) + ' 行第 ' + (c + 1) + ' 列 = （清空）';
+  }
+  const pn = (prevSheet.images || []).length;
+  const nn = (nextSheet.images || []).length;
+  if (pn !== nn) return nn > pn ? '插入了一张图片' : '删除了一张图片';
+  const pm = Object.keys((prevSheet.config || {}).merge || {}).length;
+  const nm = Object.keys((nextSheet.config || {}).merge || {}).length;
+  if (pm !== nm) return nm > pm ? '增加了合并单元格' : '取消了合并单元格';
+  return '';
+}
+
 function fmtTime(iso) {
   if (!iso) return '';
   const d = new Date(iso);
@@ -241,6 +313,13 @@ function cloneSheetData(sheet) {
       merge: { ...(sheet.config.merge || {}) },
       columnlen: { ...(sheet.config.columnlen || {}) },
       rowlen: { ...(sheet.config.rowlen || {}) },
+      // BUG B3：边框/隐藏行列也要拷走——浅引用的话，改克隆件（报价单）
+      // 的边框或隐藏行会顺着引用改到询价单原件上
+      rowhidden: { ...(sheet.config.rowhidden || {}) },
+      colhidden: { ...(sheet.config.colhidden || {}) },
+      borderInfo: Array.isArray(sheet.config.borderInfo)
+        ? sheet.config.borderInfo.map((b) => ({ ...b, range: b.range ? { ...b.range } : b.range }))
+        : (sheet.config.borderInfo || undefined),
     } : sheet.config,
     images: (sheet.images || []).map((img) => ({ ...img })),
   };
@@ -822,6 +901,12 @@ function App() {
     saveTimerRef.current = setTimeout(() => { saveTimerRef.current = null; doSave(); }, 900);
   }, [doSave]);
 
+  /** 把上/下两份现场比对出的编辑，写进顶栏「最近一次编辑」提示 */
+  const reportLastEdit = useCallback((prevSheet, nextSheet) => {
+    const text = describeEdit(prevSheet, nextSheet);
+    if (text) setLastEdit(text);
+  }, []);
+
   // 页面切到后台/关闭前，把挂起的保存立即落盘
   useEffect(() => {
     const flush = () => {
@@ -1153,6 +1238,26 @@ function App() {
     docsRef.current = existing
       ? docsRef.current.map((d) => (d.docId === doc.docId ? doc : d))
       : [...docsRef.current, doc];
+    // BUG B1：替换重克隆与"回表重传替换"（BUG M3）同源——新报价单上
+    // 没有任何标记，但定厂快照里留的还是替换前的旧价（rawPrice），
+    // 最终报价会拿作废的价算钱还无从察觉。把这张询价单上"定的是这家"
+    // 的快照一并清掉，并把当前询价单的镜像一起同步。
+    let clearedChoices = 0;
+    if (existing && inq.rowChoices) {
+      const kept = {};
+      for (const [lineId, choice] of Object.entries(inq.rowChoices)) {
+        if (choice && choice.factory === name) clearedChoices += 1;
+        else kept[lineId] = choice;
+      }
+      if (clearedChoices > 0) {
+        const target = docsRef.current.find((d) => d.docId === inq.docId);
+        if (target) target.rowChoices = kept;
+        if (activeDocIdRef.current === inq.docId) {
+          rowChoicesRef.current = kept;
+          setRowChoicesState(kept);
+        }
+      }
+    }
     if (!factoriesRef.current.includes(name)) {
       setFactories([...factoriesRef.current, name]);
     }
@@ -1190,8 +1295,11 @@ function App() {
   /* ---------- 上传回表（包 6）：原样成为该厂的报价单 ---------- */
 
   /** 解析好的回表落位成报价单文档：自己的版式、自己的账本、自己的原件。
-   *  包 11：回表挂到"当前询价单"名下（inquiryId），多报行也只对它对齐。 */
-  function applyUploadedQuote(name, fileName, parsedList, stored) {
+   *  包 11：回表挂到"当前询价单"名下（inquiryId），多报行也只对它对齐。
+   *  BUG M2：目标询价单由调用方在 await 之前定下（pinnedInquiry），不再
+   *  在这里重新 activeInquiryEntry()——读文件期间用户切了单的话，旧实现
+   *  会把回表挂到切换后的那张单上，行对齐全错位。 */
+  function applyUploadedQuote(name, fileName, parsedList, stored, pinnedInquiry) {
     const idx = pickDefaultSheet(parsedList);
     const parsed = parsedList[idx];
     const fortune = sheetToFortune(parsed, idx);
@@ -1199,7 +1307,7 @@ function App() {
       fileName, sheetName: parsed.name, sheetIndex: idx, rowCount: parsed.rowCount,
     });
     const headerRow = detectHeaderRow(fortune);
-    const inq = activeInquiryEntry();
+    const inq = pinnedInquiry !== undefined ? pinnedInquiry : activeInquiryEntry();
     // 工厂比询价单多报的行：按对齐位置多出来的，分配新 lineId 并标记
     let factoryExtras = [];
     if (inq) {
@@ -1230,6 +1338,24 @@ function App() {
     docsRef.current = existing
       ? docsRef.current.map((d) => (d.docId === doc.docId ? doc : d))
       : [...docsRef.current, doc];
+    // BUG M3：替换重传时，这张询价单上"定的是这家"的旧定厂快照必须一并清掉。
+    // 快照里存的是替换前的旧价（rawPrice），留着会让最终报价按已作废的价算钱。
+    let clearedChoices = 0;
+    if (existing && inq && inq.rowChoices) {
+      const kept = {};
+      for (const [lineId, choice] of Object.entries(inq.rowChoices)) {
+        if (choice && choice.factory === name) clearedChoices += 1;
+        else kept[lineId] = choice;
+      }
+      if (clearedChoices > 0) {
+        const target = docsRef.current.find((d) => d.docId === inq.docId);
+        if (target) target.rowChoices = kept;
+        if (activeDocIdRef.current === inq.docId) {
+          rowChoicesRef.current = kept;
+          setRowChoicesState(kept);
+        }
+      }
+    }
     if (!factoriesRef.current.includes(name)) {
       setFactories([...factoriesRef.current, name]);
     }
@@ -1247,10 +1373,17 @@ function App() {
       window.__ledger = doc.ledger;
       setSheetsData([doc.sheet]);
       bumpWbKey();
-      setImportInfo(doc.importInfo);
+      setImportInfo(clearedChoices > 0
+        ? doc.importInfo + ' · 原「' + name + '」的 ' + clearedChoices +
+          ' 行定厂结果已清空（用的是旧价），请重新比价定厂'
+        : doc.importInfo);
       doSave();
     } else {
       switchDoc(doc.docId);
+      if (clearedChoices > 0) {
+        setImportInfo('「' + name + '」回表已替换：' + clearedChoices +
+          ' 行的定厂结果已清空（用的是旧价），请重新比价定厂');
+      }
     }
   }
 
@@ -1272,12 +1405,14 @@ function App() {
       return;
     }
     setSelectedFactory(name);
+    // BUG M2：目标询价单在这一刻定死（await 之前）。读文件、写仓库都要等，
+    // 期间用户可能切到别的询价单；等回来再 activeInquiryEntry() 就会挂错单。
     const inqNow = activeInquiryEntry();
     const existing = docsRef.current.find(
       (d) => d.kind === 'quote' && d.factoryName === name &&
         (!inqNow || d.inquiryId === inqNow.docId));
     if (existing &&
-        !window.confirm('「' + name + '」在这张询价单下已有一张报价单，用这份新回表替换它吗？（原来的标记会被清掉，需要重新标价列）')) {
+        !window.confirm('「' + name + '」在这张询价单下已有一张报价单，用这份新回表替换它吗？（原来的标记会被清掉，需要重新标价列；这一家的定厂结果也会清空，需重新比价）')) {
       return;
     }
     try {
@@ -1288,7 +1423,7 @@ function App() {
       // 原件与图片字节落文件仓库（与询价单导入同一条路）；落不下走降级
       const stored = await persistImportAssets(file.name, buf, parsed);
       imageStoreRef.current = stored.stored;
-      applyUploadedQuote(name, file.name, parsed, stored);
+      applyUploadedQuote(name, file.name, parsed, stored, inqNow);
     } catch (err) {
       setImportInfo('回表上传失败：' + (err && err.message ? err.message : String(err)));
     }
@@ -1849,6 +1984,12 @@ function App() {
 
   async function handleClear() {
     if (!window.confirm('确定要清空已保存的工作、回到示例数据吗？')) return;
+    // BUG L1：先掐掉挂起的保存定时器——不清的话，点"清空"前 900ms 内的
+    // 编辑会被这个 timer 在清空之后重新写回，"清空"变成"恢复"。
+    if (saveTimerRef.current) {
+      clearTimeout(saveTimerRef.current);
+      saveTimerRef.current = null;
+    }
     clearSaved();
     try { await clearFiles(); } catch (e) { /* 仓库清不掉也不挡重开 */ }
     location.reload();
@@ -2056,7 +2197,17 @@ function App() {
   function goView(v) {
     // 离开表格前先把画面上的删图/移图对齐回规范（flushDocRef 里也会
     // 做，但切视图后表格卸载、画面就读不到了，必须趁还在时对齐）
-    if (v !== 'sheet') syncImagesFromDom();
+    if (v !== 'sheet') {
+      syncImagesFromDom();
+      // BUG B2：防抖保存没到点的编辑，在切去"数据备份/自检"前必须立即
+      // 落盘——collectBackupBytes 读的是 localStorage，只对齐图片不落
+      // 存档，90 秒防抖窗口内改的字就去不进备份包
+      if (saveTimerRef.current) {
+        clearTimeout(saveTimerRef.current);
+        saveTimerRef.current = null;
+      }
+      doSave();
+    }
     setShowCompare(v === 'compare');
     setShowOrders(v === 'orders');
     setShowCustomers(v === 'customers');
@@ -2100,8 +2251,10 @@ function App() {
       switchDoc(activeInquiryId);
     }
     if (stage === 'no-finals') {
-      // 这一阶段最终报价列必然还没生成，直接生成不会弹覆盖确认
-      setTimeout(() => handleGenerateFinalQuote(), 400);
+      // BUG B4：不再 setTimeout 拖 400ms 等视图切换——原地生成走的是
+      // 包 17 的存档路径（对存档里询价单条目套 applyFinalQuoteColumn），
+      // 不依赖编辑器里正装着谁，切视图与生成就没有时序竞态。
+      handleGenerateFinalQuoteInPlace();
     }
     if (stage === 'ready') setShowConvert(true);
   }
@@ -2872,6 +3025,9 @@ function App() {
                 persistInsertedImage(img);
               }
             }
+            // 「最近一次编辑」提示：拿这轮回声与上一份现场比对，报出实际
+            // 改动的格子（旧实现只认死字符串 '测试输入ABC' 的调试代码，已删）。
+            reportLastEdit(liveRef.current[0], canon[0]);
             liveRef.current = canon;
             // 每次挂载后的第一下回声只是组件回放初始数据，不是用户编辑：
             // 只更新基线，不触发保存。从未存过档时，第一下回声同时立为
@@ -2902,13 +3058,6 @@ function App() {
               }, 0);
             }
             scheduleSave();
-            const sh = data && data[0];
-            if (!sh || !sh.celldata) return;
-            for (const cell of sh.celldata) {
-              if (cell.v && (cell.v.v === '测试输入ABC' || cell.v.m === '测试输入ABC')) {
-                setLastEdit('第 ' + (cell.r + 1) + ' 行第 ' + (cell.c + 1) + ' 列 = 测试输入ABC');
-              }
-            }
           }}
         />
       </div>

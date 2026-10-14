@@ -247,6 +247,16 @@ console.log('== B4. 最终价来源：报价单销售价优先');
   ok(bd2 && bd2.endsWith('= 72.80'), '解说与新最终价一致', bd2);
   quoteEE.sheet = setCellValue(quoteEE.sheet, 1, 5, { v: 44, m: '44' });
 
+  // M4 回归：工厂撤价（成本格被清空）→ 最终价必须留空（null），
+  // 绝不回退销售价列里现存的旧卖价（64.66）——撤价就是撤价，宁缺勿错
+  quoteEE.sheet = setCellValue(quoteEE.sheet, 1, 5, null);
+  eq(salesSourceFinal(quoteEE, src, 1), null, 'M4：成本格被撤 → null（不回退陈旧销售价 64.66）');
+  const finalsM4 = computeFinalPrices({ inquiry, rowChoices: choices, quotes: [quoteEE] });
+  eq(finalsM4.get('L2'), null, 'M4：最终价表里该行也是 null（导出留空，不冒充 0）');
+  const bdM4 = finalBreakdownFor('L2', choices.L2, { inquiry, quotes: [quoteEE] });
+  eq(bdM4, null, 'M4：没价就没解说');
+  quoteEE.sheet = setCellValue(quoteEE.sheet, 1, 5, { v: 44, m: '44' });
+
   // 不合资格 1：标记落在销售价列本身（costCol ≠ mark col）→ 标准口径
   const quoteMarkedSales = { ...quoteEE, priceMark: { col: 7, taxInclusive: false, taxRatePct: '13', periodCol: null } };
   eq(salesSourceForQuote(quoteMarkedSales), null, '标记的是销售价列本身 → 不合 B4 资格');

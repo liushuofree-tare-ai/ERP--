@@ -385,9 +385,11 @@ export function imagifyParts(parts, targetSheetPath, placements) {
   // Excel 标准浮动图在导出件里出现两份（原件一份 + 工作层重贴一份）；
   // 用户删掉的图也删不掉（placements 为空时旧实现直接 return，
   // 锚点原样留着）。原件字节不动，这里只改即将写出的副本。
-  const removed = clearSheetDrawings(parts, targetSheetPath);
-  const hasPlacements = !!(placements && placements.length);
-  if (!hasPlacements && !removed) return;
+  clearSheetDrawings(parts, targetSheetPath);
+  // 清理完没有 placements 就到此为止——继续往下会新建一个 0 锚点的
+  // 空 drawing 部件并给工作表挂回 <drawing> 引用（空壳，还占体积），
+  // "删光图"的导出件就永远清不干净。
+  if (!placements || !placements.length) return;
 
   // 媒体：按内容复用原件已有的 media，新图另起不撞名的部件
   const mediaByKey = new Map();
