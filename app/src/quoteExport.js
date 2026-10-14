@@ -88,12 +88,16 @@ export function quoteRowForLine(quote, inquiry, lineId) {
  * 按报价单自己的定价参数现算为准——与定价条生成销售价时同一条
  * 公式、同一组参数，所以没改过价时与销售价列分毫不差；成本价在
  * 生成销售价之后被改过，现算自动跟上新价，绝不拿陈旧的销售价
- * 冒充。成本格读不出数（被清空等）时退回销售价列里现存的值；
- * 再没有 → null（留空，不拿 0 冒充）。
+ * 冒充。
+ *
+ * 成本格读不出数（工厂撤价/清空）时返回 null（留空，不拿 0 冒充）。
+ * BUG M4：旧实现在这里退回销售价列里现存的值——工厂把成本价撤了，
+ * 客户却仍收到撤价前算出的旧卖价。撤价就是撤价，宁缺勿错；
+ * 留空另有"未确认"的含义，比报一个已作废的价安全得多。
  */
 export function salesSourceFinal(quote, src, quoteRow) {
   const p = src.pricing;
-  const recomputed = computeSalesPrice({
+  return computeSalesPrice({
     cost: cellValue(quote.sheet, quoteRow, src.costCol),
     taxInclusive: !!p.taxInclusive,
     taxRatePct: p.taxRatePct,
@@ -101,8 +105,6 @@ export function salesSourceFinal(quote, src, quoteRow) {
     freightPerUnit: p.freight,
     fxRate: p.fxRate,
   });
-  if (recomputed !== null) return recomputed;
-  return parseCostValue(cellValue(quote.sheet, quoteRow, src.salesCol));
 }
 
 /**

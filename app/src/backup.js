@@ -7,8 +7,8 @@
 // 全过了才动当前数据；校验不过就用人话报错、当前数据一根汗毛不碰。
 // AI 接口钥匙不在备份里——它单独存（aiConfig.js），不跟业务数据走。
 import { zipSync, unzipSync } from 'fflate';
-import { DB_KEY, clearSaved } from './store.js';
-import { listAllFiles, putFile, clearFiles } from './filedb.js';
+import { DB_KEY } from './store.js';
+import { listAllFiles, putFile, deleteFile } from './filedb.js';
 import { APP_VERSION } from './version.js';
 
 export const BACKUP_FORMAT = 'qipei-erp-v2-backup';
@@ -196,30 +196,48 @@ export function readArchiveJson() {
 }
 
 /**
- * 把一份已校验通过的备份落盘：清掉当前存档与文件仓库 → 写入备份的
- * 文件与存档原文。调用方必须先 parseAndValidateBackup 且 ok 才可调。
- * 返回 { ok, error? }；失败时调用方不要刷新页面（数据可能只恢复一半，
- * 但校验已保证字节完好，失败只可能是浏览器存储本身的问题）。
+ * 把一份已校验通过的备份落盘。调用方必须先 parseAndValidateBackup 且
+ * ok 才可调。返回 { ok, error? }；失败时调用方不要刷新页面。
+ *
+ * BUG M5 修复：旧实现"先清后写"（clearFiles → clearSaved → 逐件写），
+ * 中途任何一步失败，旧数据已经被清掉，恢复本身成了数据丢失点。
+ * 现在改为"先写后清"，并把清仓推迟到确认全部写成功之后：
+ *   1. 先把备份里的文件逐件写进仓库（同 id 覆盖写，幂等）；
+ *      fileId 是内容寻址的 SHA-256，同 id 必然同内容，覆盖不会写错；
+ *   2. 再把存档原文写回 localStorage；
+ *   3. 两者都确认成功后，才清掉仓库里"这次备份没有的"残留文件；
+ * 任何一步失败都立即中止，当前数据保持原样可用。
  */
 export async function applyBackup(validated) {
   if (!validated || !validated.ok) {
     return { ok: false, error: '这份备份没有通过校验，不能恢复' };
   }
-  // 先清仓库再清存档：仓库清不掉时存档还在，用户的工作原样保留
-  const cleared = await clearFiles();
-  if (!cleared) return { ok: false, error: '文件仓库清不掉（浏览器可能禁用了 IndexedDB），恢复已中止，当前数据没有动' };
-  clearSaved();
+  const wantedIds = new Set((validated.files || []).map((f) => f.id));
+  const written = [];
   for (const f of validated.files) {
     const rec = await putFile({
       id: f.id, kind: f.kind, name: f.name, mime: f.mime,
       savedAt: f.savedAt || undefined, bytes: f.bytes,
     });
-    if (!rec) return { ok: false, error: '写入文件「' + (f.name || f.id) + '」失败，恢复已中止' };
+    if (!rec) {
+      return { ok: false, error: '写入文件「' + (f.name || f.id) + '」失败，恢复已中止，当前数据没有动' };
+    }
+    written.push(f.id);
   }
+  // 存档原文回写：这一步失败时文件已写进去，但旧存档仍在，用户的工作照旧可用
   try {
     localStorage.setItem(DB_KEY, validated.archiveJson);
   } catch (e) {
-    return { ok: false, error: '业务存档写不回去（浏览器存储空间不足？），恢复已中止' };
+    return { ok: false, error: '业务存档写不回去（浏览器存储空间不足？），恢复已中止，当前数据没有动' };
   }
-  return { ok: true };
+  // 全部成功后才清掉备份以外的残留文件（清不掉不影响本次恢复结果）
+  try {
+    const existing = await listAllFiles();
+    if (existing) {
+      for (const r of existing) {
+        if (!wantedIds.has(r.id)) await deleteFile(r.id);
+      }
+    }
+  } catch (e) { /* 残留文件不挡恢复；仓库里的孤儿由下次备份自然收敛 */ }
+  return { ok: true, restoredFiles: written.length };
 }

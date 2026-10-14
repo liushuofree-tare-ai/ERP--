@@ -15,7 +15,7 @@
 import { writeZip, partText } from './zip.js';
 import { parseXml, serializeXml, createEl, children, firstChild } from './xml.js';
 import { readWorkbook, parseCellRef } from './workbook.js';
-import { collectPlacements, collectExportPlacements, imagifyParts } from './imagify.js';
+import { collectPlacements, collectExportPlacements, imagifyParts, hasSheetDrawing } from './imagify.js';
 
 const XML_DECL = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\r\n';
 const encoder = new TextEncoder();
@@ -44,24 +44,43 @@ function escXml(s) {
 
 /**
  * 规范格式工作表 → 待写值表：Map<'r,c', { kind, value }>。
- * 带公式的格（v.f）跳过：公式的归宿是原件本身，写路径不覆盖它。
  * 值取 v.v，其次 v.m；空值不入表（其"清空"语义由原件侧的清值逻辑处理）。
+ *
+ * 公式格（v.f）的两种情形分开处理（BUG H2 修复）：
+ *  · 有缓存计算值 → 把缓存值当"值"写出去，与屏幕上显示的结果一致。
+ *    用户在原本有值的格上输入公式时（如 B3 由 42 改成 =A1），屏幕显示
+ *    计算结果是"标题"，下载件也必须是"标题"；旧实现对公式格一律跳过，
+ *    于是该格既不进待写表、又被清值分支当成"工作层已删空"清掉，
+ *    工厂收到的是空单元格。
+ *  · 没有缓存值（如 WPS 的 DISPIMG 图片公式格）→ 不入表。原件侧另有
+ *    两道守卫保证它不被破坏：原件公式格永不覆盖、清值分支对公式格豁免。
  */
 export function canonicalValues(sheet) {
   const map = new Map();
   for (const cell of (sheet && sheet.celldata) || []) {
-    if (!cell || !cell.v || cell.v.f) continue;
+    if (!cell || !cell.v) continue;
     let val = cell.v.v !== undefined && cell.v.v !== null ? cell.v.v : cell.v.m;
     if (val === undefined || val === null || val === '') continue;
-    if (typeof val === 'string' && val.startsWith('=') && cell.v.f === undefined && cell.v.v === undefined) {
+    if (!cell.v.f && typeof val === 'string' && val.startsWith('=')) {
       // 只有 m 是 "=…" 文本且没有正式值时，多半是公式的显示文本，不当值写
       continue;
     }
     const kind = typeof val === 'number' ? 'number' : (typeof val === 'boolean' ? 'boolean' : 'string');
     if (kind === 'string') val = String(val);
-    map.set(cell.r + ',' + cell.c, { kind, value: val, r: cell.r, c: cell.c });
+    map.set(cell.r + ',' + cell.c, {
+      kind, value: val, r: cell.r, c: cell.c, fromFormula: !!cell.v.f,
+    });
   }
   return map;
+}
+
+/** 工作层里带公式的格的 ref 集合（清值分支据此豁免——BUG H2 修复） */
+function workFormulaRefs(sheet) {
+  const refs = new Set();
+  for (const cell of (sheet && sheet.celldata) || []) {
+    if (cell && cell.v && cell.v.f) refs.add(refOf(cell.r, cell.c));
+  }
+  return refs;
 }
 
 /* ---------- sheet XML 就地改值 ---------- */
@@ -152,29 +171,41 @@ export function applyValuesToSheet(parts, sheetPath, sheet) {
 
   // 先盘点原件：哪些格有值、是不是数字格、带不带公式（公式格全保护）
   const origValued = new Map(); // ref → { numeric }
+  const origFormula = new Set(); // 原件带公式的格（含 DISPIMG 图片格）：永不动
   for (const rowEl of children(sheetData, 'row')) {
     for (const cEl of children(rowEl, 'c')) {
-      if (hasChild(cEl, 'f')) continue; // 公式格（含 DISPIMG 图片格）：永不动
+      const ref = cEl.getAttribute('r');
+      if (hasChild(cEl, 'f')) { origFormula.add(ref); continue; } // 公式格永不动
       if (!hasChild(cEl, 'v') && !hasChild(cEl, 'is')) continue; // 只有样式的空格
       const t = cEl.getAttribute('t');
-      origValued.set(cEl.getAttribute('r'), { numeric: t === null || t === 'n' });
+      origValued.set(ref, { numeric: t === null || t === 'n' });
     }
   }
 
-  // 写入现值
+  // 写入现值（原件带公式的格跳过：公式的归宿是原件本身，写路径不覆盖它）
   for (const entry of values.values()) {
+    const ref = refOf(entry.r, entry.c);
+    if (origFormula.has(ref) && entry.fromFormula) continue;
+    if (origFormula.has(ref)) {
+      // 原件是公式格、工作层改成了普通值：保留原件公式，绝不写值进去
+      continue;
+    }
     const rowEl = findOrCreateRow(doc, sheetData, entry.r + 1);
     const cEl = findOrCreateCell(doc, rowEl, entry.r, entry.c);
-    const orig = origValued.get(refOf(entry.r, entry.c));
+    const orig = origValued.get(ref);
     setCellContent(doc, cEl, entry, !!(orig && orig.numeric));
   }
 
-  // 清值：原件有值、工作层已删空（不在待写表里）的格 → 只留样式与位置
+  // 清值：原件有值、工作层已删空（不在待写表里）的格 → 只留样式与位置。
+  // 工作层带公式但算不出缓存值的格豁免：宁保留原件原值，也不静默清空
+  // （BUG H2 的另一面——旧实现把它当"已删空"清掉了）。
   const wanted = new Set([...values.values()].map((e) => refOf(e.r, e.c)));
+  const formulaRefs = workFormulaRefs(sheet);
   for (const rowEl of children(sheetData, 'row')) {
     for (const cEl of children(rowEl, 'c')) {
       const ref = cEl.getAttribute('r');
       if (!origValued.has(ref) || wanted.has(ref)) continue;
+      if (formulaRefs.has(ref)) continue;
       clearValueChildren(cEl);
       cEl.removeAttribute('t');
     }
@@ -307,7 +338,11 @@ export function buildQuoteXlsx({ originalBytes, sheetName, sheet, imageBytes } =
     const meta = wb.sheets.find((s) => s.name === sheetName) || wb.sheets[0];
     applyValuesToSheet(wb.parts, meta.path, sheet);
     const placements = collectPlacements(sheet, imageBytes);
-    if (placements.length || wb.parts.has('xl/cellimages.xml')) {
+    // 只要原表挂过 drawing（标准浮动图）或存在 WPS 单元格图体系，就要走一次
+    // imagify——哪怕 placements 为空：用户把图全删了，导出件里的旧锚点必须
+    // 一并清掉，否则删掉的图会"复活"（BUG H3）。
+    if (placements.length || wb.parts.has('xl/cellimages.xml') ||
+        hasSheetDrawing(wb.parts, meta.path)) {
       imagifyParts(wb.parts, meta.path, placements);
     }
     return writeZip(wb.parts);

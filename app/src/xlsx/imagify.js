@@ -255,11 +255,105 @@ function stripDispimg(parts) {
   }
 }
 
+/** 目标工作表是否已挂 drawing 引用（决定要不要走一次 imagify 清理） */
+export function hasSheetDrawing(parts, targetSheetPath) {
+  const rels = readRels(parts, relsPathOf(targetSheetPath));
+  if (rels && rels.items.some((it) => (it.type || '').endsWith('/drawing'))) return true;
+  const text = partText(parts, targetSheetPath);
+  if (!text) return false;
+  return /<drawing[\s/>]/.test(text);
+}
+
+/**
+ * 清掉目标工作表原有 drawing 里的图片锚点（BUG H3 修复）。
+ * 只删「含 xdr:pic 的锚点」——图表/形状等非图片锚点原样保留，避免连带
+ * 丢内容。若某个 drawing 清空到没有任何锚点，就把整个 drawing 部件、
+ * 它的关系、内容类型登记以及工作表上的 <drawing> 引用一并摘掉，
+ * 不留空壳（Excel 对空 wsDr 能读，但留着没用还占体积）。
+ * 返回一共删掉几个图片锚点。原件字节不动，这里只改即将写出的 parts。
+ */
+function clearSheetDrawings(parts, targetSheetPath) {
+  const sheetRelsPath = relsPathOf(targetSheetPath);
+  const sheetRels = readRels(parts, sheetRelsPath);
+  if (!sheetRels) return 0;
+  const drawingRels = sheetRels.items.filter((it) => (it.type || '').endsWith('/drawing'));
+  if (!drawingRels.length) return 0;
+  let removedAnchors = 0;
+  const deadRids = [];
+  for (const rel of drawingRels) {
+    const drawingPath = resolveTarget(targetSheetPath, rel.target);
+    const text = partText(parts, drawingPath);
+    if (!text) continue;
+    const doc = parseXml(text);
+    const root = doc.documentElement;
+    let changed = false;
+    const kids = [];
+    for (let i = 0; i < root.childNodes.length; i++) kids.push(root.childNodes[i]);
+    for (const anchor of kids) {
+      if (anchor.nodeType !== 1) continue;
+      const ln = localNameOf(anchor);
+      if (!/Anchor$/.test(ln)) continue;
+      if (!descendants(anchor, 'pic').length) continue; // 非图片锚点（图表等）不动
+      root.removeChild(anchor);
+      removedAnchors += 1;
+      changed = true;
+    }
+    if (!changed) continue;
+    if (children(root, 'oneCellAnchor').length + children(root, 'twoCellAnchor').length +
+        children(root, 'absoluteAnchor').length === 0) {
+      // 清空了的 drawing：整件摘掉
+      parts.delete(drawingPath);
+      parts.delete(relsPathOf(drawingPath));
+      editContentTypes(parts, (ctDoc, ctRoot) => {
+        for (const el of children(ctRoot, 'Override')) {
+          if ((el.getAttribute('PartName') || '') === '/' + drawingPath) ctRoot.removeChild(el);
+        }
+      });
+      deadRids.push(rel.id);
+      removeRel(parts, sheetRelsPath, rel.id);
+    } else {
+      parts.set(drawingPath, encoder.encode(XML_DECL + serializeXml(doc)));
+    }
+  }
+  if (deadRids.length) {
+    const sText = partText(parts, targetSheetPath);
+    if (sText) {
+      const sDoc = parseXml(sText);
+      const root = sDoc.documentElement;
+      let changed = false;
+      for (const el of children(root, 'drawing')) {
+        const rid = el.getAttribute('r:id') || el.getAttribute('id');
+        if (deadRids.includes(rid)) { root.removeChild(el); changed = true; }
+      }
+      if (changed) parts.set(targetSheetPath, encoder.encode(XML_DECL + serializeXml(sDoc)));
+    }
+  }
+  return removedAnchors;
+}
+
+/** 从 .rels 部件里摘掉一条关系（没有该部件就什么都不做） */
+function removeRel(parts, relsPath, id) {
+  const text = partText(parts, relsPath);
+  if (!text) return;
+  const doc = parseXml(text);
+  const root = doc.documentElement;
+  let changed = false;
+  for (const el of children(root, 'Relationship')) {
+    if (el.getAttribute('Id') === id) { root.removeChild(el); changed = true; }
+  }
+  if (changed) parts.set(relsPath, encoder.encode(XML_DECL + serializeXml(doc)));
+}
+
+function localNameOf(node) {
+  return node.localName || (node.nodeName || '').split(':').pop();
+}
+
 /**
  * 把 parts 里的 WPS 单元格图体系换成标准 drawing（原地改 parts）：
  * 删 cellimages 部件/关系/内容类型登记，剥 DISPIMG 公式，再按
  * placements 给 targetSheetPath 挂 drawing（已有 drawing 就并入）。
- * placements 为空时只做剥离（图全被用户删光的单也要剥干净）。
+ * 原表的图片锚点会被清掉再由 placements 重建（BUG H3：不清就重复）。
+ * placements 为空时只做剥离与清理（图全被用户删光的单也要清干净）。
  */
 export function imagifyParts(parts, targetSheetPath, placements) {
   parts.delete('xl/cellimages.xml');
@@ -286,7 +380,14 @@ export function imagifyParts(parts, targetSheetPath, placements) {
     }
   }
   stripDispimg(parts);
-  if (!placements || !placements.length) return;
+  // 目标表原有的浮动图锚点一律清掉（BUG H3 修复）：导出的图完全由
+  // placements 决定。旧实现保留原件锚点、再把新锚点追加进去，于是
+  // Excel 标准浮动图在导出件里出现两份（原件一份 + 工作层重贴一份）；
+  // 用户删掉的图也删不掉（placements 为空时旧实现直接 return，
+  // 锚点原样留着）。原件字节不动，这里只改即将写出的副本。
+  const removed = clearSheetDrawings(parts, targetSheetPath);
+  const hasPlacements = !!(placements && placements.length);
+  if (!hasPlacements && !removed) return;
 
   // 媒体：按内容复用原件已有的 media，新图另起不撞名的部件
   const mediaByKey = new Map();
