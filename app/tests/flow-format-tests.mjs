@@ -160,6 +160,15 @@ console.log('== 转订单独立模块：导航守卫回归（源码级）');
   ok(mainSrc.includes('sheetFocus') && mainSrc.includes('sheet-focus-toggle') &&
      mainSrc.includes('sheet-focus-exit') && mainSrc.includes('showFormulaBar={false}'),
     '大表格模式：藏顶栏 + 关公式栏，纵向空间让给表格');
+  ok(mainSrc.includes('activeIsQuote && !sheetFocus') && mainSrc.includes('toggleSheetFocus'),
+    '大表格模式连标价条一起藏，且切换时重挂编辑器让画布拉伸');
+  ok(mainSrc.includes("'filter', 'image', 'search'"), '编辑器工具栏有筛选按钮');
+  const cmpSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/CompareView.jsx'), 'utf8');
+  const convSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/ConvertPanel.jsx'), 'utf8');
+  ok(cmpSrc.includes('ColumnPicker') && cmpSrc.includes('erp-cmp-cols'),
+    '比价定厂有「显示列」选择且记住偏好');
+  ok(convSrc.includes('ColumnPicker') && convSrc.includes('erp-conv-cols'),
+    '转订单有「显示列」选择且记住偏好');
 }
 
 console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);

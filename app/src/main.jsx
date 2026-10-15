@@ -658,6 +658,12 @@ function App() {
   // 大表格模式（用户反馈表格上下范围太小）：一键藏掉全部顶栏，
   // 只留表格本体 + 一条退出细条，纵向多出约 150px
   const [sheetFocus, setSheetFocus] = useState(false);
+  // 切换大表格时让编辑器重挂一次：FortuneSheet 的画布不会随容器
+  // 高度变化自动拉伸，不重挂就会出现"栏藏了、表格没变高"
+  function toggleSheetFocus(next) {
+    setSheetFocus(next);
+    setWbKey((k) => k + 1);
+  }
   const [navCollapsed, setNavCollapsed] = useState(() => {
     try { return window.localStorage.getItem('erp-nav-collapsed') === '1'; } catch (e) { return false; }
   });
@@ -3273,7 +3279,7 @@ function App() {
             此浏览器不支持直接分享，请用下载后拖进微信
           </span>
         )}
-        <button className="sheet-focus-toggle" onClick={() => setSheetFocus(true)}
+        <button className="sheet-focus-toggle" onClick={() => toggleSheetFocus(true)}
           title="藏掉所有顶栏，只留表格：上下能多看好几行"
           style={{
             border: '1px solid #37404a', color: '#37404a', background: '#fff',
@@ -3348,7 +3354,7 @@ function App() {
             style={actBtn(showConvert)}>转订单</button>
         </div>
       )}
-      {activeIsQuote && !showCompare && !showOrders && !showOverview && !showAi && (
+      {activeIsQuote && !sheetFocus && !showCompare && !showOrders && !showOverview && !showAi && (
         <PriceMarkBar
           key={'pm-' + activeDocId + '-' + markTick}
           factoryName={activeDocMeta.factoryName}
@@ -3667,7 +3673,7 @@ function App() {
             : activeIsCustQuote ? '最终报价单'
             : activeIsQuote ? '报价单 · ' + (activeDocMeta ? activeDocMeta.factoryName : '') : ''}</span>
           <span style={{ marginLeft: 'auto' }} />
-          <button className="sheet-focus-exit" onClick={() => setSheetFocus(false)} style={{
+          <button className="sheet-focus-exit" onClick={() => toggleSheetFocus(false)} style={{
             border: '1px solid #37404a', color: '#37404a', background: '#fff',
             borderRadius: 8, padding: '3px 12px', cursor: 'pointer',
           }}>退出大表格</button>
@@ -3702,7 +3708,7 @@ function App() {
             'bold', 'italic', 'underline', 'strike-through', '|',
             'font-color', 'background', 'border', 'merge-cell', '|',
             'horizontal-align', 'vertical-align', 'text-wrap', '|',
-            'image', 'search',
+            'filter', 'image', 'search',
           ]}
           onChange={(data) => {
             window.__wbData = data;

@@ -1,4 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ColumnPicker from './ColumnPicker.jsx';
+
+// 显示列偏好（本机记忆）：序号/OE/产品 + 每家工厂列，默认全显
+const CMP_COLS_KEY = 'erp-cmp-cols';
+function loadCmpCols() {
+  try { return JSON.parse(window.localStorage.getItem(CMP_COLS_KEY) || '{}') || {}; }
+  catch (e) { return {}; }
+}
 
 // 比价定厂视图（SPEC 第四节第 6 项）：询价单的数据行逐行铺开，
 // 每家工厂一列，格子是按该家标价列口径换算后的含税价（归一价），
@@ -28,24 +36,39 @@ export default function CompareView({
 }) {
   const { factories, rows } = model;
   const chosenCount = rows.filter((r) => choices[r.lineId]).length;
+  const [colVis, setColVis] = useState(loadCmpCols);
+  const vis = (key) => colVis[key] !== false;
+  const toggleCol = (key) => {
+    const next = { ...colVis, [key]: colVis[key] === false ? true : false };
+    setColVis(next);
+    try { window.localStorage.setItem(CMP_COLS_KEY, JSON.stringify(next)); } catch (e) { /* 记不住也不挡用 */ }
+  };
+  const colOptions = [
+    { key: 'seq', label: '序号' },
+    { key: 'oe', label: 'OE码' },
+    { key: 'product', label: '产品' },
+    ...factories.map((f) => ({ key: 'f:' + f, label: '工厂：' + f })),
+  ];
+  const colValue = {};
+  for (const o of colOptions) colValue[o.key] = vis(o.key);
 
   const th = {
-    border: '1px solid #dbe2ec', background: '#e9eff8', padding: '8px 12px',
+    border: '1px solid #dbe2ec', background: '#e9eff8', padding: '6px 10px',
     textAlign: 'left', fontWeight: 600, whiteSpace: 'nowrap', color: '#33445c',
   };
-  const td = { border: '1px solid #e2e8f1', padding: '8px 12px', verticalAlign: 'top' };
+  const td = { border: '1px solid #e2e8f1', padding: '6px 10px', verticalAlign: 'top' };
   const guideBtn = {
     border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
     borderRadius: 8, padding: '6px 16px', cursor: 'pointer',
   };
   const guideBtnGhost = { ...guideBtn, background: '#fff', color: '#2f6bff' };
   const guideBox = {
-    border: '1px solid #eed9ac', background: '#fdf3e0', borderRadius: 12,
-    padding: '12px 16px', marginBottom: 12,
+    border: '1px solid #eed9ac', background: '#fdf3e0', borderRadius: 9,
+    padding: '7px 12px', marginBottom: 8,
   };
   const nextBox = {
-    border: '1px solid #bfe3cd', background: '#e5f5ec', borderRadius: 12,
-    padding: '12px 16px', marginBottom: 12,
+    border: '1px solid #bfe3cd', background: '#e5f5ec', borderRadius: 9,
+    padding: '7px 12px', marginBottom: 8,
   };
   const nextBtn = {
     border: '1px solid #1e9e57', background: '#1e9e57', color: '#fff',
@@ -57,14 +80,14 @@ export default function CompareView({
     <div className="compare-view" style={{
       flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column',
       fontFamily: 'sans-serif', fontSize: 14,
-      margin: '14px 16px 16px', padding: '16px 18px', background: '#fff',
-      border: '1px solid #dbe2ec', borderRadius: 14,
+      margin: '8px 10px 10px', padding: '10px 12px', background: '#fff',
+      border: '1px solid #dbe2ec', borderRadius: 12,
       boxShadow: '0 2px 6px rgba(23,34,62,0.05), 0 10px 24px rgba(23,34,62,0.06)',
     }}>
       {guidance && guidance.state === 'no-quotes' && (
         <div className="cmp-guide cmp-guide-no-quotes" style={guideBox}>
           <div style={{ fontSize: 14 }}><b>还没有工厂报价单，所以没东西可比。</b></div>
-          <div className="cmp-guide-steps" style={{ color: '#555', margin: '6px 0 8px' }}>
+          <div className="cmp-guide-steps" style={{ color: '#555', margin: '3px 0 6px' }}>
             流程：① 发给工厂（或上传工厂回表） → ② 在报价单上标价列 → ③ 回来这里点格子定厂
           </div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -82,7 +105,7 @@ export default function CompareView({
           <div style={{ fontSize: 14 }}>
             <b>已有 {guidance.quoteCount} 张报价单，还没标价列，比价读不到价格。</b>
           </div>
-          <div style={{ color: '#555', margin: '6px 0 8px' }}>
+          <div style={{ color: '#555', margin: '3px 0 6px' }}>
             标价列就是告诉系统「这家的价格在报价单的哪一列、含不含税」——标好之后，这里就能比价定厂。
           </div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -149,6 +172,8 @@ export default function CompareView({
         <span style={{ color: '#999' }}>
           价格已按各家口径统一换算成含税价再比；点格子定厂，再点一次取消
         </span>
+        <span style={{ marginLeft: 'auto' }} />
+        <ColumnPicker options={colOptions} value={colValue} onToggle={toggleCol} />
       </div>
       {nextStep && nextStep.kind === 'hint' && (
         <div className="cmp-next-hint" style={{ color: '#666', marginBottom: 8 }}>
@@ -168,7 +193,7 @@ export default function CompareView({
               <>有报价的行都定好厂了，最终报价也生成好了。下一步：<b>转订单</b>（选数量列），转完再<b>导出给客户</b>。</>
             )}
           </div>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 8 }}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 6 }}>
             {nextStep.kind === 'generate' && (
               <button className="cmp-next-go-generate" onClick={onGenerateFinals} style={nextBtn}>
                 生成最终报价
@@ -186,7 +211,7 @@ export default function CompareView({
             )}
           </div>
           {nextStep.unquotedCount > 0 && (
-            <div className="cmp-next-unquoted" style={{ color: '#666', marginTop: 8 }}>
+            <div className="cmp-next-unquoted" style={{ color: '#666', marginTop: 5, fontSize: 12.5 }}>
               其余 {nextStep.unquotedCount} 行还没有任何工厂报价，先留空、不影响已定厂的行往下走；后面有报价再回来补定。
             </div>
           )}
@@ -196,10 +221,10 @@ export default function CompareView({
       <table className="compare-table" style={{ borderCollapse: 'collapse', minWidth: 720, width: '100%' }}>
         <thead>
           <tr>
-            <th style={th}>序号</th>
-            <th style={th}>OE码</th>
-            <th style={th}>产品</th>
-            {factories.map((f) => (
+            {vis('seq') && <th style={th}>序号</th>}
+            {vis('oe') && <th style={th}>OE码</th>}
+            {vis('product') && <th style={th}>产品</th>}
+            {factories.filter((f) => vis('f:' + f)).map((f) => (
               <th key={f} style={th}>
                 {f}
                 {!marks[f] && (
@@ -214,10 +239,10 @@ export default function CompareView({
             const chosen = choices[row.lineId];
             return (
               <tr key={row.lineId} className="cmp-row" data-line-id={row.lineId}>
-                <td style={td}>{row.seq}</td>
-                <td style={td}>{row.oe}</td>
-                <td style={td}>{row.product}</td>
-                {factories.map((f) => {
+                {vis('seq') && <td style={td}>{row.seq}</td>}
+                {vis('oe') && <td style={td}>{row.oe}</td>}
+                {vis('product') && <td style={td}>{row.product}</td>}
+                {factories.filter((f) => vis('f:' + f)).map((f) => {
                   const cell = row.cells[f];
                   const isChosen = !!(chosen && chosen.factory === f);
                   const isLowest = cell.priced && row.lowestFactories.includes(f);

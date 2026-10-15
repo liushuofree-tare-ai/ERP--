@@ -51,13 +51,10 @@ export default function ExportView({
           )}
           <div style={{
             border: '1px solid #dbe2ec', borderRadius: 10, background: '#f7fafc',
-            padding: '8px 12px', marginBottom: 10, color: '#445',
+            padding: '6px 10px', marginBottom: 8, color: '#445', fontSize: 13,
           }}>
-            发客户前要调格式、挪价格列的位置？别在原询价单上改——用下方
-            <b>「生成最终报价单（可编辑）」</b>：按当前勾选生成一张最终报价单，
-            它会作为一个页签出现在表格工作区里，慢慢改、改好再下载，
-            <b>原始询价单一点都不动</b>。
-            {hasEditableQuote ? '这张询价单已经有一份最终报价单了（在表格工作区的页签里），重新生成会覆盖里面改过的内容（会先确认）。' : ''}
+            要调格式/挪价格列：用下方<b>「生成最终报价单（可编辑）」</b>，在副本里改，
+            <b>不动原询价单</b>。{hasEditableQuote ? '已有最终报价单，重新生成会覆盖（先确认）。' : ''}
           </div>
           <QuoteExportPanel
             key={panelKey}

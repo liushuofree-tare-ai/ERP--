@@ -50,9 +50,9 @@ export default function PriceMarkBar({
 
   return (
     <div className="price-mark-bar" style={{
-      margin: '8px 14px 0', padding: '6px 12px', fontFamily: 'sans-serif', fontSize: 14,
+      margin: '6px 10px 0', padding: '4px 10px', fontFamily: 'sans-serif', fontSize: 13.5,
       display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'nowrap', minWidth: 0,
-      border: '1px solid #dbe2ec', borderLeft: '4px solid #d97706', borderRadius: 12, background: '#fff',
+      border: '1px solid #dbe2ec', borderLeft: '4px solid #d97706', borderRadius: 9, background: '#fff',
       boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
     }}>
       <b style={{ color: '#b45309', whiteSpace: 'nowrap', flexShrink: 0 }}>标价列</b>
