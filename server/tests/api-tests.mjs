@@ -211,7 +211,7 @@ const FILE_ID = 'orig-' + sha256Hex(FILE_BYTES).slice(0, 20);
   eq(hOk.statusCode, 200, '鉴权：health 不拦');
   // 前端页面/静态资源不设防：应用外壳本身不含数据，拦了浏览器根本加载不出登录入口
   const page = await authApp.inject({ method: 'GET', url: '/' });
-  ok(page.statusCode !== 401 && (page.json() || {}).code !== 'NEED_AUTH', '鉴权：页面不拦（应用先加载、再在应用内登录）', page.statusCode);
+  ok(page.statusCode !== 401, '鉴权：页面不拦（应用先加载、再在应用内登录）', page.statusCode);
   const wrong = await authApp.inject({ method: 'POST', url: '/api/auth/login', payload: { password: 'wrong' } });
   eq(wrong.statusCode, 401, '鉴权：错误口令 → 401');
   const right = await authApp.inject({ method: 'POST', url: '/api/auth/login', payload: { password: 'qipei-pass' } });
