@@ -655,6 +655,9 @@ function App() {
   const [multiSendOpen, setMultiSendOpen] = useState(false);
   // 侧栏可收起（用户反馈侧栏太大占地方）：收起后只剩图标栏，表格区变宽；
   // 选择记在浏览器里，下次打开还是收起的样子
+  // 大表格模式（用户反馈表格上下范围太小）：一键藏掉全部顶栏，
+  // 只留表格本体 + 一条退出细条，纵向多出约 150px
+  const [sheetFocus, setSheetFocus] = useState(false);
   const [navCollapsed, setNavCollapsed] = useState(() => {
     try { return window.localStorage.getItem('erp-nav-collapsed') === '1'; } catch (e) { return false; }
   });
@@ -2951,7 +2954,7 @@ function App() {
     border: '1px solid ' + (on ? '#2f6bff' : '#c9d2de'),
     background: on ? '#e8effe' : '#fff',
     color: on ? '#1f56d6' : '#37404a',
-    borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+    borderRadius: 8, padding: '3px 10px', cursor: 'pointer',
     whiteSpace: 'nowrap', flexShrink: 0,
   });
 
@@ -3055,8 +3058,9 @@ function App() {
         height: '100vh', overflowY: 'auto',
       }}>
       <div className="topbar" style={{
-        padding: '6px 12px', fontFamily: 'sans-serif', fontSize: 13.5,
-        display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'nowrap'
+        padding: '4px 12px', fontFamily: 'sans-serif', fontSize: 13.5,
+        display: sheetFocus && view === 'sheet' ? 'none' : 'flex',
+        alignItems: 'center', gap: 12, flexWrap: 'nowrap'
       }}>
         <label style={{
           border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff', borderRadius: 8,
@@ -3116,7 +3120,7 @@ function App() {
       {view === 'sheet' && (<>
       <div className="doc-bar" style={{
         margin: '6px 10px 0', padding: '4px 10px', fontFamily: 'sans-serif', fontSize: 13.5,
-        display: 'flex', alignItems: 'stretch', gap: 8, flexWrap: 'wrap',
+        display: sheetFocus ? 'none' : 'flex', alignItems: 'stretch', gap: 8, flexWrap: 'wrap',
         background: '#fff', border: '1px solid #dbe2ec', borderRadius: 12,
         boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
       }}>
@@ -3269,9 +3273,15 @@ function App() {
             此浏览器不支持直接分享，请用下载后拖进微信
           </span>
         )}
+        <button className="sheet-focus-toggle" onClick={() => setSheetFocus(true)}
+          title="藏掉所有顶栏，只留表格：上下能多看好几行"
+          style={{
+            border: '1px solid #37404a', color: '#37404a', background: '#fff',
+            borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+          }}>⛶ 大表格</button>
         </div>
       </div>
-      {multiSendOpen && !activeIsQuote && (
+      {multiSendOpen && !activeIsQuote && !sheetFocus && (
         <div className="multi-send-panel" style={{
           margin: '6px 10px 0', padding: '8px 12px', fontFamily: 'sans-serif', fontSize: 13,
           display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
@@ -3306,7 +3316,7 @@ function App() {
       )}
       {/* 操作条（默认一行）：定价设置 / 最终报价详情 / 生成 / 导出 / 转订单。
           定价与详情、转订单与导出都是「浮在表格上方」的面板，打开不推挤表格。 */}
-      {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && !activeIsCustQuote && (
+      {!sheetFocus && !showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && !activeIsCustQuote && (
         <div className="action-row" style={{
           margin: '6px 10px 0', padding: '4px 10px', fontFamily: 'sans-serif', fontSize: 13.5,
           display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'nowrap',
@@ -3625,7 +3635,7 @@ function App() {
             </div>
           </div>
         )}
-      {activeIsCustQuote && (
+      {activeIsCustQuote && !sheetFocus && (
         <div className="custquote-banner" style={{
           margin: '6px 10px 0', padding: '6px 12px', fontFamily: 'sans-serif', fontSize: 13.5,
           display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
@@ -3647,8 +3657,25 @@ function App() {
           }}>删除此单</button>
         </div>
       )}
+      {sheetFocus && (
+        <div className="sheet-focus-bar" style={{
+          display: 'flex', alignItems: 'center', gap: 8, padding: '3px 10px',
+          fontFamily: 'sans-serif', fontSize: 12.5, color: '#5b6b82',
+        }}>
+          <span>{activeDocMeta && activeDocMeta.kind === 'inquiry'
+            ? '询价单' + (activeDocMeta.customerName ? ' · ' + activeDocMeta.customerName : '')
+            : activeIsCustQuote ? '最终报价单'
+            : activeIsQuote ? '报价单 · ' + (activeDocMeta ? activeDocMeta.factoryName : '') : ''}</span>
+          <span style={{ marginLeft: 'auto' }} />
+          <button className="sheet-focus-exit" onClick={() => setSheetFocus(false)} style={{
+            border: '1px solid #37404a', color: '#37404a', background: '#fff',
+            borderRadius: 8, padding: '3px 12px', cursor: 'pointer',
+          }}>退出大表格</button>
+        </div>
+      )}
       <div className="sheet-wrap" style={{
-        flex: 1, minHeight: 320, margin: '8px 10px 10px', border: '1px solid #dbe2ec',
+        flex: 1, minHeight: sheetFocus ? 0 : 320,
+        margin: sheetFocus ? '0 4px 4px' : '8px 10px 10px', border: '1px solid #dbe2ec',
         // 自成层叠上下文：表内浮动图（商品照片）的层级被关在表格内部，
         // 不会穿到上方的浮层面板上面去
         position: 'relative', zIndex: 0,
@@ -3661,6 +3688,9 @@ function App() {
           data={sheetsData}
           // 本系统每次只装一张表（选表在顶栏做），底部页签栏是多余的纯占高，关掉
           showSheetTabs={false}
+          // 公式栏关掉（省一整行高度给表格）：本系统不写公式，格子内容
+          // 双击单元格即可编辑，A1 地址框对日常询价编辑用不上
+          showFormulaBar={false}
           // 工具栏精简（2026-10-15 用户反馈表格区太拥挤）：只留编辑报价表
           // 真用得上的——撤销/数字格式/字体字号/粗斜下划线/颜色底色/边框/
           // 合并/对齐换行/插图/查找；条件格式、数据验证、截图、拆列这类

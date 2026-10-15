@@ -157,6 +157,9 @@ console.log('== 转订单独立模块：导航守卫回归（源码级）');
   ok(mainSrc.includes('navCollapsed') && mainSrc.includes('erp-nav-collapsed') &&
      mainSrc.includes('nav-collapse-toggle'),
     '侧边栏可收起且记住状态');
+  ok(mainSrc.includes('sheetFocus') && mainSrc.includes('sheet-focus-toggle') &&
+     mainSrc.includes('sheet-focus-exit') && mainSrc.includes('showFormulaBar={false}'),
+    '大表格模式：藏顶栏 + 关公式栏，纵向空间让给表格');
 }
 
 console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);
