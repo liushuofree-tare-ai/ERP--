@@ -28,6 +28,10 @@ if [ -d .git ]; then
 fi
 
 echo "→ 构建并启动…"
+# NPM_REGISTRY 环境变量可传镜像源（如 https://registry.npmmirror.com）
+if [ -n "${NPM_REGISTRY:-}" ]; then
+  docker compose build --build-arg NPM_REGISTRY="$NPM_REGISTRY"
+fi
 docker compose up -d --build
 
 PORT="$(grep -E '^PORT=' .env | tail -1 | cut -d= -f2 | tr -d '[:space:]')"
