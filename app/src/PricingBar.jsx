@@ -12,7 +12,7 @@ export default function PricingBar({ headers, pricing, onPricingChange, onCalcul
   const lab = { color: '#444' };
   return (
     <div className="pricing-bar" style={{
-      margin: '10px 14px 0', padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
+      margin: '8px 14px 0', padding: '6px 14px', fontFamily: 'sans-serif', fontSize: 14,
       display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
       border: '1px solid #dbe2ec', borderLeft: '4px solid #2f6bff', borderRadius: 12, background: '#fff',
       boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
@@ -80,7 +80,7 @@ export default function PricingBar({ headers, pricing, onPricingChange, onCalcul
           borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
         }}
       >计算销售价</button>
-      <span style={{ color: '#75808d' }}>结果写入「销售价」列（按成本价列算的卖价，不是工厂价）；成本为空的行留空</span>
+      <span style={{ color: '#75808d' }}>写入「销售价」列（不是工厂价）；成本为空的行留空</span>
     </div>
   );
 }

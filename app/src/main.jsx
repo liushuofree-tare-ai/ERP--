@@ -2637,15 +2637,16 @@ function App() {
         {navBtn('check', 'check', '环境自检', NavIcon.check)}
       </div>
       <div className="app-main" style={{
-        flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', height: '100vh',
+        flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column',
+        height: '100vh', overflowY: 'auto',
       }}>
       <div className="topbar" style={{
-        padding: '10px 16px', fontFamily: 'sans-serif', fontSize: 14,
-        display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap'
+        padding: '8px 16px', fontFamily: 'sans-serif', fontSize: 14,
+        display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'nowrap'
       }}>
         <label style={{
           border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff', borderRadius: 8,
-          padding: '6px 16px', cursor: 'pointer', fontWeight: 600,
+          padding: '6px 16px', cursor: 'pointer', fontWeight: 600, flexShrink: 0,
           boxShadow: '0 1px 3px rgba(47,107,255,0.35)'
         }}>
           导入客户原表（.xlsx）
@@ -2681,24 +2682,33 @@ function App() {
             <button onClick={() => { setAddingCol(false); setNewColName(''); }} style={barBtn}>取消</button>
           </span>
         ))}
-        <span style={{ color: '#444' }}>{importInfo}</span>
-        <span className="save-status" style={{ color: '#1e9e57' }}>{saveStatus}</span>
+        <span className="import-info" style={{
+          color: '#444', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+          minWidth: 0, flex: '0 1 auto', flexShrink: 1,
+        }}>{importInfo}</span>
+        <span className="save-status" style={{ color: '#1e9e57', whiteSpace: 'nowrap', flexShrink: 0 }}>{saveStatus}</span>
         {serverSync && serverSyncText(serverSync) && (
           <span className="sync-status" style={{
             color: serverSync.status === 'conflict' || serverSync.status === 'error' || serverSync.status === 'need-auth'
               ? '#d92d20' : '#1f56d6', fontWeight: serverSync.status === 'conflict' ? 600 : 400,
+            whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+            minWidth: 0, flex: '0 1 auto', flexShrink: 1,
           }}>{serverSyncText(serverSync)}</span>
         )}
-        <span style={{ color: '#888' }}>最近一次编辑：{lastEdit}</span>
+        <span className="last-edit" style={{
+          color: '#888', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+          minWidth: 0, flex: '0 1 auto', flexShrink: 1,
+        }}>最近一次编辑：{lastEdit}</span>
         <button onClick={handleClear} style={{
           border: '1px solid #d92d20', color: '#d92d20', background: '#fff', borderRadius: 8,
-          padding: '5px 12px', cursor: 'pointer', marginLeft: 'auto'
+          padding: '5px 12px', cursor: 'pointer', marginLeft: 'auto', flexShrink: 0,
+          whiteSpace: 'nowrap',
         }}>清空重开</button>
       </div>
       {view === 'sheet' && (<>
       <div className="doc-bar" style={{
-        margin: '12px 14px 0', padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
-        display: 'flex', alignItems: 'stretch', gap: 10, flexWrap: 'wrap',
+        margin: '8px 14px 0', padding: '6px 14px', fontFamily: 'sans-serif', fontSize: 14,
+        display: 'flex', alignItems: 'stretch', gap: 8, flexWrap: 'wrap',
         background: '#fff', border: '1px solid #dbe2ec', borderRadius: 12,
         boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
       }}>
@@ -2836,13 +2846,13 @@ function App() {
       )}
       {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && (
         <div className="final-quote-bar" style={{
-          margin: '10px 14px 0', padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
+          margin: '8px 14px 0', padding: '6px 14px', fontFamily: 'sans-serif', fontSize: 14,
           display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
           border: '1px solid #dbe2ec', borderLeft: '4px solid #1e9e57', borderRadius: 12, background: '#fff',
           boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
         }}>
           <b style={{ color: '#157347' }}>最终报价</b>
-          <span style={{ color: '#888', fontSize: 12 }}>（按定厂工厂价算，与定价条按成本价列算的「销售价」不是一列）</span>
+          <span style={{ color: '#888', fontSize: 12 }} title="按定厂工厂价算，与定价条按成本价列算的「销售价」不是一列">（按定厂工厂价算，不是定价条的「销售价」）</span>
           <span style={{ color: '#555' }}>客户：</span>
           <select
             className="inq-customer-select"
@@ -2931,10 +2941,10 @@ function App() {
       )}
       {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && fqBreakdowns.length > 0 && (
         <div className="fq-breakdowns" style={{
-          margin: '0 14px', padding: '6px 14px 10px', fontFamily: 'sans-serif', fontSize: 12.5,
+          margin: '0 14px', padding: '4px 14px 8px', fontFamily: 'sans-serif', fontSize: 12.5,
           color: '#555', background: '#fff', border: '1px solid #dbe2ec', borderTop: '1px dashed #d8e6d8',
           borderRadius: '0 0 12px 12px',
-          maxHeight: 132, overflowY: 'auto', lineHeight: 1.7,
+          maxHeight: 96, overflowY: 'auto', lineHeight: 1.6,
         }}>
           <span style={{ color: '#888' }}>最终价是这样算出来的（基数 = 每行定厂那家的报价列）：</span>
           {fqBreakdowns.map((b) => (
@@ -3120,7 +3130,7 @@ function App() {
         />
       ) : (
       <div className="sheet-wrap" style={{
-        flex: 1, margin: '12px 14px 16px', border: '1px solid #dbe2ec',
+        flex: 1, minHeight: 380, margin: '10px 14px 12px', border: '1px solid #dbe2ec',
         borderRadius: 12, overflow: 'hidden',
         boxShadow: '0 2px 6px rgba(23,34,62,0.05), 0 10px 24px rgba(23,34,62,0.06)',
       }}>
