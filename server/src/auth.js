@@ -52,6 +52,9 @@ export function createAuth({
       if (!enabled) return;
       app.addHook('onRequest', async (req, reply) => {
         const url = req.raw.url || '';
+        // 只守数据接口：前端页面与静态资源本身不含数据，必须放行——
+        // 否则浏览器连应用都加载不出来，更到不了应用内的登录入口。
+        if (!url.startsWith('/api/')) return;
         if (url.startsWith('/api/health') || url.startsWith('/api/auth/login')) return;
         if (auth.isAuthed(req)) return;
         reply.code(401).send({ ok: false, code: 'NEED_AUTH', message: '需要登录：请输入访问口令' });
