@@ -52,6 +52,13 @@ import { APP_VERSION } from './version.js';
 
 const XLSX_MIME = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 
+/** 表格区浮层（定价 / 最终报价详情 / 转订单 / 对客导出）：绝对定位盖在表格上方，
+ *  面板自身高度有上限（超出在面板内滚动），不占用表格的布局高度。 */
+const OVERLAY_STYLE = {
+  position: 'absolute', top: 0, left: 0, right: 0, zIndex: 40,
+  maxHeight: '78%', overflowY: 'auto',
+};
+
 // 飞书环境（内置 WebView）：它对 blob: 链接的 <a download> 常拦不住或不弹
 // 保存对话框——服务器在线时改走「临时下载直链」（后端 5 分钟有效的标准
 // 附件流）。拿到不到直链就退回普通 blob 下载，两条路都留。
@@ -584,6 +591,9 @@ function App() {
     INIT_ACTIVE_DOC.kind === 'inquiry' ? (INIT_ACTIVE_DOC.note || '') : '');
   const [orders, setOrdersState] = useState(INIT_ORDERS);
   const [showConvert, setShowConvert] = useState(false);
+  // 表格区浮层的开关（定价设置 / 最终报价详情）：与转订单、对客导出一起互斥
+  const [pricingOpen, setPricingOpen] = useState(false);
+  const [fqOpen, setFqOpen] = useState(false);
   const [showOrders, setShowOrders] = useState(false);
   // 总览台账 / AI 分析 / 数据备份（包 9）：与订单/比价一样是整区视图开关
   const [showOverview, setShowOverview] = useState(false);
@@ -2365,6 +2375,26 @@ function App() {
     setShowCheck(v === 'check');
   }
 
+  /**
+   * 表格区浮层互斥开关：name 为 'pricing' | 'fq' | 'convert' | 'export' | null。
+   * 同一时间只开一个，全部以浮层形式盖在表格上方，表格本身永远占满剩余高度。
+   */
+  function openOverlay(name) {
+    setPricingOpen(name === 'pricing');
+    setFqOpen(name === 'fq');
+    setShowConvert(name === 'convert');
+    if (name === 'export') setExportTick((t) => t + 1); // 每次打开重算默认勾选
+    setShowExport(name === 'export');
+  }
+
+  // 切换单据（询价单 ↔ 报价单、换另一张询价单）时收起转订单 / 对客导出 / 最终报价详情，
+  // 免得切回来时它们自己冒出来；「定价设置」跨单据保留（两种单据都用得到）
+  useEffect(() => {
+    setFqOpen(false);
+    setShowConvert(false);
+    setShowExport(false);
+  }, [activeDocId]);
+
   /* ---------- 包 13 引导动作：从说明块一键直达缺的那一步 ---------- */
 
   /** 比价页「发给工厂」：回工作区并让当前询价单成为活动文档 */
@@ -2597,6 +2627,14 @@ function App() {
     border: '1px solid #c9d2de', color: '#37404a', background: '#fff', borderRadius: 8,
     padding: '6px 13px', cursor: 'pointer', boxShadow: '0 1px 2px rgba(23,34,62,0.04)',
   };
+  /** 操作条按钮：不换行、不被挤扁；开着的那个高亮 */
+  const actBtn = (on) => ({
+    border: '1px solid ' + (on ? '#2f6bff' : '#c9d2de'),
+    background: on ? '#e8effe' : '#fff',
+    color: on ? '#1f56d6' : '#37404a',
+    borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+    whiteSpace: 'nowrap', flexShrink: 0,
+  });
 
   // 左侧模块导航按钮（包 10；包 16 改深色侧栏）：图标 + 文字，
   // 当前模块是主色填充药丸；订单数另挂小徽章（徽章前后的全角括
@@ -2712,11 +2750,8 @@ function App() {
             <button onClick={() => { setAddingCol(false); setNewColName(''); }} style={barBtn}>取消</button>
           </span>
         ))}
-        <span className="import-info" style={{
-          color: '#444', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-          minWidth: 0, flex: '0 1 auto', flexShrink: 1,
-        }}>{importInfo}</span>
-        <span className="save-status" style={{ color: '#1e9e57', whiteSpace: 'nowrap', flexShrink: 0 }}>{saveStatus}</span>
+        <span className="import-info topbar-text" title={importInfo} style={{ color: '#444' }}>{importInfo}</span>
+        <span className="save-status topbar-text" title={saveStatus} style={{ color: '#1e9e57' }}>{saveStatus}</span>
         {serverSync && serverSyncText(serverSync) && (
           <span className="sync-status" style={{
             color: serverSync.status === 'conflict' || serverSync.status === 'error' || serverSync.status === 'need-auth'
@@ -2725,10 +2760,7 @@ function App() {
             minWidth: 0, flex: '0 1 auto', flexShrink: 1,
           }}>{serverSyncText(serverSync)}</span>
         )}
-        <span className="last-edit" style={{
-          color: '#888', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
-          minWidth: 0, flex: '0 1 auto', flexShrink: 1,
-        }}>最近一次编辑：{lastEdit}</span>
+        <span className="last-edit topbar-text" title={'最近一次编辑：' + lastEdit} style={{ color: '#888' }}>最近一次编辑：{lastEdit}</span>
         <button onClick={handleClear} style={{
           border: '1px solid #d92d20', color: '#d92d20', background: '#fff', borderRadius: 8,
           padding: '5px 12px', cursor: 'pointer', marginLeft: 'auto', flexShrink: 0,
@@ -2866,147 +2898,39 @@ function App() {
         )}
         </div>
       </div>
-      {!showCompare && !showOrders && !showOverview && !showAi && (
-        <PricingBar
-          headers={columnHeaders(liveRef.current[0] || sheetsData[0])}
-          pricing={pricing}
-          onPricingChange={onPricingChange}
-          onCalculate={handleCalculate}
-        />
-      )}
+      {/* 操作条（默认一行）：定价设置 / 最终报价详情 / 生成 / 导出 / 转订单。
+          定价与详情、转订单与导出都是「浮在表格上方」的面板，打开不推挤表格。 */}
       {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && (
-        <div className="final-quote-bar" style={{
-          margin: '8px 14px 0', padding: '6px 14px', fontFamily: 'sans-serif', fontSize: 14,
-          display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
+        <div className="action-row" style={{
+          margin: '8px 14px 0', padding: '6px 12px', fontFamily: 'sans-serif', fontSize: 14,
+          display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'nowrap',
           border: '1px solid #dbe2ec', borderLeft: '4px solid #1e9e57', borderRadius: 12, background: '#fff',
-          boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
+          boxShadow: '0 1px 3px rgba(23,34,62,0.05)', minWidth: 0,
         }}>
-          <b style={{ color: '#157347' }}>最终报价</b>
-          <span style={{ color: '#888', fontSize: 12 }} title="按定厂工厂价算，与定价条按成本价列算的「销售价」不是一列">（按定厂工厂价算，不是定价条的「销售价」）</span>
-          <span style={{ color: '#555' }}>客户：</span>
-          <select
-            className="inq-customer-select"
-            value={custNewMode ? '__new__' : (customerName || '')}
-            onChange={(e) => {
-              const v = e.target.value;
-              if (v === '__new__') { setCustNewMode(true); setCustNewName(''); }
-              else { setCustNewMode(false); setCustomerName(v); }
-            }}
-            style={{ padding: '3px 4px', maxWidth: 220 }}
-            title="从客户名单里选；没有就选「＋新建客户…」当场登记"
-          >
-            <option value="">（未填客户名）</option>
-            {customers.map((c) => (
-              <option key={c.name} value={c.name}>{c.name}</option>
-            ))}
-            {customerName && !customers.some((c) => c.name === customerName) && (
-              <option value={customerName}>{customerName}（未登记）</option>
-            )}
-            <option value="__new__">＋新建客户…</option>
-          </select>
-          {custNewMode && (
-            <span style={{ display: 'inline-flex', gap: 4, alignItems: 'center' }}>
-              <input
-                className="inq-customer-input" autoFocus placeholder="新客户名（如 欧冠嘉）"
-                value={custNewName}
-                onChange={(e) => setCustNewName(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') commitNewCustomer();
-                  if (e.key === 'Escape') { setCustNewMode(false); setCustNewName(''); }
-                }}
-                style={{ padding: '3px 6px', border: '1px solid #bbb', borderRadius: 4, width: 150 }}
-              />
-              <button className="inq-customer-new-ok" onClick={commitNewCustomer} style={{
-                border: '1px solid #1e9e57', color: '#1e9e57', background: '#fff', borderRadius: 8,
-                padding: '5px 12px', cursor: 'pointer',
-              }}>确定</button>
-              <button onClick={() => { setCustNewMode(false); setCustNewName(''); }} style={barBtn}>取消</button>
-            </span>
-          )}
-          <span style={{ color: '#555' }}>备注：</span>
-          <input
-            className="inq-note-input"
-            placeholder="这张单的备注（可空）"
-            value={inquiryNote}
-            onChange={(e) => setInquiryNote(e.target.value)}
-            style={{ padding: '3px 6px', border: '1px solid #bbb', borderRadius: 4, width: 180 }}
-            title="这张询价单的备注：随单保存，在上面的询价单选择器和客户管理里都能看到"
-          />
-          <button
-            className="fq-generate"
-            onClick={handleGenerateFinalQuote}
-            style={{
-              border: '1px solid #1e9e57', background: '#1e9e57', color: '#fff',
-              borderRadius: 8, padding: '3px 12px', cursor: 'pointer',
-            }}
-          >生成最终报价列</button>
-          <span className="fq-status" style={{ color: '#666' }}>
-            已定厂 {fqChosen} / 共 {fqTotal} 行 · 有最终价 {fqPriced} 行
-            {fqChosen === 0
-              ? '——先到「比价定厂」选好每行用哪家，这里才能生成'
-              : '——按各行定厂的工厂价 + 定价条的加价/运费算出；定厂变了重新生成一次'}
+          <b style={{ color: '#157347', flexShrink: 0, whiteSpace: 'nowrap' }}>最终报价</b>
+          <span className="fq-status" title={
+            '已定厂 ' + fqChosen + ' / 共 ' + fqTotal + ' 行 · 有最终价 ' + fqPriced + ' 行' +
+            (fqChosen === 0 ? '（先到「比价定厂」选好每行用哪家）' : '')
+          } style={{
+            color: '#555', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+            minWidth: 0, flex: '0 1 auto',
+          }}>
+            已定厂 {fqChosen}/{fqTotal} 行 · 有最终价 {fqPriced} 行
+            {fqChosen === 0 ? ' · 先到比价定厂选厂' : ''}
           </span>
           <span style={{ marginLeft: 'auto' }} />
-          <button
-            className="export-toggle"
-            onClick={() => { setShowExport((s) => !s); setExportTick((t) => t + 1); }}
-            style={{
-              border: '1px solid ' + (showExport ? '#1e9e57' : '#888'),
-              background: showExport ? '#1e9e57' : '#fff',
-              color: showExport ? '#fff' : '#444',
-              borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
-            }}
-          >{showExport ? '收起对客导出' : '对客报价导出'}</button>
-          <button
-            className="convert-toggle"
-            onClick={() => setShowConvert((s) => !s)}
-            style={{
-              border: '1px solid ' + (showConvert ? '#b45309' : '#888'),
-              background: showConvert ? '#b45309' : '#fff',
-              color: showConvert ? '#fff' : '#444',
-              borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
-            }}
-          >{showConvert ? '收起转订单' : '转订单'}</button>
+          <button className="pricing-toggle" onClick={() => openOverlay(pricingOpen ? null : 'pricing')}
+            style={actBtn(pricingOpen)}>定价设置 {pricingOpen ? '▴' : '▾'}</button>
+          <button className="fq-toggle" onClick={() => openOverlay(fqOpen ? null : 'fq')}
+            style={actBtn(fqOpen)}>最终报价详情 {fqOpen ? '▴' : '▾'}</button>
+          <button className="fq-generate" onClick={handleGenerateFinalQuote} style={{
+            ...actBtn(false), border: '1px solid #1e9e57', background: '#1e9e57', color: '#fff',
+          }}>生成最终报价列</button>
+          <button className="export-toggle" onClick={() => openOverlay(showExport ? null : 'export')}
+            style={actBtn(showExport)}>对客报价导出</button>
+          <button className="convert-toggle" onClick={() => openOverlay(showConvert ? null : 'convert')}
+            style={actBtn(showConvert)}>转订单</button>
         </div>
-      )}
-      {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && fqBreakdowns.length > 0 && (
-        <div className="fq-breakdowns" style={{
-          margin: '0 14px', padding: '4px 14px 8px', fontFamily: 'sans-serif', fontSize: 12.5,
-          color: '#555', background: '#fff', border: '1px solid #dbe2ec', borderTop: '1px dashed #d8e6d8',
-          borderRadius: '0 0 12px 12px',
-          maxHeight: 96, overflowY: 'auto', lineHeight: 1.6,
-        }}>
-          <span style={{ color: '#888' }}>最终价是这样算出来的（基数 = 每行定厂那家的报价列）：</span>
-          {fqBreakdowns.map((b) => (
-            <div key={b.lineId} className="fq-breakdown-row" data-line={b.lineId}>
-              {b.oe ? b.oe + ' · ' : ''}{b.text}
-            </div>
-          ))}
-        </div>
-      )}
-      {showConvert && !showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && convertRows && (
-        <ConvertPanel
-          key={'conv-' + activeDocId}
-          rows={convertRows}
-          customerName={customerName}
-          sheetQtys={convQtyInfo ? convQtyInfo.qtys : null}
-          qtyColumnName={convQtyInfo ? convQtyInfo.header : null}
-          onCreate={handleCreateOrder}
-          onViewOrder={(orderNo) => jumpToOrder(orderNo)}
-          onClose={() => setShowConvert(false)}
-        />
-      )}
-      {showExport && !showCompare && !showOverview && !showAi && !activeIsQuote && exportModel && (
-        <QuoteExportPanel
-          key={'exp-' + activeDocId + '-' + exportTick}
-          rows={exportModel.rows}
-          cols={exportModel.cols}
-          defaultRowIds={exportModel.defaultRowIds}
-          defaultColKeys={exportModel.defaultColKeys}
-          canShareFiles={canShareFiles}
-          onExport={handleExport}
-          onClose={() => setShowExport(false)}
-        />
       )}
       {activeIsQuote && !showCompare && !showOrders && !showOverview && !showAi && (
         <PriceMarkBar
@@ -3019,6 +2943,10 @@ function App() {
             headerRowOf({ sheet: liveRef.current[0] || sheetsData[0], headerRow: docRef.current.headerRow }))}
           onSave={handleSavePriceMark}
           onDelete={handleDeleteQuote}
+          extra={(
+            <button className="pricing-toggle" onClick={() => openOverlay(pricingOpen ? null : 'pricing')}
+              style={{ ...actBtn(pricingOpen), padding: '4px 10px' }}>定价设置 {pricingOpen ? '▴' : '▾'}</button>
+          )}
         />
       )}
       {markGuard && (
@@ -3159,8 +3087,138 @@ function App() {
           onGoExport={goCompareExport}
         />
       ) : (
+      <div className="sheet-area" style={{
+        flex: 1, minHeight: 0, position: 'relative', display: 'flex', flexDirection: 'column',
+      }}>
+        {pricingOpen && (
+          <div className="overlay-panel" style={OVERLAY_STYLE}>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '8px 14px 0' }}>
+              <button className="pricing-close" onClick={() => openOverlay(null)} style={barBtn}>收起定价设置 ▴</button>
+            </div>
+            <PricingBar
+              headers={columnHeaders(liveRef.current[0] || sheetsData[0])}
+              pricing={pricing}
+              onPricingChange={onPricingChange}
+              onCalculate={handleCalculate}
+            />
+          </div>
+        )}
+        {fqOpen && !activeIsQuote && (
+          <div className="overlay-panel" style={OVERLAY_STYLE}>
+            <div className="final-quote-panel" style={{
+              margin: '10px 14px 0', padding: '10px 14px', fontFamily: 'sans-serif', fontSize: 14,
+              border: '1px solid #dbe2ec', borderLeft: '4px solid #1e9e57', borderRadius: 12, background: '#fff',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                <b style={{ color: '#157347' }}>最终报价 · 详情</b>
+                <span style={{ color: '#888', fontSize: 12 }} title="按定厂工厂价算，与定价条按成本价列算的「销售价」不是一列">（按定厂工厂价算，不是定价条的「销售价」）</span>
+                <span style={{ color: '#555' }}>客户：</span>
+                <select
+                  className="inq-customer-select"
+                  value={custNewMode ? '__new__' : (customerName || '')}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    if (v === '__new__') { setCustNewMode(true); setCustNewName(''); }
+                    else { setCustNewMode(false); setCustomerName(v); }
+                  }}
+                  style={{ padding: '3px 4px', maxWidth: 220 }}
+                  title="从客户名单里选；没有就选「＋新建客户…」当场登记"
+                >
+                  <option value="">（未填客户名）</option>
+                  {customers.map((c) => (
+                    <option key={c.name} value={c.name}>{c.name}</option>
+                  ))}
+                  {customerName && !customers.some((c) => c.name === customerName) && (
+                    <option value={customerName}>{customerName}（未登记）</option>
+                  )}
+                  <option value="__new__">＋新建客户…</option>
+                </select>
+                {custNewMode && (
+                  <span style={{ display: 'inline-flex', gap: 4, alignItems: 'center' }}>
+                    <input
+                      className="inq-customer-input" autoFocus placeholder="新客户名（如 欧冠嘉）"
+                      value={custNewName}
+                      onChange={(e) => setCustNewName(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') commitNewCustomer();
+                        if (e.key === 'Escape') { setCustNewMode(false); setCustNewName(''); }
+                      }}
+                      style={{ padding: '3px 6px', border: '1px solid #bbb', borderRadius: 4, width: 150 }}
+                    />
+                    <button className="inq-customer-new-ok" onClick={commitNewCustomer} style={{
+                      border: '1px solid #1e9e57', color: '#1e9e57', background: '#fff', borderRadius: 8,
+                      padding: '5px 12px', cursor: 'pointer',
+                    }}>确定</button>
+                    <button onClick={() => { setCustNewMode(false); setCustNewName(''); }} style={barBtn}>取消</button>
+                  </span>
+                )}
+                <span style={{ color: '#555' }}>备注：</span>
+                <input
+                  className="inq-note-input"
+                  placeholder="这张单的备注（可空）"
+                  value={inquiryNote}
+                  onChange={(e) => setInquiryNote(e.target.value)}
+                  style={{ padding: '3px 6px', border: '1px solid #bbb', borderRadius: 4, width: 180 }}
+                  title="这张询价单的备注：随单保存，在上面的询价单选择器和客户管理里都能看到"
+                />
+                <span style={{ marginLeft: 'auto' }} />
+                <button className="fq-close" onClick={() => openOverlay(null)} style={barBtn}>收起 ▴</button>
+              </div>
+              <div className="fq-status" style={{ color: '#666', marginTop: 6 }}>
+                已定厂 {fqChosen} / 共 {fqTotal} 行 · 有最终价 {fqPriced} 行
+                {fqChosen === 0
+                  ? '——先到「比价定厂」选好每行用哪家，这里才能生成'
+                  : '——按各行定厂的工厂价 + 定价条的加价/运费算出；定厂变了重新生成一次'}
+              </div>
+              {fqBreakdowns.length > 0 && (
+                <div className="fq-breakdowns" style={{
+                  marginTop: 8, paddingTop: 6, borderTop: '1px dashed #d8e6d8',
+                  color: '#555', fontSize: 12.5, lineHeight: 1.6, maxHeight: 180, overflowY: 'auto',
+                }}>
+                  <span style={{ color: '#888' }}>最终价是这样算出来的（基数 = 每行定厂那家的报价列）：</span>
+                  {fqBreakdowns.map((b) => (
+                    <div key={b.lineId} className="fq-breakdown-row" data-line={b.lineId}>
+                      {b.oe ? b.oe + ' · ' : ''}{b.text}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+        {showConvert && convertRows && !activeIsQuote && (
+          <div className="overlay-panel" style={OVERLAY_STYLE}>
+            <ConvertPanel
+              key={'conv-' + activeDocId}
+              rows={convertRows}
+              customerName={customerName}
+              sheetQtys={convQtyInfo ? convQtyInfo.qtys : null}
+              qtyColumnName={convQtyInfo ? convQtyInfo.header : null}
+              onCreate={handleCreateOrder}
+              onViewOrder={(orderNo) => jumpToOrder(orderNo)}
+              onClose={() => openOverlay(null)}
+            />
+          </div>
+        )}
+        {showExport && exportModel && !activeIsQuote && (
+          <div className="overlay-panel" style={OVERLAY_STYLE}>
+            <QuoteExportPanel
+              key={'exp-' + activeDocId + '-' + exportTick}
+              rows={exportModel.rows}
+              cols={exportModel.cols}
+              defaultRowIds={exportModel.defaultRowIds}
+              defaultColKeys={exportModel.defaultColKeys}
+              canShareFiles={canShareFiles}
+              onExport={handleExport}
+              onClose={() => openOverlay(null)}
+            />
+          </div>
+        )}
       <div className="sheet-wrap" style={{
-        flex: 1, minHeight: 380, margin: '10px 14px 12px', border: '1px solid #dbe2ec',
+        flex: 1, minHeight: 320, margin: '10px 14px 12px', border: '1px solid #dbe2ec',
+        // 自成层叠上下文：表内浮动图（商品照片）的层级被关在表格内部，
+        // 不会穿到上方的浮层面板上面去
+        position: 'relative', zIndex: 0,
         borderRadius: 12, overflow: 'hidden',
         boxShadow: '0 2px 6px rgba(23,34,62,0.05), 0 10px 24px rgba(23,34,62,0.06)',
       }}>
@@ -3168,6 +3226,8 @@ function App() {
           key={wbKey}
           ref={wbRef}
           data={sheetsData}
+          // 本系统每次只装一张表（选表在顶栏做），底部页签栏是多余的纯占高，关掉
+          showSheetTabs={false}
           onChange={(data) => {
             window.__wbData = data;
             const canon = canonicalize(data, liveRef.current);
@@ -3223,6 +3283,7 @@ function App() {
             scheduleSave();
           }}
         />
+      </div>
       </div>
       )}
       </div>
