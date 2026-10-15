@@ -6,7 +6,7 @@ import {
   isServerAvailable, exportServerBackup, restoreServerBackup,
   fetchServerState, loginPassword, detectServer, getServerInfo,
 } from './apiClient.js';
-import { adoptRemoteState, onSyncChange, lastSyncInfo } from './store.js';
+import { adoptRemoteState, onSyncChange, lastSyncInfo, hasLocalBackupStash, restoreLocalBackupStash } from './store.js';
 
 // 数据备份与恢复（SPEC 第四节第 12 项）：与环境自检同层的数据区。
 // 完整备份 = 一份 zip（清单 + 业务存档 + 文件仓库的全部文件，逐件
@@ -52,6 +52,7 @@ export default function DataPanel({ onClose }) {
   const [passwordInput, setPasswordInput] = useState('');
   const [conflict, setConflict] = useState(
     lastSyncInfo().status === 'conflict' ? lastSyncInfo() : null);
+  const [hasStash, setHasStash] = useState(hasLocalBackupStash());
   const serverRestoreRef = useRef(null);
 
   useEffect(() => {
@@ -228,6 +229,17 @@ export default function DataPanel({ onClose }) {
     }
   }
 
+  /** 恢复采纳服务器前自动留底的本机数据 */
+  function handleRestoreStash() {
+    if (busy || !hasStash) return;
+    if (!window.confirm('把本机数据恢复成「采纳服务器数据之前」自动留底的那一份？\n当前数据会被这份留底替换（当前数据自己不会另留底）。确定吗？')) return;
+    if (restoreLocalBackupStash()) {
+      location.reload();
+    } else {
+      setStatus('留底读不出来（可能是存储被清了）');
+    }
+  }
+
   const btn = {
     border: '1px solid #2f6bff', color: '#2f6bff', background: '#fff',
     borderRadius: 8, padding: '6px 14px', cursor: 'pointer',
@@ -291,6 +303,12 @@ export default function DataPanel({ onClose }) {
             <button className="server-pull" onClick={handlePullServer} disabled={busy} style={btn}>
               拉取服务器最新数据{conflict ? '（清掉冲突提示）' : ''}
             </button>
+            {hasStash && (
+              <button className="server-stash-restore" onClick={handleRestoreStash} disabled={busy}
+                style={{ ...btn, borderColor: '#b45309', color: '#b45309' }}>
+                恢复采纳前的本机数据
+              </button>
+            )}
           </div>
         </div>
       )}

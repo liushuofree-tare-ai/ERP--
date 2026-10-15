@@ -244,3 +244,34 @@ export function adoptRemoteState(state) {
     return false;
   }
 }
+
+/** 本机数据在采纳服务器前的自动兜底位（覆盖时先落这里，防丢） */
+export const LOCAL_BACKUP_KEY = 'qipei_v2_local_backup';
+
+/** 采纳前把当前本机存档原样留底（有旧底不覆盖，保最旧一份？不——保最近一份更有用） */
+export function stashLocalBeforeAdopt() {
+  try {
+    const raw = localStorage.getItem(DB_KEY);
+    if (raw) localStorage.setItem(LOCAL_BACKUP_KEY, raw);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+/** 是否留过底（数据备份页据此显示「恢复采纳前本机数据」按钮） */
+export function hasLocalBackupStash() {
+  try { return !!localStorage.getItem(LOCAL_BACKUP_KEY); } catch (e) { return false; }
+}
+
+/** 从兜底位恢复本机存档（调用方随后 reload） */
+export function restoreLocalBackupStash() {
+  try {
+    const raw = localStorage.getItem(LOCAL_BACKUP_KEY);
+    if (!raw) return false;
+    localStorage.setItem(DB_KEY, raw);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}

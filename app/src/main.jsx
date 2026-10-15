@@ -17,7 +17,7 @@ import ConvertPanel from './ConvertPanel.jsx';
 import OrdersView from './OrdersView.jsx';
 import { formatOrderNo, convertedLineIds } from './orders.js';
 import { createLedger, noteWorkColumn, cloneLedgerForQuote } from './ledger.js';
-import { loadSaved, saveWork, clearSaved, saveWorkAndSync, buildServerPayload, adoptRemoteState, onSyncChange, lastSyncInfo } from './store.js';
+import { loadSaved, saveWork, clearSaved, saveWorkAndSync, buildServerPayload, adoptRemoteState, stashLocalBeforeAdopt, onSyncChange, lastSyncInfo } from './store.js';
 import { detectServer, fetchServerState, pushState, isServerAvailable, openTempDownload, feishuNotify } from './apiClient.js';
 import { computeSalesPrice } from './pricing.js';
 import { cellValue, detectHeaderRow, columnHeaders, setCellValue, appendColumn } from './sheetOps.js';
@@ -314,17 +314,16 @@ function fmtClock(iso) {
   return Number.isNaN(d.getTime()) ? '' : d.toLocaleTimeString('zh-CN', { hour12: false });
 }
 
-/** 云端同步小字：按推送状态生成一句话（单机/空闲返回空不渲染） */
+/** 云端同步小字：按推送状态生成一句话（单机/空闲/稳态返回空不渲染） */
 function serverSyncText(s) {
   switch (s && s.status) {
     case 'pushing': return '云端同步中…';
     case 'ok': return '已同步服务器 · ' + fmtClock(s.at) + '（rev ' + s.revision + '）';
-    case 'ok-local-blank': return '服务器在线 · 数据云端化已就绪';
-    case 'migrated': case 'ok-migrated-newer': return '本地工作已上服务器 · ' + fmtClock(s.at);
+    case 'migrated': return '本地工作已上服务器 · ' + fmtClock(s.at);
     case 'conflict': return '⚠ 服务器上已有其他窗口的更新，本窗口未覆盖——请到「数据备份」拉取';
     case 'need-auth': return '⚠ 服务器要求登录——请到「数据备份」输入访问口令';
     case 'error': return '⚠ 云端同步失败：' + (s.message || '未知原因');
-    default: return '';
+    default: return ''; // local-only / in-sync 稳态不渲染
   }
 }
 
@@ -1085,8 +1084,11 @@ function App() {
   //  · 服务器不通 → 维持单机模式（saveWorkAndSync 自然走本地）；
   //  · 服务器空 + 本地有工作 → 把本地推上去（首次迁移）；
   //  · 本地空白 + 服务器有数据 → 采纳服务器（写镜像后刷新）；
-  //  · 两边都有 → savedAt 新者赢（本轮先对齐一次；此后每次保存由
-  //    revision 乐观锁守护，冲突不静默覆盖，去「数据备份」拉取）。
+  //  · 两边都有且严格一方更新 → 新者赢（相等 = 稳态，什么都不做）。
+  // 采纳是覆盖性动作，规矩：
+  //  · 弹确认（面板明说会先在本机留一份自动备份）；
+  //  · 15 秒采纳防抖：刚采纳刷新回来落在确认窗里时不再连环采纳
+  //    （防时钟偏差造成"永远比服务器旧"的接力刷新）。
   useEffect(() => {
     let alive = true;
     (async () => {
@@ -1097,36 +1099,64 @@ function App() {
         const remote = await fetchServerState();
         if (!alive || workEpochRef.current > 0) return; // 用户已导入新工作，不打扰
         const localState = RAW_RESTORED;
+        const localTs = localState && localState.savedAt ? String(localState.savedAt) : null;
         if (!remote.state) {
           if (localState && Array.isArray(localState.docs) && localState.docs.length) {
             try {
               flushDocRef();
-              await pushState(remote.revision, buildServerPayload(currentPayload()));
+              const payload = currentPayload();
+              // savedAt 沿用本地时间：推上去后两边相等，就是稳态
+              if (localTs) payload.savedAt = localTs;
+              await pushState(remote.revision, buildServerPayload(payload));
               setServerSync({ status: 'migrated', at: new Date().toISOString() });
             } catch (e) {
               setServerSync({ status: 'error', message: '本地工作迁移到服务器失败：' + (e && e.message || e) });
             }
           } else {
-            setServerSync({ status: 'ok-local-blank', at: null });
+            setServerSync({ status: 'in-sync', at: null });
           }
           return;
         }
+        const remoteTs = remote.state.savedAt ? String(remote.state.savedAt) : null;
         if (!localState) {
+          // 本机空白：直接采纳（无需确认——本地没有可覆盖的东西）
           if (adoptRemoteState(remote.state)) location.reload();
           return;
         }
-        const serverNewer = !localState.savedAt ||
-          (remote.state.savedAt || '') >= localState.savedAt;
-        if (serverNewer) {
-          if (adoptRemoteState(remote.state)) location.reload();
-        } else {
-          try {
-            flushDocRef();
-            await pushState(remote.revision, buildServerPayload(currentPayload()));
-            setServerSync({ status: 'ok-migrated-newer', at: new Date().toISOString() });
-          } catch (e) {
-            setServerSync({ status: 'error', message: '本地数据推到服务器失败：' + (e && e.code === 'REVISION_CONFLICT' ? '云端已有别的修改，请到数据备份拉取' : (e && e.message || e)) });
+        if (!localTs || !remoteTs || remoteTs === localTs) {
+          setServerSync({ status: 'in-sync', at: null });
+          return;
+        }
+        if (remoteTs > localTs) {
+          const GUARD = 'qipei_v2_adopt_guard_ms';
+          const last = Number(sessionStorage.getItem(GUARD) || '0');
+          if (Date.now() - last < 15000) {
+            setServerSync({ status: 'in-sync', at: null }); // 刚采纳刷新回来：稳态，别连环
+            return;
           }
+          if (!window.confirm(
+            '服务器上有更新的数据（保存于 ' + fmtTime(remoteTs) + '，rev ' + remote.revision + '）。\n' +
+            '本机当前数据较旧（保存于 ' + fmtTime(localTs) + '）。\n' +
+            '点「确定」采纳服务器数据（本机旧数据会先自动留一份备份，之后可在数据备份页恢复）；点「取消」保留本机数据不动。')) {
+            setServerSync({ status: 'in-sync', at: null });
+            return;
+          }
+          try {
+            sessionStorage.setItem(GUARD, String(Date.now()));
+            stashLocalBeforeAdopt();
+          } catch (e) { /* 留不了底也不拦采纳 */ }
+          if (adoptRemoteState(remote.state)) location.reload();
+          return;
+        }
+        // 本地比服务器新：把本地推上去（savedAt 用本地原值，推完即相等）
+        try {
+          flushDocRef();
+          const payload = currentPayload();
+          payload.savedAt = localTs;
+          await pushState(remote.revision, buildServerPayload(payload));
+          setServerSync({ status: 'migrated', at: new Date().toISOString() });
+        } catch (e) {
+          setServerSync({ status: 'error', message: '本地数据推到服务器失败：' + (e && e.code === 'REVISION_CONFLICT' ? '云端已有别的修改，请到数据备份拉取' : (e && e.message || e)) });
         }
       } catch (e) {
         setServerSync({ status: 'error', message: '服务器已连通但读取失败：' + (e && e.message || e) });
