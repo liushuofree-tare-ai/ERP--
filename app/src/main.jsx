@@ -2301,20 +2301,16 @@ function App() {
         final: false,
       }));
     cols.push({ key: 'final', label: FINAL_QUOTE_HEADER, final: true, isWork: false, isSales: false });
-    // 记住上次的列勾选（效率项）：每张询价单的列结构基本不变，上次导
-    // 出勾了哪些列，这次默认还是哪些，省得每次重勾；存档里记的是 key
-    // 清单，与当前列对不上的（列已增删）自动忽略，全对不上才回默认。
-    const savedKeys = Array.isArray(inq.exportColKeys) ? inq.exportColKeys : null;
-    const validSaved = savedKeys
-      ? savedKeys.filter((k) => cols.some((c) => c.key === k))
-      : [];
+    // 默认勾选永远是完整对客列（原「记住上次勾选」已废除）：它会把
+    // 一次勾窄的范围（如只留图片+最终报价）带进下一次默认，用户
+    // 两度因此拿到不全的表。默认全选、要减当面取消勾，才可预期。
     return {
       rows,
       cols,
       defaultRowIds: rows
         .filter((r) => r.finalPrice !== null && r.finalPrice !== undefined)
         .map((r) => r.lineId),
-      defaultColKeys: validSaved.length ? validSaved : cols
+      defaultColKeys: cols
         .filter((c) => c.final || (!c.isWork && !c.isSales))
         .map((c) => c.key),
       // 一键生成最终报价单专用：永远用完整默认列，不继承被记窄的
@@ -3260,17 +3256,18 @@ function App() {
               ? '最终报价单'
               : '报价单 · ' + d.factoryName}</button>
         ))}
-        {activeInquiryMeta && !docList.some(
-          (d) => d.kind === 'custquote' && d.inquiryId === activeInquiryMeta.docId) && (
+        {activeInquiryMeta && (
           <button
             className="final-quote-create"
             onClick={handleCreateFinalQuoteDefault}
-            title="按已定价的行生成一张最终报价单到这里：在表格里调格式、挪价格列，不动原询价单。要挑行挑列，去左侧「对客导出」里生成"
+            title="按已定价的行和完整默认列生成最终报价单：在表格里调格式、挪价格列，不动原询价单。已有最终报价单时点它是重新生成（会先确认，覆盖旧的那份）。要挑行挑列，去左侧「对客导出」里生成"
             style={{
               border: '1px dashed #1e9e57', color: '#157347', background: '#f2faf5',
               borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
             }}
-          >＋ 最终报价单</button>
+          >{docList.some((d) => d.kind === 'custquote' && d.inquiryId === activeInquiryMeta.docId)
+            ? '重新生成最终报价单'
+            : '＋ 最终报价单'}</button>
         )}
         </div>
         <div className="ws-cluster-sep" />
@@ -3780,6 +3777,10 @@ function App() {
             : activeIsCustQuote ? '最终报价单'
             : activeIsQuote ? '报价单 · ' + (activeDocMeta ? activeDocMeta.factoryName : '') : ''}</span>
           <span style={{ marginLeft: 'auto' }} />
+          <button className="sheet-focus-filter" onClick={() => { toggleSheetFocus(false); setFilterOpen(true); }} style={{
+            border: '1px solid #37404a', color: '#37404a', background: '#fff',
+            borderRadius: 8, padding: '3px 12px', cursor: 'pointer',
+          }}>筛选</button>
           <button className="sheet-focus-exit" onClick={() => toggleSheetFocus(false)} style={{
             border: '1px solid #37404a', color: '#37404a', background: '#fff',
             borderRadius: 8, padding: '3px 12px', cursor: 'pointer',

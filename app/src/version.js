@@ -1,3 +1,3 @@
 // 全应用唯一的版本来源：任何地方显示版本号都从这里取，
 // 杜绝旧项目"多处手工同步版本号导致新旧混用"的事故。
-export const APP_VERSION = 'v2-pkg17';
+export const APP_VERSION = 'v2-pkg18';
