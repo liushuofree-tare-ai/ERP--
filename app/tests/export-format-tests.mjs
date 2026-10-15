@@ -1,6 +1,7 @@
 // 导出格式回归（2026-10-15）：
 //  · 工作层的列宽 / 行高 / 单元格样式 → 带图版与普通版两种导出都要带上；
-//  · 带图版的勾选：未勾选的行列在导出件里隐藏（不删），结构与图片保留；
+//  · 带图版的勾选：未勾选的行列在导出件里真删（旧"隐藏"方案已废），
+//    选中行列的内容/最终价/图片按新行列号重映射；
 //  · 没有格式改动时，不动原件的样式表。
 import { DOMParser, XMLSerializer } from '@xmldom/xmldom';
 globalThis.DOMParser = DOMParser;
@@ -94,8 +95,8 @@ console.log('== 带图版：没有格式改动时不动原件的样式表');
   eq(text(out, 'xl/styles.xml'), text(orig, 'xl/styles.xml'), 'styles.xml 与原件逐字节一致');
 }
 
-/* ================= 带图版勾选：未选行列隐藏，不删 ================= */
-console.log('== 带图版勾选：未选的行 / 列隐藏，结构与图片保留');
+/* ================= 带图版勾选：未选行列真删（2026-10-15 改判） ================= */
+console.log('== 带图版勾选：未选的行 / 列真删，选中内容重映射');
 {
   const parsedCust = parseSheet(readWorkbook(ORIG), 'Sheet1');
   const inquiry = {
@@ -110,27 +111,30 @@ console.log('== 带图版勾选：未选的行 / 列隐藏，结构与图片保�
     finalPrices: new Map([['L3', 660.2], ['L5', 282.2]]),
     selectedColKeys: new Set(['c0', 'c4', 'final']),
   });
+  ok(picked.exportSelection && picked.exportSelection.keepRows.size === 4,
+    '保留行 = 标题 + 表头 + L3 + L5 共 4 行');
+  eq([...picked.exportSelection.keepCols].sort((a, b) => a - b), [0, 4, 7],
+    '保留列 = A + E + 最终报价（原 H 列）');
   const out = buildQuoteXlsx({ originalBytes: ORIG, sheetName: 'Sheet1', sheet: picked });
-  const parts = unzipSync(out);
-  const root = parseXml(text(parts, 'xl/worksheets/sheet1.xml')).documentElement;
-  const rowEl = (n) => descendants(root, 'row').find((x) => x.getAttribute('r') === String(n));
-  const hiddenRow = (n) => !!rowEl(n) && rowEl(n).getAttribute('hidden') === '1';
-  // Excel 行号 = 物理行 + 1：L3 在第 3 行，L4 在第 4 行，L5 在第 5 行
-  ok(!hiddenRow(3), '已选的 L3 行不隐藏');
-  ok(hiddenRow(4), '未选的 L4 行隐藏');
-  ok(!hiddenRow(5), '已选的 L5 行不隐藏');
-  ok(!hiddenRow(1) && !hiddenRow(2), '标题行 / 表头行不隐藏');
-  const colHidden = (n) => descendants(root, 'col').some((c) =>
-    Number(c.getAttribute('min')) <= n && n <= Number(c.getAttribute('max')) && c.getAttribute('hidden') === '1');
-  // Excel 列号 = 0 起列号 + 1：选中 A、E、最终报价（H 列，索引 7）
-  ok(!colHidden(1) && !colHidden(5) && !colHidden(8), '已选的 A / E / 最终报价列不隐藏');
-  ok(colHidden(2) && colHidden(3) && colHidden(4), '未选的 B / C / D 列隐藏');
-  ok(colHidden(6) && colHidden(7), '未选的 F / G 列隐藏');
   const back = parseSheet(readWorkbook(out), 'Sheet1');
-  eq(back.rowCount, 39, '结构保留：行数仍是 39（隐藏而不删）');
-  eq(back.images.length, 24, '结构保留：图片仍是 24 张');
-  eq(back.cells.find((c) => c.r === 2 && c.c === 7)?.value, 660.2, '已选 L3 的最终价写入');
-  ok(!back.cells.find((c) => c.r === 3 && c.c === 7), '未选 L4 的最终价留空');
+  eq(back.rowCount, 4, '导出行数 = 4（未选行真删，不是隐藏）');
+  eq(back.colCount, 3, '导出列数 = 3（未选列真删）');
+  eq(back.cells.find((c) => c.r === 2 && c.c === 2)?.value, 660.2, '已选 L3 的最终价在新列位（第 3 列）');
+  eq(back.cells.find((c) => c.r === 3 && c.c === 2)?.value, 282.2, '已选 L5 的最终价跟到新行位（第 4 行）');
+  eq(back.images.length, 0, '图片列没勾选 → 文件里一张图都没有（不随未选列泄漏）');
+
+  // 勾上图片列时：选中行上的图留下并锚到新列位
+  const pickedImg = buildPicturedExportSheet({
+    inquiry,
+    selectedLineIds: new Set(['L3']),
+    finalPrices: new Map([['L3', 660.2]]),
+    selectedColKeys: new Set(['c0', 'c5', 'final']),
+  });
+  const outImg = buildQuoteXlsx({ originalBytes: ORIG, sheetName: 'Sheet1', sheet: pickedImg });
+  const backImg = parseSheet(readWorkbook(outImg), 'Sheet1');
+  const expectImg = parsedCust.images.filter((i) => i.row === 2 && i.col === 5).length;
+  eq(backImg.images.length, expectImg, '勾了图片列：L3 行的图留下（' + expectImg + ' 张）');
+  ok(backImg.images.every((i) => i.row === 2 && i.col === 1), '留下的图锚在新列位（图片列现为第 2 列）');
 }
 
 /* ================= 普通版：样式从工作层写出 ================= */
@@ -147,11 +151,21 @@ console.log('== 普通版：样式从工作层写出');
   const parts2 = unzipSync(buildMinimalXlsx('Sheet1', withEmpty));
   eq(styleOf(parts2, 'C10').fill, 'FF00FF00', '空格子的底色也写出（C10）');
 }
-console.log('== 普通版：没有样式改动时不生成样式表');
+console.log('== 普通版：没有样式时不生成样式表');
 {
-  const plain = sheetToFortune(parseSheet(readWorkbook(ORIG), 'Sheet1'), 0);
+  // 真·无样式：把导入带回的样式键全部剥掉的工作层（格式继承后，导入的
+  // 表本来就带着原件样式，不再是"无样式"——那部分由 flow 测试覆盖）
+  const imported = sheetToFortune(parseSheet(readWorkbook(ORIG), 'Sheet1'), 0);
+  const plain = {
+    ...imported,
+    celldata: imported.celldata.map((cd) => {
+      const v = { ...cd.v };
+      for (const k of ['bl', 'it', 'un', 'cl', 'fs', 'fc', 'bg', 'ht', 'vt', 'tb', 'ff']) delete v[k];
+      return { ...cd, v };
+    }),
+  };
   const parts = unzipSync(buildMinimalXlsx('Sheet1', plain));
-  ok(!parts['xl/styles.xml'], '无样式改动 → 不生成 styles.xml');
+  ok(!parts['xl/styles.xml'], '无样式 → 不生成 styles.xml');
 }
 
 /* ================= 转订单数量列：用户指定优先 ================= */

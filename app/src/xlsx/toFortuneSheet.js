@@ -57,7 +57,8 @@ export function sheetToFortune(parsed, sheetIndex = 0) {
 
   const celldata = [];
   for (const cell of parsed.cells) {
-    const v = {};
+    // 原件样式键先铺底（格式继承：编辑器里能看到原格式，导出时才谈得上继承）
+    const v = { ...(cell.style || {}) };
     if (cell.value !== null && cell.value !== undefined) {
       v.v = cell.value;
       v.m = String(cell.value);

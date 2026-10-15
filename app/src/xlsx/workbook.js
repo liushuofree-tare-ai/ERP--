@@ -120,7 +120,81 @@ export function readWorkbook(input) {
   // WPS 单元格图目录（工作簿级，与具体工作表无关）
   const cellImages = parseCellImageCatalog(parts);
 
-  return { parts, sheets, sharedStrings, cellImages };
+  const wb = { parts, sheets, sharedStrings, cellImages };
+  // 单元格样式表（格式继承）：原件的字体/填充/对齐按 xf 下标解析好，
+  // parseSheet 读格时按 s 属性带出——此前样式完全不进工作层，编辑器
+  // 里看不到原格式，普通版导出更是把格式全丢了（用户实测 2026-10-15）。
+  wb.styles = parseStyleTable(parts);
+  return wb;
+}
+
+/* ---------- 样式表：xl/styles.xml → 每格的 FortuneSheet 样式键 ---------- */
+
+/** ARGB（FFRRGGBB）→ '#rrggbb'；theme/indexed 等无法确值的返回 null */
+function argbToHex(rgb) {
+  if (typeof rgb !== 'string') return null;
+  const m = /^FF([0-9a-fA-F]{6})$/.exec(rgb.trim());
+  return m ? '#' + m[1].toLowerCase() : null;
+}
+
+/**
+ * 解析 styles.xml → { byIndex: [fortuneStyle|null, …] }（下标 = 单元格 s 属性）。
+ * 只翻译工作层能表达的子集：加粗/斜体/下划线/删除线/字号/字色/底色/
+ * 水平与垂直对齐/换行。边框与数字格式不进工作层——带图版靠回写时
+ * 与原件 xf 合并来保全（见 styles.js 的 xfForWithBase），普通版不带。
+ */
+function parseStyleTable(parts) {
+  const empty = { byIndex: [] };
+  const text = partText(parts, 'xl/styles.xml');
+  if (!text) return empty;
+  let doc;
+  try { doc = parseXml(text); } catch (e) { return empty; }
+  const root = doc.documentElement;
+  const fontsEl = descendants(root, 'fonts')[0];
+  const fillsEl = descendants(root, 'fills')[0];
+  const xfsEl = descendants(root, 'cellXfs')[0];
+  if (!fontsEl || !fillsEl || !xfsEl) return empty;
+  const fonts = children(fontsEl, 'font').map((f) => {
+    const sz = descendants(f, 'sz')[0];
+    const color = descendants(f, 'color')[0];
+    const u = descendants(f, 'u')[0];
+    return {
+      bold: descendants(f, 'b').length > 0,
+      italic: descendants(f, 'i').length > 0,
+      strike: descendants(f, 'strike').length > 0,
+      underline: !!u && u.getAttribute('val') !== 'none',
+      size: sz ? parseFloat(sz.getAttribute('val')) : null,
+      color: color ? argbToHex(color.getAttribute('rgb')) : null,
+    };
+  });
+  const fills = children(fillsEl, 'fill').map((fl) => {
+    const pf = descendants(fl, 'patternFill')[0];
+    if (!pf || pf.getAttribute('patternType') !== 'solid') return null;
+    const fg = descendants(pf, 'fgColor')[0];
+    return fg ? argbToHex(fg.getAttribute('rgb')) : null;
+  });
+  const byIndex = children(xfsEl, 'xf').map((xf) => {
+    const font = fonts[Number(xf.getAttribute('fontId'))] || {};
+    const fill = fills[Number(xf.getAttribute('fillId'))];
+    const al = descendants(xf, 'alignment')[0];
+    const st = {};
+    if (font.bold) st.bl = 1;
+    if (font.italic) st.it = 1;
+    if (font.underline) st.un = 1;
+    if (font.strike) st.cl = 1;
+    if (font.size && Number.isFinite(font.size)) st.fs = font.size;
+    if (font.color) st.fc = font.color;
+    if (fill) st.bg = fill;
+    if (al) {
+      const h = al.getAttribute('horizontal');
+      if (h === 'center') st.ht = 1; else if (h === 'right') st.ht = 2;
+      const v = al.getAttribute('vertical');
+      if (v === 'center') st.vt = 1; else if (v === 'bottom') st.vt = 2;
+      if (al.getAttribute('wrapText') === '1' || al.getAttribute('wrapText') === 'true') st.tb = 2;
+    }
+    return Object.keys(st).length ? st : null;
+  });
+  return { byIndex };
 }
 
 /** 解析 xl/cellimages.xml：ID → media 信息 */
@@ -322,6 +396,13 @@ function readCell(wb, cEl, pos) {
   if (!has && !formula) return { keep: false, imageId: null, out: null };
   const out = { r: pos.r, c: pos.c, value: has ? value : null };
   if (formula) out.formula = formula;
+  // 样式（s 属性 → xf 下标 → 工作层样式键）：有值的格才带，纯样式空格
+  // 仍不进解析结果（与此前"只含非空/有公式的格"的口径一致，不惊动行列统计）
+  const sAttr = cEl.getAttribute('s');
+  if (sAttr !== null && sAttr !== '' && wb.styles && wb.styles.byIndex) {
+    const st = wb.styles.byIndex[Number(sAttr)];
+    if (st) out.style = st;
+  }
   return { keep: true, imageId: null, out };
 }
 

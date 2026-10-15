@@ -177,17 +177,22 @@ console.log('== 带图版导出');
     originalBytes: custBytes, sheetName: 'Sheet1', sheet: picSheet,
   });
   const out = parseSheet(readWorkbook(bytes), 'Sheet1');
-  eq(out.images.length, 24, '带图版图片 24 张全在');
+  // 勾选=真删（2026-10-15 改判）：只选 2 行 → 文件里只剩标题+表头+这 2 行，
+  // 未选行连数据带图一并消失，不再是"隐藏起来还在原表里"
+  eq(out.rowCount, 4, '带图版行数 = 标题 + 表头 + 选中 2 行 = 4（未选行真删）');
+  const keptImgRows = new Set([2, unchosenRow.inquiryRow]);
+  const expectedImgs = custParsed.images.filter((i) => keptImgRows.has(i.row)).length;
+  eq(out.images.length, expectedImgs, '带图版图片只剩选中行上的（' + expectedImgs + ' 张）');
+  ok(out.images.every((i) => i.row === 2 || i.row === 3), '带图版图片锚点已重映射到新行号');
   ok(out.merges.some((m) => m.r === 0 && m.c === 0 && m.rs === 1 && m.cs === 7),
     '带图版原件合并 A1:G1 还在', out.merges);
   eq(out.colCount, 8, '带图版列数 = 原 7 列 + 最终报价 = 8');
-  eq(out.rowCount, 39, '带图版行数 = 原 39 行');
   eq(cellOf(out, 1, 7), '最终报价', '带图版最终报价列表头在 H 列');
   eq(cellOf(out, 2, 7), 660.2, '带图版 L3 最终价 = 660.20');
   eq(cellOf(out, 3, 7), undefined,
-    '带图版 L4 虽已定厂但没被选中 → 最终价留空（只报选中的部分）');
-  eq(cellOf(out, unchosenRow.inquiryRow, 7), undefined,
-    '带图版未定厂行最终价留空');
+    '带图版选中行里未定厂的那行（现第 3 行）最终价留空');
+  ok(!out.cells.some((c) => c.value === 'F081301110HD'),
+    '带图版未选中的 L4 行已真删（OE 在文件里找不到）');
   eq(cellOf(out, 2, 6), 'F208401100', '带图版客户原值（OE）原样回写');
   eq(cellOf(out, 2, 4), '散热器格栅', '带图版客户原值（产品）原样回写');
   leakCheck(out, '带图版');

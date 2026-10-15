@@ -63,7 +63,7 @@ const OVERLAY_STYLE = {
 // 行数据与数量列由父组件现算后传入；本组件只负责布局与交互转交。
 function ConvertView({
   inquiry, rows, customerName, qtyColOptions, qtyCol, onQtyColChange,
-  sheetQtys, qtyColumnName, onCreate, onViewOrder, onBack,
+  sheetQtys, qtyColumnName, onCreate, onViewOrder, onBack, onExportCustomer,
 }) {
   const inqName = (inquiry && inquiry.source && inquiry.source.fileName) || '';
   return (
@@ -94,6 +94,7 @@ function ConvertView({
           onQtyColChange={onQtyColChange}
           onCreate={onCreate}
           onViewOrder={onViewOrder}
+          onExportCustomer={onExportCustomer}
           onClose={onBack}
         />
       )}
@@ -528,6 +529,13 @@ const NavIcon = {
       <path d="M12 3.5v17M5 20.5h14" />
       <path d="M12 6.2L5.2 6.2M12 6.2l6.8 0" />
       <path d="M5.2 6.2L2.8 11a3.4 3.4 0 0 0 4.8 0L5.2 6.2zM18.8 6.2L16.4 11a3.4 3.4 0 0 0 4.8 0L18.8 6.2z" />
+    </svg>
+  ),
+  convert: (
+    <svg {...icoProps}>
+      <path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5z" />
+      <path d="M14 3.5v5h5" />
+      <path d="M9 13.5h6M12 10.8v5.4" />
     </svg>
   ),
   orders: (
@@ -2463,11 +2471,14 @@ function App() {
     setShowExport(name === 'export');
   }
 
-  // 切换单据（询价单 ↔ 报价单、换另一张询价单）时收起转订单 / 对客导出 / 最终报价详情，
-  // 免得切回来时它们自己冒出来；「定价设置」跨单据保留（两种单据都用得到）
+  // 切换单据（询价单 ↔ 报价单、换另一张询价单）时收起对客导出 / 最终报价详情
+  // 这类挂在表格上的浮层；「定价设置」跨单据保留（两种单据都用得到）。
+  // 转订单【不】在这里收：它是独立模块（goView 管辖），从比价页跳
+  // 转订单时要先 switchDoc 到询价单再 goView('convert')，若这里按
+  // activeDocId 变化把它关掉，导航刚点完就被 effect 打回表格工作区
+  // ——用户实测的"点转订单还在询价单表格里"正是这条竞态（2026-10-15 修）。
   useEffect(() => {
     setFqOpen(false);
-    setShowConvert(false);
     setShowExport(false);
   }, [activeDocId]);
 
@@ -2662,8 +2673,10 @@ function App() {
     });
   }
   // 最终报价条/导出面板的数据（只在看询价单时算；与 buildModel 一样先写回再读）
-  const fqCtx = (!showCompare && !showOrders && !showOverview && !showAi &&
-    !showCustomers && !showFactories && !activeIsQuote) ? finalPriceContext() : null;
+  // 转订单是独立模块：它在场时也要算（它读的是当前询价单，与当前活动
+  // 文档是不是报价单无关——从报价单跳进转订单不能因为 activeIsQuote 就没数据）
+  const fqCtx = (showConvert || (!showCompare && !showOrders && !showOverview && !showAi &&
+    !showCustomers && !showFactories && !activeIsQuote)) ? finalPriceContext() : null;
   // 总览/AI 的数据：打开时按当前事实源现算（与 buildModel 一样先写回再读）
   const overviewModel = showOverview ? buildOverview(currentStateForReports()) : null;
   const aiDigest = showAi ? buildAiDigest(currentStateForReports()) : '';
@@ -2671,9 +2684,10 @@ function App() {
   const customerModel = showCustomers ? buildCustomerModel(currentStateForReports()) : null;
   const factoryModel = showFactories ? buildFactoryModel(currentStateForReports()) : null;
   const exportModel = (showExport && fqCtx) ? buildExportModel() : null;
-  // 转订单面板的行（打开时现算：定厂/最终价/已转状态都是派生的）
+  // 转订单模块的行（打开时现算：定厂/最终价/已转状态都是派生的；
+  // 独立模块口径：不因当前活动文档是报价单就落空，来源恒为当前询价单）
   const convertRows = (showConvert && !showCompare && !showOrders && !showOverview && !showAi &&
-    !showCustomers && !showFactories && !activeIsQuote)
+    !showCustomers && !showFactories)
     ? buildConvertRows() : null;
   // 最终报价的算式清单（包 12 透明化）：有定厂行且在表格区时才算
   const fqBreakdowns = (fqCtx && fqCtx.inq && fqCtx.finalPrices.size > 0)
@@ -2778,6 +2792,7 @@ function App() {
           询价单 / 各厂报价单
         </div>
         {navBtn('compare', 'compare', '比价定厂', NavIcon.compare)}
+        {navBtn('convert', 'convert', '转订单', NavIcon.convert)}
         {navBtn('orders', 'orders', '订单', NavIcon.orders, orders.length)}
         {navBtn('customers', 'customers', '客户管理', NavIcon.customers)}
         {navBtn('factories', 'factories', '工厂管理', NavIcon.factories)}
@@ -3107,6 +3122,7 @@ function App() {
           qtyColumnName={convQtyInfo ? convQtyInfo.header : null}
           onCreate={handleCreateOrder}
           onViewOrder={(orderNo) => jumpToOrder(orderNo)}
+          onExportCustomer={goCompareExport}
           onBack={() => goView('sheet')}
         />
       ) : showData ? (

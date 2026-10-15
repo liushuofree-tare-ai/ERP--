@@ -14,7 +14,7 @@
 // 没有原件时（示例数据）退化为按现值现生成一份最小 xlsx。
 import { writeZip, partText } from './zip.js';
 import { parseXml, serializeXml, createEl, children, firstChild } from './xml.js';
-import { readWorkbook, parseCellRef } from './workbook.js';
+import { readWorkbook, parseCellRef, parseRangeRef } from './workbook.js';
 import { collectPlacements, collectExportPlacements, imagifyParts, hasSheetDrawing } from './imagify.js';
 import { StyleBook, specOf, ensureStylesPart } from './styles.js';
 
@@ -332,14 +332,17 @@ function applyRowLayout(doc, sheetData, sheet) {
   }
 }
 
-/** 工作层里被用户改过样式的格子 → 原件样式表里的 xf（只写有改动的格子） */
+/** 工作层里被用户改过样式的格子 → 在原件 xf 基础上合并（只覆盖改过的键，
+ *  原件的字体名/边框/数字格式等没动过的属性全部保留——见 styles.js） */
 function applyWorkStyles(doc, sheetData, sheet, book) {
   for (const cd of (sheet && sheet.celldata) || []) {
     const spec = specOf(cd.v);
     if (!spec) continue;
     const rowEl = findOrCreateRow(doc, sheetData, cd.r + 1);
     const cEl = findOrCreateCell(doc, rowEl, cd.r, cd.c);
-    cEl.setAttribute('s', String(book.xfFor(spec)));
+    const sAttr = cEl.getAttribute('s');
+    const baseIdx = sAttr !== null && sAttr !== '' ? Number(sAttr) : null;
+    cEl.setAttribute('s', String(book.xfForWithBase(spec, Number.isInteger(baseIdx) ? baseIdx : null)));
   }
 }
 
@@ -459,6 +462,188 @@ export function buildMinimalXlsx(sheetName, sheet, imageBytes) {
   return writeZip(parts);
 }
 
+/* ---------- 对客带图版的勾选：真删未选行列（2026-10-15 修） ----------
+ * 旧方案是"隐藏不删除"：文件里未选行列的数据全都在，客户取消隐藏
+ * 就能看到，用户的勾选等于没勾（用户实测投诉）。现改为在回写后的
+ * 工作表 XML 上真删：未选行整行移除、未选列的格子移除，其余行列
+ * 按保留顺序重新编号（行列号连续化），合并区只保留完整落在保留
+ * 区内的并同步重映射，图片按重映射后的工作层模型重新锚定。
+ * 公式单元格的引用不随行列移动改写（与既有回写口径一致：公式格
+ * 本就受原件保护、极少出现在客户询价单的数据区）。 */
+
+/** 保留集合 → { map: old→new, sorted }（new 按保留顺序从 0 连续编号） */
+function selectionMaps(keepRows, keepCols) {
+  const rows = [...keepRows].sort((a, b) => a - b);
+  const cols = [...keepCols].sort((a, b) => a - b);
+  return {
+    rowMap: new Map(rows.map((r, i) => [r, i])),
+    colMap: new Map(cols.map((c, i) => [c, i])),
+    rows, cols,
+  };
+}
+
+/** 工作层模型按保留行列重映射（只供图片摆位：celldata/图片/几何同步平移） */
+export function remapSheetBySelection(sheet, keepRows, keepCols) {
+  const { rowMap, colMap } = selectionMaps(keepRows, keepCols);
+  const cfg = (sheet && sheet.config) || {};
+  const remapLen = (obj, map) => {
+    const out = {};
+    for (const [k, v] of Object.entries(obj || {})) {
+      const n = map.get(Number(k));
+      if (n !== undefined) out[n] = v;
+    }
+    return out;
+  };
+  const columnlen = remapLen(cfg.columnlen, colMap);
+  const rowlen = remapLen(cfg.rowlen, rowMap);
+  // 原始像素前缀（浮动图按 left/top 落位时先认出它原来在哪格）
+  const dw = sheet.defaultColWidth || 73;
+  const dh = sheet.defaultRowHeight || 19;
+  const origColW = (c) => ((cfg.columnlen || {})[c] != null ? cfg.columnlen[c] : dw);
+  const origRowH = (r) => ((cfg.rowlen || {})[r] != null ? cfg.rowlen[r] : dh);
+  const newColW = (c) => (columnlen[c] != null ? columnlen[c] : dw);
+  const newRowH = (r) => (rowlen[r] != null ? rowlen[r] : dh);
+  const prefix = (fn, map) => {
+    const pre = [0];
+    const inv = [...map.entries()].sort((a, b) => a[0] - b[0]).map(([, n]) => n);
+    // new 前缀按新序累计保留下来的原始宽/高
+    const byOld = [...map.keys()].sort((a, b) => a - b);
+    for (const old of byOld) pre.push(pre[pre.length - 1] + fn(old));
+    return { pre, byOld };
+  };
+  const colPre = prefix(origColW, colMap);
+  const rowPre = prefix(origRowH, rowMap);
+  const newColPre = [0];
+  for (const old of colPre.byOld) newColPre.push(newColPre[newColPre.length - 1] + newColW(colMap.get(old)));
+  const newRowPre = [0];
+  for (const old of rowPre.byOld) newRowPre.push(newRowPre[newRowPre.length - 1] + newRowH(rowMap.get(old)));
+
+  const celldata = [];
+  for (const cd of (sheet && sheet.celldata) || []) {
+    const nr = rowMap.get(cd.r);
+    const nc = colMap.get(cd.c);
+    if (nr === undefined || nc === undefined) continue;
+    celldata.push({ ...cd, r: nr, c: nc });
+  }
+  const merges = {};
+  for (const m of Object.values(cfg.merge || {})) {
+    if (!m) continue;
+    let okAll = true;
+    for (let r = m.r; r < m.r + m.rs && okAll; r++) if (!rowMap.has(r)) okAll = false;
+    for (let c = m.c; c < m.c + m.cs && okAll; c++) if (!colMap.has(c)) okAll = false;
+    if (!okAll) continue;
+    const nr = rowMap.get(m.r);
+    const nc = colMap.get(m.c);
+    merges[nr + '_' + nc] = { r: nr, c: nc, rs: m.rs, cs: m.cs };
+  }
+  const images = [];
+  for (const img of (sheet && sheet.images) || []) {
+    if (img.kind === 'cell' || img.anchorRow !== undefined) {
+      const nr = rowMap.get(img.anchorRow);
+      const nc = colMap.get(img.anchorCol);
+      if (nr === undefined || nc === undefined) continue;
+      images.push({
+        ...img, anchorRow: nr, anchorCol: nc,
+        left: newColPre[nc], top: newRowPre[nr],
+      });
+      continue;
+    }
+    // 浮动图：按 left/top 认出原锚格，锚格被删则图一并删
+    const findIdx = (pre, pos) => { let i = 0; while (i < pre.length - 1 && pre[i + 1] <= pos) i++; return i; };
+    const oc = colPre.byOld[findIdx(colPre.pre, img.left || 0)];
+    const or = rowPre.byOld[findIdx(rowPre.pre, img.top || 0)];
+    if (oc === undefined || or === undefined || !colMap.has(oc) || !rowMap.has(or)) continue;
+    const nc = colMap.get(oc);
+    const nr = rowMap.get(or);
+    images.push({
+      ...img,
+      left: newColPre[nc] + ((img.left || 0) - colPre.pre[colPre.byOld.indexOf(oc)]),
+      top: newRowPre[nr] + ((img.top || 0) - rowPre.pre[rowPre.byOld.indexOf(or)]),
+    });
+  }
+  return {
+    ...sheet,
+    row: rowMap.size,
+    column: colMap.size,
+    celldata,
+    images,
+    config: { ...cfg, merge: merges, columnlen, rowlen, rowhidden: {}, colhidden: {} },
+  };
+}
+
+/** 在回写后的工作表 XML 上真删未选行列并重新编号（原地改 parts） */
+function applySelectionToSheetXml(parts, sheetPath, keepRows, keepCols) {
+  const text = partText(parts, sheetPath);
+  if (!text) return;
+  const { rowMap, colMap } = selectionMaps(keepRows, keepCols);
+  const doc = parseXml(text);
+  const root = doc.documentElement;
+  const sheetData = firstChild(root, 'sheetData');
+  if (!sheetData) return;
+
+  // 列定义：按保留列重建（每列一条，属性沿用回写后的 <cols>）
+  const oldRanges = readColRanges(root);
+  const attrOfCol = (c) => {
+    const cn = c + 1;
+    const r = oldRanges.find((x) => x.min <= cn && cn <= x.max);
+    return r ? { ...r.attrs } : {};
+  };
+  const newRanges = [...colMap.entries()].sort((a, b) => a[1] - b[1])
+    .map(([old, n]) => ({ min: n + 1, max: n + 1, attrs: attrOfCol(old) }));
+  writeColRanges(doc, root, newRanges);
+
+  // 行列真删 + 重新编号
+  for (const rowEl of [...children(sheetData, 'row')]) {
+    const oldR = parseInt(rowEl.getAttribute('r') || '0', 10) - 1;
+    const newR = rowMap.get(oldR);
+    if (newR === undefined) { sheetData.removeChild(rowEl); continue; }
+    rowEl.setAttribute('r', String(newR + 1));
+    for (const cEl of [...children(rowEl, 'c')]) {
+      const pos = parseCellRef(cEl.getAttribute('r'));
+      if (!pos) continue;
+      const newC = colMap.get(pos.c);
+      if (newC === undefined) { rowEl.removeChild(cEl); continue; }
+      cEl.setAttribute('r', refOf(newR, newC));
+    }
+  }
+
+  // 合并区：完整落在保留区内的才留，并重映射；其余去掉
+  const mergesEl = firstChild(root, 'mergeCells');
+  if (mergesEl) {
+    const kept = [];
+    for (const mc of children(mergesEl, 'mergeCell')) {
+      const m = parseRangeRef(mc.getAttribute('ref'));
+      if (!m) continue;
+      let okAll = true;
+      for (let r = m.r; r < m.r + m.rs && okAll; r++) if (!rowMap.has(r)) okAll = false;
+      for (let c = m.c; c < m.c + m.cs && okAll; c++) if (!colMap.has(c)) okAll = false;
+      if (!okAll) continue;
+      kept.push(refOf(rowMap.get(m.r), colMap.get(m.c)) + ':' +
+        refOf(rowMap.get(m.r + m.rs - 1), colMap.get(m.c + m.cs - 1)));
+    }
+    root.removeChild(mergesEl);
+    if (kept.length) {
+      const el = createEl(doc, 'mergeCells');
+      el.setAttribute('count', String(kept.length));
+      for (const ref of kept) {
+        const mc = createEl(doc, 'mergeCell');
+        mc.setAttribute('ref', ref);
+        el.appendChild(mc);
+      }
+      // mergeCells 在 sheetData 之后（OOXML 顺序），其余尾部元素之前尽量靠前
+      const sd = firstChild(root, 'sheetData');
+      if (sd && sd.nextSibling) root.insertBefore(el, sd.nextSibling);
+      else root.appendChild(el);
+    }
+  }
+
+  const dimEl = firstChild(root, 'dimension');
+  if (dimEl && rowMap.size && colMap.size) {
+    dimEl.setAttribute('ref', 'A1:' + refOf(rowMap.size - 1, colMap.size - 1));
+  }
+  parts.set(sheetPath, encoder.encode(XML_DECL + serializeXml(doc)));
+}
+
 /**
  * 生成下载件字节：
  *   有原件 → 在原件上就地回写当前值（格式/合并/其它表全保留），
@@ -474,7 +659,20 @@ export function buildQuoteXlsx({ originalBytes, sheetName, sheet, imageBytes } =
     const wb = readWorkbook(originalBytes);
     const meta = wb.sheets.find((s) => s.name === sheetName) || wb.sheets[0];
     applyValuesToSheet(wb.parts, meta.path, sheet);
-    const placements = collectPlacements(sheet, imageBytes);
+    // 对客勾选（带图版）：sheet.exportSelection 在场且不是全选时真删未选行列。
+    // 回写先按原始位置落值/格式，再删行删列，最后图片按重映射模型摆位。
+    const sel = sheet && sheet.exportSelection;
+    let placementsSheet = sheet;
+    if (sel && sel.keepRows && sel.keepCols) {
+      const totalRows = (sheet && sheet.row) || 0;
+      const totalCols = (sheet && sheet.column) || 0;
+      const isIdentity = sel.keepRows.size >= totalRows && sel.keepCols.size >= totalCols;
+      if (!isIdentity) {
+        placementsSheet = remapSheetBySelection(sheet, sel.keepRows, sel.keepCols);
+        applySelectionToSheetXml(wb.parts, meta.path, sel.keepRows, sel.keepCols);
+      }
+    }
+    const placements = collectPlacements(placementsSheet, imageBytes);
     // 只要原表挂过 drawing（标准浮动图）或存在 WPS 单元格图体系，就要走一次
     // imagify——哪怕 placements 为空：用户把图全删了，导出件里的旧锚点必须
     // 一并清掉，否则删掉的图会"复活"（BUG H3）。

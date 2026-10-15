@@ -136,7 +136,7 @@ export default function QuoteExportPanel({
         </span>
         <span style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}>
           <b>带图版</b>
-          <span style={{ color: '#888' }}>客户原表回写 + 最终报价列（带原格式与图片）</span>
+          <span style={{ color: '#888' }}>客户原表回写 + 最终报价列（带原格式与图片，只含勾选的行和列，未勾选的直接不出现在文件里）</span>
           <button className="exp-pic-download" onClick={() => fire('pictured', 'download')} style={dlBtn}>下载</button>
           {canShareFiles && (
             <button className="exp-pic-share" onClick={() => fire('pictured', 'share')} style={shareBtn}>发送到微信…</button>

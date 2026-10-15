@@ -162,10 +162,10 @@ export default function CompareView({
               <>已定厂 <b>{nextStep.chosenCount}</b> 行。点『<b>生成最终报价</b>』把对客价写回询价单（导给客户用），生成完就能转订单或对客导出。</>
             )}
             {nextStep.kind === 'convert' && (
-              <>最终报价已经生成，已定厂 <b>{nextStep.chosenCount}</b> 行。下一步：<b>转订单</b>；也可以先对客导出，发给客户确认。</>
+              <>最终报价已经生成，已定厂 <b>{nextStep.chosenCount}</b> 行。下一步：<b>转订单</b>（在转订单模块里选数量列），转完再<b>导出给客户</b>。</>
             )}
             {nextStep.kind === 'convert-all' && (
-              <>有报价的行都定好厂了，最终报价也生成好了。下一步：<b>转订单</b>。</>
+              <>有报价的行都定好厂了，最终报价也生成好了。下一步：<b>转订单</b>（选数量列），转完再<b>导出给客户</b>。</>
             )}
           </div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 8 }}>

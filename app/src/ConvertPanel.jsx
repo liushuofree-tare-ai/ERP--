@@ -10,7 +10,7 @@ import React, { useMemo, useState } from 'react';
 //   填完仍可逐行改（底线 5）。
 export default function ConvertPanel({
   rows, customerName, onCreate, onClose, sheetQtys, qtyColumnName, onViewOrder,
-  qtyColOptions, qtyCol, onQtyColChange,
+  qtyColOptions, qtyCol, onQtyColChange, onExportCustomer,
 }) {
   // 包 14：生成成功后不再自动跳走——面板里出成功提示，用户点
   // 「查看这张订单」再跳到订单页看那一张（onCreate 返回新单号）。
@@ -116,7 +116,7 @@ export default function ConvertPanel({
           padding: '8px 12px', marginTop: 8, display: 'flex', gap: 10,
           alignItems: 'center', flexWrap: 'wrap',
         }}>
-          <span className="conv-success-text">订单 <b>{createdNo}</b> 已生成。</span>
+          <span className="conv-success-text">订单 <b>{createdNo}</b> 已生成。流程下一步：把报价导出给客户（可勾选导出范围）。</span>
           <button
             className="conv-view-order"
             onClick={() => onViewOrder && onViewOrder(createdNo)}
@@ -125,6 +125,16 @@ export default function ConvertPanel({
               borderRadius: 8, padding: '4px 14px', cursor: 'pointer',
             }}
           >查看这张订单</button>
+          {onExportCustomer && (
+            <button
+              className="conv-go-export"
+              onClick={() => onExportCustomer()}
+              style={{
+                border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
+                borderRadius: 8, padding: '4px 14px', cursor: 'pointer',
+              }}
+            >导出给客户</button>
+          )}
           <button
             className="conv-success-more"
             onClick={() => setCreatedNo(null)}

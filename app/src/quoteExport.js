@@ -321,10 +321,36 @@ export function applyFinalQuoteColumn(sheet, headerRow, finalPrices, ledger) {
 
 /* ---------- 普通版：只含选中行列的干净新表 ---------- */
 
-function copyCellInto(celldata, sheet, r, c, nr, nc) {
+/** 工作层一格的完整 v（按 'r,c' 索引）：普通版导出要连样式一起带走 */
+function cellVMapOf(sheet) {
+  const map = new Map();
+  for (const cd of (sheet && sheet.celldata) || []) {
+    if (cd && cd.v) map.set(cd.r + ',' + cd.c, cd.v);
+  }
+  return map;
+}
+
+const STYLE_KEYS = ['bl', 'it', 'un', 'cl', 'fs', 'fc', 'bg', 'ht', 'vt', 'tb', 'ff'];
+function hasStyleKeys(v) {
+  return !!v && STYLE_KEYS.some((k) => v[k] !== undefined && v[k] !== null && v[k] !== '');
+}
+
+function copyCellInto(celldata, sheet, r, c, nr, nc, vMap) {
   const val = cellValue(sheet, r, c);
-  if (val === null || val === undefined || val === '') return;
-  celldata.push({ r: nr, c: nc, v: { v: val, m: String(val) } });
+  const origV = vMap ? vMap.get(r + ',' + c) : null;
+  if (val === null || val === undefined || val === '') {
+    // 没值但有样式的格（底色表头等）也要带出，否则格式在普通版里丢
+    if (hasStyleKeys(origV)) {
+      const nv = { ...origV };
+      delete nv.v; delete nv.m; delete nv.f; delete nv.mc;
+      celldata.push({ r: nr, c: nc, v: nv });
+    }
+    return;
+  }
+  // 值 + 工作层样式键一起带（格式继承）：公式与合并标记不进新表
+  const nv = { ...(origV || {}), v: val, m: String(val) };
+  delete nv.f; delete nv.mc;
+  celldata.push({ r: nr, c: nc, v: nv });
 }
 
 /**
@@ -347,22 +373,23 @@ export function buildPlainExportSheet({ inquiry, selectedLineIds, selectedColKey
   const finalOutCol = finalSelected ? sheetCols.length : null;
 
   const celldata = [];
+  const vMap = cellVMapOf(sheet);
   const rows = inquiryDataRows(inquiry || {});
   const picked = rows.filter((x) => x.lineId && selectedLineIds && selectedLineIds.has(x.lineId));
   let nr = 0;
   // 表头之上的行（标题等）原样带（只取选中列）
   for (let r = 0; r < hr; r++, nr++) {
-    sheetCols.forEach((c, nc) => copyCellInto(celldata, sheet, r, c, nr, nc));
+    sheetCols.forEach((c, nc) => copyCellInto(celldata, sheet, r, c, nr, nc, vMap));
   }
   // 表头行
-  sheetCols.forEach((c, nc) => copyCellInto(celldata, sheet, hr, c, nr, nc));
+  sheetCols.forEach((c, nc) => copyCellInto(celldata, sheet, hr, c, nr, nc, vMap));
   if (finalSelected) {
     celldata.push({ r: nr, c: finalOutCol, v: { v: FINAL_QUOTE_HEADER, m: FINAL_QUOTE_HEADER } });
   }
   nr++;
   // 选中的数据行
   for (const { lineId, row } of picked) {
-    sheetCols.forEach((c, nc) => copyCellInto(celldata, sheet, row, c, nr, nc));
+    sheetCols.forEach((c, nc) => copyCellInto(celldata, sheet, row, c, nr, nc, vMap));
     if (finalSelected) {
       const price = finalPrices ? finalPrices.get(lineId) : undefined;
       if (price !== null && price !== undefined) {
@@ -448,6 +475,19 @@ export function buildPlainExportSheet({ inquiry, selectedLineIds, selectedColKey
  * 过滤成"只剩选中行"，其余行在 applyFinalQuoteColumn 里一律清空——
  * 没被选中的行，最终价格保持空白（SPEC 第四节第 7 项）。
  */
+/**
+ * 带图版导出的规范表 = 询价单当前表本体（回写时由 writeback 贴回客户
+ * 原件，格式/合并/图片全保留），只动「最终报价」列：把 finalPrices
+ * 过滤成"只剩选中行"，其余行在 applyFinalQuoteColumn 里一律清空——
+ * 没被选中的行，最终价格保持空白（SPEC 第四节第 7 项）。
+ *
+ * 勾选口径（2026-10-15 用户实测后改判，覆盖同日早先的"隐藏"方案）：
+ * 未勾选的行列在导出件里【真删】，不留隐藏数据——隐藏等于没删，
+ * 客户取消隐藏就能看到未选内容，勾选形同虚设。这里只把保留集合
+ * 记在 sheet.exportSelection 上，真正的删除与行列/合并/图片重映射
+ * 由 writeback 在回写后的原件 XML 上完成（buildQuoteXlsx）。
+ * 标题行与表头行（0..headerRow）永远保留；不传勾选的维度全保留。
+ */
 export function buildPicturedExportSheet({ inquiry, selectedLineIds, finalPrices, selectedColKeys } = {}) {
   const sheet = inquiry && inquiry.sheet;
   const hr = headerRowOf(inquiry || {});
@@ -458,30 +498,31 @@ export function buildPicturedExportSheet({ inquiry, selectedLineIds, finalPrices
     }
   }
   const withFinal = applyFinalQuoteColumn(sheet, hr, pickedPrices, inquiry && inquiry.ledger).sheet;
-  return applySelectionHiding(withFinal, { headerRow: hr, inquiry, selectedLineIds, selectedColKeys });
-}
+  if (!selectedLineIds && !selectedColKeys) return withFinal;
 
-/**
- * 带图版的勾选（用户拍板，2026-10-15）：未勾选的数据行、未勾选的列在导出件里
- * 隐藏而不删除——删行删列会让图片锚点与原件错位，隐藏则结构、图片、公式全部保留，
- * 客户取消隐藏即可看到完整原表。最终报价列由 'final' 这一项决定显示与否。
- * 不传勾选（undefined）的维度保持原样不隐藏。
- */
-function applySelectionHiding(sheet, { headerRow, inquiry, selectedLineIds, selectedColKeys }) {
-  const cfg = (sheet && sheet.config) || {};
-  const rowhidden = { ...(cfg.rowhidden || {}) };
-  const colhidden = { ...(cfg.colhidden || {}) };
+  const keepRows = new Set();
+  for (let r = 0; r <= hr; r++) keepRows.add(r);
   if (selectedLineIds && inquiry) {
     for (const { lineId, row } of inquiryDataRows(inquiry)) {
-      if (!lineId || !selectedLineIds.has(lineId)) rowhidden[row] = true;
+      if (lineId && selectedLineIds.has(lineId)) keepRows.add(row);
     }
+  } else {
+    for (let r = hr + 1; r < (withFinal.row || 0); r++) keepRows.add(r);
   }
-  if (selectedColKeys && sheet) {
-    const finCol = finalQuoteColOf(sheet, headerRow);
-    for (let c = 0; c < (sheet.column || 0); c++) {
-      const shown = c === finCol ? selectedColKeys.has('final') : selectedColKeys.has('c' + c);
-      if (!shown) colhidden[c] = true;
+  const keepCols = new Set();
+  if (selectedColKeys) {
+    for (const k of selectedColKeys) {
+      if (typeof k === 'string' && k.startsWith('c')) {
+        const n = Number(k.slice(1));
+        if (Number.isInteger(n) && n >= 0) keepCols.add(n);
+      }
     }
+    if (selectedColKeys.has('final')) {
+      const finCol = finalQuoteColOf(withFinal, hr);
+      if (finCol !== null) keepCols.add(finCol);
+    }
+  } else {
+    for (let c = 0; c < (withFinal.column || 0); c++) keepCols.add(c);
   }
-  return { ...sheet, config: { ...cfg, rowhidden, colhidden } };
+  return { ...withFinal, exportSelection: { keepRows, keepCols } };
 }
