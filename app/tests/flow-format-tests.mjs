@@ -115,6 +115,31 @@ console.log('== 转订单独立模块：导航守卫回归（源码级）');
   const convertPanelSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/ConvertPanel.jsx'), 'utf8');
   ok(convertPanelSrc.includes('conv-go-export') && convertPanelSrc.includes('onExportCustomer'),
     '转完订单有「导出给客户」下一步（流程末步衔接）');
+  ok(!effectBody.includes('setShowExportPage(false)') && !effectBody.includes('setShowExport(false)'),
+    '切单据的 effect 同样不关对客导出模块（同一条竞态）');
+
+  console.log('== 对客导出独立模块 + 去拥挤 + 效率项（源码级守卫）');
+  const exportViewSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/ExportView.jsx'), 'utf8');
+  ok(exportViewSrc.includes('QuoteExportPanel') && exportViewSrc.includes('variant="page"'),
+    '对客导出是全区模块，面板以整页形态出现');
+  ok(mainSrc.includes("navBtn('export', 'export', '对客导出'") && mainSrc.includes("setShowExportPage(v === 'export')"),
+    '左侧导航有「对客导出」入口且 goView 路由到它');
+  ok(mainSrc.includes('showExportPage ? (') && mainSrc.includes('<ExportView'),
+    '主视图链里有对客导出模块分支');
+  ok(!mainSrc.includes('{showExport && exportModel'), '询价单表格上的旧导出浮层已拆掉');
+  ok(mainSrc.includes('const fqCtx = (showConvert || showExportPage ||'),
+    '在导出模块里也能算出最终报价上下文');
+  ok(mainSrc.includes('toolbarItems={[') && mainSrc.includes("'merge-cell'") && !mainSrc.includes("'conditionFormat'"),
+    '编辑器工具栏已精简（去拥挤）');
+  ok(mainSrc.includes('handleSendToManyFactories') && mainSrc.includes('zipSync(entries)'),
+    '发给多家工厂：一次打包 zip');
+  ok(mainSrc.includes('entry.exportColKeys =') && mainSrc.includes('exportColKeys: Array.isArray'),
+    '导出列勾选会被记住且进保存指纹');
+  ok(mainSrc.includes("const baseName = '报价-'") && mainSrc.includes("'-普通版.xlsx'") && mainSrc.includes("'-带图版.xlsx'"),
+    '导出文件名带客户与日期');
+  const panelSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/QuoteExportPanel.jsx'), 'utf8');
+  ok(panelSrc.includes('copyQuoteText') && panelSrc.includes('exp-copy-text'),
+    '导出面板有「复制报价文本」（粘微信）');
 }
 
 console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);

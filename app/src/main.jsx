@@ -13,6 +13,8 @@ import {
   FINAL_QUOTE_HEADER,
 } from './quoteExport.js';
 import QuoteExportPanel from './QuoteExportPanel.jsx';
+import ExportView from './ExportView.jsx';
+import { zipSync } from 'fflate';
 import ConvertPanel from './ConvertPanel.jsx';
 import OrdersView from './OrdersView.jsx';
 import { formatOrderNo, convertedLineIds } from './orders.js';
@@ -323,6 +325,8 @@ function workKeyOf(w) {
         rowChoices: d.rowChoices || null,
         // 转订单数量列：改了也是真实编辑，得落盘（否则换列不保存、关页就丢）
         qtyCol: typeof d.qtyCol === 'number' ? d.qtyCol : null,
+        // 对客导出记住的列勾选：变了也算真实编辑（否则 doSave 指纹不变会跳过落盘）
+        exportColKeys: Array.isArray(d.exportColKeys) ? d.exportColKeys : null,
         sheet: sheetKeyOf(d.sheet),
       })),
     });
@@ -538,6 +542,12 @@ const NavIcon = {
       <path d="M9 13.5h6M12 10.8v5.4" />
     </svg>
   ),
+  export: (
+    <svg {...icoProps}>
+      <path d="M12 15V4.5M7.2 8.4L12 3.8l4.8 4.6" />
+      <path d="M5 13.5v6h14v-6" />
+    </svg>
+  ),
   orders: (
     <svg {...icoProps}>
       <path d="M8.5 6.2h12M8.5 12h12M8.5 17.8h12" />
@@ -641,7 +651,9 @@ function App() {
   // 把待保存的标记扣在这里弹确认，用户选了改标/照标才真正落盘
   const [markGuard, setMarkGuard] = useState(null); // { mark, info }
   // 最终报价 / 对客导出（包 7）：面板开关 + 每次打开时让默认勾选重算
-  const [showExport, setShowExport] = useState(false);
+  const [showExportPage, setShowExportPage] = useState(false);
+  const [multiSendOpen, setMultiSendOpen] = useState(false);
+  const [multiSel, setMultiSel] = useState({});
   const [exportTick, setExportTick] = useState(0);
   // 转订单 / 订单履约（包 8）：客户名镜像、订单镜像与视图开关。
   // 事实源是 ordersRef（随存档持久化），state 只供渲染。
@@ -1419,19 +1431,10 @@ function App() {
     doSave(); // 当前文档变了，指纹里有它，落盘记住
   }
 
-  /** 发给工厂：由当前询价单克隆一张报价单（行账本共用 lineId），并切过去 */
-  function createQuoteForFactory(name) {
-    flushDocRef();
-    const inq = activeInquiryEntry();
-    if (!inq) return;
-    const existing = docsRef.current.find(
-      (d) => d.kind === 'quote' && d.factoryName === name && d.inquiryId === inq.docId);
-    if (existing &&
-        !window.confirm('这张询价单已经有一张给「' + name + '」的报价单了，重新生成会替换它（按询价单现在的样子重新克隆）。确定吗？')) {
-      return;
-    }
-    const doc = {
-      docId: existing ? existing.docId : 'doc-quote-' + Date.now().toString(36),
+  /** 由询价单克隆一张给某厂的报价单文档（行账本共用 lineId）；不落位、不切换 */
+  function makeQuoteDoc(inq, name, existing) {
+    return {
+      docId: existing ? existing.docId : 'doc-quote-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7),
       kind: 'quote',
       factoryName: name,
       // 包 11：报价单定死它属于哪张询价单，切单/比价/历史都靠这个归属
@@ -1448,6 +1451,10 @@ function App() {
       priceMark: null,
       factoryExtras: [],
     };
+  }
+
+  /** 把克隆好的报价单落进文档集（替换同厂旧单时连带清掉它的定厂快照） */
+  function installQuoteDoc(inq, doc, existing) {
     docsRef.current = existing
       ? docsRef.current.map((d) => (d.docId === doc.docId ? doc : d))
       : [...docsRef.current, doc];
@@ -1459,7 +1466,7 @@ function App() {
     if (existing && inq.rowChoices) {
       const kept = {};
       for (const [lineId, choice] of Object.entries(inq.rowChoices)) {
-        if (choice && choice.factory === name) clearedChoices += 1;
+        if (choice && choice.factory === doc.factoryName) clearedChoices += 1;
         else kept[lineId] = choice;
       }
       if (clearedChoices > 0) {
@@ -1471,11 +1478,80 @@ function App() {
         }
       }
     }
-    if (!factoriesRef.current.includes(name)) {
-      setFactories([...factoriesRef.current, name]);
+    if (!factoriesRef.current.includes(doc.factoryName)) {
+      setFactories([...factoriesRef.current, doc.factoryName]);
     }
+  }
+
+  /** 发给工厂：由当前询价单克隆一张报价单（行账本共用 lineId），并切过去 */
+  function createQuoteForFactory(name) {
+    flushDocRef();
+    const inq = activeInquiryEntry();
+    if (!inq) return;
+    const existing = docsRef.current.find(
+      (d) => d.kind === 'quote' && d.factoryName === name && d.inquiryId === inq.docId);
+    if (existing &&
+        !window.confirm('这张询价单已经有一张给「' + name + '」的报价单了，重新生成会替换它（按询价单现在的样子重新克隆）。确定吗？')) {
+      return;
+    }
+    const doc = makeQuoteDoc(inq, name, existing);
+    installQuoteDoc(inq, doc, existing);
     syncDocList();
     switchDoc(doc.docId);
+  }
+
+  /**
+   * 发给多家工厂（效率项）：一次勾多家，各克隆一张报价单，所有下载件
+   * 打成一个 zip 一次拿走，人留在询价单上不被逐家切换带走。替换已有
+   * 报价单的只在开头统一确认一次。
+   */
+  async function handleSendToManyFactories() {
+    const names = factoriesRef.current.filter((f) => multiSel[f]);
+    if (!names.length) { window.alert('先勾选至少一家工厂'); return; }
+    flushDocRef();
+    const inq = activeInquiryEntry();
+    if (!inq) return;
+    const replacing = names.filter((n) => docsRef.current.find(
+      (d) => d.kind === 'quote' && d.factoryName === n && d.inquiryId === inq.docId));
+    if (replacing.length &&
+        !window.confirm('以下工厂已有这张询价单的报价单，重新生成会替换它们：' +
+          replacing.join('、') + '。确定吗？')) {
+      return;
+    }
+    const made = [];
+    for (const name of names) {
+      const existing = docsRef.current.find(
+        (d) => d.kind === 'quote' && d.factoryName === name && d.inquiryId === inq.docId);
+      const doc = makeQuoteDoc(inq, name, existing);
+      installQuoteDoc(inq, doc, existing);
+      made.push(doc);
+    }
+    syncDocList();
+    doSave();
+    let origBytes = null;
+    if (inq.sourceFileId) {
+      try {
+        const rec = await getFile(inq.sourceFileId);
+        if (rec && rec.bytes) origBytes = rec.bytes;
+      } catch (e) { /* 取不到原件就走现生成降级（buildQuoteXlsx 内部处理） */ }
+    }
+    const entries = {};
+    for (const doc of made) {
+      entries['报价单-' + doc.factoryName + '.xlsx'] = buildQuoteXlsx({
+        originalBytes: origBytes,
+        sheetName: (doc.source && doc.source.sheetName) || doc.sheet.name,
+        sheet: doc.sheet,
+        imageBytes: await resolveExportImageBytes(doc.sheet),
+      });
+    }
+    const now = new Date();
+    const ymd = String(now.getFullYear()) + String(now.getMonth() + 1).padStart(2, '0') +
+      String(now.getDate()).padStart(2, '0');
+    await downloadViaFeishuOrBlob(zipSync(entries),
+      '询价单-发给工厂-' + ymd + '.zip', 'application/zip');
+    setMultiSendOpen(false);
+    window.alert('已给 ' + made.length + ' 家工厂生成报价单并打包下载：' +
+      names.join('、') + '。这些报价单也已出现在上方单据列表里；工厂回表后，用「上传回表」挂到对应工厂名下即可。');
   }
 
   function confirmAddFactory() {
@@ -2129,13 +2205,20 @@ function App() {
         final: false,
       }));
     cols.push({ key: 'final', label: FINAL_QUOTE_HEADER, final: true, isWork: false, isSales: false });
+    // 记住上次的列勾选（效率项）：每张询价单的列结构基本不变，上次导
+    // 出勾了哪些列，这次默认还是哪些，省得每次重勾；存档里记的是 key
+    // 清单，与当前列对不上的（列已增删）自动忽略，全对不上才回默认。
+    const savedKeys = Array.isArray(inq.exportColKeys) ? inq.exportColKeys : null;
+    const validSaved = savedKeys
+      ? savedKeys.filter((k) => cols.some((c) => c.key === k))
+      : [];
     return {
       rows,
       cols,
       defaultRowIds: rows
         .filter((r) => r.finalPrice !== null && r.finalPrice !== undefined)
         .map((r) => r.lineId),
-      defaultColKeys: cols
+      defaultColKeys: validSaved.length ? validSaved : cols
         .filter((c) => c.final || (!c.isWork && !c.isSales))
         .map((c) => c.key),
     };
@@ -2153,7 +2236,22 @@ function App() {
       window.alert('还没有勾选任何一列——请在导出面板里至少勾选一列（比如「最终报价」），再点下载');
       return;
     }
+    // 这次勾的列记到这张询价单上，下次进导出模块就是现成的默认勾选
+    {
+      const entry = docsRef.current.find((d) => d.docId === inq.docId);
+      if (entry) {
+        entry.exportColKeys = [...selection.colKeys];
+        doSave();
+      }
+    }
     const sheetName = (inq.source && inq.source.sheetName) || inq.sheet.name;
+    // 文件名带客户与日期（效率项）：下载夹里一眼认出是哪家的哪天的报价，
+    // 不再是一堆同名的「报价单-客户版.xlsx」互相覆盖
+    const cleanName = (x) => String(x || '').replace(/[\\/:*?"<>|]/g, '').trim();
+    const now = new Date();
+    const ymd = String(now.getFullYear()) + String(now.getMonth() + 1).padStart(2, '0') +
+      String(now.getDate()).padStart(2, '0');
+    const baseName = '报价-' + (cleanName(inq.customerName) || '客户') + '-' + ymd;
     let bytes = null;
     let fileName = '';
     if (kind === 'plain') {
@@ -2164,7 +2262,7 @@ function App() {
         finalPrices,
       });
       bytes = buildMinimalXlsx(sheetName, sheet, await resolveExportImageBytes(sheet));
-      fileName = '报价单-客户版.xlsx';
+      fileName = baseName + '-普通版.xlsx';
     } else {
       let origBytes = null;
       if (inq.sourceFileId) {
@@ -2187,7 +2285,7 @@ function App() {
         originalBytes: origBytes, sheetName, sheet,
         imageBytes: await resolveExportImageBytes(sheet),
       });
-      fileName = '报价单-带图版.xlsx';
+      fileName = baseName + '-带图版.xlsx';
     }
     window.__lastExport = {
       kind, fileName, size: bytes.length, at: new Date().toISOString(),
@@ -2204,11 +2302,12 @@ function App() {
   }
 
   /** 飞书 UI 环境下、云端在线时用临时直链替代 blob 下载（其余走普通下载） */
-  async function downloadViaFeishuOrBlob(bytes, fileName) {
+  async function downloadViaFeishuOrBlob(bytes, fileName, mime) {
+    const type = mime || XLSX_MIME;
     if (IS_FEISHU_UA && isServerAvailable()) {
-      try { await openTempDownload(bytes, fileName, XLSX_MIME); return; } catch (e) { /* 掉回普通下载 */ }
+      try { await openTempDownload(bytes, fileName, type); return; } catch (e) { /* 掉回普通下载 */ }
     }
-    const blob = new Blob([bytes], { type: XLSX_MIME });
+    const blob = new Blob([bytes], { type });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -2429,6 +2528,7 @@ function App() {
     : showAi ? 'ai'
     : showCompare ? 'compare'
     : showConvert ? 'convert'
+    : showExportPage ? 'export'
     : showData ? 'data'
     : showCheck ? 'check'
     : 'sheet';
@@ -2456,6 +2556,10 @@ function App() {
     setShowCheck(v === 'check');
     // 转订单是独立模块（2026-10-15 拍板）：不再是询价单表格上方的面板
     setShowConvert(v === 'convert');
+    // 对客导出同样是独立模块（2026-10-15 用户反馈：在询价单里以浮层
+    // 出现不合理）——进模块时 bump tick，让导出面板按当前事实重挂
+    setShowExportPage(v === 'export');
+    if (v === 'export') setExportTick((t) => t + 1);
   }
 
   /**
@@ -2465,21 +2569,19 @@ function App() {
   function openOverlay(name) {
     setPricingOpen(name === 'pricing');
     setFqOpen(name === 'fq');
-    // 转订单不是浮层：它是独立模块（见 goView('convert')）
+    // 转订单、对客导出都不是浮层：它们是独立模块（见 goView）
     if (name === 'convert') { goView('convert'); return; }
-    if (name === 'export') setExportTick((t) => t + 1); // 每次打开重算默认勾选
-    setShowExport(name === 'export');
+    if (name === 'export') { goView('export'); return; }
   }
 
-  // 切换单据（询价单 ↔ 报价单、换另一张询价单）时收起对客导出 / 最终报价详情
-  // 这类挂在表格上的浮层；「定价设置」跨单据保留（两种单据都用得到）。
-  // 转订单【不】在这里收：它是独立模块（goView 管辖），从比价页跳
-  // 转订单时要先 switchDoc 到询价单再 goView('convert')，若这里按
-  // activeDocId 变化把它关掉，导航刚点完就被 effect 打回表格工作区
-  // ——用户实测的"点转订单还在询价单表格里"正是这条竞态（2026-10-15 修）。
+  // 切换单据时只收挂在表格上的「最终报价详情」浮层；「定价设置」跨
+  // 单据保留（两种单据都用得到）。转订单 / 对客导出【不】在这里收：
+  // 它们是独立模块（goView 管辖），从比价页跳过去时要先 switchDoc
+  // 到询价单再 goView，若这里按 activeDocId 变化把模块关掉，导航刚
+  // 点完就被 effect 打回表格工作区——用户实测的"点转订单还在询价单
+  // 表格里"正是这条竞态（2026-10-15 修）。
   useEffect(() => {
     setFqOpen(false);
-    setShowExport(false);
   }, [activeDocId]);
 
   /* ---------- 包 13 引导动作：从说明块一键直达缺的那一步 ---------- */
@@ -2579,8 +2681,7 @@ function App() {
   /** 比价下一步「去对客导出」：落位后打开对客导出面板 */
   function goCompareExport() {
     goCompareToInquirySheet();
-    setExportTick((t) => t + 1);
-    setShowExport(true);
+    goView('export');
   }
 
   const activeDocMeta = docList.find((d) => d.docId === activeDocId);
@@ -2675,7 +2776,7 @@ function App() {
   // 最终报价条/导出面板的数据（只在看询价单时算；与 buildModel 一样先写回再读）
   // 转订单是独立模块：它在场时也要算（它读的是当前询价单，与当前活动
   // 文档是不是报价单无关——从报价单跳进转订单不能因为 activeIsQuote 就没数据）
-  const fqCtx = (showConvert || (!showCompare && !showOrders && !showOverview && !showAi &&
+  const fqCtx = (showConvert || showExportPage || (!showCompare && !showOrders && !showOverview && !showAi &&
     !showCustomers && !showFactories && !activeIsQuote)) ? finalPriceContext() : null;
   // 总览/AI 的数据：打开时按当前事实源现算（与 buildModel 一样先写回再读）
   const overviewModel = showOverview ? buildOverview(currentStateForReports()) : null;
@@ -2683,7 +2784,7 @@ function App() {
   // 客户/工厂管理模型：打开时现算（含各自名下的单据清单，点哪跳哪）
   const customerModel = showCustomers ? buildCustomerModel(currentStateForReports()) : null;
   const factoryModel = showFactories ? buildFactoryModel(currentStateForReports()) : null;
-  const exportModel = (showExport && fqCtx) ? buildExportModel() : null;
+  const exportModel = (showExportPage && fqCtx) ? buildExportModel() : null;
   // 转订单模块的行（打开时现算：定厂/最终价/已转状态都是派生的；
   // 独立模块口径：不因当前活动文档是报价单就落空，来源恒为当前询价单）
   const convertRows = (showConvert && !showCompare && !showOrders && !showOverview && !showAi &&
@@ -2743,7 +2844,7 @@ function App() {
       className={'nav-item nav-' + cls + (view === v ? ' nav-active' : '')}
       onClick={() => goView(v)}
       style={{
-        textAlign: 'left', fontSize: 14, borderRadius: 9, padding: '9px 12px',
+        textAlign: 'left', fontSize: 13.5, borderRadius: 9, padding: '7px 10px',
         cursor: 'pointer', fontFamily: 'sans-serif', width: '100%',
         border: '1px solid transparent',
         background: view === v ? '#2f6bff' : 'transparent',
@@ -2767,7 +2868,7 @@ function App() {
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       <div className="sidebar" style={{
-        width: 208, flexShrink: 0, padding: '16px 12px',
+        width: 184, flexShrink: 0, padding: '12px 10px',
         display: 'flex', flexDirection: 'column', gap: 4,
         fontFamily: 'sans-serif', boxSizing: 'border-box',
       }}>
@@ -2793,6 +2894,7 @@ function App() {
         </div>
         {navBtn('compare', 'compare', '比价定厂', NavIcon.compare)}
         {navBtn('convert', 'convert', '转订单', NavIcon.convert)}
+        {navBtn('export', 'export', '对客导出', NavIcon.export)}
         {navBtn('orders', 'orders', '订单', NavIcon.orders, orders.length)}
         {navBtn('customers', 'customers', '客户管理', NavIcon.customers)}
         {navBtn('factories', 'factories', '工厂管理', NavIcon.factories)}
@@ -2807,7 +2909,7 @@ function App() {
         height: '100vh', overflowY: 'auto',
       }}>
       <div className="topbar" style={{
-        padding: '8px 16px', fontFamily: 'sans-serif', fontSize: 14,
+        padding: '6px 12px', fontFamily: 'sans-serif', fontSize: 13.5,
         display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'nowrap'
       }}>
         <label style={{
@@ -2867,7 +2969,7 @@ function App() {
       </div>
       {view === 'sheet' && (<>
       <div className="doc-bar" style={{
-        margin: '8px 14px 0', padding: '6px 14px', fontFamily: 'sans-serif', fontSize: 14,
+        margin: '6px 10px 0', padding: '4px 10px', fontFamily: 'sans-serif', fontSize: 13.5,
         display: 'flex', alignItems: 'stretch', gap: 8, flexWrap: 'wrap',
         background: '#fff', border: '1px solid #dbe2ec', borderRadius: 12,
         boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
@@ -2966,6 +3068,19 @@ function App() {
             borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
           }}
         >发给工厂</button>
+        <button
+          className="send-to-many"
+          onClick={() => {
+            if (!multiSendOpen && Object.keys(multiSel).length === 0) {
+              const all = {};
+              for (const f of factoriesRef.current) all[f] = true;
+              setMultiSel(all);
+            }
+            setMultiSendOpen(!multiSendOpen);
+          }}
+          style={barBtn}
+          title="一次勾多家工厂，各生成一张报价单并打包成 zip 下载"
+        >发给多家…</button>
         <label className="upload-return" style={{
           border: '1px solid #6a1b9a', color: '#6a1b9a', background: '#fff',
           borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
@@ -2996,11 +3111,44 @@ function App() {
         )}
         </div>
       </div>
+      {multiSendOpen && !activeIsQuote && (
+        <div className="multi-send-panel" style={{
+          margin: '6px 10px 0', padding: '8px 12px', fontFamily: 'sans-serif', fontSize: 13,
+          display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
+          border: '1px solid #bcd7c5', borderRadius: 9, background: '#f2faf5',
+        }}>
+          <b style={{ color: '#157347' }}>发给多家工厂</b>
+          {factories.length === 0 ? (
+            <span style={{ color: '#888' }}>还没有工厂名单——先用左边「＋新工厂」加一家。</span>
+          ) : (
+            <>
+              {factories.map((f) => (
+                <label key={f} style={{ display: 'inline-flex', gap: 4, alignItems: 'center', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox" className="multi-factory-check"
+                    checked={!!multiSel[f]}
+                    onChange={(e) => setMultiSel({ ...multiSel, [f]: e.target.checked })}
+                  />{f}
+                </label>
+              ))}
+              <button onClick={() => {
+                const all = {}; for (const f of factoriesRef.current) all[f] = true; setMultiSel(all);
+              }} style={barBtn}>全选</button>
+              <button className="multi-send-go" onClick={handleSendToManyFactories} style={{
+                border: '1px solid #1e9e57', background: '#1e9e57', color: '#fff',
+                borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
+              }}>生成并打包下载（zip）</button>
+              <span style={{ color: '#666' }}>每家一张报价单，放进同一个 zip；已发过的会被替换（会先问一次）</span>
+            </>
+          )}
+          <button onClick={() => setMultiSendOpen(false)} style={barBtn}>关闭</button>
+        </div>
+      )}
       {/* 操作条（默认一行）：定价设置 / 最终报价详情 / 生成 / 导出 / 转订单。
           定价与详情、转订单与导出都是「浮在表格上方」的面板，打开不推挤表格。 */}
       {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && (
         <div className="action-row" style={{
-          margin: '8px 14px 0', padding: '6px 12px', fontFamily: 'sans-serif', fontSize: 14,
+          margin: '6px 10px 0', padding: '4px 10px', fontFamily: 'sans-serif', fontSize: 13.5,
           display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'nowrap',
           border: '1px solid #dbe2ec', borderLeft: '4px solid #1e9e57', borderRadius: 12, background: '#fff',
           boxShadow: '0 1px 3px rgba(23,34,62,0.05)', minWidth: 0,
@@ -3024,8 +3172,8 @@ function App() {
           <button className="fq-generate" onClick={handleGenerateFinalQuote} style={{
             ...actBtn(false), border: '1px solid #1e9e57', background: '#1e9e57', color: '#fff',
           }}>生成最终报价列</button>
-          <button className="export-toggle" onClick={() => openOverlay(showExport ? null : 'export')}
-            style={actBtn(showExport)}>对客报价导出</button>
+          <button className="export-toggle" onClick={() => goView('export')}
+            style={actBtn(showExportPage)}>对客报价导出</button>
           <button className="convert-toggle" onClick={() => openOverlay(showConvert ? null : 'convert')}
             style={actBtn(showConvert)}>转订单</button>
         </div>
@@ -3123,6 +3271,21 @@ function App() {
           onCreate={handleCreateOrder}
           onViewOrder={(orderNo) => jumpToOrder(orderNo)}
           onExportCustomer={goCompareExport}
+          onBack={() => goView('sheet')}
+        />
+      ) : showExportPage ? (
+        <ExportView
+          inquiry={fqCtx && fqCtx.inq ? fqCtx.inq : null}
+          customerName={customerName}
+          pricedCount={fqPriced}
+          totalCount={fqTotal}
+          rows={exportModel ? exportModel.rows : []}
+          cols={exportModel ? exportModel.cols : []}
+          defaultRowIds={exportModel ? exportModel.defaultRowIds : []}
+          defaultColKeys={exportModel ? exportModel.defaultColKeys : []}
+          panelKey={'exp-' + activeDocId + '-' + exportTick}
+          canShareFiles={canShareFiles}
+          onExport={handleExport}
           onBack={() => goView('sheet')}
         />
       ) : showData ? (
@@ -3299,22 +3462,8 @@ function App() {
             </div>
           </div>
         )}
-        {showExport && exportModel && !activeIsQuote && (
-          <div className="overlay-panel" style={OVERLAY_STYLE}>
-            <QuoteExportPanel
-              key={'exp-' + activeDocId + '-' + exportTick}
-              rows={exportModel.rows}
-              cols={exportModel.cols}
-              defaultRowIds={exportModel.defaultRowIds}
-              defaultColKeys={exportModel.defaultColKeys}
-              canShareFiles={canShareFiles}
-              onExport={handleExport}
-              onClose={() => openOverlay(null)}
-            />
-          </div>
-        )}
       <div className="sheet-wrap" style={{
-        flex: 1, minHeight: 320, margin: '10px 14px 12px', border: '1px solid #dbe2ec',
+        flex: 1, minHeight: 320, margin: '8px 10px 10px', border: '1px solid #dbe2ec',
         // 自成层叠上下文：表内浮动图（商品照片）的层级被关在表格内部，
         // 不会穿到上方的浮层面板上面去
         position: 'relative', zIndex: 0,
@@ -3327,6 +3476,19 @@ function App() {
           data={sheetsData}
           // 本系统每次只装一张表（选表在顶栏做），底部页签栏是多余的纯占高，关掉
           showSheetTabs={false}
+          // 工具栏精简（2026-10-15 用户反馈表格区太拥挤）：只留编辑报价表
+          // 真用得上的——撤销/数字格式/字体字号/粗斜下划线/颜色底色/边框/
+          // 合并/对齐换行/插图/查找；条件格式、数据验证、截图、拆列这类
+          // 用不上的全部拿掉，工具栏一行放得下，表格多出一截高度
+          toolbarItems={[
+            'undo', 'redo', 'format-painter', '|',
+            'currency-format', 'percentage-format', 'format', '|',
+            'font', 'font-size', '|',
+            'bold', 'italic', 'underline', 'strike-through', '|',
+            'font-color', 'background', 'border', 'merge-cell', '|',
+            'horizontal-align', 'vertical-align', 'text-wrap', '|',
+            'image', 'search',
+          ]}
           onChange={(data) => {
             window.__wbData = data;
             const canon = canonicalize(data, liveRef.current);

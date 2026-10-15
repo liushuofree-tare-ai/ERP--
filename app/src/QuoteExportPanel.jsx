@@ -9,10 +9,44 @@ import React, { useState } from 'react';
 // 任何报价单数据，工厂价与工厂名从结构上就进不了导出（底线 2）。
 export default function QuoteExportPanel({
   rows, cols, defaultRowIds, defaultColKeys,
-  canShareFiles, onExport, onClose,
+  canShareFiles, onExport, onClose, variant, customerName,
 }) {
   const [rowSel, setRowSel] = useState(() => new Set(defaultRowIds));
   const [colSel, setColSel] = useState(() => new Set(defaultColKeys));
+  const [copied, setCopied] = useState(false);
+  const isPage = variant === 'page';
+
+  // 复制报价文本（效率项）：按当前勾选拼一段可直接粘进微信的报价，
+  // 只有勾选且有最终价的行进文本，没价的勾选行标「待确认」不冒充 0。
+  async function copyQuoteText() {
+    const picked = rows.filter((r) => rowSel.has(r.lineId));
+    if (!picked.length) {
+      window.alert('一行都还没勾选——先勾选要发给客户的行，再复制报价文本');
+      return;
+    }
+    const today = new Date();
+    const ymd = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') +
+      '-' + String(today.getDate()).padStart(2, '0');
+    const lines = ['报价' + (customerName ? '（' + customerName + '）' : '') + ' ' + ymd];
+    for (const r of picked) {
+      const price = r.finalPrice !== null && r.finalPrice !== undefined
+        ? r.finalPrice.toFixed(2) : '待确认';
+      lines.push([r.seq || '', r.oe || '', r.product || '', price].filter(Boolean).join('  '));
+    }
+    const text = lines.join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (e) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
 
   const toggleIn = (setter) => (key, on) => {
     setter((prev) => {
@@ -54,7 +88,11 @@ export default function QuoteExportPanel({
   };
 
   return (
-    <div className="export-panel" style={{
+    <div className="export-panel" style={isPage ? {
+      padding: '12px 14px', fontFamily: 'sans-serif', fontSize: 14,
+      border: '1px solid #dbe2ec', borderLeft: '4px solid #1e9e57', borderRadius: 12, background: '#fff',
+      boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
+    } : {
       margin: '10px 14px 0', padding: '12px 14px', fontFamily: 'sans-serif', fontSize: 14,
       border: '1px solid #dbe2ec', borderLeft: '4px solid #1e9e57', borderRadius: 12, background: '#fff',
       boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
@@ -80,7 +118,7 @@ export default function QuoteExportPanel({
           <button className="exp-rows-none" onClick={() => setRowSel(new Set())} style={{ border: 'none', background: 'none', color: '#2f6bff', cursor: 'pointer', padding: 0 }}>全不选</button>
         </span>
         <div className="exp-rows" style={{
-          marginTop: 4, maxHeight: 168, overflow: 'auto',
+          marginTop: 4, maxHeight: isPage ? 380 : 168, overflow: 'auto',
           border: '1px solid #d5dbe3', borderRadius: 8, background: '#fff', padding: '4px 8px',
         }}>
           {rows.map((r) => (
@@ -147,6 +185,13 @@ export default function QuoteExportPanel({
             此浏览器不支持直接分享，请用下载后拖进微信
           </span>
         )}
+        <span style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}>
+          <button className="exp-copy-text" onClick={copyQuoteText} style={{
+            border: '1px solid #6a1b9a', background: '#fff', color: '#6a1b9a',
+            borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
+          }}>{copied ? '已复制 ✓' : '复制报价文本'}</button>
+          <span style={{ color: '#888' }}>按当前勾选拼一段文字，直接粘进微信发客户</span>
+        </span>
       </div>
     </div>
   );
