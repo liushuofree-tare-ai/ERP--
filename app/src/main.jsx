@@ -1873,9 +1873,18 @@ function App() {
       sheet: doc.sheet,
       imageBytes: await resolveExportImageBytes(doc.sheet),
     });
-    const fileName = doc.kind === 'quote'
-      ? '报价单-' + doc.factoryName + '.xlsx'
-      : '询价单.xlsx';
+    let fileName = '询价单.xlsx';
+    if (doc.kind === 'quote') {
+      fileName = '报价单-' + doc.factoryName + '.xlsx';
+    } else if (doc.kind === 'custquote') {
+      const inqDoc = docsRef.current.find((d) => d.docId === doc.inquiryId);
+      const cust = inqDoc && inqDoc.customerName
+        ? String(inqDoc.customerName).replace(/[\\/:*?"<>|]/g, '').trim() : '';
+      const now = new Date();
+      const ymd = String(now.getFullYear()) + String(now.getMonth() + 1).padStart(2, '0') +
+        String(now.getDate()).padStart(2, '0');
+      fileName = '报价-' + (cust || '客户') + '-' + ymd + '.xlsx';
+    }
     return { bytes, fileName };
   }
 
@@ -2225,25 +2234,36 @@ function App() {
   }
 
   /** 按面板的选择生成对客导出字节并下载/分享（两种版式都不碰报价单数据） */
-  async function handleExport(kind, mode, selection) {
-    const { inq, finalPrices } = finalPriceContext();
-    if (!inq) return;
+  /** 导出勾选校验（直接下载与生成可编辑副本共用） */
+  function validateExportSelection(selection) {
     if (!selection || selection.lineIds.size === 0) {
       window.alert('还没有勾选任何一行——请在导出面板里勾选要导出的行（点「全选」可以一次全选好），再点下载');
-      return;
+      return false;
     }
     if (!selection.colKeys || selection.colKeys.size === 0) {
       window.alert('还没有勾选任何一列——请在导出面板里至少勾选一列（比如「最终报价」），再点下载');
-      return;
+      return false;
     }
-    // 这次勾的列记到这张询价单上，下次进导出模块就是现成的默认勾选
-    {
-      const entry = docsRef.current.find((d) => d.docId === inq.docId);
-      if (entry) {
-        entry.exportColKeys = [...selection.colKeys];
-        doSave();
-      }
+    return true;
+  }
+
+  /** 这次勾的列记到这张询价单上，下次进导出模块就是现成的默认勾选 */
+  function rememberExportCols(inq, selection) {
+    const entry = docsRef.current.find((d) => d.docId === inq.docId);
+    if (entry) {
+      entry.exportColKeys = [...selection.colKeys];
+      doSave();
     }
+  }
+
+  /**
+   * 按勾选生成对客文件的字节（带图版=原件回写真删；普通版=现生成）。
+   * 直接下载与「生成可编辑对客报价单」共用同一条产线，保证副本里的
+   * 内容与直接导出的文件一字不差。无原件又要带图版时返回 null。
+   */
+  async function buildCustomerExportBytes(kind, selection, opts) {
+    const { inq, finalPrices } = finalPriceContext();
+    if (!inq) return null;
     const sheetName = (inq.source && inq.source.sheetName) || inq.sheet.name;
     // 文件名带客户与日期（效率项）：下载夹里一眼认出是哪家的哪天的报价，
     // 不再是一堆同名的「报价单-客户版.xlsx」互相覆盖
@@ -2272,8 +2292,10 @@ function App() {
         } catch (e) { /* 取不到原件就不生成带图版 */ }
       }
       if (!origBytes) {
-        window.alert('带图版需要客户原件——这份询价单没有存下原件（可能不是导入原表来的），请改用普通版');
-        return;
+        if (!(opts && opts.noAlert)) {
+          window.alert('带图版需要客户原件——这份询价单没有存下原件（可能不是导入原表来的），请改用普通版');
+        }
+        return null;
       }
       const sheet = buildPicturedExportSheet({
         selectedColKeys: selection.colKeys,
@@ -2287,6 +2309,17 @@ function App() {
       });
       fileName = baseName + '-带图版.xlsx';
     }
+    return { bytes, fileName, inq };
+  }
+
+  async function handleExport(kind, mode, selection) {
+    const { inq } = finalPriceContext();
+    if (!inq) return;
+    if (!validateExportSelection(selection)) return;
+    rememberExportCols(inq, selection);
+    const made = await buildCustomerExportBytes(kind, selection);
+    if (!made) return;
+    const { bytes, fileName } = made;
     window.__lastExport = {
       kind, fileName, size: bytes.length, at: new Date().toISOString(),
     };
@@ -2299,6 +2332,72 @@ function App() {
       return;
     }
     await downloadViaFeishuOrBlob(bytes, fileName);
+  }
+
+  /**
+   * 生成可编辑的对客报价单（用户 2026-10-15 反馈）：报价发客户之前要
+   * 调格式、挪价格列的位置，在询价单上直接改既不方便、又会动到原始
+   * 询价单。所以导出先落成一份【独立副本单据】：内容与直接导出的文件
+   * 一字不差（同一条产线），但它是一张能进编辑器随便改的表——挪列、
+   * 改字号、删行都不碰原询价单；改完在副本页点下载即可。
+   */
+  async function handleCreateEditableQuote(selection) {
+    const { inq } = finalPriceContext();
+    if (!inq) return;
+    if (!validateExportSelection(selection)) return;
+    const existing = docsRef.current.find(
+      (d) => d.kind === 'custquote' && d.inquiryId === inq.docId);
+    if (existing &&
+        !window.confirm('这张询价单已经有一份对客报价单副本了，重新生成会覆盖你在副本里改过的格式与内容。确定重新生成吗？')) {
+      return;
+    }
+    rememberExportCols(inq, selection);
+    let made = await buildCustomerExportBytes('pictured', selection, { noAlert: true });
+    if (!made) made = await buildCustomerExportBytes('plain', selection);
+    if (!made) return;
+    const fileName = made.fileName.replace(/\.xlsx$/, '') + '-可编辑副本.xlsx';
+    const wb = readWorkbook(made.bytes);
+    const parsedList = wb.sheets.map((sh, i) => parseSheet(wb, i));
+    const stored = await persistImportAssets(fileName, made.bytes, parsedList);
+    imageStoreRef.current = stored.stored;
+    const idx = pickDefaultSheet(parsedList);
+    const parsed = parsedList[idx];
+    const fortune = sheetToFortune(parsed, idx);
+    const doc = {
+      docId: existing ? existing.docId : 'doc-cust-' + Date.now().toString(36),
+      kind: 'custquote',
+      factoryName: null,
+      inquiryId: inq.docId,
+      sheet: fortune,
+      ledger: createLedger({
+        fileName, sheetName: parsed.name, sheetIndex: idx, rowCount: parsed.rowCount,
+      }),
+      pricing: { ...DEFAULT_PRICING },
+      source: { fileName, sheetName: parsed.name, sheetIndex: idx },
+      sourceFileId: stored.stored ? stored.originalFileId : null,
+      importInfo: '对客报价单副本（由导出勾选生成，可任意编辑，不影响原询价单）',
+      headerRow: detectHeaderRow(fortune),
+      priceMark: null,
+      factoryExtras: [],
+    };
+    docsRef.current = existing
+      ? docsRef.current.map((d) => (d.docId === doc.docId ? doc : d))
+      : [...docsRef.current, doc];
+    syncDocList();
+    doSave();
+    goView('sheet');
+    switchDoc(doc.docId);
+  }
+
+  /** 删除对客报价单副本（原询价单不受任何影响） */
+  function handleDeleteCustQuote() {
+    const doc = docsRef.current.find((d) => d.docId === activeDocIdRef.current);
+    if (!doc || doc.kind !== 'custquote') return;
+    if (!window.confirm('删除这份对客报价单副本？原询价单和报价数据都不受影响，之后可以随时重新生成。')) return;
+    docsRef.current = docsRef.current.filter((d) => d.docId !== doc.docId);
+    syncDocList();
+    if (doc.inquiryId) switchDoc(doc.inquiryId);
+    doSave();
   }
 
   /** 飞书 UI 环境下、云端在线时用临时直链替代 blob 下载（其余走普通下载） */
@@ -2678,7 +2777,7 @@ function App() {
     goView('convert');
   }
 
-  /** 比价下一步「去对客导出」：落位后打开对客导出面板 */
+  /** 比价下一步「去对客导出」：落位后进对客导出独立模块 */
   function goCompareExport() {
     goCompareToInquirySheet();
     goView('export');
@@ -2686,6 +2785,7 @@ function App() {
 
   const activeDocMeta = docList.find((d) => d.docId === activeDocId);
   const activeIsQuote = !!(activeDocMeta && activeDocMeta.kind === 'quote');
+  const activeIsCustQuote = !!(activeDocMeta && activeDocMeta.kind === 'custquote');
   // 当前询价单（渲染期口径，与 activeInquiryEntry 同规则，用 docList 算）
   const activeInquiryMeta = activeDocMeta
     ? (activeDocMeta.kind === 'inquiry'
@@ -3020,7 +3120,9 @@ function App() {
             }}
           >{d.kind === 'inquiry'
             ? '询价单' + (d.customerName ? ' · ' + d.customerName : '')
-            : '报价单 · ' + d.factoryName}</button>
+            : d.kind === 'custquote'
+              ? '对客报价单（副本）'
+              : '报价单 · ' + d.factoryName}</button>
         ))}
         </div>
         <div className="ws-cluster-sep" />
@@ -3098,7 +3200,7 @@ function App() {
         <button className="download-quote" onClick={handleDownload} style={{
           border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
           borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
-        }}>{activeIsQuote ? '下载报价单' : '下载询价单'}</button>
+        }}>{activeIsQuote ? '下载报价单' : activeIsCustQuote ? '下载对客报价单' : '下载询价单'}</button>
         {canShareFiles ? (
           <button className="share-wechat" onClick={handleShare} style={{
             border: '1px solid #07c160', background: '#07c160', color: '#fff',
@@ -3146,7 +3248,7 @@ function App() {
       )}
       {/* 操作条（默认一行）：定价设置 / 最终报价详情 / 生成 / 导出 / 转订单。
           定价与详情、转订单与导出都是「浮在表格上方」的面板，打开不推挤表格。 */}
-      {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && (
+      {!showCompare && !showOrders && !showOverview && !showAi && !activeIsQuote && !activeIsCustQuote && (
         <div className="action-row" style={{
           margin: '6px 10px 0', padding: '4px 10px', fontFamily: 'sans-serif', fontSize: 13.5,
           display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'nowrap',
@@ -3286,6 +3388,9 @@ function App() {
           panelKey={'exp-' + activeDocId + '-' + exportTick}
           canShareFiles={canShareFiles}
           onExport={handleExport}
+          onCreateEditable={handleCreateEditableQuote}
+          hasEditableQuote={!!(fqCtx && fqCtx.inq && docsRef.current.some(
+            (d) => d.kind === 'custquote' && d.inquiryId === fqCtx.inq.docId))}
           onBack={() => goView('sheet')}
         />
       ) : showData ? (
@@ -3462,6 +3567,28 @@ function App() {
             </div>
           </div>
         )}
+      {activeIsCustQuote && (
+        <div className="custquote-banner" style={{
+          margin: '6px 10px 0', padding: '6px 12px', fontFamily: 'sans-serif', fontSize: 13.5,
+          display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
+          border: '1px solid #bcd7c5', borderLeft: '4px solid #1e9e57', borderRadius: 9,
+          background: '#f2faf5',
+        }}>
+          <b style={{ color: '#157347' }}>对客报价单副本</b>
+          <span style={{ color: '#44584c' }}>
+            这份随便改：挪价格列、调格式、删行都<b>不会动到原始询价单</b>。改好后点上方「下载对客报价单」发客户。
+          </span>
+          <span style={{ marginLeft: 'auto' }} />
+          <button onClick={() => { if (activeDocMeta && activeDocMeta.inquiryId) switchDoc(activeDocMeta.inquiryId); }} style={{
+            border: '1px solid #888', color: '#444', background: '#fff', borderRadius: 8,
+            padding: '4px 12px', cursor: 'pointer',
+          }}>回原询价单</button>
+          <button className="custquote-delete" onClick={handleDeleteCustQuote} style={{
+            border: '1px solid #d92d20', color: '#d92d20', background: '#fff', borderRadius: 8,
+            padding: '4px 12px', cursor: 'pointer',
+          }}>删除副本</button>
+        </div>
+      )}
       <div className="sheet-wrap" style={{
         flex: 1, minHeight: 320, margin: '8px 10px 10px', border: '1px solid #dbe2ec',
         // 自成层叠上下文：表内浮动图（商品照片）的层级被关在表格内部，

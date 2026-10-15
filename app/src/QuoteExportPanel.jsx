@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 // 任何报价单数据，工厂价与工厂名从结构上就进不了导出（底线 2）。
 export default function QuoteExportPanel({
   rows, cols, defaultRowIds, defaultColKeys,
-  canShareFiles, onExport, onClose, variant, customerName,
+  canShareFiles, onExport, onClose, variant, customerName, onCreateEditable,
 }) {
   const [rowSel, setRowSel] = useState(() => new Set(defaultRowIds));
   const [colSel, setColSel] = useState(() => new Set(defaultColKeys));
@@ -192,6 +192,18 @@ export default function QuoteExportPanel({
           }}>{copied ? '已复制 ✓' : '复制报价文本'}</button>
           <span style={{ color: '#888' }}>按当前勾选拼一段文字，直接粘进微信发客户</span>
         </span>
+        {onCreateEditable && (
+          <span style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}>
+            <button className="exp-create-editable" onClick={() => onCreateEditable({
+              lineIds: new Set(rowSel),
+              colKeys: new Set(colSel),
+            })} style={{
+              border: '1px solid #b7791f', background: '#b7791f', color: '#fff',
+              borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
+            }}>生成可编辑报价单（副本）</button>
+            <span style={{ color: '#888' }}>先调格式再发客户：生成一份能进表格编辑的副本，挪列改格式不影响原询价单</span>
+          </span>
+        )}
       </div>
     </div>
   );

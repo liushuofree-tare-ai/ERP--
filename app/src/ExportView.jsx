@@ -9,7 +9,7 @@ import QuoteExportPanel from './QuoteExportPanel.jsx';
 export default function ExportView({
   inquiry, customerName, pricedCount, totalCount,
   rows, cols, defaultRowIds, defaultColKeys,
-  canShareFiles, onExport, onBack, panelKey,
+  canShareFiles, onExport, onCreateEditable, hasEditableQuote, onBack, panelKey,
 }) {
   const inqName = (inquiry && inquiry.source && inquiry.source.fileName) || '';
   return (
@@ -49,6 +49,15 @@ export default function ExportView({
               已有最终价 {pricedCount} / 共 {totalCount} 行：默认只勾有价的行，没价的行勾上也会留空导出（不拿 0 冒充）。
             </div>
           )}
+          <div style={{
+            border: '1px solid #dbe2ec', borderRadius: 10, background: '#f7fafc',
+            padding: '8px 12px', marginBottom: 10, color: '#445',
+          }}>
+            发客户前要调格式、挪价格列的位置？别在原询价单上改——用下方
+            <b>「生成可编辑报价单（副本）」</b>：按当前勾选生成一份独立副本，进表格里
+            慢慢改，改好再下载，<b>原始询价单一点都不动</b>。
+            {hasEditableQuote ? '这张询价单已经有一份副本了，重新生成会覆盖副本里改过的内容（会先确认）。' : ''}
+          </div>
           <QuoteExportPanel
             key={panelKey}
             variant="page"
@@ -59,6 +68,7 @@ export default function ExportView({
             customerName={customerName}
             canShareFiles={canShareFiles}
             onExport={onExport}
+            onCreateEditable={onCreateEditable}
             onClose={onBack}
           />
         </>

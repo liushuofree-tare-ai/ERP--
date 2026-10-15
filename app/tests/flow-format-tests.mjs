@@ -140,6 +140,18 @@ console.log('== 转订单独立模块：导航守卫回归（源码级）');
   const panelSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/QuoteExportPanel.jsx'), 'utf8');
   ok(panelSrc.includes('copyQuoteText') && panelSrc.includes('exp-copy-text'),
     '导出面板有「复制报价文本」（粘微信）');
+
+  console.log('== 可编辑对客报价单副本（源码级守卫）');
+  ok(mainSrc.includes("kind: 'custquote'") && mainSrc.includes('handleCreateEditableQuote'),
+    '副本是独立单据 kind=custquote，有专门的生成入口');
+  ok(mainSrc.includes("buildCustomerExportBytes('pictured', selection, { noAlert: true })"),
+    '副本内容与直接导出的带图版走同一条产线');
+  ok(mainSrc.includes('handleDeleteCustQuote') && mainSrc.includes('custquote-banner'),
+    '副本可删除且有说明横幅（改副本不动原询价单）');
+  ok(panelSrc.includes('exp-create-editable') && panelSrc.includes('onCreateEditable'),
+    '导出面板有「生成可编辑报价单（副本）」按钮');
+  ok(mainSrc.includes("d.kind === 'custquote'") && mainSrc.includes("'对客报价单（副本）'"),
+    '单据页签能区分对客报价单副本');
 }
 
 console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);
