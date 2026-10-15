@@ -1,12 +1,21 @@
 import React, { useMemo, useState } from 'react';
 import ColumnPicker from './ColumnPicker.jsx';
 
-// 显示列偏好（本机记忆）：产品/定厂/工厂价/最终报价/状态可藏，
-// 转勾选、OE、数量是干活必需的，永远显示
-const CONV_COLS_KEY = 'erp-conv-cols';
+// 显示列偏好（本机记忆）：从询价单原表的全部列里选要显示的信息列，
+// 存列下标数组；没存过时默认选「OE / 产品」对应的列。定厂/工厂价/
+// 最终报价/数量/状态是转订单的业务列，常驻不进选择器
+const CONV_COLS_KEY = 'erp-conv-sheetcols';
 function loadConvCols() {
-  try { return JSON.parse(window.localStorage.getItem(CONV_COLS_KEY) || '{}') || {}; }
-  catch (e) { return {}; }
+  try {
+    const v = JSON.parse(window.localStorage.getItem(CONV_COLS_KEY) || 'null');
+    return Array.isArray(v) ? v.filter((x) => Number.isInteger(x)) : null;
+  } catch (e) { return null; }
+}
+function defaultConvCols(sheetCols) {
+  const hit = sheetCols
+    .filter((sc) => /OE|产品/.test(sc.label || ''))
+    .map((sc) => sc.col);
+  return hit.length ? hit : sheetCols.slice(0, 2).map((sc) => sc.col);
 }
 // 转订单面板（SPEC 第四节第 8 项）：列出已定厂的行，逐行填数量转成
 // 正式订单。规矩：
@@ -19,8 +28,9 @@ function loadConvCols() {
 //   填完仍可逐行改（底线 5）。
 export default function ConvertPanel({
   rows, customerName, onCreate, onClose, sheetQtys, qtyColumnName, onViewOrder,
-  qtyColOptions, qtyCol, onQtyColChange, onExportCustomer,
+  qtyColOptions, qtyCol, onQtyColChange, onExportCustomer, sheetCols,
 }) {
+  const allSheetCols = sheetCols || [];
   // 包 14：生成成功后不再自动跳走——面板里出成功提示，用户点
   // 「查看这张订单」再跳到订单页看那一张（onCreate 返回新单号）。
   const [createdNo, setCreatedNo] = useState(null);
@@ -37,23 +47,25 @@ export default function ConvertPanel({
     return init;
   });
   const [checks, setChecks] = useState({});
-  const [colVis, setColVis] = useState(loadConvCols);
-  const vis = (key) => colVis[key] !== false;
+  const [selCols, setSelCols] = useState(loadConvCols);
+  const effectiveCols = (() => {
+    const valid = (selCols || []).filter((c) => allSheetCols.some((sc) => sc.col === c));
+    const base = selCols && valid.length ? valid : defaultConvCols(allSheetCols);
+    return allSheetCols.filter((sc) => base.includes(sc.col));
+  })();
   const toggleCol = (key) => {
-    const next = { ...colVis, [key]: colVis[key] === false ? true : false };
-    setColVis(next);
+    const col = Number(key.slice(1));
+    const cur = effectiveCols.map((sc) => sc.col);
+    const next = cur.includes(col)
+      ? cur.filter((c) => c !== col)
+      : allSheetCols.map((sc) => sc.col).filter((c) => cur.includes(c) || c === col);
+    setSelCols(next);
     try { window.localStorage.setItem(CONV_COLS_KEY, JSON.stringify(next)); } catch (e) { /* 记不住也不挡用 */ }
   };
-  const colOptions = [
-    { key: 'product', label: '产品' },
-    { key: 'factory', label: '定厂' },
-    { key: 'fprice', label: '工厂价' },
-    { key: 'final', label: '最终报价' },
-    { key: 'status', label: '状态' },
-  ];
+  const colOptions = allSheetCols.map((sc) => ({ key: 'c' + sc.col, label: sc.label }));
   const colValue = {};
-  for (const o of colOptions) colValue[o.key] = vis(o.key);
-  const visibleColCount = 3 + colOptions.filter((o) => vis(o.key)).length;
+  for (const sc of allSheetCols) colValue['c' + sc.col] = effectiveCols.some((x) => x.col === sc.col);
+  const visibleColCount = 6 + effectiveCols.length;
   const [bulkQty, setBulkQty] = useState('');
 
   const checkedOf = (r) => checks[r.lineId] !== false;
@@ -176,18 +188,17 @@ export default function ConvertPanel({
         <thead>
           <tr>
             <th style={{ ...th, width: 34 }}>转</th>
-            <th style={th}>OE 码</th>
-            {vis('product') && <th style={th}>产品</th>}
-            {vis('factory') && <th style={th}>定厂</th>}
-            {vis('fprice') && <th style={{ ...th, textAlign: 'right' }}>工厂价</th>}
-            {vis('final') && (
-              <th style={{ ...th, textAlign: 'right' }}>
-                最终报价
-                <div style={{ fontWeight: 400, fontSize: 11, color: '#999' }}>（按定厂工厂价算）</div>
-              </th>
-            )}
+            {effectiveCols.map((sc) => (
+              <th key={sc.col} style={th}>{sc.label}</th>
+            ))}
+            <th style={th}>定厂</th>
+            <th style={{ ...th, textAlign: 'right' }}>工厂价</th>
+            <th style={{ ...th, textAlign: 'right' }}>
+              最终报价
+              <div style={{ fontWeight: 400, fontSize: 11, color: '#999' }}>（按定厂工厂价算）</div>
+            </th>
             <th style={{ ...th, width: 110 }}>数量</th>
-            {vis('status') && <th style={th}>状态</th>}
+            <th style={th}>状态</th>
           </tr>
         </thead>
         <tbody>
@@ -203,16 +214,14 @@ export default function ConvertPanel({
                     onChange={(e) => setChecks({ ...checks, [r.lineId]: e.target.checked })}
                   />
                 </td>
-                <td style={td}>{r.oe || '—'}</td>
-                {vis('product') && <td style={td}>{r.product || '—'}</td>}
-                {vis('factory') && <td style={td}>{r.choice ? r.choice.factory : '—'}</td>}
-                {vis('fprice') && (
-                  <td style={{ ...td, textAlign: 'right' }}>
-                    {r.choice ? r.choice.rawPrice : '—'}
-                    {r.choice ? (r.choice.taxInclusive ? '（含税）' : '（不含税）') : ''}
-                  </td>
-                )}
-                {vis('final') && (
+                {effectiveCols.map((sc) => (
+                  <td key={sc.col} style={td}>{(r.values && r.values[sc.col]) || '—'}</td>
+                ))}
+                <td style={td}>{r.choice ? r.choice.factory : '—'}</td>
+                <td style={{ ...td, textAlign: 'right' }}>
+                  {r.choice ? r.choice.rawPrice : '—'}
+                  {r.choice ? (r.choice.taxInclusive ? '（含税）' : '（不含税）') : ''}
+                </td>
                 <td style={{ ...td, textAlign: 'right' }}>
                   {r.finalPrice !== null && r.finalPrice !== undefined ? r.finalPrice.toFixed(2) : '—'}
                   {r.breakdown && (
@@ -222,7 +231,6 @@ export default function ConvertPanel({
                     }}>{r.breakdown}</div>
                   )}
                 </td>
-                )}
                 <td style={td}>
                   <input
                     type="number" min="1" className="conv-qty" data-line={r.lineId}
@@ -233,7 +241,6 @@ export default function ConvertPanel({
                     style={input}
                   />
                 </td>
-                {vis('status') && (
                 <td style={td}>
                   {r.convertedTo
                     ? <span className="conv-converted" style={{ color: '#1e9e57' }}>已转订单 {r.convertedTo}</span>
@@ -243,7 +250,6 @@ export default function ConvertPanel({
                         : <span style={{ color: '#999' }}>待填数量</span>)
                       : <span style={{ color: '#d92d20' }}>暂无最终价，先生成最终报价列</span>}
                 </td>
-                )}
               </tr>
             );
           })}

@@ -26,6 +26,7 @@ export default function ColumnPicker({ options, value, onToggle }) {
             background: '#fff', border: '1px solid #c9d2de', borderRadius: 10,
             padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: 5,
             boxShadow: '0 8px 24px rgba(23,34,62,0.14)', minWidth: 150,
+            maxHeight: 320, overflowY: 'auto',
           }}>
             {options.map((o) => (
               <label key={o.key} style={{

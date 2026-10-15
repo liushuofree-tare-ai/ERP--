@@ -18,7 +18,7 @@ import { zipSync } from 'fflate';
 import ConvertPanel from './ConvertPanel.jsx';
 import OrdersView from './OrdersView.jsx';
 import { formatOrderNo, convertedLineIds } from './orders.js';
-import { createLedger, noteWorkColumn, cloneLedgerForQuote } from './ledger.js';
+import { createLedger, noteWorkColumn, cloneLedgerForQuote, rowOfLineId } from './ledger.js';
 import { loadSaved, saveWork, clearSaved, saveWorkAndSync, buildServerPayload, adoptRemoteState, stashLocalBeforeAdopt, onSyncChange, lastSyncInfo } from './store.js';
 import { detectServer, fetchServerState, pushState, isServerAvailable, openTempDownload, feishuNotify } from './apiClient.js';
 import { computeSalesPrice } from './pricing.js';
@@ -66,6 +66,7 @@ const OVERLAY_STYLE = {
 function ConvertView({
   inquiry, rows, customerName, qtyColOptions, qtyCol, onQtyColChange,
   sheetQtys, qtyColumnName, onCreate, onViewOrder, onBack, onExportCustomer,
+  sheetCols,
 }) {
   const inqName = (inquiry && inquiry.source && inquiry.source.fileName) || '';
   return (
@@ -97,6 +98,7 @@ function ConvertView({
           onCreate={onCreate}
           onViewOrder={onViewOrder}
           onExportCustomer={onExportCustomer}
+          sheetCols={sheetCols || []}
           onClose={onBack}
         />
       )}
@@ -478,6 +480,14 @@ function pickDefaultSheet(parsedList) {
  * images 一律以规范数据为准交回（回声里的图片由 onChange 里的图片对齐
  * 决定去留——包 10：回声只增不删，删图只认画面，见 imageSync.js）。
  */
+/** 取某个物理格的显示文本（有格式串用格式串，否则原值）；没有就空串 */
+function sheetCellText(sheet, r, c) {
+  const cd = ((sheet && sheet.celldata) || []).find((x) => x.r === r && x.c === c);
+  if (!cd || !cd.v) return '';
+  const t = cd.v.m !== undefined && cd.v.m !== null ? cd.v.m : cd.v.v;
+  return t === null || t === undefined ? '' : String(t);
+}
+
 function canonicalize(echo, prev) {
   if (!Array.isArray(echo)) return prev;
   return echo.map((sh, i) => {
@@ -510,6 +520,24 @@ function canonicalize(echo, prev) {
       images: (p && p.images) || sh.images || [],
       defaultColWidth: sh.defaultColWidth,
       defaultRowHeight: sh.defaultRowHeight,
+      // 筛选/冻结等编辑器状态必须原样带过（2026-10-15 修「筛选不可用」）：
+      // FortuneSheet 把筛选条件放在 sheet.filter / filter_select、
+      // 隐藏行放在 config.rowhidden——旧实现只留 config、把 filter
+      // 两个字段吞了，用户一点筛选，回声一回来筛选状态就被清掉，
+      // 表现为筛选点了没反应/行藏起来又找不回来。其余几个字段
+      // （冻结窗格、条件格式、超链接、数据验证）是同一类问题，一并带过。
+      filter: sh.filter !== undefined ? sh.filter : (p && p.filter),
+      filter_select: sh.filter_select !== undefined ? sh.filter_select : (p && p.filter_select),
+      frozen: sh.frozen !== undefined ? sh.frozen : (p && p.frozen),
+      calcChain: sh.calcChain !== undefined ? sh.calcChain : (p && p.calcChain),
+      hyperlink: sh.hyperlink !== undefined ? sh.hyperlink : (p && p.hyperlink),
+      dataVerification: sh.dataVerification !== undefined ? sh.dataVerification : (p && p.dataVerification),
+      luckysheet_conditionformat_save: sh.luckysheet_conditionformat_save !== undefined
+        ? sh.luckysheet_conditionformat_save : (p && p.luckysheet_conditionformat_save),
+      luckysheet_alternateformat_save: sh.luckysheet_alternateformat_save !== undefined
+        ? sh.luckysheet_alternateformat_save : (p && p.luckysheet_alternateformat_save),
+      showGridLines: sh.showGridLines !== undefined ? sh.showGridLines : (p && p.showGridLines),
+      zoomRatio: sh.zoomRatio !== undefined ? sh.zoomRatio : (p && p.zoomRatio),
     };
   });
 }
@@ -1801,9 +1829,21 @@ function App() {
   function buildModel() {
     flushDocRef();
     const inq = activeInquiryEntry();
-    if (!inq) return { factories: [], rows: [] };
+    if (!inq) return { factories: [], rows: [], sheetCols: [] };
     const quotes = quotesForInquiry(docsRef.current, inq.docId);
-    return buildCompareRows({ inquiry: inq, quotes });
+    const model = buildCompareRows({ inquiry: inq, quotes });
+    // 显示列（用户口径）：比价/转订单里能选着显示的信息列，是询价单
+    // 原表的全部列；每行带上这些列在原表里的原值，视图按勾选渲染
+    model.sheetCols = columnHeaders(inq.sheet);
+    for (const row of model.rows) {
+      const r = rowOfLineId(inq.ledger, row.lineId);
+      const values = {};
+      if (r >= 0) {
+        for (const { col } of model.sheetCols) values[col] = sheetCellText(inq.sheet, r, col);
+      }
+      row.values = values;
+    }
+    return model;
   }
 
   function handleChooseCell(row, cell) {
@@ -2115,6 +2155,7 @@ function App() {
         lineId: r.lineId,
         oe: r.oe,
         product: r.product,
+        values: r.values || {},
         choice,
         finalPrice: fp,
         breakdown: breakdownFor(r.lineId, choice, quotes, inq),
@@ -3447,6 +3488,7 @@ function App() {
           onCreate={handleCreateOrder}
           onViewOrder={(orderNo) => jumpToOrder(orderNo)}
           onExportCustomer={goCompareExport}
+          sheetCols={convertRows && fqCtx && fqCtx.inq ? columnHeaders(fqCtx.inq.sheet) : []}
           onBack={() => goView('sheet')}
         />
       ) : showExportPage ? (

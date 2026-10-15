@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import ColumnPicker from './ColumnPicker.jsx';
 
-// 显示列偏好（本机记忆）：序号/OE/产品 + 每家工厂列，默认全显
-const CMP_COLS_KEY = 'erp-cmp-cols';
+// 显示列偏好（本机记忆）：从询价单原表的全部列里选要显示的信息列，
+// 存的是列下标数组；没存过时默认选「序号 / OE / 产品」对应的列
+const CMP_COLS_KEY = 'erp-cmp-sheetcols';
 function loadCmpCols() {
-  try { return JSON.parse(window.localStorage.getItem(CMP_COLS_KEY) || '{}') || {}; }
-  catch (e) { return {}; }
+  try {
+    const v = JSON.parse(window.localStorage.getItem(CMP_COLS_KEY) || 'null');
+    return Array.isArray(v) ? v.filter((x) => Number.isInteger(x)) : null;
+  } catch (e) { return null; }
+}
+function defaultCmpCols(sheetCols) {
+  const hit = sheetCols
+    .filter((sc) => /序号|OE|产品/.test(sc.label || ''))
+    .map((sc) => sc.col);
+  return hit.length ? hit : sheetCols.slice(0, 3).map((sc) => sc.col);
 }
 
 // 比价定厂视图（SPEC 第四节第 6 项）：询价单的数据行逐行铺开，
@@ -36,21 +45,25 @@ export default function CompareView({
 }) {
   const { factories, rows } = model;
   const chosenCount = rows.filter((r) => choices[r.lineId]).length;
-  const [colVis, setColVis] = useState(loadCmpCols);
-  const vis = (key) => colVis[key] !== false;
+  const sheetCols = model.sheetCols || [];
+  const [selCols, setSelCols] = useState(loadCmpCols);
+  const effectiveCols = (() => {
+    const valid = (selCols || []).filter((c) => sheetCols.some((sc) => sc.col === c));
+    const base = selCols && valid.length ? valid : defaultCmpCols(sheetCols);
+    return sheetCols.filter((sc) => base.includes(sc.col));
+  })();
   const toggleCol = (key) => {
-    const next = { ...colVis, [key]: colVis[key] === false ? true : false };
-    setColVis(next);
+    const col = Number(key.slice(1));
+    const cur = effectiveCols.map((sc) => sc.col);
+    const next = cur.includes(col)
+      ? cur.filter((c) => c !== col)
+      : sheetCols.map((sc) => sc.col).filter((c) => cur.includes(c) || c === col);
+    setSelCols(next);
     try { window.localStorage.setItem(CMP_COLS_KEY, JSON.stringify(next)); } catch (e) { /* 记不住也不挡用 */ }
   };
-  const colOptions = [
-    { key: 'seq', label: '序号' },
-    { key: 'oe', label: 'OE码' },
-    { key: 'product', label: '产品' },
-    ...factories.map((f) => ({ key: 'f:' + f, label: '工厂：' + f })),
-  ];
+  const colOptions = sheetCols.map((sc) => ({ key: 'c' + sc.col, label: sc.label }));
   const colValue = {};
-  for (const o of colOptions) colValue[o.key] = vis(o.key);
+  for (const sc of sheetCols) colValue['c' + sc.col] = effectiveCols.some((x) => x.col === sc.col);
 
   const th = {
     border: '1px solid #dbe2ec', background: '#e9eff8', padding: '6px 10px',
@@ -221,10 +234,10 @@ export default function CompareView({
       <table className="compare-table" style={{ borderCollapse: 'collapse', minWidth: 720, width: '100%' }}>
         <thead>
           <tr>
-            {vis('seq') && <th style={th}>序号</th>}
-            {vis('oe') && <th style={th}>OE码</th>}
-            {vis('product') && <th style={th}>产品</th>}
-            {factories.filter((f) => vis('f:' + f)).map((f) => (
+            {effectiveCols.map((sc) => (
+              <th key={sc.col} style={th}>{sc.label}</th>
+            ))}
+            {factories.map((f) => (
               <th key={f} style={th}>
                 {f}
                 {!marks[f] && (
@@ -239,10 +252,10 @@ export default function CompareView({
             const chosen = choices[row.lineId];
             return (
               <tr key={row.lineId} className="cmp-row" data-line-id={row.lineId}>
-                {vis('seq') && <td style={td}>{row.seq}</td>}
-                {vis('oe') && <td style={td}>{row.oe}</td>}
-                {vis('product') && <td style={td}>{row.product}</td>}
-                {factories.filter((f) => vis('f:' + f)).map((f) => {
+                {effectiveCols.map((sc) => (
+                  <td key={sc.col} style={td}>{(row.values && row.values[sc.col]) || '—'}</td>
+                ))}
+                {factories.map((f) => {
                   const cell = row.cells[f];
                   const isChosen = !!(chosen && chosen.factory === f);
                   const isLowest = cell.priced && row.lowestFactories.includes(f);

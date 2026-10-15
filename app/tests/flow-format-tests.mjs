@@ -165,10 +165,16 @@ console.log('== 转订单独立模块：导航守卫回归（源码级）');
   ok(mainSrc.includes("'filter', 'image', 'search'"), '编辑器工具栏有筛选按钮');
   const cmpSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/CompareView.jsx'), 'utf8');
   const convSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/ConvertPanel.jsx'), 'utf8');
-  ok(cmpSrc.includes('ColumnPicker') && cmpSrc.includes('erp-cmp-cols'),
-    '比价定厂有「显示列」选择且记住偏好');
-  ok(convSrc.includes('ColumnPicker') && convSrc.includes('erp-conv-cols'),
-    '转订单有「显示列」选择且记住偏好');
+  ok(cmpSrc.includes('ColumnPicker') && cmpSrc.includes('erp-cmp-sheetcols') &&
+     cmpSrc.includes('model.sheetCols') && cmpSrc.includes('row.values'),
+    '比价定厂「显示列」从询价单全表列里选，带原表值');
+  ok(convSrc.includes('ColumnPicker') && convSrc.includes('erp-conv-sheetcols') &&
+     convSrc.includes('r.values'),
+    '转订单「显示列」从询价单全表列里选，带原表值');
+  ok(mainSrc.includes('filter: sh.filter') && mainSrc.includes('filter_select: sh.filter_select'),
+    '筛选状态在编辑回声里被保留（筛选不可用的根因）');
+  ok(mainSrc.includes('model.sheetCols = columnHeaders(inq.sheet)'),
+    '比价模型带上询价单全部列与逐行原值');
 }
 
 console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);
