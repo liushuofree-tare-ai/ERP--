@@ -200,8 +200,8 @@ export default function QuoteExportPanel({
             })} style={{
               border: '1px solid #b7791f', background: '#b7791f', color: '#fff',
               borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
-            }}>生成可编辑报价单（副本）</button>
-            <span style={{ color: '#888' }}>先调格式再发客户：生成一份能进表格编辑的副本，挪列改格式不影响原询价单</span>
+            }}>生成最终报价单（可编辑）</button>
+            <span style={{ color: '#888' }}>先调格式再发客户：生成一张最终报价单到表格工作区，挪列改格式不影响原询价单</span>
           </span>
         )}
       </div>

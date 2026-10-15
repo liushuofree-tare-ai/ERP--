@@ -150,8 +150,13 @@ console.log('== 转订单独立模块：导航守卫回归（源码级）');
     '副本可删除且有说明横幅（改副本不动原询价单）');
   ok(panelSrc.includes('exp-create-editable') && panelSrc.includes('onCreateEditable'),
     '导出面板有「生成可编辑报价单（副本）」按钮');
-  ok(mainSrc.includes("d.kind === 'custquote'") && mainSrc.includes("'对客报价单（副本）'"),
-    '单据页签能区分对客报价单副本');
+  ok(mainSrc.includes("d.kind === 'custquote'") && mainSrc.includes("'最终报价单'"),
+    '单据页签里有「最终报价单」');
+  ok(mainSrc.includes('handleCreateFinalQuoteDefault') && mainSrc.includes('final-quote-create'),
+    '页签行能一键生成最终报价单（默认勾选）');
+  ok(mainSrc.includes('navCollapsed') && mainSrc.includes('erp-nav-collapsed') &&
+     mainSrc.includes('nav-collapse-toggle'),
+    '侧边栏可收起且记住状态');
 }
 
 console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);

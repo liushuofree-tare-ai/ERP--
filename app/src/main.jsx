@@ -653,6 +653,11 @@ function App() {
   // 最终报价 / 对客导出（包 7）：面板开关 + 每次打开时让默认勾选重算
   const [showExportPage, setShowExportPage] = useState(false);
   const [multiSendOpen, setMultiSendOpen] = useState(false);
+  // 侧栏可收起（用户反馈侧栏太大占地方）：收起后只剩图标栏，表格区变宽；
+  // 选择记在浏览器里，下次打开还是收起的样子
+  const [navCollapsed, setNavCollapsed] = useState(() => {
+    try { return window.localStorage.getItem('erp-nav-collapsed') === '1'; } catch (e) { return false; }
+  });
   const [multiSel, setMultiSel] = useState({});
   const [exportTick, setExportTick] = useState(0);
   // 转订单 / 订单履约（包 8）：客户名镜像、订单镜像与视图开关。
@@ -2348,14 +2353,14 @@ function App() {
     const existing = docsRef.current.find(
       (d) => d.kind === 'custquote' && d.inquiryId === inq.docId);
     if (existing &&
-        !window.confirm('这张询价单已经有一份对客报价单副本了，重新生成会覆盖你在副本里改过的格式与内容。确定重新生成吗？')) {
+        !window.confirm('这张询价单已经有一份最终报价单了，重新生成会覆盖你在里面改过的格式与内容。确定重新生成吗？')) {
       return;
     }
     rememberExportCols(inq, selection);
     let made = await buildCustomerExportBytes('pictured', selection, { noAlert: true });
     if (!made) made = await buildCustomerExportBytes('plain', selection);
     if (!made) return;
-    const fileName = made.fileName.replace(/\.xlsx$/, '') + '-可编辑副本.xlsx';
+    const fileName = made.fileName.replace(/\.xlsx$/, '') + '-最终报价单.xlsx';
     const wb = readWorkbook(made.bytes);
     const parsedList = wb.sheets.map((sh, i) => parseSheet(wb, i));
     const stored = await persistImportAssets(fileName, made.bytes, parsedList);
@@ -2375,7 +2380,7 @@ function App() {
       pricing: { ...DEFAULT_PRICING },
       source: { fileName, sheetName: parsed.name, sheetIndex: idx },
       sourceFileId: stored.stored ? stored.originalFileId : null,
-      importInfo: '对客报价单副本（由导出勾选生成，可任意编辑，不影响原询价单）',
+      importInfo: '最终报价单（由导出勾选生成，可任意编辑，不影响原询价单）',
       headerRow: detectHeaderRow(fortune),
       priceMark: null,
       factoryExtras: [],
@@ -2389,11 +2394,27 @@ function App() {
     switchDoc(doc.docId);
   }
 
-  /** 删除对客报价单副本（原询价单不受任何影响） */
+  /**
+   * 页签行一键生成最终报价单：用默认勾选（有最终价的行 + 默认列），
+   * 省去先进导出模块的步骤；要挑行挑列再去「对客导出」里生成。
+   */
+  function handleCreateFinalQuoteDefault() {
+    const model = buildExportModel();
+    if (!model || !model.defaultRowIds.length) {
+      window.alert('还没有带最终价的行——先比价定厂、点「生成最终报价列」，再来生成最终报价单。');
+      return;
+    }
+    handleCreateEditableQuote({
+      lineIds: new Set(model.defaultRowIds),
+      colKeys: new Set(model.defaultColKeys),
+    });
+  }
+
+/** 删除最终报价单（原询价单不受任何影响） */
   function handleDeleteCustQuote() {
     const doc = docsRef.current.find((d) => d.docId === activeDocIdRef.current);
     if (!doc || doc.kind !== 'custquote') return;
-    if (!window.confirm('删除这份对客报价单副本？原询价单和报价数据都不受影响，之后可以随时重新生成。')) return;
+    if (!window.confirm('删除这份最终报价单？原询价单和报价数据都不受影响，之后可以随时重新生成。')) return;
     docsRef.current = docsRef.current.filter((d) => d.docId !== doc.docId);
     syncDocList();
     if (doc.inquiryId) switchDoc(doc.inquiryId);
@@ -2943,8 +2964,10 @@ function App() {
       key={v}
       className={'nav-item nav-' + cls + (view === v ? ' nav-active' : '')}
       onClick={() => goView(v)}
+      title={navCollapsed ? label : undefined}
       style={{
-        textAlign: 'left', fontSize: 13.5, borderRadius: 9, padding: '7px 10px',
+        textAlign: navCollapsed ? 'center' : 'left', fontSize: 13.5, borderRadius: 9,
+        padding: navCollapsed ? '8px 0' : '7px 10px',
         cursor: 'pointer', fontFamily: 'sans-serif', width: '100%',
         border: '1px solid transparent',
         background: view === v ? '#2f6bff' : 'transparent',
@@ -2954,8 +2977,8 @@ function App() {
       }}
     >
       <span className="nav-ico">{icon}</span>
-      <span>{label}</span>
-      {badge !== undefined && badge !== null && (
+      {!navCollapsed && <span>{label}</span>}
+      {!navCollapsed && badge !== undefined && badge !== null && (
         <>
           <span className="sr-only">（</span>
           <span className="nav-badge">{badge}</span>
@@ -2968,7 +2991,9 @@ function App() {
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       <div className="sidebar" style={{
-        width: 184, flexShrink: 0, padding: '12px 10px',
+        width: navCollapsed ? 56 : 168, flexShrink: 0,
+        padding: navCollapsed ? '12px 7px' : '12px 10px',
+        transition: 'width 0.15s ease',
         display: 'flex', flexDirection: 'column', gap: 4,
         fontFamily: 'sans-serif', boxSizing: 'border-box',
       }}>
@@ -2980,18 +3005,22 @@ function App() {
             color: '#fff', fontWeight: 800, fontSize: 16,
             boxShadow: '0 4px 10px rgba(47,107,255,0.4)',
           }}>汽</div>
-          <div>
-            <div style={{
-              fontWeight: 700, fontSize: 16, color: '#fff',
-              letterSpacing: '0.02em', lineHeight: 1.25,
-            }}>汽配 ERP</div>
-            <div style={{ color: '#71809c', fontSize: 11.5, marginTop: 1 }}>版本 {APP_VERSION}</div>
-          </div>
+          {!navCollapsed && (
+            <div>
+              <div style={{
+                fontWeight: 700, fontSize: 16, color: '#fff',
+                letterSpacing: '0.02em', lineHeight: 1.25,
+              }}>汽配 ERP</div>
+              <div style={{ color: '#71809c', fontSize: 11.5, marginTop: 1 }}>版本 {APP_VERSION}</div>
+            </div>
+          )}
         </div>
         {navBtn('sheet', 'sheet', '表格工作区', NavIcon.sheet)}
-        <div style={{ color: '#5f7089', fontSize: 11, padding: '0 10px 4px', marginTop: -2 }}>
-          询价单 / 各厂报价单
-        </div>
+        {!navCollapsed && (
+          <div style={{ color: '#5f7089', fontSize: 11, padding: '0 10px 4px', marginTop: -2 }}>
+            询价单 / 各厂报价单
+          </div>
+        )}
         {navBtn('compare', 'compare', '比价定厂', NavIcon.compare)}
         {navBtn('convert', 'convert', '转订单', NavIcon.convert)}
         {navBtn('export', 'export', '对客导出', NavIcon.export)}
@@ -3003,6 +3032,23 @@ function App() {
         <div style={{ height: 10 }} />
         {navBtn('data', 'data', '数据备份', NavIcon.data)}
         {navBtn('check', 'check', '环境自检', NavIcon.check)}
+        <div style={{ marginTop: 'auto' }} />
+        <button
+          className="nav-collapse-toggle"
+          title={navCollapsed ? '展开侧边栏' : '收起侧边栏（表格更宽）'}
+          onClick={() => {
+            const next = !navCollapsed;
+            setNavCollapsed(next);
+            try { window.localStorage.setItem('erp-nav-collapsed', next ? '1' : '0'); } catch (e) { /* 记不住也不挡使用 */ }
+          }}
+          style={{
+            textAlign: navCollapsed ? 'center' : 'left', fontSize: 12.5, borderRadius: 9,
+            padding: navCollapsed ? '8px 0' : '7px 10px', cursor: 'pointer',
+            fontFamily: 'sans-serif', width: '100%',
+            border: '1px solid #33415e',
+            background: 'transparent', color: '#71809c',
+          }}
+        >{navCollapsed ? '»' : '« 收起'}</button>
       </div>
       <div className="app-main" style={{
         flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column',
@@ -3121,9 +3167,21 @@ function App() {
           >{d.kind === 'inquiry'
             ? '询价单' + (d.customerName ? ' · ' + d.customerName : '')
             : d.kind === 'custquote'
-              ? '对客报价单（副本）'
+              ? '最终报价单'
               : '报价单 · ' + d.factoryName}</button>
         ))}
+        {activeInquiryMeta && !docList.some(
+          (d) => d.kind === 'custquote' && d.inquiryId === activeInquiryMeta.docId) && (
+          <button
+            className="final-quote-create"
+            onClick={handleCreateFinalQuoteDefault}
+            title="按已定价的行生成一张最终报价单到这里：在表格里调格式、挪价格列，不动原询价单。要挑行挑列，去左侧「对客导出」里生成"
+            style={{
+              border: '1px dashed #1e9e57', color: '#157347', background: '#f2faf5',
+              borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+            }}
+          >＋ 最终报价单</button>
+        )}
         </div>
         <div className="ws-cluster-sep" />
         <div className="ws-cluster">
@@ -3200,7 +3258,7 @@ function App() {
         <button className="download-quote" onClick={handleDownload} style={{
           border: '1px solid #2f6bff', background: '#2f6bff', color: '#fff',
           borderRadius: 8, padding: '5px 14px', cursor: 'pointer',
-        }}>{activeIsQuote ? '下载报价单' : activeIsCustQuote ? '下载对客报价单' : '下载询价单'}</button>
+        }}>{activeIsQuote ? '下载报价单' : activeIsCustQuote ? '下载最终报价单' : '下载询价单'}</button>
         {canShareFiles ? (
           <button className="share-wechat" onClick={handleShare} style={{
             border: '1px solid #07c160', background: '#07c160', color: '#fff',
@@ -3574,7 +3632,7 @@ function App() {
           border: '1px solid #bcd7c5', borderLeft: '4px solid #1e9e57', borderRadius: 9,
           background: '#f2faf5',
         }}>
-          <b style={{ color: '#157347' }}>对客报价单副本</b>
+          <b style={{ color: '#157347' }}>最终报价单</b>
           <span style={{ color: '#44584c' }}>
             这份随便改：挪价格列、调格式、删行都<b>不会动到原始询价单</b>。改好后点上方「下载对客报价单」发客户。
           </span>
@@ -3586,7 +3644,7 @@ function App() {
           <button className="custquote-delete" onClick={handleDeleteCustQuote} style={{
             border: '1px solid #d92d20', color: '#d92d20', background: '#fff', borderRadius: 8,
             padding: '4px 12px', cursor: 'pointer',
-          }}>删除副本</button>
+          }}>删除此单</button>
         </div>
       )}
       <div className="sheet-wrap" style={{
