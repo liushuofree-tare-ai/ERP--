@@ -8,7 +8,10 @@ import React, { useMemo, useState } from 'react';
 //   一部分是常态，余量下次还能转）。
 // · 「全部填」是用户明确点击的批量动作：给所有可转行填同一个数量，
 //   填完仍可逐行改（底线 5）。
-export default function ConvertPanel({ rows, customerName, onCreate, onClose, sheetQtys, qtyColumnName, onViewOrder }) {
+export default function ConvertPanel({
+  rows, customerName, onCreate, onClose, sheetQtys, qtyColumnName, onViewOrder,
+  qtyColOptions, qtyCol, onQtyColChange,
+}) {
   // 包 14：生成成功后不再自动跳走——面板里出成功提示，用户点
   // 「查看这张订单」再跳到订单页看那一张（onCreate 返回新单号）。
   const [createdNo, setCreatedNo] = useState(null);
@@ -59,9 +62,8 @@ export default function ConvertPanel({ rows, customerName, onCreate, onClose, sh
   return (
     <div className="convert-panel" style={{
       fontFamily: 'sans-serif', fontSize: 14, padding: '12px 14px',
-      margin: '10px 14px 0', border: '1px solid #dbe2ec', borderLeft: '4px solid #d97706', borderRadius: 12,
+      border: '1px solid #dbe2ec', borderLeft: '4px solid #d97706', borderRadius: 12,
       background: '#fff', boxShadow: '0 1px 3px rgba(23,34,62,0.05)',
-      maxHeight: '46vh', overflowY: 'auto',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
         <b style={{ color: '#b45309' }}>转订单</b>
@@ -69,6 +71,23 @@ export default function ConvertPanel({ rows, customerName, onCreate, onClose, sh
           客户：{customerName || '（还没填客户名，先在上面填）'} ·
           只列已定厂的行；数量留空 = 这行先不转，之后还能再转
         </span>
+        {qtyColOptions && (
+          <label style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color: '#444', whiteSpace: 'nowrap' }}>
+            数量列
+            <select
+              className="conv-qty-col"
+              value={qtyCol === null || qtyCol === undefined ? '' : String(qtyCol)}
+              onChange={(e) => onQtyColChange && onQtyColChange(e.target.value === '' ? null : Number(e.target.value))}
+              style={{ padding: '3px 4px', maxWidth: 200 }}
+              title="从询价单已有的列里选一列作为数量来源；选定后随单保存"
+            >
+              <option value="">（不带入，手填数量）</option>
+              {qtyColOptions.map((o) => (
+                <option key={o.col} value={o.col}>{o.label}</option>
+              ))}
+            </select>
+          </label>
+        )}
         {qtyColumnName && (
           <span className="conv-qty-note" style={{ color: '#1e9e57' }}>
             数量已按「{qtyColumnName}」列带入，不对的直接改
@@ -89,7 +108,7 @@ export default function ConvertPanel({ rows, customerName, onCreate, onClose, sh
         <button onClick={onClose} style={{
           border: '1px solid #888', color: '#444', background: '#fff', borderRadius: 8,
           padding: '3px 10px', cursor: 'pointer',
-        }}>收起</button>
+        }}>返回表格</button>
       </div>
       {createdNo && (
         <div className="conv-success" style={{

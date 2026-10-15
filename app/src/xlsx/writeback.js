@@ -16,6 +16,7 @@ import { writeZip, partText } from './zip.js';
 import { parseXml, serializeXml, createEl, children, firstChild } from './xml.js';
 import { readWorkbook, parseCellRef } from './workbook.js';
 import { collectPlacements, collectExportPlacements, imagifyParts, hasSheetDrawing } from './imagify.js';
+import { StyleBook, specOf, ensureStylesPart } from './styles.js';
 
 const XML_DECL = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\r\n';
 const encoder = new TextEncoder();
@@ -211,6 +212,14 @@ export function applyValuesToSheet(parts, sheetPath, sheet) {
     }
   }
 
+  // 格式回写（格式继承）：样式表在原件上追加，没有改动就不动原件的 styles.xml
+  const hadStyles = parts.has('xl/styles.xml');
+  const book = StyleBook.load(parts);
+  applyWorkStyles(doc, sheetData, sheet, book);
+  applyRowLayout(doc, sheetData, sheet);
+  applyColLayout(doc, root, sheet);
+  if (book.save(parts) && !hadStyles) ensureStylesPart(parts);
+
   // 维度：覆盖（原件行列 ∪ 工作层行列）
   let maxR = (sheet && sheet.row) || 0;
   let maxC = (sheet && sheet.column) || 0;
@@ -230,14 +239,137 @@ export function applyValuesToSheet(parts, sheetPath, sheet) {
   parts.set(sheetPath, encoder.encode(XML_DECL + serializeXml(doc)));
 }
 
+/* ---------- 工作层的格式回写：列宽 / 行高 / 隐藏行列 / 单元格样式 ---------- */
+
+const PX_TO_PT = 0.75;
+/** 与读取层互逆：列宽字符数 w ↔ 像素 px = w*7+5 */
+const colCharsOfPx = (px) => Math.max(1, (px - 5) / 7);
+
+/** 读出 <cols> 的全部区间（min/max 为 1 起的列号） */
+function readColRanges(root) {
+  const colsEl = firstChild(root, 'cols');
+  const ranges = [];
+  if (!colsEl) return ranges;
+  for (const el of children(colsEl, 'col')) {
+    const attrs = {};
+    for (let i = 0; i < el.attributes.length; i++) {
+      const a = el.attributes[i];
+      attrs[a.name] = a.value;
+    }
+    ranges.push({ min: Number(el.getAttribute('min')), max: Number(el.getAttribute('max')), attrs });
+  }
+  return ranges;
+}
+
+/** 把第 c 列（0 起）的属性改成 patch；所在区间需要时切开，别的列属性不变 */
+function patchColRanges(ranges, c, patch) {
+  const cn = c + 1;
+  const idx = ranges.findIndex((r) => r.min <= cn && cn <= r.max);
+  if (idx < 0) {
+    ranges.push({ min: cn, max: cn, attrs: { ...patch } });
+    return;
+  }
+  const r = ranges[idx];
+  const pieces = [];
+  if (r.min < cn) pieces.push({ min: r.min, max: cn - 1, attrs: { ...r.attrs } });
+  pieces.push({ min: cn, max: cn, attrs: { ...r.attrs, ...patch } });
+  if (cn < r.max) pieces.push({ min: cn + 1, max: r.max, attrs: { ...r.attrs } });
+  ranges.splice(idx, 1, ...pieces);
+}
+
+/** 写回 <cols>：放在 sheetData 之前（OOXML 元素顺序） */
+function writeColRanges(doc, root, ranges) {
+  const old = firstChild(root, 'cols');
+  if (old) root.removeChild(old);
+  if (!ranges.length) return;
+  const colsEl = createEl(doc, 'cols');
+  for (const r of ranges.slice().sort((a, b) => a.min - b.min)) {
+    const el = createEl(doc, 'col');
+    for (const [k, v] of Object.entries(r.attrs)) el.setAttribute(k, v);
+    el.setAttribute('min', String(r.min));
+    el.setAttribute('max', String(r.max));
+    colsEl.appendChild(el);
+  }
+  const sd = firstChild(root, 'sheetData');
+  if (sd) root.insertBefore(colsEl, sd);
+  else root.appendChild(colsEl);
+}
+
+/** 列宽（columnlen）与隐藏列（colhidden）→ <cols>。没有改动就不碰原件的 <cols>。 */
+function applyColLayout(doc, root, sheet) {
+  const cfg = (sheet && sheet.config) || {};
+  const targets = [];
+  for (const k of Object.keys(cfg.columnlen || {})) {
+    const c = Number(k);
+    if (Number.isInteger(c) && c >= 0) {
+      targets.push([c, { width: colCharsOfPx(cfg.columnlen[k]).toFixed(2), customWidth: '1' }]);
+    }
+  }
+  for (const k of Object.keys(cfg.colhidden || {})) {
+    const c = Number(k);
+    if (Number.isInteger(c) && c >= 0) targets.push([c, { hidden: '1' }]);
+  }
+  if (!targets.length) return;
+  const ranges = readColRanges(root);
+  for (const [c, patch] of targets) patchColRanges(ranges, c, patch);
+  writeColRanges(doc, root, ranges);
+}
+
+/** 行高（rowlen）与隐藏行（rowhidden）→ <row ht customHeight hidden> */
+function applyRowLayout(doc, sheetData, sheet) {
+  const cfg = (sheet && sheet.config) || {};
+  const heights = cfg.rowlen || {};
+  const hidden = cfg.rowhidden || {};
+  const rows = new Set([...Object.keys(heights), ...Object.keys(hidden)].map(Number)
+    .filter((n) => Number.isInteger(n) && n >= 0));
+  for (const r of rows) {
+    const rowEl = findOrCreateRow(doc, sheetData, r + 1);
+    if (heights[r] != null) {
+      rowEl.setAttribute('ht', (heights[r] * PX_TO_PT).toFixed(2));
+      rowEl.setAttribute('customHeight', '1');
+    }
+    if (r in hidden) rowEl.setAttribute('hidden', '1');
+  }
+}
+
+/** 工作层里被用户改过样式的格子 → 原件样式表里的 xf（只写有改动的格子） */
+function applyWorkStyles(doc, sheetData, sheet, book) {
+  for (const cd of (sheet && sheet.celldata) || []) {
+    const spec = specOf(cd.v);
+    if (!spec) continue;
+    const rowEl = findOrCreateRow(doc, sheetData, cd.r + 1);
+    const cEl = findOrCreateCell(doc, rowEl, cd.r, cd.c);
+    cEl.setAttribute('s', String(book.xfFor(spec)));
+  }
+}
+
+/** 最小生成用：'r,c' → xf 下标（只含有样式的格子） */
+function styleMapOf(sheet, book) {
+  const map = new Map();
+  for (const cd of (sheet && sheet.celldata) || []) {
+    const spec = specOf(cd.v);
+    if (spec) map.set(cd.r + ',' + cd.c, book.xfFor(spec));
+  }
+  return map;
+}
+
 /* ---------- 无原件时的最小生成 ---------- */
 
-function minimalSheetXml(sheet) {
+function minimalSheetXml(sheet, book) {
+  const styles = styleMapOf(sheet, book);
+  const sAttr = (r, c) => (styles.has(r + ',' + c) ? ' s="' + styles.get(r + ',' + c) + '"' : '');
   const values = canonicalValues(sheet);
   const rows = new Map();
   for (const e of values.values()) {
     if (!rows.has(e.r)) rows.set(e.r, []);
     rows.get(e.r).push(e);
+  }
+  // 只有样式、没有值的格子也要写出（否则底色等格式会丢）
+  for (const k of styles.keys()) {
+    if (values.has(k)) continue;
+    const [r, c] = k.split(',').map(Number);
+    if (!rows.has(r)) rows.set(r, []);
+    rows.get(r).push({ r, c, kind: 'empty' });
   }
   let maxR = (sheet && sheet.row) || 0;
   let maxC = (sheet && sheet.column) || 0;
@@ -267,9 +399,11 @@ function minimalSheetXml(sheet) {
       (ht != null ? ' ht="' + (ht * 0.75).toFixed(2) + '" customHeight="1"' : '') + '>';
     for (const e of (rows.get(r) || []).sort((a, b) => a.c - b.c)) {
       const ref = refOf(e.r, e.c);
-      if (e.kind === 'number') body += '<c r="' + ref + '"><v>' + e.value + '</v></c>';
-      else if (e.kind === 'boolean') body += '<c r="' + ref + '" t="b"><v>' + (e.value ? 1 : 0) + '</v></c>';
-      else body += '<c r="' + ref + '" t="inlineStr"><is><t' +
+      const s = sAttr(e.r, e.c);
+      if (e.kind === 'empty') body += '<c r="' + ref + '"' + s + '/>';
+      else if (e.kind === 'number') body += '<c r="' + ref + '"' + s + '><v>' + e.value + '</v></c>';
+      else if (e.kind === 'boolean') body += '<c r="' + ref + '"' + s + ' t="b"><v>' + (e.value ? 1 : 0) + '</v></c>';
+      else body += '<c r="' + ref + '"' + s + ' t="inlineStr"><is><t' +
         (/^\s|\s$/.test(e.value) ? ' xml:space="preserve"' : '') + '>' + escXml(e.value) + '</t></is></c>';
     }
     body += '</row>';
@@ -316,7 +450,10 @@ export function buildMinimalXlsx(sheetName, sheet, imageBytes) {
     '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
     '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>' +
     '</Relationships>'));
-  parts.set('xl/worksheets/sheet1.xml', encoder.encode(minimalSheetXml(sheet)));
+  // 样式表：有样式格子才生成（先建 book、写 sheet、再落样式部件与关系）
+  const book = StyleBook.load(parts);
+  parts.set('xl/worksheets/sheet1.xml', encoder.encode(minimalSheetXml(sheet, book)));
+  if (book.save(parts)) ensureStylesPart(parts);
   const placements = collectExportPlacements(sheet, imageBytes);
   if (placements.length) imagifyParts(parts, 'xl/worksheets/sheet1.xml', placements);
   return writeZip(parts);

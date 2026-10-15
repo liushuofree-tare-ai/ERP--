@@ -8,7 +8,7 @@
     "build": "vite build",
     "build:server": "vite build",
     "build:singlefile": "vite build",
-    "test": "node tests/xlsx-regression.mjs && node tests/pricing-tests.mjs && node tests/writeback-tests.mjs && node tests/compare-tests.mjs && node tests/quote-export-tests.mjs && node tests/orders-tests.mjs && node tests/backup-ai-tests.mjs && node tests/image-sync-tests.mjs && node tests/pkg11-tests.mjs && node tests/pkg12-tests.mjs && node tests/pkg13-tests.mjs && node tests/pkg14-tests.mjs",
+    "test": "node tests/xlsx-regression.mjs && node tests/pricing-tests.mjs && node tests/writeback-tests.mjs && node tests/compare-tests.mjs && node tests/quote-export-tests.mjs && node tests/orders-tests.mjs && node tests/backup-ai-tests.mjs && node tests/image-sync-tests.mjs && node tests/pkg11-tests.mjs && node tests/pkg12-tests.mjs && node tests/pkg13-tests.mjs && node tests/pkg14-tests.mjs && node tests/export-format-tests.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

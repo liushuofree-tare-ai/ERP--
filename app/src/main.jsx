@@ -59,6 +59,48 @@ const OVERLAY_STYLE = {
   maxHeight: '78%', overflowY: 'auto',
 };
 
+// 转订单独立模块（2026-10-15 拍板）：全区视图，不再盖在询价单表格上。
+// 行数据与数量列由父组件现算后传入；本组件只负责布局与交互转交。
+function ConvertView({
+  inquiry, rows, customerName, qtyColOptions, qtyCol, onQtyColChange,
+  sheetQtys, qtyColumnName, onCreate, onViewOrder, onBack,
+}) {
+  const inqName = (inquiry && inquiry.source && inquiry.source.fileName) || '';
+  return (
+    <div className="convert-view" style={{
+      flex: 1, minHeight: 0, overflowY: 'auto', padding: '14px 16px',
+      fontFamily: 'sans-serif', fontSize: 14,
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10, flexWrap: 'wrap' }}>
+        <b className="sec-title" style={{ fontSize: 18 }}>转订单</b>
+        <span style={{ color: '#666' }}>
+          来源询价单{inqName ? '：' + inqName : ''} · 客户：{customerName || '（未填）'}
+        </span>
+        <span style={{ marginLeft: 'auto' }} />
+      </div>
+      {!inquiry ? (
+        <div style={{ color: '#888', padding: 20 }}>
+          还没有询价单——先导入客户原表，发给工厂、比价定厂之后再来转订单。
+        </div>
+      ) : (
+        <ConvertPanel
+          key={'conv-' + (inquiry.docId || '') + '-' + (qtyCol === null || qtyCol === undefined ? 'auto' : qtyCol)}
+          rows={rows}
+          customerName={customerName}
+          sheetQtys={sheetQtys}
+          qtyColumnName={qtyColumnName}
+          qtyColOptions={qtyColOptions}
+          qtyCol={qtyCol}
+          onQtyColChange={onQtyColChange}
+          onCreate={onCreate}
+          onViewOrder={onViewOrder}
+          onClose={onBack}
+        />
+      )}
+    </div>
+  );
+}
+
 // 飞书环境（内置 WebView）：它对 blob: 链接的 <a download> 常拦不住或不弹
 // 保存对话框——服务器在线时改走「临时下载直链」（后端 5 分钟有效的标准
 // 附件流）。拿到不到直链就退回普通 blob 下载，两条路都留。
@@ -278,6 +320,8 @@ function workKeyOf(w) {
         priceMark: d.priceMark || null,
         factoryExtras: d.factoryExtras || null,
         rowChoices: d.rowChoices || null,
+        // 转订单数量列：改了也是真实编辑，得落盘（否则换列不保存、关页就丢）
+        qtyCol: typeof d.qtyCol === 'number' ? d.qtyCol : null,
         sheet: sheetKeyOf(d.sheet),
       })),
     });
@@ -600,6 +644,9 @@ function App() {
     INIT_ACTIVE_DOC.kind === 'inquiry' ? (INIT_ACTIVE_DOC.note || '') : '');
   const [orders, setOrdersState] = useState(INIT_ORDERS);
   const [showConvert, setShowConvert] = useState(false);
+  // 转订单数量列（当前询价单上指定的那一列；null = 没指定，走自动认）
+  const [convQtyCol, setConvQtyCol] = useState(
+    INIT_INQUIRY_DOC && typeof INIT_INQUIRY_DOC.qtyCol === 'number' ? INIT_INQUIRY_DOC.qtyCol : null);
   // 表格区浮层的开关（定价设置 / 最终报价详情）：与转订单、对客导出一起互斥
   const [pricingOpen, setPricingOpen] = useState(false);
   const [fqOpen, setFqOpen] = useState(false);
@@ -875,6 +922,15 @@ function App() {
     setRowChoicesState(next);
     const inq = activeInquiryEntry();
     if (inq) inq.rowChoices = next;
+    scheduleSave();
+  }
+
+  /** 转订单数量列：选定后写到询价单文档上（随单保存，下次打开还认） */
+  function handleConvertQtyColChange(col) {
+    const next = typeof col === 'number' ? col : null;
+    setConvQtyCol(next);
+    const inq = activeInquiryEntry();
+    if (inq) inq.qtyCol = next;
     scheduleSave();
   }
 
@@ -1244,6 +1300,7 @@ function App() {
     };
     setCustomerNameState('');
     setInquiryNoteState('');
+    setConvQtyCol(null); // 新导入的单还没指定数量列
     setCustNewMode(false);
     setPricingState(pricing);
     liveRef.current = [fortune];
@@ -1328,6 +1385,11 @@ function App() {
     };
     setCustomerNameState(docRef.current.customerName);
     setInquiryNoteState(target.kind === 'inquiry' ? (target.note || '') : '');
+    // 转订单数量列跟着"当前询价单"走（报价单视图下仍显示所属询价单的选择）
+    {
+      const inqNow = activeInquiryEntry();
+      setConvQtyCol(inqNow && typeof inqNow.qtyCol === 'number' ? inqNow.qtyCol : null);
+    }
     setCustNewMode(false);
     setPricingState(docRef.current.pricing);
     // 定厂镜像跟随"当前询价单"：切到的文档属于另一张询价单时，
@@ -2108,6 +2170,7 @@ function App() {
         return;
       }
       const sheet = buildPicturedExportSheet({
+        selectedColKeys: selection.colKeys,
         inquiry: inq,
         selectedLineIds: selection.lineIds,
         finalPrices,
@@ -2357,6 +2420,7 @@ function App() {
     : showOverview ? 'overview'
     : showAi ? 'ai'
     : showCompare ? 'compare'
+    : showConvert ? 'convert'
     : showData ? 'data'
     : showCheck ? 'check'
     : 'sheet';
@@ -2382,6 +2446,8 @@ function App() {
     setShowAi(v === 'ai');
     setShowData(v === 'data');
     setShowCheck(v === 'check');
+    // 转订单是独立模块（2026-10-15 拍板）：不再是询价单表格上方的面板
+    setShowConvert(v === 'convert');
   }
 
   /**
@@ -2391,7 +2457,8 @@ function App() {
   function openOverlay(name) {
     setPricingOpen(name === 'pricing');
     setFqOpen(name === 'fq');
-    setShowConvert(name === 'convert');
+    // 转订单不是浮层：它是独立模块（见 goView('convert')）
+    if (name === 'convert') { goView('convert'); return; }
     if (name === 'export') setExportTick((t) => t + 1); // 每次打开重算默认勾选
     setShowExport(name === 'export');
   }
@@ -2442,7 +2509,7 @@ function App() {
       // 不依赖编辑器里正装着谁，切视图与生成就没有时序竞态。
       handleGenerateFinalQuoteInPlace();
     }
-    if (stage === 'ready') setShowConvert(true);
+    if (stage === 'ready') goView('convert');
   }
 
   /* ---------- 包 14 比价下一步条动作：与订单引导同一套落位 ---------- */
@@ -2489,10 +2556,13 @@ function App() {
     doSave(); // 落盘；保存状态行刷新触发重渲染，比价条按新事实翻到 convert 态
   }
 
-  /** 比价下一步「去转订单」：落位后打开转订单面板 */
+  /** 比价下一步「去转订单」：直接打开转订单模块（它读的是询价单存档，不依赖表格） */
   function goCompareConvert() {
-    goCompareToInquirySheet();
-    setShowConvert(true);
+    // 比价页的当前询价单就是转订单的来源：先把它设为活动文档，模块据此取数
+    if (activeInquiryId && activeInquiryId !== activeDocIdRef.current) {
+      switchDoc(activeInquiryId);
+    }
+    goView('convert');
   }
 
   /** 比价下一步「去对客导出」：落位后打开对客导出面板 */
@@ -2608,9 +2678,13 @@ function App() {
   // 最终报价的算式清单（包 12 透明化）：有定厂行且在表格区时才算
   const fqBreakdowns = (fqCtx && fqCtx.inq && fqCtx.finalPrices.size > 0)
     ? buildFinalBreakdowns() : [];
-  // 转订单数量带入（包 12）：当前询价单的数量列与每行数量
+  // 转订单数量列（2026-10-15 拍板）：由用户从询价单已有列中指定，指定后随单保存；
+  // 没指定过时才按表头精确名（需求数/数量/…）自动认作默认
   const convQtyInfo = convertRows && fqCtx && fqCtx.inq
-    ? qtyPrefillForInquiry(fqCtx.inq) : null;
+    ? qtyPrefillForInquiry(fqCtx.inq, convQtyCol) : null;
+  const convQtyColOptions = convertRows && fqCtx && fqCtx.inq
+    ? columnHeaders(fqCtx.inq.sheet).map((h) => ({ col: h.col, label: h.label }))
+    : [];
   // 标价列下拉的选项（包 12 B3）：定价条生成的销售价列挂上后缀，
   // 让它的性质在标记之前就看得见（守卫是第二道，这里是第一道）
   const pmSheet = (liveRef.current && liveRef.current[0]) ||
@@ -3021,6 +3095,20 @@ function App() {
         <div style={{ flex: 1, overflow: 'auto' }}>
           <SelfCheck onClose={() => goView('sheet')} />
         </div>
+      ) : showConvert ? (
+        <ConvertView
+          inquiry={fqCtx && fqCtx.inq ? fqCtx.inq : null}
+          rows={convertRows || []}
+          customerName={customerName}
+          qtyColOptions={convQtyColOptions}
+          qtyCol={convQtyCol}
+          onQtyColChange={handleConvertQtyColChange}
+          sheetQtys={convQtyInfo ? convQtyInfo.qtys : null}
+          qtyColumnName={convQtyInfo ? convQtyInfo.header : null}
+          onCreate={handleCreateOrder}
+          onViewOrder={(orderNo) => jumpToOrder(orderNo)}
+          onBack={() => goView('sheet')}
+        />
       ) : showData ? (
         <div style={{ flex: 1, overflow: 'auto' }}>
           <DataPanel onClose={() => goView('sheet')} />
@@ -3193,20 +3281,6 @@ function App() {
                 </div>
               )}
             </div>
-          </div>
-        )}
-        {showConvert && convertRows && !activeIsQuote && (
-          <div className="overlay-panel" style={OVERLAY_STYLE}>
-            <ConvertPanel
-              key={'conv-' + activeDocId}
-              rows={convertRows}
-              customerName={customerName}
-              sheetQtys={convQtyInfo ? convQtyInfo.qtys : null}
-              qtyColumnName={convQtyInfo ? convQtyInfo.header : null}
-              onCreate={handleCreateOrder}
-              onViewOrder={(orderNo) => jumpToOrder(orderNo)}
-              onClose={() => openOverlay(null)}
-            />
           </div>
         )}
         {showExport && exportModel && !activeIsQuote && (

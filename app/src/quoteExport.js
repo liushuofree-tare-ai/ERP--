@@ -163,18 +163,25 @@ export function inquiryDataRows(inquiry) {
 }
 
 /**
- * 转订单的数量带入（包 12，用户实测）：客户表里本来就有数量列
- * （需求数/数量/订购数/订货数/件数）时，把每行的数量按 lineId 读
- * 出来给转订单面板预填——用户在截图里两行都定厂了，却因为面板
- * 要求手打数量而卡在"本次转 0 行"。没有数量列的表（如欧冠嘉单）
- * 返回空表，面板维持手填。值只认正数：空白/文字/0/负数一律不带入
- * （留空 = 面板原语义"这行先不转"，不拿 0 冒充）。
+ * 转订单的数量带入（包 12，用户实测）：每行数量按 lineId 从某一列读出，
+ * 给转订单面板预填。列的来源（2026-10-15 拍板）：
+ *   · 用户指定了数量列（colOverride，为列号）→ 就用那一列，不管表头叫什么；
+ *   · 没指定 → 按表头精确名自动认（需求数/数量/订购数/订货数/件数），认不到就空。
+ * 值只认正数：空白/文字/0/负数一律不带入（留空 = 这行先不转，不拿 0 冒充）。
  * 返回 { col, header, qtys: Map<lineId, number> }。
  */
-export function qtyPrefillForInquiry(inquiry) {
+export function qtyPrefillForInquiry(inquiry, colOverride) {
   const empty = { col: null, header: null, qtys: new Map() };
   if (!inquiry || !inquiry.sheet) return empty;
-  const found = findQtyColumn(inquiry.sheet, headerRowOf(inquiry));
+  const hr = headerRowOf(inquiry);
+  let found = null;
+  if (typeof colOverride === 'number' && colOverride >= 0 && colOverride < (inquiry.sheet.column || 0)) {
+    const raw = cellValue(inquiry.sheet, hr, colOverride);
+    const header = typeof raw === 'string' && raw.trim() !== '' ? raw.trim() : '第 ' + (colOverride + 1) + ' 列';
+    found = { col: colOverride, header };
+  } else {
+    found = findQtyColumn(inquiry.sheet, hr);
+  }
   if (!found) return empty;
   const qtys = new Map();
   for (const { lineId, row } of inquiryDataRows(inquiry)) {
@@ -441,7 +448,7 @@ export function buildPlainExportSheet({ inquiry, selectedLineIds, selectedColKey
  * 过滤成"只剩选中行"，其余行在 applyFinalQuoteColumn 里一律清空——
  * 没被选中的行，最终价格保持空白（SPEC 第四节第 7 项）。
  */
-export function buildPicturedExportSheet({ inquiry, selectedLineIds, finalPrices } = {}) {
+export function buildPicturedExportSheet({ inquiry, selectedLineIds, finalPrices, selectedColKeys } = {}) {
   const sheet = inquiry && inquiry.sheet;
   const hr = headerRowOf(inquiry || {});
   const pickedPrices = new Map();
@@ -450,5 +457,31 @@ export function buildPicturedExportSheet({ inquiry, selectedLineIds, finalPrices
       pickedPrices.set(lineId, price);
     }
   }
-  return applyFinalQuoteColumn(sheet, hr, pickedPrices, inquiry && inquiry.ledger).sheet;
+  const withFinal = applyFinalQuoteColumn(sheet, hr, pickedPrices, inquiry && inquiry.ledger).sheet;
+  return applySelectionHiding(withFinal, { headerRow: hr, inquiry, selectedLineIds, selectedColKeys });
+}
+
+/**
+ * 带图版的勾选（用户拍板，2026-10-15）：未勾选的数据行、未勾选的列在导出件里
+ * 隐藏而不删除——删行删列会让图片锚点与原件错位，隐藏则结构、图片、公式全部保留，
+ * 客户取消隐藏即可看到完整原表。最终报价列由 'final' 这一项决定显示与否。
+ * 不传勾选（undefined）的维度保持原样不隐藏。
+ */
+function applySelectionHiding(sheet, { headerRow, inquiry, selectedLineIds, selectedColKeys }) {
+  const cfg = (sheet && sheet.config) || {};
+  const rowhidden = { ...(cfg.rowhidden || {}) };
+  const colhidden = { ...(cfg.colhidden || {}) };
+  if (selectedLineIds && inquiry) {
+    for (const { lineId, row } of inquiryDataRows(inquiry)) {
+      if (!lineId || !selectedLineIds.has(lineId)) rowhidden[row] = true;
+    }
+  }
+  if (selectedColKeys && sheet) {
+    const finCol = finalQuoteColOf(sheet, headerRow);
+    for (let c = 0; c < (sheet.column || 0); c++) {
+      const shown = c === finCol ? selectedColKeys.has('final') : selectedColKeys.has('c' + c);
+      if (!shown) colhidden[c] = true;
+    }
+  }
+  return { ...sheet, config: { ...cfg, rowhidden, colhidden } };
 }
