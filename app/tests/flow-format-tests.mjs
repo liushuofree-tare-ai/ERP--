@@ -162,7 +162,60 @@ console.log('== 转订单独立模块：导航守卫回归（源码级）');
     '大表格模式：藏顶栏 + 关公式栏，纵向空间让给表格');
   ok(mainSrc.includes('activeIsQuote && !sheetFocus') && mainSrc.includes('toggleSheetFocus'),
     '大表格模式连标价条一起藏，且切换时重挂编辑器让画布拉伸');
-  ok(mainSrc.includes("'filter', 'image', 'search'"), '编辑器工具栏有筛选按钮');
+  ok(mainSrc.includes("'image', 'search'"), '编辑器工具栏在位');
+  // 筛选改自研（组件自带筛选在受控回声架构下不生效，用户两度反馈）：
+  // 面板按列值勾选、结果写 config.rowhidden
+  ok(mainSrc.includes('sheet-filter-panel') || mainSrc.includes('FilterPanel'),
+    '表格区有自研筛选面板入口');
+  ok(mainSrc.includes('function applySheetFilter') && mainSrc.includes('rowhidden'),
+    '筛选通过写 rowhidden 生效（编辑器渲染认这个字段）');
+  const { distinctValuesInRows, rowsWithValues } = await import('../src/sheetOps.js');
+  const fSheet = { row: 5, column: 3, celldata: [
+    { r: 1, c: 0, v: { v: '品牌' } }, { r: 1, c: 1, v: { v: 'OE' } },
+    { r: 2, c: 0, v: { v: '现代' } }, { r: 2, c: 1, v: { v: 'A1' } },
+    { r: 3, c: 0, v: { v: '起亚' } }, { r: 3, c: 1, v: { v: 'B2' } },
+    { r: 4, c: 0, v: { v: '现代' } }, { r: 4, c: 1, v: { v: 'C3' } },
+  ] };
+  const dv = distinctValuesInRows(fSheet, [2, 3, 4], 0);
+  ok(dv.length === 2 && dv[0].value === '现代' && dv[0].count === 2, '筛选值清单带计数');
+  ok(JSON.stringify(rowsWithValues(fSheet, [2, 3, 4], 0, new Set(['起亚']))) === '[3]',
+    '按值算出要隐藏的行准确');
+  // 一键生成最终报价单必须用完整默认列（回归：曾继承记窄的勾选，
+  // 生成出来只剩图片+最终报价列）
+  ok(mainSrc.includes('fullColKeys') && mainSrc.includes('colKeys: new Set(model.fullColKeys)'),
+    '一键生成最终报价单用完整默认列，不继承记窄的勾选');
+  const { buildPlainExportSheet } = await import('../src/quoteExport.js');
+  const { createLedger } = await import('../src/ledger.js');
+  const cell = (r, c, v) => ({ r, c, v: { v, m: String(v) } });
+  const inqSheet = { name: '询价单', row: 4, column: 5, celldata: [
+    cell(0, 0, '客户订单'),
+    cell(1, 0, '序号'), cell(1, 1, '产品'), cell(1, 2, 'OE码'), cell(1, 3, '图片'), cell(1, 4, '单价'),
+    cell(2, 0, 1), cell(2, 1, '左前灯'), cell(2, 2, '92101'), cell(2, 4, 100),
+    cell(3, 0, 2), cell(3, 1, '右前灯'), cell(3, 2, '92102'), cell(3, 4, 110),
+  ] };
+  const inqFx = {
+    sheet: inqSheet, headerRow: 1, ledger: createLedger({ rowCount: 4 }),
+    pricing: {}, source: { sheetName: '询价单' },
+  };
+  const lineIds = new Set(['L3', 'L4']);
+  const full = buildPlainExportSheet({
+    inquiry: inqFx, selectedLineIds: lineIds,
+    selectedColKeys: new Set(['c0', 'c1', 'c2', 'c3', 'c4', 'final']),
+    finalPrices: new Map([['L3', 150], ['L4', 165]]),
+  });
+  const hdr = full.celldata.filter((x) => x.r === 1).sort((a, b) => a.c - b.c)
+    .map((x) => String(x.v.v));
+  ok(JSON.stringify(hdr) === JSON.stringify(['序号', '产品', 'OE码', '图片', '单价', '最终报价']),
+    '完整列选择导出表头齐全（含最终报价）');
+  const narrow = buildPlainExportSheet({
+    inquiry: inqFx, selectedLineIds: lineIds,
+    selectedColKeys: new Set(['c3', 'final']),
+    finalPrices: new Map([['L3', 150], ['L4', 165]]),
+  });
+  const hdrN = narrow.celldata.filter((x) => x.r === 1).sort((a, b) => a.c - b.c)
+    .map((x) => String(x.v.v));
+  ok(JSON.stringify(hdrN) === JSON.stringify(['图片', '最终报价']),
+    '窄选择确实只剩图片+最终报价（证明不全是选择被记窄所致）');
   const cmpSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/CompareView.jsx'), 'utf8');
   const convSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/ConvertPanel.jsx'), 'utf8');
   ok(cmpSrc.includes('ColumnPicker') && cmpSrc.includes('erp-cmp-sheetcols') &&

@@ -26,6 +26,7 @@ import { cellValue, detectHeaderRow, columnHeaders, setCellValue, appendColumn }
 import PricingBar from './PricingBar.jsx';
 import PriceMarkBar from './PriceMarkBar.jsx';
 import CompareView from './CompareView.jsx';
+import FilterPanel from './FilterPanel.jsx';
 import {
   headerRowOf, detectPeriodColumn, computeFactoryExtras,
   buildCompareRows, choiceFromCell, pickDisplayColumns,
@@ -681,6 +682,9 @@ function App() {
   // 最终报价 / 对客导出（包 7）：面板开关 + 每次打开时让默认勾选重算
   const [showExportPage, setShowExportPage] = useState(false);
   const [multiSendOpen, setMultiSendOpen] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(false);
+  // 自研筛选在本单里藏过的行（清除时只撤自己藏的，不误伤手工隐藏）
+  const appliedFilterRef = useRef({ docId: null, rows: [] });
   // 侧栏可收起（用户反馈侧栏太大占地方）：收起后只剩图标栏，表格区变宽；
   // 选择记在浏览器里，下次打开还是收起的样子
   // 大表格模式（用户反馈表格上下范围太小）：一键藏掉全部顶栏，
@@ -2238,6 +2242,34 @@ function App() {
   }
 
   /** 导出面板要的数据：行（带最终价）+ 列（原列/工作列/最终报价）与默认勾选 */
+  /** 自研筛选：把要藏的行写进当前表 config.rowhidden 并重挂显示 */
+  function applySheetFilter(hiddenRows) {
+    const cur = liveRef.current && liveRef.current[0];
+    if (!cur) return;
+    const cfg = cur.config || {};
+    const rowhidden = { ...(cfg.rowhidden || {}) };
+    for (const r of hiddenRows) rowhidden[r] = 0;
+    appliedFilterRef.current = { docId: activeDocIdRef.current, rows: hiddenRows.slice() };
+    commitSheets([{ ...cur, config: { ...cfg, rowhidden } }, ...liveRef.current.slice(1)]);
+  }
+
+  /** 清除筛选：优先只撤本单里我们藏过的行；没有记录就全部显示 */
+  function clearSheetFilter() {
+    const cur = liveRef.current && liveRef.current[0];
+    if (!cur) return;
+    const cfg = cur.config || {};
+    const rowhidden = { ...(cfg.rowhidden || {}) };
+    const mine = appliedFilterRef.current.docId === activeDocIdRef.current
+      ? appliedFilterRef.current.rows : [];
+    if (mine.length) {
+      for (const r of mine) delete rowhidden[r];
+    } else {
+      for (const k of Object.keys(rowhidden)) delete rowhidden[k];
+    }
+    appliedFilterRef.current = { docId: null, rows: [] };
+    commitSheets([{ ...cur, config: { ...cfg, rowhidden } }, ...liveRef.current.slice(1)]);
+  }
+
   function buildExportModel() {
     const { inq, finalPrices } = finalPriceContext();
     if (!inq || !inq.sheet) return null;
@@ -2283,6 +2315,13 @@ function App() {
         .filter((r) => r.finalPrice !== null && r.finalPrice !== undefined)
         .map((r) => r.lineId),
       defaultColKeys: validSaved.length ? validSaved : cols
+        .filter((c) => c.final || (!c.isWork && !c.isSales))
+        .map((c) => c.key),
+      // 一键生成最终报价单专用：永远用完整默认列，不继承被记窄的
+      // 导出勾选（用户实测：一键生成出来的表只剩图片+最终报价列，
+      // 就是上次在导出页勾窄了被记住、一键生成又照单全收）；
+      // 要窄范围去「对客导出」里当面勾，那里看得见勾了什么
+      fullColKeys: cols
         .filter((c) => c.final || (!c.isWork && !c.isSales))
         .map((c) => c.key),
     };
@@ -2456,7 +2495,7 @@ function App() {
     }
     handleCreateEditableQuote({
       lineIds: new Set(model.defaultRowIds),
-      colKeys: new Set(model.defaultColKeys),
+      colKeys: new Set(model.fullColKeys),
     });
   }
 
@@ -3320,6 +3359,16 @@ function App() {
             此浏览器不支持直接分享，请用下载后拖进微信
           </span>
         )}
+        <button className="sheet-filter-toggle" onClick={() => setFilterOpen(!filterOpen)}
+          title="按某一列的值筛选行：只看某个品牌、某个车型等"
+          style={{
+            border: '1px solid ' + (filterOpen ? '#2f6bff' : '#37404a'),
+            color: filterOpen ? '#2f6bff' : '#37404a', background: '#fff',
+            borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+          }}>筛选{(() => {
+            const n = Object.keys(((sheetsData[0] || {}).config || {}).rowhidden || {}).length;
+            return n ? '（已隐藏 ' + n + ' 行）' : '';
+          })()}</button>
         <button className="sheet-focus-toggle" onClick={() => toggleSheetFocus(true)}
           title="藏掉所有顶栏，只留表格：上下能多看好几行"
           style={{
@@ -3328,6 +3377,22 @@ function App() {
           }}>⛶ 大表格</button>
         </div>
       </div>
+      {filterOpen && !sheetFocus && (
+        <FilterPanel
+          sheet={liveRef.current[0] || sheetsData[0]}
+          headers={columnHeaders(liveRef.current[0] || sheetsData[0])}
+          dataRows={(() => {
+            const d = docRef.current;
+            const hr = d && typeof d.headerRow === 'number' ? d.headerRow : 0;
+            const rows = ((d && d.ledger && d.ledger.rows) || []).map((x) => x.row);
+            return rows.filter((r) => r > hr);
+          })()}
+          hiddenCount={Object.keys(((liveRef.current[0] || sheetsData[0] || {}).config || {}).rowhidden || {}).length}
+          onApply={(hiddenRows) => applySheetFilter(hiddenRows)}
+          onClear={clearSheetFilter}
+          onClose={() => setFilterOpen(false)}
+        />
+      )}
       {multiSendOpen && !activeIsQuote && !sheetFocus && (
         <div className="multi-send-panel" style={{
           margin: '6px 10px 0', padding: '8px 12px', fontFamily: 'sans-serif', fontSize: 13,
@@ -3741,7 +3806,9 @@ function App() {
           showFormulaBar={false}
           // 工具栏精简（2026-10-15 用户反馈表格区太拥挤）：只留编辑报价表
           // 真用得上的——撤销/数字格式/字体字号/粗斜下划线/颜色底色/边框/
-          // 合并/对齐换行/插图/查找；条件格式、数据验证、截图、拆列这类
+          // 合并/对齐换行/插图/查找；筛选不用组件自带的（在我们的
+          // 回声架构下不生效），用工具条下方的自研「筛选」面板；
+          // 条件格式、数据验证、截图、拆列这类
           // 用不上的全部拿掉，工具栏一行放得下，表格多出一截高度
           toolbarItems={[
             'undo', 'redo', 'format-painter', '|',
@@ -3750,7 +3817,7 @@ function App() {
             'bold', 'italic', 'underline', 'strike-through', '|',
             'font-color', 'background', 'border', 'merge-cell', '|',
             'horizontal-align', 'vertical-align', 'text-wrap', '|',
-            'filter', 'image', 'search',
+            'image', 'search',
           ]}
           onChange={(data) => {
             window.__wbData = data;

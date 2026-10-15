@@ -112,3 +112,36 @@ export function appendColumn(sheet, headerRow, name) {
   const next = { ...sheet, column: col + 1 };
   return { sheet: setCellValue(next, headerRow, col, { v: name, m: name }), col };
 }
+
+/** 格子的显示文本（格式串优先，其次原值）；空的返回空串 */
+export function cellText(sheet, r, c) {
+  if (!sheet || !Array.isArray(sheet.celldata)) return '';
+  const cell = sheet.celldata.find((x) => x.r === r && x.c === c);
+  if (!cell || !cell.v) return '';
+  const t = cell.v.m !== undefined && cell.v.m !== null ? cell.v.m : cell.v.v;
+  return t === null || t === undefined ? '' : String(t);
+}
+
+/**
+ * 自研筛选的数据侧（2026-10-15）：FortuneSheet 自带筛选在受控回声
+ * 架构下不可用，改成我们自己的——按一列的值清单决定隐藏哪些行，
+ * 结果写进 config.rowhidden（编辑器渲染与存档都认这个字段）。
+ * rows 是候选数据行（物理行号数组）；返回 [{value, count}]，
+ * 按出现次数降序、同次按文本排序，空值统一记为空串。
+ */
+export function distinctValuesInRows(sheet, rows, col) {
+  const counts = new Map();
+  for (const r of rows || []) {
+    const v = cellText(sheet, r, col);
+    counts.set(v, (counts.get(v) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .map(([value, count]) => ({ value, count }))
+    .sort((a, b) => (b.count - a.count) || (a.value < b.value ? -1 : a.value > b.value ? 1 : 0));
+}
+
+/** 在候选行里挑出该列值落在 valueSet 里的行（物理行号数组） */
+export function rowsWithValues(sheet, rows, col, valueSet) {
+  const set = valueSet instanceof Set ? valueSet : new Set(valueSet || []);
+  return (rows || []).filter((r) => set.has(cellText(sheet, r, col)));
+}
