@@ -101,6 +101,28 @@ function OrderDetail({ order, onUpdateOrder, onJumpInquiry }) {
     setShipQty('');
   }
 
+  /** 全部已发：把每一行剩下的件数一次记完（逐行留发货记录，口径与逐批一致） */
+  function shipAll() {
+    const pending = order.lines.filter(
+      (l) => (Number(l.qty) || 0) - (Number(l.shippedQty) || 0) > 0);
+    if (!pending.length) { setMsg('这一单已经全部发完了'); return; }
+    const total = pending.reduce(
+      (sum, l) => sum + ((Number(l.qty) || 0) - (Number(l.shippedQty) || 0)), 0);
+    if (!window.confirm('把这一单剩下的 ' + total + ' 件（' + pending.length +
+      ' 行）全部记为已发吗？')) return;
+    setMsg('');
+    onUpdateOrder({
+      ...order,
+      lines: order.lines.map((l) => ({ ...l, shippedQty: Number(l.qty) || 0 })),
+      shipments: [...(order.shipments || []), ...pending.map((l) => ({
+        lineId: l.lineId, oe: l.oe || '',
+        qty: (Number(l.qty) || 0) - (Number(l.shippedQty) || 0),
+        date: today(), note: '全部已发',
+      }))],
+    });
+    announce('📦 订单 ' + order.orderNo + ' 全部已发（共 ' + facts.totalQty + ' 件）');
+  }
+
   return (
     <div className="ord-detail" style={{ marginTop: 10 }}>
       <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
@@ -250,6 +272,12 @@ function OrderDetail({ order, onUpdateOrder, onJumpInquiry }) {
               value={shipQty} onChange={(e) => setShipQty(e.target.value)}
               style={{ ...input, width: 80 }} />
             <button className="ord-ship-add" onClick={addShip} style={addBtn}>记发货</button>
+            {facts.shippedQty < facts.totalQty && (
+              <button className="ord-ship-all" onClick={shipAll} style={{
+                border: '1px solid #1e9e57', color: '#1e9e57', background: '#fff',
+                borderRadius: 8, padding: '5px 12px', cursor: 'pointer',
+              }}>全部已发</button>
+            )}
           </div>
           {(order.shipments || []).map((s, i) => (
             <div key={i} style={{ color: '#666', marginTop: 4 }}>

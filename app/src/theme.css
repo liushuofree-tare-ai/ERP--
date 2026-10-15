@@ -105,6 +105,10 @@ body {
 }
 .nav-item:not(.nav-active):hover { background: rgba(255, 255, 255, 0.07) !important; }
 .nav-item .nav-ico { display: inline-flex; flex-shrink: 0; opacity: 0.85; }
+/* 收起态：图标居中且放大一号，否则 17px 图标贴在 56px 栏里又小又偏 */
+.sidebar-collapsed .nav-item { justify-content: center; gap: 0; }
+.sidebar-collapsed .nav-ico svg { width: 21px; height: 21px; }
+.sidebar-collapsed .nav-item { padding-left: 0 !important; padding-right: 0 !important; }
 .nav-item.nav-active .nav-ico { opacity: 1; }
 .nav-badge {
   margin-left: auto;

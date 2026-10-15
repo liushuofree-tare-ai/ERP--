@@ -175,6 +175,11 @@ console.log('== 转订单独立模块：导航守卫回归（源码级）');
     '筛选状态在编辑回声里被保留（筛选不可用的根因）');
   ok(mainSrc.includes('model.sheetCols = columnHeaders(inq.sheet)'),
     '比价模型带上询价单全部列与逐行原值');
+  const ordSrc = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../src/OrdersView.jsx'), 'utf8');
+  ok(ordSrc.includes('function shipAll()') && ordSrc.includes('ord-ship-all'),
+    '订单发货有「全部已发」一键记完');
+  ok(mainSrc.includes('sidebar-collapsed'),
+    '侧栏收起态有专门的图标居中样式钩子');
 }
 
 console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);

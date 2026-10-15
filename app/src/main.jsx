@@ -3040,7 +3040,7 @@ function App() {
 
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
-      <div className="sidebar" style={{
+      <div className={"sidebar" + (navCollapsed ? " sidebar-collapsed" : "")} style={{
         width: navCollapsed ? 56 : 168, flexShrink: 0,
         padding: navCollapsed ? '12px 7px' : '12px 10px',
         transition: 'width 0.15s ease',
