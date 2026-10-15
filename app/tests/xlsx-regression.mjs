@@ -13,7 +13,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const { readWorkbook, parseSheet } = await import('../src/xlsx/workbook.js');
-const { sheetToFortune } = await import('../src/xlsx/toFortuneSheet.js');
+const { sheetToFortune, applyMergeMarks } = await import('../src/xlsx/toFortuneSheet.js');
+const { canonicalValues } = await import('../src/xlsx/writeback.js');
 
 const FIXTURES = process.env.QIPEI_FIXTURES_DIR || path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
 const SRC_CUST = path.join(FIXTURES, '___2_0dib.xlsx');
@@ -96,6 +97,37 @@ eq(cellVal(t, 3, 9), 231, 'J4 含税价 = 231');
 eq(cellVal(t, 1, 7), '数量（件）', 'H 列表头');
 eq(cellVal(t, 1, 9), '单价（元，含税）', 'J 列表头');
 eq(t.images.length, 24, 'TIGGO 图片 24 张');
+
+/* ================= 合并单元格：渲染标记 mc =================
+ * FortuneSheet 渲染合并靠格子上的 mc（主格 {r,c,rs,cs}，被覆盖格 {r,c} 指回主格）。
+ * 只写 config.merge 时，合并标题在编辑器里被截断在首列边界（实测）。
+ */
+console.log('== 合并单元格：渲染标记 mc');
+{
+  const custFortune = sheetToFortune(parseSheet(readWorkbook(loadCopy(SRC_CUST)), 'Sheet1'), 0);
+  const cellAt = (sh, r, c) => sh.celldata.find((x) => x.r === r && x.c === c);
+  eq(cellAt(custFortune, 0, 0).v.mc, { r: 0, c: 0, rs: 1, cs: 7 }, '客户单 A1 主格带 mc（A1:G1，跨 7 列）');
+  eq(cellAt(custFortune, 0, 1).v.mc, { r: 0, c: 0 }, '客户单 B1（被覆盖）mc 指回主格');
+  eq(cellAt(custFortune, 0, 6).v.mc, { r: 0, c: 0 }, '客户单 G1（合并区最右）mc 指回主格');
+  ok(!cellAt(custFortune, 0, 7) || !cellAt(custFortune, 0, 7).v.mc, '客户单 H1 不在合并区，不带 mc');
+  const gmdrFortune = sheetToFortune(parseSheet(readWorkbook(loadCopy(SRC_FACT)), 'TIGGO'), 0);
+  eq(cellAt(gmdrFortune, 0, 0).v.mc, { r: 0, c: 0, rs: 1, cs: 12 }, '工厂回表 A1 主格带 mc（A1:L1，跨 12 列）');
+  eq(cellAt(gmdrFortune, 0, 11).v.mc, { r: 0, c: 0 }, '工厂回表 L1（被覆盖）mc 指回主格');
+  // 被覆盖的空格不进回写待写表：回写只认有值的主格
+  const cv = canonicalValues(custFortune);
+  ok(cv.has('0,0') && !cv.has('0,1') && !cv.has('0,6'), '回写：被覆盖的空格不进待写表');
+  // 纯函数：不改入参、幂等
+  const src = [{ r: 0, c: 0, v: { v: 'x' } }];
+  const once = applyMergeMarks(src, [{ r: 0, c: 0, rs: 1, cs: 2 }]);
+  eq(src[0].v.mc, undefined, 'applyMergeMarks 不改入参');
+  eq(applyMergeMarks(once, [{ r: 0, c: 0, rs: 1, cs: 2 }]), once, 'applyMergeMarks 幂等');
+  // 主格没有值也要补一格（合并区首格为空）
+  const empty = applyMergeMarks([], [{ r: 3, c: 1, rs: 2, cs: 2 }]);
+  eq(empty.length, 4, '空主格也补齐：2×2 合并生成 4 格');
+  eq(empty.find((x) => x.r === 3 && x.c === 1).v.mc, { r: 3, c: 1, rs: 2, cs: 2 }, '空主格带 mc（跨 2×2）');
+  eq(empty.find((x) => x.r === 4 && x.c === 2).v.mc, { r: 3, c: 1 }, '右下被覆盖格指回主格');
+  eq(applyMergeMarks([], [{ r: 2, c: 2, rs: 1, cs: 1 }]), [], '1×1 不算合并，不生成标记');
+}
 
 console.log('\n汇总：PASS ' + pass + ' / FAIL ' + fail);
 process.exit(fail ? 1 : 0);

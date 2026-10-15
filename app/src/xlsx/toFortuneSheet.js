@@ -4,6 +4,41 @@
 // 区域原点（A1 左上角）的像素偏移——即锚点格之前所有列宽/行高之和。
 // WPS 单元格图按 WPS 的呈现方式贴满锚点格；浮动图按原锚点与尺寸摆。
 
+/**
+ * 合并单元格的渲染标记。FortuneSheet 渲染合并时读的是格子上的 mc：
+ *  · 主格（合并区左上角）：v.mc = {r, c, rs, cs}，主格即使没有值也要有这一格；
+ *  · 被覆盖的其余格：v.mc = {r: 主格行, c: 主格列}。
+ * 只写 config.merge 不写 mc 时，标题会被截断在首列边界（实测：原件 A1:G1
+ * 在编辑器里只显示成 A 列一格）。返回新的 celldata，不改入参；幂等。
+ * 单格"合并"（1×1）没有意义，跳过。
+ */
+export function applyMergeMarks(celldata, merges) {
+  const out = (celldata || []).map((cd) => ({ ...cd, v: cd.v ? { ...cd.v } : {} }));
+  const at = new Map();
+  out.forEach((cd, i) => at.set(cd.r + ',' + cd.c, i));
+  for (const m of merges || []) {
+    if (!m) continue;
+    const rs = Math.max(1, Number(m.rs) || 1);
+    const cs = Math.max(1, Number(m.cs) || 1);
+    if (rs === 1 && cs === 1) continue;
+    for (let r = m.r; r < m.r + rs; r++) {
+      for (let c = m.c; c < m.c + cs; c++) {
+        const mark = (r === m.r && c === m.c)
+          ? { r: m.r, c: m.c, rs, cs }
+          : { r: m.r, c: m.c };
+        const k = r + ',' + c;
+        if (at.has(k)) {
+          out[at.get(k)].v.mc = mark;
+        } else {
+          at.set(k, out.length);
+          out.push({ r, c, v: { mc: mark } });
+        }
+      }
+    }
+  }
+  return out;
+}
+
 export function sheetToFortune(parsed, sheetIndex = 0) {
   const widthOf = (c) =>
     parsed.columnWidthsPx[c] != null ? parsed.columnWidthsPx[c] : parsed.defaultColWidthPx;
@@ -83,7 +118,8 @@ export function sheetToFortune(parsed, sheetIndex = 0) {
     id: 'sheet-' + sheetIndex,
     row: Math.max(parsed.rowCount, 1),
     column: Math.max(parsed.colCount, 1),
-    celldata,
+    // 合并区的渲染标记（mc）在这里补齐：FortuneSheet 只认格子上的 mc，见 applyMergeMarks
+    celldata: applyMergeMarks(celldata, parsed.merges),
     config: { merge, columnlen, rowlen },
     images,
     defaultColWidth: parsed.defaultColWidthPx,

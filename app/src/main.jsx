@@ -4,7 +4,7 @@ import { Workbook } from '@fortune-sheet/react';
 import '@fortune-sheet/react/dist/index.css';
 import './theme.css';
 import { readWorkbook, parseSheet } from './xlsx/workbook.js';
-import { sheetToFortune } from './xlsx/toFortuneSheet.js';
+import { sheetToFortune, applyMergeMarks } from './xlsx/toFortuneSheet.js';
 import { buildQuoteXlsx, buildMinimalXlsx } from './xlsx/writeback.js';
 import {
   computeFinalPrices, inquiryDataRows, applyFinalQuoteColumn,
@@ -94,6 +94,10 @@ const initialData = [
   }
 ];
 
+// 示例表的合并标题同样要带渲染标记（mc），否则只显示在首列边界（见 applyMergeMarks）
+initialData[0].celldata = applyMergeMarks(initialData[0].celldata,
+  Object.values(initialData[0].config.merge));
+
 /* 定价条参数（每份文档一份，随工作存档持久化）：
    costCol/salesCol 是列序号；口径与百分比/运费/汇率按用户输入原文存，
    计算时由 pricing.js 解析。加价 20 / 运费 5 / 税点 13 是 SPEC 验算口径的默认值。 */
@@ -120,14 +124,18 @@ if (RAW_RESTORED && MIGRATED.changed && RESTORED) {
   } catch (e) { /* 启动落盘失败不致命 */ }
 }
 
-/** 恢复用的文档：没存进去的图片（src 为空）先不渲染，恢复流程会点亮 */
+/** 恢复用的文档：没存进去的图片（src 为空）先不渲染，恢复流程会点亮。
+ *  合并标记（mc）在这里按 config.merge 补齐：旧存档只存了 config.merge，
+ *  不补的话已保存的合并标题会在编辑器里继续被截断。 */
 function restorableDoc(doc) {
   if (!doc || !doc.sheet) return doc;
+  const merges = Object.values((doc.sheet.config && doc.sheet.config.merge) || {});
   return {
     ...doc,
     pricing: { ...DEFAULT_PRICING, ...(doc.pricing || {}) },
     sheet: {
       ...doc.sheet,
+      celldata: applyMergeMarks(doc.sheet.celldata || [], merges),
       images: (doc.sheet.images || []).filter((img) => img && img.src),
     },
   };
@@ -431,8 +439,9 @@ function canonicalize(echo, prev) {
       sh.data.forEach((rowArr, r) => {
         if (!Array.isArray(rowArr)) return;
         rowArr.forEach((cell, c) => {
+          // 带 mc 的格子（合并区的主格与被覆盖格）即使没有值也要留着，合并结构才不丢
           if (cell && typeof cell === 'object' &&
-              ((cell.v !== undefined && cell.v !== null && cell.v !== '') || cell.f)) {
+              ((cell.v !== undefined && cell.v !== null && cell.v !== '') || cell.f || cell.mc)) {
             celldata.push({ r, c, v: cell });
           }
         });
