@@ -429,7 +429,10 @@ function cloneSheetData(sheet) {
 async function persistImportAssets(fileName, buf, parsedList) {
   const fail = { stored: false, originalFileId: null };
   try {
-    if (!(await isFileDbAvailable())) return fail;
+    // 落盘闸口：本地仓库和服务器有一处可用就往下走（putFile 内部双写、
+    // 单边成功也算数）。旧逻辑只认 IndexedDB——它不可用时连服务器推送
+    // 都被一并掐掉，图片只能当次会话看。
+    if (!isServerAvailable() && !(await isFileDbAvailable())) return fail;
     const origBytes = new Uint8Array(buf);
     const origId = await originalIdFor(origBytes);
     const orig = await putFile({
