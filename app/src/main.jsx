@@ -20,7 +20,7 @@ import OrdersView from './OrdersView.jsx';
 import { formatOrderNo, convertedLineIds } from './orders.js';
 import { createLedger, noteWorkColumn, cloneLedgerForQuote, rowOfLineId } from './ledger.js';
 import { loadSaved, saveWork, clearSaved, saveWorkAndSync, buildServerPayload, adoptRemoteState, stashLocalBeforeAdopt, onSyncChange, lastSyncInfo } from './store.js';
-import { detectServer, fetchServerState, pushState, isServerAvailable, openTempDownload, feishuNotify, peekServerRevision, shouldPromptStale, getServerRevision } from './apiClient.js';
+import { detectServer, fetchServerState, pushState, isServerAvailable, openTempDownload, feishuNotify, peekServerRevision, shouldPromptStale, getServerRevision, hasSeenServer } from './apiClient.js';
 import { computeSalesPrice } from './pricing.js';
 import { cellValue, detectHeaderRow, columnHeaders, setCellValue, appendColumn } from './sheetOps.js';
 import PricingBar from './PricingBar.jsx';
@@ -1229,7 +1229,10 @@ function App() {
   //  · 服务器不通 → 维持单机模式（saveWorkAndSync 自然走本地）；
   //  · 服务器空 + 本地有工作 → 把本地推上去（首次迁移）；
   //  · 本地空白 + 服务器有数据 → 采纳服务器（写镜像后刷新）；
-  //  · 两边都有且严格一方更新 → 新者赢（相等 = 稳态，什么都不做）。
+  //  · 两边都有且严格一方更新 → 新者赢（相等 = 稳态，什么都不做）；
+  //  · 例外（血统防线）：从没和这台服务器同步过的浏览器，即使本地时间戳
+  //    更新也不许推上去覆盖——首次打开落盘的示例数据时间戳反而最新，
+  //    闷头推就是灭数据；这种情况一律改走确认采纳。
   // 采纳是覆盖性动作，规矩：
   //  · 弹确认（面板明说会先在本机留一份自动备份）；
   //  · 15 秒采纳防抖：刚采纳刷新回来落在确认窗里时不再连环采纳
@@ -1272,17 +1275,15 @@ function App() {
           setServerSync({ status: 'in-sync', at: null });
           return;
         }
-        if (remoteTs > localTs) {
+        // 采纳服务器数据的统一动作：防抖 → 确认 → 留底 → 采纳刷新
+        const confirmAndAdopt = (headline) => {
           const GUARD = 'qipei_v2_adopt_guard_ms';
           const last = Number(sessionStorage.getItem(GUARD) || '0');
           if (Date.now() - last < 15000) {
             setServerSync({ status: 'in-sync', at: null }); // 刚采纳刷新回来：稳态，别连环
             return;
           }
-          if (!window.confirm(
-            '服务器上有更新的数据（保存于 ' + fmtTime(remoteTs) + '，rev ' + remote.revision + '）。\n' +
-            '本机当前数据较旧（保存于 ' + fmtTime(localTs) + '）。\n' +
-            '点「确定」采纳服务器数据（本机旧数据会先自动留一份备份，之后可在数据备份页恢复）；点「取消」保留本机数据不动。')) {
+          if (!window.confirm(headline)) {
             setServerSync({ status: 'in-sync', at: null });
             return;
           }
@@ -1291,9 +1292,24 @@ function App() {
             stashLocalBeforeAdopt();
           } catch (e) { /* 留不了底也不拦采纳 */ }
           if (adoptRemoteState(remote.state)) location.reload();
+        };
+        if (remoteTs > localTs) {
+          confirmAndAdopt(
+            '服务器上有更新的数据（保存于 ' + fmtTime(remoteTs) + '，rev ' + remote.revision + '）。\n' +
+            '本机当前数据较旧（保存于 ' + fmtTime(localTs) + '）。\n' +
+            '点「确定」采纳服务器数据（本机旧数据会先自动留一份备份，之后可在数据备份页恢复）；点「取消」保留本机数据不动。');
           return;
         }
-        // 本地比服务器新：把本地推上去（savedAt 用本地原值，推完即相等）
+        // 本地比服务器新：已同步过的浏览器（离线改新）才把本地推上去；
+        // 从没和这台服务器同步过的浏览器绝不闷头覆盖——它的本地存档多半是
+        // 示例数据（首次打开自动落盘、时间戳反而最新），推上去就是灭数据。
+        if (!hasSeenServer()) {
+          confirmAndAdopt(
+            '这台浏览器还没有从服务器拉取过数据，服务器上已有数据（保存于 ' + fmtTime(remoteTs) + '，rev ' + remote.revision + '）。\n' +
+            '本机当前数据（保存于 ' + fmtTime(localTs) + '）尚未与服务器对过账，直接推上去会覆盖服务器。\n' +
+            '点「确定」改采纳服务器数据（本机数据会先自动留一份备份，之后可在数据备份页恢复）；点「取消」保留本机数据不动。');
+          return;
+        }
         try {
           flushDocRef();
           const payload = currentPayload();

@@ -177,7 +177,7 @@ export function clearSaved() {
  * 冲突（409）：绝不静默覆盖——lastSync 置为 conflict，UI 提示用户
  * 去「数据备份」页拉取服务器数据；本地工作原样保留。
  * ================================================================ */
-import { isServerAvailable, pushState, getServerRevision } from './apiClient.js';
+import { isServerAvailable, pushState, getServerRevision, markServerSeen } from './apiClient.js';
 
 let syncListeners = [];
 let lastSync = { status: 'idle' };
@@ -241,6 +241,7 @@ export function saveWorkAndSync(payload, opts = {}) {
 export function adoptRemoteState(state) {
   try {
     localStorage.setItem(DB_KEY, JSON.stringify(state));
+    markServerSeen(getServerRevision()); // 血统接续：这份本地存档从此出自服务器
     return true;
   } catch (e) {
     return false;

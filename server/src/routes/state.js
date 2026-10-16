@@ -32,6 +32,9 @@ export function assembleState() {
     docId: r.doc_id,
     kind: r.kind,
     factoryName: r.factory_name,
+    // 客户关联就靠这个字段（按名匹配）：曾漏读，导致 A 关联客户、B 拉取后
+    // 关联消失、再关联再消失的死循环——写读必须成对，别再删。
+    customerName: r.customer_name ? r.customer_name : null,
     inquiryId: r.inquiry_id,
     createdAt: r.created_at,
     note: r.note,
@@ -45,6 +48,8 @@ export function assembleState() {
     priceMark: j(r.price_mark_json, null),
     factoryExtras: j(r.factory_extras_json, []),
     rowChoices: j(r.row_choices_json, null),
+    qtyCol: r.qty_col === null || r.qty_col === undefined ? undefined : r.qty_col,
+    exportColKeys: j(r.export_col_keys_json, null),
   }));
   const orderRows = d.prepare(
     'SELECT * FROM orders ORDER BY sort_order, order_no').all();
@@ -99,8 +104,9 @@ export function replaceStateInTx(state, { actor = 'local', action = 'save_state'
         doc_id, kind, inquiry_id, factory_name, customer_name, note, header_row,
         source_file_id, source_json, import_info, pricing_json, price_mark_json,
         ledger_json, row_choices_json, factory_extras_json, sheet_json,
+        qty_col, export_col_keys_json,
         sort_order, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
     docs.forEach((doc, i) => {
       insDoc.run(
         String(doc.docId || ''), String(doc.kind || 'inquiry'),
@@ -116,6 +122,8 @@ export function replaceStateInTx(state, { actor = 'local', action = 'save_state'
         JSON.stringify(doc.rowChoices || null),
         JSON.stringify(Array.isArray(doc.factoryExtras) ? doc.factoryExtras : []),
         JSON.stringify(doc.sheet || null),
+        typeof doc.qtyCol === 'number' ? doc.qtyCol : null,
+        JSON.stringify(Array.isArray(doc.exportColKeys) ? doc.exportColKeys : null),
         i, doc.createdAt || null, nowIso());
     });
 

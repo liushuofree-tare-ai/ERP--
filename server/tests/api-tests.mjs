@@ -233,6 +233,34 @@ const FILE_ID = 'orig-' + sha256Hex(FILE_BYTES).slice(0, 20);
   ok([501, 502, 200].includes(nf.statusCode), '飞书：notify 未配置 501 / 已配置 200-502', nf.statusCode);
 }
 
+/* ---------- 9. 单据字段往返完整性（包 20：客户关联死循环根因） ----------
+ * 客户关联靠单据上的 customerName 按名匹配：写入端有、读取端漏 →
+ * A 关联、B 拉取后关联消失、B 再关联、A 再拉又消失，无限循环。
+ * 同类还有 qtyCol（转订单数量列）与 exportColKeys（导出记住的列），
+ * 以及 custquote（最终报价单）曾被 kind 的 CHECK 约束整单拒收（500）。 */
+{
+  const STATE_RT = {
+    version: 2, savedAt: new Date().toISOString(), imagesPersisted: true, imageStore: 'idb',
+    factories: [], factoryInfo: {}, customers: [{ name: '往返客户', contact: '', note: '' }],
+    orders: [], orderSeq: 0, activeDocId: 'doc-rt-inq',
+    docs: [
+      { docId: 'doc-rt-inq', kind: 'inquiry', customerName: '往返客户', qtyCol: 7, exportColKeys: ['c1', 'final'], sheet: null, ledger: null },
+      { docId: 'doc-rt-cq', kind: 'custquote', inquiryId: 'doc-rt-inq', customerName: '往返客户', sheet: null },
+    ],
+  };
+  const put = await app.inject({ method: 'PUT', url: '/api/state', payload: { baseRevision: getCurrentRevision(), state: STATE_RT } });
+  eq(put.statusCode, 200, '往返：含 custquote 的整存不再被 CHECK 拒收（曾 500）');
+  const get = await app.inject({ method: 'GET', url: '/api/state' });
+  const docs = (get.json().state || {}).docs || [];
+  const inq = docs.find((d) => d.docId === 'doc-rt-inq') || {};
+  eq(inq.customerName, '往返客户', '往返：询价单 customerName 不丢（客户关联的命根）');
+  eq(inq.qtyCol, 7, '往返：qtyCol（转订单数量列）不丢');
+  eq(inq.exportColKeys, ['c1', 'final'], '往返：exportColKeys（导出记住的列）不丢');
+  const cq = docs.find((d) => d.docId === 'doc-rt-cq') || {};
+  eq(cq.kind, 'custquote', '往返：custquote 单据存得进、读得回');
+  eq(cq.customerName, '往返客户', '往返：custquote 的 customerName 不丢');
+}
+
 await app.close();
 const { closeDb } = await import('../src/db.js');
 closeDb();

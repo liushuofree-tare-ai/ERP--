@@ -36,6 +36,20 @@ export const isServerAvailable = () => serverAvailable;
 export const getServerRevision = () => serverRevision;
 export const getServerInfo = () => serverInfo;
 
+/* ---------- 服务器血统标记（防首次接触闷头覆盖） ----------
+ * 本浏览器只要「采纳过服务器数据」或「成功推上去过」，就记一笔。
+ * 从没记过的浏览器打开一个已有数据的服务器时，它的本地存档多半是
+ * 示例数据或别处带来的——绝不能凭本地时间戳新就把服务器覆盖掉。
+ * 标记只在血统接续点写（pushState 成功 / adoptRemoteState），
+ * 单纯读一次状态不算——读完就盖章会让防线形同虚设。 */
+const SEEN_KEY = 'qipei_v2_server_seen_rev';
+export function markServerSeen(revision) {
+  try { localStorage.setItem(SEEN_KEY, String(revision || 0)); } catch (e) { /* 存不上不拦业务 */ }
+}
+export function hasSeenServer() {
+  try { return localStorage.getItem(SEEN_KEY) !== null; } catch (e) { return false; }
+}
+
 async function jfetch(url, opts) {
   const res = await fetch(url, opts);
   let data = null;
@@ -70,6 +84,7 @@ export async function pushState(baseRevision, state) {
     body: JSON.stringify({ baseRevision, state }),
   });
   serverRevision = d.revision || serverRevision;
+  markServerSeen(serverRevision);
   return d;
 }
 

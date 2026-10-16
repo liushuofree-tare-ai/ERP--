@@ -47,7 +47,7 @@ export function getDb() {
     );
     CREATE TABLE IF NOT EXISTS documents (
       doc_id TEXT PRIMARY KEY,
-      kind TEXT NOT NULL CHECK(kind IN ('inquiry','quote')),
+      kind TEXT NOT NULL CHECK(kind IN ('inquiry','quote','custquote')),
       inquiry_id TEXT,
       factory_name TEXT,
       customer_name TEXT NOT NULL DEFAULT '',
@@ -62,6 +62,8 @@ export function getDb() {
       row_choices_json TEXT,
       factory_extras_json TEXT,
       sheet_json TEXT,
+      qty_col INTEGER,
+      export_col_keys_json TEXT,
       sort_order INTEGER NOT NULL DEFAULT 0,
       created_at TEXT,
       updated_at TEXT NOT NULL
@@ -100,6 +102,7 @@ export function getDb() {
       created_at TEXT NOT NULL
     );
   `);
+  migrateDocumentsTable(db);
   ensureMeta('revision', '0');
   ensureMeta('order_seq', '0');
   ensureMeta('active_doc_id', 'doc-inquiry');
@@ -111,6 +114,58 @@ function ensureMeta(key, fallback) {
   if (!row) {
     getDb().prepare('INSERT INTO system_meta (key, value, updated_at) VALUES (?, ?, ?)')
       .run(key, fallback, new Date().toISOString());
+  }
+}
+
+/* documents 表演进（包 20）：kind 放行 custquote（最终报价单）、补 qty_col
+ * （转订单数量列）与 export_col_keys_json（对客导出记住的列勾选）。
+ * 旧库就地迁移：加列走 ALTER；CHECK 约束 SQLite 改不了，只能整表重建
+ * （复制数据 → 换名 → 重建索引），全程一笔事务，失败回滚。
+ * 新库建表语句已是新结构，下面两道检查都会直接跳过。 */
+const DOCUMENTS_NEW_SCHEMA = `
+  CREATE TABLE documents_new (
+    doc_id TEXT PRIMARY KEY,
+    kind TEXT NOT NULL CHECK(kind IN ('inquiry','quote','custquote')),
+    inquiry_id TEXT,
+    factory_name TEXT,
+    customer_name TEXT NOT NULL DEFAULT '',
+    note TEXT NOT NULL DEFAULT '',
+    header_row INTEGER,
+    source_file_id TEXT,
+    source_json TEXT,
+    import_info TEXT NOT NULL DEFAULT '',
+    pricing_json TEXT,
+    price_mark_json TEXT,
+    ledger_json TEXT,
+    row_choices_json TEXT,
+    factory_extras_json TEXT,
+    sheet_json TEXT,
+    qty_col INTEGER,
+    export_col_keys_json TEXT,
+    sort_order INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT,
+    updated_at TEXT NOT NULL
+  )`;
+const DOCUMENTS_COLUMNS = 'doc_id, kind, inquiry_id, factory_name, customer_name, note, header_row, source_file_id, source_json, import_info, pricing_json, price_mark_json, ledger_json, row_choices_json, factory_extras_json, sheet_json, qty_col, export_col_keys_json, sort_order, created_at, updated_at';
+
+function migrateDocumentsTable(db) {
+  const cols = db.prepare('PRAGMA table_info(documents)').all().map((r) => r.name);
+  if (!cols.includes('qty_col')) db.exec('ALTER TABLE documents ADD COLUMN qty_col INTEGER');
+  if (!cols.includes('export_col_keys_json')) db.exec('ALTER TABLE documents ADD COLUMN export_col_keys_json TEXT');
+  const row = db.prepare("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'documents'").get();
+  if (!row || !row.sql || row.sql.includes("'custquote'")) return;
+  db.exec('BEGIN IMMEDIATE');
+  try {
+    db.exec(DOCUMENTS_NEW_SCHEMA);
+    db.exec('INSERT INTO documents_new (' + DOCUMENTS_COLUMNS + ') SELECT ' + DOCUMENTS_COLUMNS + ' FROM documents');
+    db.exec('DROP TABLE documents');
+    db.exec('ALTER TABLE documents_new RENAME TO documents');
+    db.exec('CREATE INDEX IF NOT EXISTS idx_docs_inquiry ON documents(inquiry_id)');
+    db.exec('CREATE INDEX IF NOT EXISTS idx_docs_customer ON documents(customer_name)');
+    db.exec('COMMIT');
+  } catch (e) {
+    try { db.exec('ROLLBACK'); } catch (e2) { /* 已回滚 */ }
+    throw e;
   }
 }
 
