@@ -20,7 +20,7 @@ import OrdersView from './OrdersView.jsx';
 import { formatOrderNo, convertedLineIds } from './orders.js';
 import { createLedger, noteWorkColumn, cloneLedgerForQuote, rowOfLineId } from './ledger.js';
 import { loadSaved, saveWork, clearSaved, saveWorkAndSync, buildServerPayload, adoptRemoteState, stashLocalBeforeAdopt, onSyncChange, lastSyncInfo } from './store.js';
-import { detectServer, fetchServerState, pushState, isServerAvailable, openTempDownload, feishuNotify } from './apiClient.js';
+import { detectServer, fetchServerState, pushState, isServerAvailable, openTempDownload, feishuNotify, peekServerRevision, shouldPromptStale, getServerRevision } from './apiClient.js';
 import { computeSalesPrice } from './pricing.js';
 import { cellValue, detectHeaderRow, columnHeaders, setCellValue, appendColumn } from './sheetOps.js';
 import PricingBar from './PricingBar.jsx';
@@ -387,7 +387,7 @@ function serverSyncText(s) {
     case 'pushing': return '云端同步中…';
     case 'ok': return '已同步服务器 · ' + fmtClock(s.at) + '（rev ' + s.revision + '）';
     case 'migrated': return '本地工作已上服务器 · ' + fmtClock(s.at);
-    case 'conflict': return '⚠ 服务器上已有其他窗口的更新，本窗口未覆盖——请到「数据备份」拉取';
+    case 'conflict': return '⚠ 服务器上已有更新，本窗口的保存未推上去——请先拉取最新数据';
     case 'need-auth': return '⚠ 服务器要求登录——请到「数据备份」输入访问口令';
     case 'error': return '⚠ 云端同步失败：' + (s.message || '未知原因');
     default: return ''; // local-only / in-sync 稳态不渲染
@@ -647,6 +647,10 @@ function App() {
   });
   // 云端同步小字（服务器在线时的推送状态；单机模式恒为 null 不渲染）
   const [serverSync, setServerSync] = useState(null);
+  // 「请拉取最新数据」弹窗（双人同用：对方已存新版 / 本机保存撞上冲突时弹）
+  const [stalePrompt, setStalePrompt] = useState(null); // { kind: 'stale' | 'conflict', revision }
+  const stalePromptRef = useRef(null);
+  const dismissedStaleRevRef = useRef(0); // 被「稍后再说」压下去的服务器版本号（同版本不再弹，新版本再弹）
   const [showCheck, setShowCheck] = useState(false);
   const [lastEdit, setLastEdit] = useState('（还没有编辑）');
   const [pricing, setPricingState] = useState(() => ({ ...DEFAULT_PRICING, ...(INIT_ACTIVE_DOC.pricing || {}) }));
@@ -1307,12 +1311,74 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 云端同步状态订阅：saveWorkAndSync 的推送结果 → 顶栏小字
+  /* ---------- 「请拉取最新数据」弹窗（双人同用防旧数据） ---------- */
+  const openStalePrompt = (kind, revision) => {
+    if (stalePromptRef.current) return;
+    const p = { kind, revision: revision || 0 };
+    stalePromptRef.current = p;
+    setStalePrompt(p);
+  };
+  const closeStalePrompt = () => { stalePromptRef.current = null; setStalePrompt(null); };
+  const dismissStalePrompt = () => {
+    if (stalePromptRef.current) dismissedStaleRevRef.current = Math.max(dismissedStaleRevRef.current, stalePromptRef.current.revision || 0);
+    closeStalePrompt();
+  };
+  /** 拉取最新数据：先把本机这份留底（数据备份页可恢复），再采纳服务器版并刷新 */
+  const pullLatestFromServer = async () => {
+    try {
+      const remote = await fetchServerState();
+      if (remote && remote.state) {
+        try { stashLocalBeforeAdopt(); } catch (e) { /* 留不了底也不拦拉取 */ }
+        try { sessionStorage.setItem('qipei_v2_adopt_guard_ms', String(Date.now())); } catch (e) { /* 防抖标记存不上也不拦 */ }
+        if (adoptRemoteState(remote.state)) { location.reload(); return; }
+      }
+      closeStalePrompt();
+      setServerSync({ status: 'error', message: '拉取最新数据失败：服务器没有返回数据' });
+    } catch (e) {
+      closeStalePrompt();
+      if (e && e.code === 'NEED_AUTH') setServerSync({ status: 'need-auth', at: new Date().toISOString() });
+      else setServerSync({ status: 'error', message: '拉取最新数据失败：' + (e && e.message || e) });
+    }
+  };
+
+  // 云端同步状态订阅：推送结果 → 顶栏小字；撞上冲突（409）直接弹窗提醒拉取
   useEffect(() => {
     const last = lastSyncInfo();
     if (last && last.status !== 'idle') setServerSync(last);
-    const off = onSyncChange((s) => setServerSync({ ...s }));
+    const off = onSyncChange((s) => {
+      setServerSync({ ...s });
+      if (s && s.status === 'conflict') openStalePrompt('conflict', s.currentRevision);
+    });
     return off;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // 新鲜度看门狗：页面开着时每 30 秒 + 每次切回前台，探一次服务器版本号；
+  // 对方已保存新版（版本号比本机基准大）→ 弹「请拉取最新数据」，不等撞车才发现。
+  useEffect(() => {
+    let alive = true;
+    const check = async () => {
+      if (!alive || stalePromptRef.current) return;
+      if (typeof document !== 'undefined' && document.hidden) return;
+      if (!isServerAvailable()) return;
+      const peek = await peekServerRevision();
+      if (!alive || !peek) return;
+      if (shouldPromptStale(getServerRevision(), peek.revision, dismissedStaleRevRef.current)) {
+        openStalePrompt('stale', peek.revision);
+      }
+    };
+    const timer = setInterval(check, 30000);
+    const onFocus = () => { check(); };
+    const onVis = () => { if (!document.hidden) check(); };
+    window.addEventListener('focus', onFocus);
+    document.addEventListener('visibilitychange', onVis);
+    return () => {
+      alive = false;
+      clearInterval(timer);
+      window.removeEventListener('focus', onFocus);
+      document.removeEventListener('visibilitychange', onVis);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -3199,6 +3265,37 @@ function App() {
           whiteSpace: 'nowrap',
         }}>清空重开</button>
       </div>
+      {stalePrompt && (
+        <div style={{
+          position: 'fixed', inset: 0, background: 'rgba(15, 23, 42, 0.45)', zIndex: 9999,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <div style={{
+            background: '#fff', borderRadius: 12, padding: '22px 24px', width: 430, maxWidth: '92vw',
+            boxShadow: '0 18px 50px rgba(0,0,0,0.3)', fontFamily: 'sans-serif',
+          }}>
+            <div style={{ fontSize: 16.5, fontWeight: 700, color: '#b42318', marginBottom: 10 }}>
+              {stalePrompt.kind === 'conflict' ? '⚠ 刚才的保存没推上去' : '⚠ 服务器上有更新的数据'}
+            </div>
+            <div style={{ fontSize: 13.5, lineHeight: 1.75, color: '#333' }}>
+              {stalePrompt.kind === 'conflict'
+                ? <>服务器上已经有更新的数据（rev {stalePrompt.revision}），你的保存被拦了下来，避免覆盖对方的改动。请先拉取最新数据，再把刚才的改动重做一遍。</>
+                : <>你当前看到的不是最新版：服务器上已经是 rev {stalePrompt.revision}（同事刚保存过），继续在旧数据上改，保存时会被拦下来。请先拉取最新数据再继续。</>}
+              <br />拉取前会自动把你本机现在这份留底，之后可在「数据备份」页恢复，不会丢。
+            </div>
+            <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', marginTop: 18 }}>
+              <button onClick={dismissStalePrompt} style={{
+                border: '1px solid #ccc', background: '#fff', color: '#444', borderRadius: 8,
+                padding: '7px 16px', cursor: 'pointer', fontSize: 13.5,
+              }}>稍后再说</button>
+              <button onClick={pullLatestFromServer} style={{
+                border: '1px solid #1f56d6', background: '#1f56d6', color: '#fff', borderRadius: 8,
+                padding: '7px 16px', cursor: 'pointer', fontSize: 13.5, fontWeight: 600,
+              }}>拉取最新数据</button>
+            </div>
+          </div>
+        </div>
+      )}
       {view === 'sheet' && (<>
       <div className="doc-bar" style={{
         margin: '6px 10px 0', padding: '4px 10px', fontFamily: 'sans-serif', fontSize: 13.5,

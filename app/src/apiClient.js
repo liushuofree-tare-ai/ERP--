@@ -73,6 +73,33 @@ export async function pushState(baseRevision, state) {
   return d;
 }
 
+/* ---------- 新鲜度探针（双人同用：对方已保存新版时，提醒本机拉取） ---------- */
+
+/** 只读健康检查拿服务器当前 revision/savedAt，不动本地的同步基准。失败返回 null。 */
+export async function peekServerRevision() {
+  if (typeof location !== 'undefined' && location.protocol === 'file:') return null;
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 2500);
+    const res = await fetch('/api/health', { signal: ctrl.signal });
+    clearTimeout(timer);
+    if (!res.ok) return null;
+    const d = await res.json();
+    if (!d || !d.ok) return null;
+    return { revision: d.revision || 0, savedAt: d.savedAt || null };
+  } catch (e) {
+    return null;
+  }
+}
+
+/**
+ * 纯判定：该不该弹「请拉取最新数据」。
+ * 服务器版本比本机基准新、且这个版本还没被用户用「稍后再说」压下去过 → 弹。
+ */
+export function shouldPromptStale(knownRevision, remoteRevision, dismissedRevision) {
+  return remoteRevision > knownRevision && remoteRevision > (dismissedRevision || 0);
+}
+
 /* ---------- 文件（内容寻址，原件/图片） ---------- */
 export async function pushFile(rec) {
   const body = rec.bytes instanceof Uint8Array ? rec.bytes : new Uint8Array(rec.bytes);

@@ -211,7 +211,9 @@ export function saveWorkAndSync(payload, opts = {}) {
     notifySync();
     return res;
   }
-  if (isServerAvailable()) {
+  // 注意：这里必须是「服务器不可用才只存本地」——条件曾写反，导致
+  // 服务器模式下所有编辑都只落本地、从不推送（rev 永远不动）。
+  if (!isServerAvailable()) {
     lastSync = { status: 'local-only', at: null };
     return res;
   }
